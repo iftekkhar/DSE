@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Search, ChevronUp, ChevronDown, AlertCircle, LayoutDashboard, LineChart, Newspaper, List, Wallet, Settings, HelpCircle, Bell, User, Menu, X } from 'lucide-react';
+import { Search, Bell, User } from 'lucide-react';
 import heroImage from './assets/hero.png';
 import { fetchDSEData } from './services/api';
 import { defaultCriteria } from './config/criteria';
