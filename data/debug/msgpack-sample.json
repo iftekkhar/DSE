@@ -1,0 +1,3000 @@
+{
+  "url": "https://www.amarstock.com/Info/Stocks",
+  "decodedAt": "2026-08-18T02:16:34.682Z",
+  "sample": [
+    {
+      "Code": "00DS30",
+      "Name": "Dhaka Stock Exchange 30",
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "00DSES",
+      "Name": "DSEX Shariah",
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "00DSEX",
+      "Name": "Dhaka Stock Exchange Broad",
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "00DSMEX",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "1JANATAMF",
+      "Name": "First Janata Bank Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "1STPRIMFMF",
+      "Name": "Prime Finance First Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "AAMRANET",
+      "Name": "aamra networks limited",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "AAMRATECH",
+      "Name": "aamra technologies limited",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "ABB1STMF",
+      "Name": "AB Bank 1st Mutual fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "ABBANK",
+      "Name": "AB Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "ABBLPBOND",
+      "Name": "AB Bank Perpetual Bond",
+      "Group": "Corporate Bond",
+      "Count": 0
+    },
+    {
+      "Code": "ACFL",
+      "Name": "Aman Cotton Fibrous Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "ACHIASF",
+      "Name": "Achia Sea Foods Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "ACI",
+      "Name": "ACI  Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "ACIFORMULA",
+      "Name": "ACI Formulations Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "ACMELAB",
+      "Name": "The ACME Laboratories Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "ACMEPL",
+      "Name": "ACME Pesticides Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "ACTIVEFINE",
+      "Name": "Active Fine Chemicals Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "ADNTEL",
+      "Name": "ADN Telecom Limited",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "ADVENT",
+      "Name": "Advent Pharma Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "AFCAGRO",
+      "Name": "AFC Agro Biotech Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "AFTABAUTO",
+      "Name": "Aftab Automobiles Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "AGNISYSL",
+      "Name": "Agni Systems Ltd.",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "AGRANINS",
+      "Name": "Agrani Insurance Co. Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "AIBL1STIMF",
+      "Name": "AIBL 1st Islamic Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "AIL",
+      "Name": "Alif Industries Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "AL-HAJTEX",
+      "Name": "Al-Haj Textile Mills Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "ALARABANK",
+      "Name": "Al-Arafah Islami Bank Ltd",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "ALIF",
+      "Name": "Alif Manufacturing Company Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "ALLTEX",
+      "Name": "Alltex Industries Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "AMANFEED",
+      "Name": "Aman Feed Limited",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "AMBEEPHA",
+      "Name": "Ambee Pharmaceuticals  Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "AMCL(PRAN)",
+      "Name": "Agricultural Marketing Company Ltd. (Pran) ",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "AMPL",
+      "Name": "Al-Madina Pharmaceuticals Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "ANLIMAYARN",
+      "Name": "Anlimayarn Deying Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "ANWARGALV",
+      "Name": "Anwar Galvanizing Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "AOL",
+      "Name": "Associated Oxygen Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "AOPLC",
+      "Name": "Agro Organica PLC",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "APEXFOODS",
+      "Name": "Apex Foods Limited",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "APEXFOOT",
+      "Name": "Apex Footwear Limited.",
+      "Group": "Tannery Industries",
+      "Count": 0
+    },
+    {
+      "Code": "APEXSPINN",
+      "Name": "Apex Spinning & Knitting Mills Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "APEXTANRY",
+      "Name": "Apex Tannery Limited",
+      "Group": "Tannery Industries",
+      "Count": 0
+    },
+    {
+      "Code": "APEXWEAV",
+      "Name": "Apex Weaving and Finishing Mills Ltd.",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "APOLOISPAT",
+      "Name": "Appollo Ispat Complex Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "APSCLBOND",
+      "Name": "APSCL Non-Convertible and Fully Redeemable Coupon Bearing Bond",
+      "Group": "Corporate Bond",
+      "Count": 0
+    },
+    {
+      "Code": "ARAMIT",
+      "Name": "Aramit Limited",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "ARAMITCEM",
+      "Name": "Aramit Cement Limited",
+      "Group": "Cement",
+      "Count": 0
+    },
+    {
+      "Code": "ARGONDENIM",
+      "Name": "Argon Denims Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "ASIAINS",
+      "Name": "Asia Insurance Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "ASIAPACINS",
+      "Name": "Asia Pacific General Insurance Co. Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "ASIATICLAB",
+      "Name": "Asiatic Laboratories Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "ATCSLGF",
+      "Name": "Asian Tiger Sandhani Life Growth Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "ATLASBANG",
+      "Name": "Atlas Bangladesh Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "AZIZPIPES",
+      "Name": "Aziz Pipes Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "BANGAS",
+      "Name": "Bangas Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "BANKASI1PB",
+      "Name": "Bank Asia 1st Perpetual Bond",
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "BANKASIA",
+      "Name": "Bank Asia Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "BARKAPOWER",
+      "Name": "Baraka Power Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "BATASHOE",
+      "Name": "Bata Shoe Company (Bangladesh) Limited",
+      "Group": "Tannery Industries",
+      "Count": 0
+    },
+    {
+      "Code": "BATBC",
+      "Name": "British American Tobacco bangladesh Company Limited",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "BAYLEASING",
+      "Name": "Bay Leasing & Investment Limited",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "BBS",
+      "Name": "Bangladesh Building Systems Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "BBSCABLES",
+      "Name": " BBS Cables Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "BDAUTOCA",
+      "Name": "Bangladesh Autocars Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "BDCOM",
+      "Name": "BDCOM Online Ltd.",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "BDFINANCE",
+      "Name": "Bangladesh Finance and Investment Co.Ltd",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "BDLAMPS",
+      "Name": "Bangladesh Lamps Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "BDPAINTS",
+      "Name": "BD Paints Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "BDTHAI",
+      "Name": "Bd.Thai Aluminium Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "BDTHAIFOOD",
+      "Name": "BD Thai Food & Beverage Limited",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "BDWELDING",
+      "Name": "Bangladesh Welding Electrodes Ltd. ",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "BEACHHATCH",
+      "Name": "Beach Hatchery Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "BEACONPHAR",
+      "Name": "Beacon Pharmaceuticals Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "BENGALBISC",
+      "Name": "Bengal Biscuits Ltd.",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "BENGALWTL",
+      "Name": "Bengal Windsor Thermoplastics Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "BERGERPBL",
+      "Name": "Berger Paints Bangladesh Ltd.",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "BESTHLDNG",
+      "Name": "BEST HOLDINGS LTD",
+      "Group": "Travel and Leisure",
+      "Count": 0
+    },
+    {
+      "Code": "BEXGSUKUK",
+      "Name": "Beximco Green Sukuk Al Istisna'a",
+      "Group": "Corporate Bond",
+      "Count": 0
+    },
+    {
+      "Code": "BEXIMCO",
+      "Name": "Bangladesh Export Import Company Ltd.",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "BGIC",
+      "Name": "Bangladesh General Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "BIFC",
+      "Name": "Bangladesh Industrial Fin. Co. Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "BNICL",
+      "Name": "Bangladesh National Insurance Company Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "BPML",
+      "Name": "Bashundhara Paper Mills Limited",
+      "Group": "Paper and Printing",
+      "Count": 0
+    },
+    {
+      "Code": "BPPL",
+      "Name": "Baraka Patenga Power Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "BRACBANK",
+      "Name": "BRAC Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "BSC",
+      "Name": "Bangladesh Shipping Corporation",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "BSCPLC",
+      "Name": "Bangladesh Submarine Cables PLC",
+      "Group": "Telecommunication",
+      "Count": 0
+    },
+    {
+      "Code": "BSRMLTD",
+      "Name": "Bangladesh Steel Re-Rolling Mills Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "BSRMSTEEL",
+      "Name": "BSRM Steels Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "BXPHARMA",
+      "Name": "Beximco Pharmaceuticals Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "BXSYNTH",
+      "Name": "Beximco Synthetics Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "CAPITECGBF",
+      "Name": "Capitec Grameen Bank Growth Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "CAPMBDBLMF",
+      "Name": "CAPM BDBL Mutual Fund 01",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "CAPMIBBLMF",
+      "Name": "CAPM IBBL Islamic Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "CBLPBOND",
+      "Name": "City Bank Perpetual Bond",
+      "Group": "Corporate Bond",
+      "Count": 0
+    },
+    {
+      "Code": "CENTRALINS",
+      "Name": "Central Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "CENTRALPHL",
+      "Name": "Central Pharmaceuticals Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "CITYBANK",
+      "Name": "The City Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "CITYGENINS",
+      "Name": "City General Insurance Co. Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "CLICL",
+      "Name": "Chartered Life Insurance Company",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "CNATEX",
+      "Name": "C & A Textiles Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "CONFIDCEM",
+      "Name": "Confidence Cement Ltd.",
+      "Group": "Cement",
+      "Count": 0
+    },
+    {
+      "Code": "CONTININS",
+      "Name": "Continental Insurance Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "COPPERTECH",
+      "Name": " Coppertech Industries Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "CRAFTSMAN",
+      "Name": "Craftsman Footwear and Accessories Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "CROWNCEMNT",
+      "Name": "Crown Cement PLC.",
+      "Group": "Cement",
+      "Count": 0
+    },
+    {
+      "Code": "CRYSTALINS",
+      "Name": "Crystal Insurance Company Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "CVOPRL",
+      "Name": "CVO Petrochemical Refinery Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "DACCADYE",
+      "Name": "The Dacca Dyeing & Manufacturing Co.Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "DAFODILCOM",
+      "Name": "Daffodil Computers Ltd.",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "DBH",
+      "Name": "Delta Brac Housing Finance Corp. Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "DBH1STMF",
+      "Name": "DBH First Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "DBLPBOND",
+      "Name": "Dhaka Bank Perpetual Bond",
+      "Group": "Corporate Bond",
+      "Count": 0
+    },
+    {
+      "Code": "DELTALIFE",
+      "Name": "Delta Life Insurance Company Ltd.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "DELTASPINN",
+      "Name": "Delta Spinners Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "DESCO",
+      "Name": "Dhaka Electric Supply Company Ltd.",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "DESHBANDHU",
+      "Name": "Deshbandhu Polymer Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "DGIC",
+      "Name": "Desh General Insurance Company Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "DHAKABANK",
+      "Name": "Dhaka Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "DHAKAINS",
+      "Name": "Dhaka Insurance Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "DOMINAGE",
+      "Name": "Dominage Steel Building Systems Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "DOREENPWR",
+      "Name": "Doreen Power Generations and Systems Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "DSHGARME",
+      "Name": "Desh Garmants Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "DSSL",
+      "Name": "Dragon Sweater and Spinning Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "DULAMIACOT",
+      "Name": "Dulamia Cotton Spinning Mills Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "DUTCHBANGL",
+      "Name": "Dutch-Bangla Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "EASTERNINS",
+      "Name": "Eastern Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "EASTLAND",
+      "Name": "Eastland Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "EASTRNLUB",
+      "Name": "Eastern Lubricants Ltd.",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "EBL",
+      "Name": "Eastern Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "EBL1STMF",
+      "Name": "EBL First Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "EBLNRBMF",
+      "Name": "EBL NRB Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "ECABLES",
+      "Name": "Eastern Cables Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "EGEN",
+      "Name": "eGeneration Limited",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "EHL",
+      "Name": "Eastern Housing Limited",
+      "Group": "Services and Real Estate",
+      "Count": 0
+    },
+    {
+      "Code": "EIL",
+      "Name": "Express Insurance Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "EMERALDOIL",
+      "Name": "Emerald Oil Industries Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "ENVOYTEX",
+      "Name": "Envoy Textiles Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "EPGL",
+      "Name": "Energypac Power Generation Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "ESQUIRENIT",
+      "Name": "Esquire Knit Composite Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "ETL",
+      "Name": "Evince Textiles Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "EXIM1STMF",
+      "Name": "EXIM Bank 1st Mutual Fund ",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "EXIMBANK",
+      "Name": "Export Import (Exim) Bank of Bangladesh Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "FAMILYTEX",
+      "Name": "Familytex (BD) Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "FARCHEM",
+      "Name": "Far Chemical Industries Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "FAREASTFIN",
+      "Name": "Fareast Finance & Investment Limited",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "FAREASTLIF",
+      "Name": "Fareast Islami Life Insurance Co. Ltd.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "FASFIN",
+      "Name": "FAS Finance & Investment Limited",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "FBFIF",
+      "Name": "First Bangladesh Fixed Income Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "FEDERALINS",
+      "Name": "Federal Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "FEKDIL",
+      "Name": "Far East Knitting & Dyeing Industries Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "FINEFOODS",
+      "Name": "Fine Foods Limited",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "FIRSTFIN",
+      "Name": "First Finance Limited",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "FIRSTSBANK",
+      "Name": "First Security Islami Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "FORTUNE",
+      "Name": "Fortune Shoes Limited",
+      "Group": "Tannery Industries",
+      "Count": 0
+    },
+    {
+      "Code": "FUWANGCER",
+      "Name": "Fu-Wang Ceramic Industries Ltd.",
+      "Group": "Ceramics Sector",
+      "Count": 0
+    },
+    {
+      "Code": "FUWANGFOOD",
+      "Name": "Fu Wang Food Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "GBBPOWER",
+      "Name": "GBB Power Ltd.",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "GEMINISEA",
+      "Name": "Gemini Sea Food Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "GENEXIL",
+      "Name": "Genex Infosys Limited",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "GENNEXT",
+      "Name": "Generation Next Fashions Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "GHAIL",
+      "Name": "Golden Harvest Agro Industries Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "GHCL",
+      "Name": "Global Heavy Chemicals Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "GIB",
+      "Name": "Global Islami Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "GLDNJMF",
+      "Name": "ICB AMCL CMSF Golden Jubilee Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "GLOBALINS",
+      "Name": "Global Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "GOLDENSON",
+      "Name": "Golden Son Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "GP",
+      "Name": "Grameenphone Ltd.",
+      "Group": "Telecommunication",
+      "Count": 0
+    },
+    {
+      "Code": "GPHISPAT",
+      "Name": "GPH Ispat Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "GQBALLPEN",
+      "Name": "GQ Ball Pen Industries Ltd.",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "GRAMEENS2",
+      "Name": "Grameen One : Scheme Two",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "GREENDELMF",
+      "Name": "Green Delta Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "GREENDELT",
+      "Name": "Green Delta Insurance Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "GSPFINANCE",
+      "Name": "GSP Finance Company (Bangladesh) Limited",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "HAKKANIPUL",
+      "Name": "Hakkani Pulp & Paper Mills Ltd.",
+      "Group": "Paper and Printing",
+      "Count": 0
+    },
+    {
+      "Code": "HAMI",
+      "Name": "Hami Industries PLC",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "HEIDELBCEM",
+      "Name": "Heidelberg Cement Bangladesh Ltd.",
+      "Group": "Cement",
+      "Count": 0
+    },
+    {
+      "Code": "HFL",
+      "Name": "Hamid Fabrics Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "HIMADRI",
+      "Name": "Himadri Ltd.",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "HRTEX",
+      "Name": "H.R.Textile Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "HWAWELLTEX",
+      "Name": "Hwa Well Textiles (BD) Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "IBNSINA",
+      "Name": "The IBN SINA  Pharmaceutical Industry Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "IBP",
+      "Name": "Indo-Bangla Pharmaceuticals Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "ICB",
+      "Name": "Investment Corporation Of Bangladesh",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "ICB3RDNRB",
+      "Name": "ICB AMCL Third NRB Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "ICBAGRANI1",
+      "Name": "ICB AMCL First Agrani Bank Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "ICBAMCL2ND",
+      "Name": "ICB AMCL Second Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "ICBEPMF1S1",
+      "Name": "ICB Employees Provident MF 1: Scheme 1",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "ICBIBANK",
+      "Name": "ICB Islamic Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "ICBSONALI1",
+      "Name": "ICB AMCL Sonali Bank Limited 1st Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "ICICL",
+      "Name": "Islami Commercial Insurance Company ",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "IDLC",
+      "Name": "IDLC Finance Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "IFADAUTOS",
+      "Name": "IFAD Autos Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "IFIC",
+      "Name": "IFIC Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "IFIC1STMF",
+      "Name": "IFIC Bank 1st Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "IFILISLMF1",
+      "Name": "IFIL Islamic Mutual Fund-1",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "ILFSL",
+      "Name": "International Leasing & Financial Services Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "INDEXAGRO",
+      "Name": "Index Agro Industries Limited",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "INTECH",
+      "Name": "Intech  Limited",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "INTRACO",
+      "Name": "Intraco Refueling Station Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "IPDC",
+      "Name": "IPDC Finance Limited ",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "ISLAMIBANK",
+      "Name": "Islami Bank Bangladesh Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "ISLAMICFIN",
+      "Name": "Islamic Finance & Investment Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "ISLAMIINS",
+      "Name": "Islami Insurance Bangladesh Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "ISNLTD",
+      "Name": "Information Services Network Ltd.",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "ITC",
+      "Name": "IT Consultants Limited",
+      "Group": "IT Sector",
+      "Count": 0
+    },
+    {
+      "Code": "JAMUNABANK",
+      "Name": "Jamuna Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "JAMUNAOIL",
+      "Name": "Jamuna Oil Company Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "JANATAINS",
+      "Name": "Janata Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "JHRML",
+      "Name": "JMI Hospital Requisite Manufacturing Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "JMISMDL",
+      "Name": "JMI Syringes & Medical Devices Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "JUTESPINN",
+      "Name": "Jute Spinners Ltd.",
+      "Group": "Jute",
+      "Count": 0
+    },
+    {
+      "Code": "KARNAPHULI",
+      "Name": "Karnaphuli Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "KAY&QUE",
+      "Name": "Kay & Que (Bangladesh) Ltd. ",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "KBPPWBIL",
+      "Name": "Khan Brothers PP Woven Bag Industries Limited",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "KBSEED",
+      "Name": "Krishibid Seed Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "KDSALTD",
+      "Name": "KDS Accessories Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "KEYACOSMET",
+      "Name": "Keya Cosmetics Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "KFL",
+      "Name": "Krishibid Feed Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "KOHINOOR",
+      "Name": "Kohinoor Chemicals Company (Bangladesh) Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "KPCL",
+      "Name": "Khulna Power Company Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "KPPL",
+      "Name": "Khulna Printing & Packaging Limited",
+      "Group": "Paper and Printing",
+      "Count": 0
+    },
+    {
+      "Code": "KTL",
+      "Name": "Kattali Textile Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "LANKABAFIN",
+      "Name": "LankaBangla Finance Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "LEGACYFOOT",
+      "Name": "Legacy Footwear Ltd.",
+      "Group": "Tannery Industries",
+      "Count": 0
+    },
+    {
+      "Code": "LHB",
+      "Name": "LafargeHolcim Bangladesh PLC.",
+      "Group": "Cement",
+      "Count": 0
+    },
+    {
+      "Code": "LIBRAINFU",
+      "Name": "Libra Infusions Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "LINDEBD",
+      "Name": "Linde Bangladesh Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "LOVELLO",
+      "Name": "Taufika Foods and Lovello Ice-cream PLC",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "LRBDL",
+      "Name": "Lub-rref (Bangladesh) Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "LRGLOBMF1",
+      "Name": "LR Global Bangladesh Mutual Fund One",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "MAGURAPLEX",
+      "Name": "Magura Multiplex PLC.",
+      "Group": "Paper and Printing",
+      "Count": 0
+    },
+    {
+      "Code": "MAKSONSPIN",
+      "Name": "Maksons Spinning Mills Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "MALEKSPIN",
+      "Name": "Malek Spinning Mills Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "MAMUNAGRO",
+      "Name": "Mamun Agro Products Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "MARICO",
+      "Name": "Marico Bangladesh Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "MASTERAGRO",
+      "Name": "Master feed Agrotec Ltd.",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "MATINSPINN",
+      "Name": "Matin Spinning Mills Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "MBL1STMF",
+      "Name": "MBL 1st Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "MBPLCPBOND",
+      "Name": "Mercantile Bank Perpetual Bond",
+      "Group": "Corporate Bond",
+      "Count": 0
+    },
+    {
+      "Code": "MEGCONMILK",
+      "Name": "Meghna Condensed Milk Industries Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "MEGHNACEM",
+      "Name": "Meghna Cement Mills Ltd.",
+      "Group": "Cement",
+      "Count": 0
+    },
+    {
+      "Code": "MEGHNAINS",
+      "Name": "Meghna Insurance Company Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "MEGHNALIFE",
+      "Name": "Meghna Life Insurance Co. Ltd.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "MEGHNAPET",
+      "Name": "Meghna Pet Industries Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "MERCANBANK",
+      "Name": "Mercantile Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "MERCINS",
+      "Name": "Mercantile Insurance Co. Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "METROSPIN",
+      "Name": "Metro Spinning Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "MHSML",
+      "Name": "Mozaffar Hossain Spinning Mills Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "MIDASFIN",
+      "Name": "MIDAS Financing Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "MIDLANDBNK",
+      "Name": "Midland Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "MIRACLEIND",
+      "Name": "Miracle Industries Ltd.",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "MIRAKHTER",
+      "Name": "Mir Akhter Hossain Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "MITHUNKNIT",
+      "Name": "Mithun Knitting and Dyeing Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "MJLBD",
+      "Name": "MJL Bangladesh Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "MKFOOTWEAR",
+      "Name": "MK Footwear PLC",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "MLDYEING",
+      "Name": "M.L. Dyeing Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "MONNOAGML",
+      "Name": "Monno Agro & General Machinery Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "MONNOCERA",
+      "Name": "Monno Ceramic Industries Ltd.",
+      "Group": "Ceramics Sector",
+      "Count": 0
+    },
+    {
+      "Code": "MONNOFABR",
+      "Name": "Monno Fabrics Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "MONOSPOOL",
+      "Name": "Monospool Bangladesh PLC",
+      "Group": "Paper and Printing",
+      "Count": 0
+    },
+    {
+      "Code": "MOSTFAMETL",
+      "Name": "Mostafa Metal Industries Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "MPETROLEUM",
+      "Name": "Meghna Petroleum Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "MTB",
+      "Name": "Mutual Trust Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "NAHEEACP",
+      "Name": "Nahee Aluminum Composite Panel Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "NATLIFEINS",
+      "Name": "National Life Insurance Company Ltd.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "NAVANACNG",
+      "Name": "Navana CNG Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "NAVANAPHAR",
+      "Name": "Navana Pharmaceuticals PLC",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "NBL",
+      "Name": "National Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "NCCBANK",
+      "Name": "National Credit and Commerce Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "NCCBLMF1",
+      "Name": "NCCBL Mutual Fund-1",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "NEWLINE",
+      "Name": "New Line Clothings Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "NFML",
+      "Name": "National Feed Mill Limited",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "NHFIL",
+      "Name": "National Housing Fin. and Inv. Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "NIALCO",
+      "Name": "Nialco Alloys Ltd.",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "NITOLINS",
+      "Name": "Nitol Insurance Co. Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "NORTHERN",
+      "Name": "Northern Jute Manufacturing Co. Ltd.",
+      "Group": "Jute",
+      "Count": 0
+    },
+    {
+      "Code": "NORTHRNINS",
+      "Name": "Northern General Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "NPOLYMER",
+      "Name": "National Polymer Industries Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "NRBBANK",
+      "Name": "NRB Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "NRBCBANK",
+      "Name": "NRB Commercial Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "NTC",
+      "Name": "National Tea Company Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "NTLTUBES",
+      "Name": "National Tubes Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "NURANI",
+      "Name": "Nurani Dyeing & Sweater Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "OAL",
+      "Name": "Olympic Accessories Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "OIMEX",
+      "Name": "Oimex Electrode Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "OLYMPIC",
+      "Name": "Olympic Industries Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "ONEBANKPLC",
+      "Name": "One Bank PLC",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "ORIONINFU",
+      "Name": "Orion Infusion Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "ORIONPHARM",
+      "Name": "Orion Pharma Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "ORYZAAGRO",
+      "Name": "Oryza Agro Industries Ltd.",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "PADMALIFE",
+      "Name": "Padma Islami Life Insurance Limited",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PADMAOIL",
+      "Name": "Padma Oil Co. Ltd.",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "PARAMOUNT",
+      "Name": "Paramount Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PDL",
+      "Name": "Pacific Denims Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "PENINSULA",
+      "Name": "The Peninsula Chittagong Limited",
+      "Group": "Travel and Leisure",
+      "Count": 0
+    },
+    {
+      "Code": "PEOPLESINS",
+      "Name": "Peoples Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PF1STMF",
+      "Name": "Phoenix Finance 1st Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "PHARMAID",
+      "Name": "Pharma Aids",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "PHENIXINS",
+      "Name": "Phoenix Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PHOENIXFIN",
+      "Name": "Phoenix Finance and Investments Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "PHPMF1",
+      "Name": "PHP First Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "PIONEERINS",
+      "Name": "Pioneer Insurance Comapny Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PLFSL",
+      "Name": "Peoples Leasing and Fin. Services Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "POPULAR1MF",
+      "Name": "Popular Life First Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "POPULARLIF",
+      "Name": "Popular Life Insurance Co. Ltd.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "POWERGRID",
+      "Name": "Power Grid Company of Bangladesh Ltd.",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "PRAGATIINS",
+      "Name": "Pragati Insurance Ltd",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PRAGATILIF",
+      "Name": "Pragati Life Insurance Ltd.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PREMIERBAN",
+      "Name": "Premier Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "PREMIERCEM",
+      "Name": "Premier Cement Mills Limited",
+      "Group": "Cement",
+      "Count": 0
+    },
+    {
+      "Code": "PREMIERLEA",
+      "Name": "Premier Leasing & Finance Limited",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "PRIME1ICBA",
+      "Name": "Prime Bank 1st ICB AMCL Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "PRIMEBANK",
+      "Name": "Prime Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "PRIMEFIN",
+      "Name": "Prime Finance & Investment Ltd.",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "PRIMEINSUR",
+      "Name": "Prime Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PRIMELIFE",
+      "Name": "Prime Islami Life Insurance Ltd.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PRIMETEX",
+      "Name": "Prime Textile Spinning Mills Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "PROGRESLIF",
+      "Name": "Progressive Life Insurance Co. Ltd.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PROVATIINS",
+      "Name": "Provati Insurance Company Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "PTL",
+      "Name": "Paramount Textile Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "PUBALIBANK",
+      "Name": "Pubali Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "PURABIGEN",
+      "Name": "Purabi Gen. Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "QUASEMIND",
+      "Name": "Quasem Industries Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "QUEENSOUTH",
+      "Name": "Queen South Textile Mills Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "RAHIMAFOOD",
+      "Name": "Rahima Food Corporation Limited",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "RAHIMTEXT",
+      "Name": "Rahim Textile Mills Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "RAKCERAMIC",
+      "Name": "RAK Ceramics (Bangladesh) Limited",
+      "Group": "Ceramics Sector",
+      "Count": 0
+    },
+    {
+      "Code": "RANFOUNDRY",
+      "Name": "Rangpur Foundry Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "RDFOOD",
+      "Name": "Rangpur Dairy & Food Products Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "RECKITTBEN",
+      "Name": "Reckitt Benckiser(Bd.)Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "REGENTTEX",
+      "Name": "Regent Textile Mills Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "RELIANCE1",
+      "Name": "\"Reliance One\" the first scheme of Reliance Insurance Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "RELIANCINS",
+      "Name": "Reliance Insurance Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "RENATA",
+      "Name": "Renata Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "RENWICKJA",
+      "Name": "Renwick Jajneswar & Co (Bd) Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "REPUBLIC",
+      "Name": "Republic Insurance Company Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "RINGSHINE",
+      "Name": "Ring Shine Textiles Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "RNSPIN",
+      "Name": "R.N. Spinning Mills Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "ROBI",
+      "Name": "Robi Axiata Limited",
+      "Group": "Telecommunication",
+      "Count": 0
+    },
+    {
+      "Code": "RSRMSTEEL",
+      "Name": "Ratanpur Steel Re-Rolling Mills Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "RUNNERAUTO",
+      "Name": "Runner Automobiles Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "RUPALIBANK",
+      "Name": "Rupali Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "RUPALIINS",
+      "Name": "Rupali Insurance Company Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "RUPALILIFE",
+      "Name": "Rupali Life Insurance Company Limited",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "SADHESIVE",
+      "Name": "Star Adhesives Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "SAFKOSPINN",
+      "Name": "Safko Spinnings Mills Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SAIFPOWER",
+      "Name": "SAIF Powertec Limited",
+      "Group": "Services and Real Estate",
+      "Count": 0
+    },
+    {
+      "Code": "SAIHAMCOT",
+      "Name": "Saiham Cotton Mills Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SAIHAMTEX",
+      "Name": "Saiham Textile Mills Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SALAMCRST",
+      "Name": "S. Alam Cold Rolled Steels Ltd.",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "SALVO",
+      "Name": "Salvo Organic Industries PLC.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "SAMATALETH",
+      "Name": "Samata Leather Complex Ltd.",
+      "Group": "Tannery Industries",
+      "Count": 0
+    },
+    {
+      "Code": "SAMORITA",
+      "Name": "Samorita Hospital Limited",
+      "Group": "Services and Real Estate",
+      "Count": 0
+    },
+    {
+      "Code": "SANDHANINS",
+      "Name": "Sandhani Life Insurance Company Ltd.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "SAPORTL",
+      "Name": "Summit Alliance Port Limited",
+      "Group": "Services and Real Estate",
+      "Count": 0
+    },
+    {
+      "Code": "SAVAREFR",
+      "Name": "Savar Refractories Limited",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "SBACBANK",
+      "Name": "South Bangla Agriculture & Commerce Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "SEAPEARL",
+      "Name": "Sea Pearl Beach Resort & Spa Limited",
+      "Group": "Travel and Leisure",
+      "Count": 0
+    },
+    {
+      "Code": "SEB1PBOND",
+      "Name": "Southeast Bank 1st Perpetual Bond",
+      "Group": "Corporate Bond",
+      "Count": 0
+    },
+    {
+      "Code": "SEMLFBSLGF",
+      "Name": "SEML FBLSL Growth Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "SEMLIBBLSF",
+      "Name": "SEML IBBL Shariah Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "SEMLLECMF",
+      "Name": "SEML Lecture Equity Management Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "SHAHJABANK",
+      "Name": "Shahjalal Islami Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "SHARPIND",
+      "Name": "Sharp Industries PLC",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SHASHADNIM",
+      "Name": "Shasha Denims Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SHEPHERD",
+      "Name": "Shepherd Industries Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SHURWID",
+      "Name": "Shurwid Industries Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "SHYAMPSUG",
+      "Name": "Shyampur Sugar Mills Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "SIBL",
+      "Name": "Social Islami Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "SICL",
+      "Name": "Sikder Insurance Company Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "SILCOPHL",
+      "Name": "Silco Pharmaceuticals Limited ",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "SILVAPHL",
+      "Name": "Silva Pharmaceuticals Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "SIMTEX",
+      "Name": "Simtex Industries Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SINGERBD",
+      "Name": "Singer Bangladesh Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "SINOBANGLA",
+      "Name": "Sinobangla Industries Ltd.",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "SIPLC",
+      "Name": "Sena Insurance PLC",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "SKTRIMS",
+      "Name": "SK Trims & Industries Limited",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "SONALIANSH",
+      "Name": "Sonali Aansh Industries Limited",
+      "Group": "Jute",
+      "Count": 0
+    },
+    {
+      "Code": "SONALILIFE",
+      "Name": "Sonali Life Insurance Company Limited",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "SONALIPAPR",
+      "Name": "Sonali Paper & Board Mills Ltd.",
+      "Group": "Paper and Printing",
+      "Count": 0
+    },
+    {
+      "Code": "SONARBAINS",
+      "Name": "Sonar Bangla Insurance Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "SONARGAON",
+      "Name": "Sonargaon Textiles Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SOUTHEASTB",
+      "Name": "Southeast Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "SPCERAMICS",
+      "Name": "Shinepukur Ceramics Limited",
+      "Group": "Ceramics Sector",
+      "Count": 0
+    },
+    {
+      "Code": "SPCL",
+      "Name": "Shahjibazar Power Co. Ltd.",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "SQUARETEXT",
+      "Name": "Square Textile Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SQURPHARMA",
+      "Name": "Square Pharmaceuticals Ltd.",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "SSSTEEL",
+      "Name": "S. S. Steel Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "STANCERAM",
+      "Name": "Standard Ceramic Industries Ltd.",
+      "Group": "Ceramics Sector",
+      "Count": 0
+    },
+    {
+      "Code": "STANDARINS",
+      "Name": "Standard Insurance Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "STANDBANKL",
+      "Name": "Standard Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "STYLECRAFT",
+      "Name": "Stylecraft Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "SUMITPOWER",
+      "Name": "Summit Power Limited",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "SUNLIFEINS",
+      "Name": "Sunlife Insurance Company Limited",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "TAKAFULINS",
+      "Name": "Takaful Islami Insurance Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "TALLUSPIN",
+      "Name": "Tallu Spinning Mills Ltd.",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "TAMIJTEX",
+      "Name": "Tamijuddin Textile Mills Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "TAUFIKA",
+      "Name": "Taufika Foods and Agro Industries Limited",
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0135",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0234",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0335",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0434",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0530",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0535",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0634",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0726",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0735",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0833",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y0932",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB10Y1135",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB15Y0339",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB15Y0340",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB15Y0535",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB15Y0637",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB15Y0925",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB15Y1025",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB15Y1028",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB20Y0143",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB20Y0431",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB20Y0545",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB20Y0640",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB20Y0744",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB20Y0831",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB20Y0845",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB20Y1242",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0126",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0127",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0227",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0325",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0327",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0426",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0427",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0525",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0526",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0527",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0626",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0627",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0725",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0727",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0826",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0925",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y0927",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y1026",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y1125",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y1126",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB2Y1127",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0125",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0128",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0230",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0327",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0425",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0429",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0430",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0527",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0529",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0628",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0630",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0928",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y0930",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y1029",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y1128",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y1130",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y1225",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y1228",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TB5Y1229",
+      "Name": null,
+      "Group": null,
+      "Count": 0
+    },
+    {
+      "Code": "TECHNODRUG",
+      "Name": "Techno Drugs Ltd",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "TILIL",
+      "Name": "Trust Islami Life Insurance PLC.",
+      "Group": "Life Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "TITASGAS",
+      "Name": "Titas Gas Transmission & Dist. Co. Ltd.",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "TOSRIFA",
+      "Name": "Tosrifa Industries Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "TRUSTB1MF",
+      "Name": "Trust Bank 1st Mutual Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "TRUSTBANK",
+      "Name": "Trust Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "TUNGHAI",
+      "Name": "Tung Hai Knitting & Dyeing Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "UCB",
+      "Name": "United Commercial Bank Ltd.",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "UCB2PBOND",
+      "Name": "UCB 2nd Perpetual Bond",
+      "Group": "Corporate Bond",
+      "Count": 0
+    },
+    {
+      "Code": "UNILEVERCL",
+      "Name": "Unilever Consumer Care Limited",
+      "Group": "Food and Allied",
+      "Count": 0
+    },
+    {
+      "Code": "UNIONBANK",
+      "Name": "Union Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "UNIONCAP",
+      "Name": "Union Capital Limited",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "UNIONINS",
+      "Name": "Union Insurance Company Limited",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "UNIQUEHRL",
+      "Name": "Unique Hotel & Resorts Limited",
+      "Group": "Travel and Leisure",
+      "Count": 0
+    },
+    {
+      "Code": "UNITEDFIN",
+      "Name": "United Finance Limited",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "UNITEDINS",
+      "Name": "United Insurance Ltd.",
+      "Group": "Insurance",
+      "Count": 0
+    },
+    {
+      "Code": "UPGDCL",
+      "Name": "United Power Generation & Distribution Company Ltd.",
+      "Group": "Fuel and Power",
+      "Count": 0
+    },
+    {
+      "Code": "USMANIAGL",
+      "Name": "Usmania Glass Sheet Factory Limited",
+      "Group": "Miscellaneous",
+      "Count": 0
+    },
+    {
+      "Code": "UTTARABANK",
+      "Name": "Uttara Bank Limited",
+      "Group": "Bank",
+      "Count": 0
+    },
+    {
+      "Code": "UTTARAFIN",
+      "Name": "Uttara Finance and Investments Limited",
+      "Group": "Financial Institutions",
+      "Count": 0
+    },
+    {
+      "Code": "VAMLBDMF1",
+      "Name": "Vanguard AML BD Finance Mutual Fund One",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "VAMLRBBF",
+      "Name": "Vanguard AML Rupali Bank Balanced Fund",
+      "Group": "Mutual Funds",
+      "Count": 0
+    },
+    {
+      "Code": "VFSTDL",
+      "Name": "VFS Thread Dyeing Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "WALTONHIL",
+      "Name": "Walton Hi-Tech Industries Ltd",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "WATACHEM",
+      "Name": "Wata Chemicals Limited",
+      "Group": "Pharmaceuticals and Chemicals",
+      "Count": 0
+    },
+    {
+      "Code": "WEBCOATS",
+      "Name": " WEB COATS PLC",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "WMSHIPYARD",
+      "Name": "Western Marine Shipyard Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "WONDERTOYS",
+      "Name": "Wonderland Toys Ltd.",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "YPL",
+      "Name": "Yeakin Polymer Limited",
+      "Group": "Engineering",
+      "Count": 0
+    },
+    {
+      "Code": "YUSUFLOUR",
+      "Name": "Yousuf Flour Mills Limited",
+      "Group": "SME Sector",
+      "Count": 0
+    },
+    {
+      "Code": "ZAHEENSPIN",
+      "Name": "Zaheen Spinning Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "ZAHINTEX",
+      "Name": "Zahintex Industries Limited",
+      "Group": "Textile",
+      "Count": 0
+    },
+    {
+      "Code": "ZEALBANGLA",
+      "Name": "Zeal Bangla Sugar Mills Ltd.",
+      "Group": "Food and Allied",
+      "Count": 0
+    }
+  ]
+}

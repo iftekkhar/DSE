@@ -1,0 +1,2858 @@
+{
+  "SectorPE": [
+    "Ceramics Sector",
+    "Paper and Printing",
+    "Jute",
+    "IT Sector",
+    "Food and Allied",
+    "Travel and Leisure",
+    "Services and Real Estate",
+    "Tannery Industries",
+    "Textile",
+    "Insurance",
+    "Cement",
+    "Telecommunication",
+    "Financial Institutions",
+    "Engineering",
+    "Miscellaneous",
+    "Pharmaceuticals and Chemicals",
+    "Fuel and Power",
+    "Bank"
+  ],
+  "PERatio": [
+    322.02,
+    30.12,
+    29.37,
+    24.79,
+    18.78,
+    18.73,
+    18.61,
+    17.31,
+    16.67,
+    16.6,
+    14.57,
+    12.95,
+    12.28,
+    11.05,
+    10.34,
+    9.93,
+    6.36,
+    5.18
+  ],
+  "SectorWeightedPE": [
+    "Ceramics Sector",
+    "Tannery Industries",
+    "IT Sector",
+    "Textile",
+    "Engineering",
+    "Food and Allied",
+    "Paper and Printing",
+    "Services and Real Estate",
+    "Travel and Leisure",
+    "Jute",
+    "Insurance",
+    "Pharmaceuticals and Chemicals",
+    "Miscellaneous",
+    "Cement",
+    "Telecommunication",
+    "Financial Institutions",
+    "Fuel and Power",
+    "Bank"
+  ],
+  "WeightedPERatio": [
+    331.52,
+    177.2,
+    135.86,
+    58.96,
+    38.41,
+    31.81,
+    31.63,
+    24.99,
+    23.8,
+    23.27,
+    19.22,
+    15.87,
+    14.59,
+    14.16,
+    13.31,
+    11.61,
+    9.41,
+    6.16
+  ],
+  "MarketRatio": [
+    9.11,
+    25.19
+  ],
+  "CompareMarket": [
+    [
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ABBANK",
+        "StockPE": -0.110957004160888
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ALARABANK",
+        "StockPE": 9.36046511627907
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BANKASIA",
+        "StockPE": 4.83695652173913
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BRACBANK",
+        "StockPE": 5.8348623853211
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CITYBANK",
+        "StockPE": 4.87538940809969
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DHAKABANK",
+        "StockPE": 6.54255319148936
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DUTCHBANGL",
+        "StockPE": 5.43526785714286
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EBL",
+        "StockPE": 4.44444444444444
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EXIMBANK",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FIRSTSBANK",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GIB",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ICBIBANK",
+        "StockPE": -1.90140845070423
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "IFIC",
+        "StockPE": -0.282258064516129
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ISLAMIBANK",
+        "StockPE": -1.76039119804401
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "JAMUNABANK",
+        "StockPE": 3.0272952853598
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MERCANBANK",
+        "StockPE": 16.3636363636364
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MIDLANDBNK",
+        "StockPE": 21.1627906976744
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MTB",
+        "StockPE": 6.83673469387755
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NBL",
+        "StockPE": -0.253521126760563
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NCCBANK",
+        "StockPE": 3.63207547169811
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NRBBANK",
+        "StockPE": 26.5384615384615
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NRBCBANK",
+        "StockPE": 8.62068965517241
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ONEBANKPLC",
+        "StockPE": 5.25641025641026
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PREMIERBAN",
+        "StockPE": -0.936507936507936
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PRIMEBANK",
+        "StockPE": 4.13461538461538
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PUBALIBANK",
+        "StockPE": 4.30406852248394
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RUPALIBANK",
+        "StockPE": -0.67022086824067
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SBACBANK",
+        "StockPE": 20.5882352941176
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SHAHJABANK",
+        "StockPE": 3.15884476534296
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SIBL",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SOUTHEASTB",
+        "StockPE": 3.56707317073171
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "STANDBANKL",
+        "StockPE": 83.3333333333333
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "TRUSTBANK",
+        "StockPE": 6.33333333333333
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UCB",
+        "StockPE": 21.5909090909091
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UNIONBANK",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 5.18,
+        "SectorName": "Bank",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UTTARABANK",
+        "StockPE": 4.23694779116466
+      },
+      {
+        "SectorPE": 14.57,
+        "SectorName": "Cement",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ARAMITCEM",
+        "StockPE": -1.62739062421154
+      },
+      {
+        "SectorPE": 14.57,
+        "SectorName": "Cement",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CONFIDCEM",
+        "StockPE": 5.55847858924965
+      },
+      {
+        "SectorPE": 14.57,
+        "SectorName": "Cement",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CROWNCEMNT",
+        "StockPE": 29.500221141088
+      },
+      {
+        "SectorPE": 14.57,
+        "SectorName": "Cement",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "HEIDELBCEM",
+        "StockPE": -57.005076142132
+      },
+      {
+        "SectorPE": 14.57,
+        "SectorName": "Cement",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "LHB",
+        "StockPE": 15.2406417112299
+      },
+      {
+        "SectorPE": 14.57,
+        "SectorName": "Cement",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MEGHNACEM",
+        "StockPE": -0.476367487059985
+      },
+      {
+        "SectorPE": 14.57,
+        "SectorName": "Cement",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PREMIERCEM",
+        "StockPE": 18.8914497298523
+      },
+      {
+        "SectorPE": 322.02,
+        "SectorName": "Ceramics Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FUWANGCER",
+        "StockPE": 1187.96992481203
+      },
+      {
+        "SectorPE": 322.02,
+        "SectorName": "Ceramics Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MONNOCERA",
+        "StockPE": 284.147869674186
+      },
+      {
+        "SectorPE": 322.02,
+        "SectorName": "Ceramics Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RAKCERAMIC",
+        "StockPE": 296
+      },
+      {
+        "SectorPE": 322.02,
+        "SectorName": "Ceramics Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SPCERAMICS",
+        "StockPE": -8.125
+      },
+      {
+        "SectorPE": 322.02,
+        "SectorName": "Ceramics Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "STANCERAM",
+        "StockPE": -4.43290637015993
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AFTABAUTO",
+        "StockPE": -18.5421180068816
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ANWARGALV",
+        "StockPE": 21.3880566076846
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "APOLOISPAT",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ATLASBANG",
+        "StockPE": -98.0810234541578
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AZIZPIPES",
+        "StockPE": -25.9944733628944
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BBS",
+        "StockPE": -19.8222829801777
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BBSCABLES",
+        "StockPE": -5.70976312962858
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BDAUTOCA",
+        "StockPE": 1795.3216374269
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BDLAMPS",
+        "StockPE": -201.739287978984
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BDTHAI",
+        "StockPE": -5.51597333946219
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BENGALWTL",
+        "StockPE": 47.2110508830215
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BSRMLTD",
+        "StockPE": 4.75126039035814
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BSRMSTEEL",
+        "StockPE": 6.17077942899023
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "COPPERTECH",
+        "StockPE": 46.7239527389903
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DESHBANDHU",
+        "StockPE": -5.30738611233967
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DOMINAGE",
+        "StockPE": -318.139097744361
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ECABLES",
+        "StockPE": -28.5070966185517
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GOLDENSON",
+        "StockPE": -6.17332805698457
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GPHISPAT",
+        "StockPE": -60.8339029391661
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "IFADAUTOS",
+        "StockPE": 58.2706766917293
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "KAY&QUE",
+        "StockPE": 32.0138060013532
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "KDSALTD",
+        "StockPE": 24.4360902255639
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MIRAKHTER",
+        "StockPE": 44.6500867553499
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MONNOAGML",
+        "StockPE": 1734.83709273183
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NAHEEACP",
+        "StockPE": 157.452454666077
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NAVANACNG",
+        "StockPE": 1639.0977443609
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NPOLYMER",
+        "StockPE": 101.954887218045
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NTLTUBES",
+        "StockPE": -31.2894036333069
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "OAL",
+        "StockPE": -9.10170162247724
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "OIMEX",
+        "StockPE": 77.6942355889724
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "QUASEMIND",
+        "StockPE": 38.6810399492708
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RANFOUNDRY",
+        "StockPE": 38.90679078649
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RENWICKJA",
+        "StockPE": -85.686906341484
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RSRMSTEEL",
+        "StockPE": -2.02929469001223
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RUNNERAUTO",
+        "StockPE": 71.4285714285714
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SALAMCRST",
+        "StockPE": 36.2513426423201
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SHURWID",
+        "StockPE": 2.5062656641604
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SINGERBD",
+        "StockPE": -8.77358490566038
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SSSTEEL",
+        "StockPE": -131.578947368421
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "WALTONHIL",
+        "StockPE": 14.645636648011
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "WMSHIPYARD",
+        "StockPE": -93.0451127819549
+      },
+      {
+        "SectorPE": 11.05,
+        "SectorName": "Engineering",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "YPL",
+        "StockPE": -20.6998978928804
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BAYLEASING",
+        "StockPE": -1.65605095541401
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BDFINANCE",
+        "StockPE": 28.9130434782609
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BIFC",
+        "StockPE": -0.644171779141104
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DBH",
+        "StockPE": 8
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FAREASTFIN",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FASFIN",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FIRSTFIN",
+        "StockPE": -1.22065727699531
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GSPFINANCE",
+        "StockPE": -0.361395869509648
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ICB",
+        "StockPE": -4.86119569911524
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "IDLC",
+        "StockPE": 7.45098039215686
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ILFSL",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "IPDC",
+        "StockPE": 34.7959183673469
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ISLAMICFIN",
+        "StockPE": -98.3333333333333
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "LANKABAFIN",
+        "StockPE": 23.65003417635
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MIDASFIN",
+        "StockPE": -0.466988727858293
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NHFIL",
+        "StockPE": 34.7619047619048
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PHOENIXFIN",
+        "StockPE": -0.283018867924528
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PLFSL",
+        "StockPE": -0.162962962962963
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PREMIERLEA",
+        "StockPE": -0.342465753424658
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PRIMEFIN",
+        "StockPE": -1.42367753703786
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UNIONCAP",
+        "StockPE": -1.12676056338028
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UNITEDFIN",
+        "StockPE": 35.1851851851852
+      },
+      {
+        "SectorPE": 12.28,
+        "SectorName": "Financial Institutions",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UTTARAFIN",
+        "StockPE": 6.04189044038668
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AMCL(PRAN)",
+        "StockPE": 36.4836140985375
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "APEXFOODS",
+        "StockPE": 48.6947706344513
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BANGAS",
+        "StockPE": 677.19298245614
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BATBC",
+        "StockPE": 15.8823529411765
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BDTHAIFOOD",
+        "StockPE": -24.749373433584
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BEACHHATCH",
+        "StockPE": 5.05630889450701
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EMERALDOIL",
+        "StockPE": 8.53293413173653
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FINEFOODS",
+        "StockPE": 41.5563329918627
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FUWANGFOOD",
+        "StockPE": -26.429710640237
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GEMINISEA",
+        "StockPE": -16.6617661472116
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GHAIL",
+        "StockPE": -38.1125226860254
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "LOVELLO",
+        "StockPE": 16.0046418296545
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MEGCONMILK",
+        "StockPE": -5.31032608525885
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MEGHNAPET",
+        "StockPE": -99.8891459417775
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NTC",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "OLYMPIC",
+        "StockPE": 15.118878276773
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RAHIMAFOOD",
+        "StockPE": -356.307435254804
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RDFOOD",
+        "StockPE": 37.593984962406
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SHYAMPSUG",
+        "StockPE": -5.76381000462788
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UNILEVERCL",
+        "StockPE": 98.296224588577
+      },
+      {
+        "SectorPE": 18.78,
+        "SectorName": "Food and Allied",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ZEALBANGLA",
+        "StockPE": -2.72317670941229
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AOL",
+        "StockPE": 11.2781954887218
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BARKAPOWER",
+        "StockPE": 9.59294788695878
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BDWELDING",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BPPL",
+        "StockPE": 5.46821599453178
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CVOPRL",
+        "StockPE": 25.2591325349703
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DESCO",
+        "StockPE": 12.8382179939645
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DOREENPWR",
+        "StockPE": 6.14517061885483
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EASTRNLUB",
+        "StockPE": 43.5037508398201
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EPGL",
+        "StockPE": -1.90686967089208
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GBBPOWER",
+        "StockPE": 137.009189640769
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "INTRACO",
+        "StockPE": 110.77694235589
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "JAMUNAOIL",
+        "StockPE": 5.09648226701492
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "KPCL",
+        "StockPE": 12.1926437715911
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "LINDEBD",
+        "StockPE": 27.9420970266041
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "LRBDL",
+        "StockPE": -5.341407818188
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MJLBD",
+        "StockPE": 11.8188873198224
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MPETROLEUM",
+        "StockPE": 3.83456835294693
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PADMAOIL",
+        "StockPE": 3.38687628161312
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "POWERGRID",
+        "StockPE": 4.69172932330827
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SPCL",
+        "StockPE": 9.45023108229289
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SUMITPOWER",
+        "StockPE": 8.64405912741036
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "TITASGAS",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 6.36,
+        "SectorName": "Fuel and Power",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UPGDCL",
+        "StockPE": 6.33646744499097
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AGRANINS",
+        "StockPE": 30.6862745098039
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ASIAINS",
+        "StockPE": 27.0833333333333
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ASIAPACINS",
+        "StockPE": 12.1689497716895
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BGIC",
+        "StockPE": 17.7822580645161
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BNICL",
+        "StockPE": 19.4166666666667
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CENTRALINS",
+        "StockPE": 23.0582524271845
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CITYGENINS",
+        "StockPE": 23.1481481481481
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CONTININS",
+        "StockPE": 20.0537634408602
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CRYSTALINS",
+        "StockPE": 18.0927835051546
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DGIC",
+        "StockPE": 75.6818181818182
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DHAKAINS",
+        "StockPE": 20.2916666666667
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EASTERNINS",
+        "StockPE": 17.6041666666667
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EASTLAND",
+        "StockPE": 21.5714285714286
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EIL",
+        "StockPE": 19.5977011494253
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FEDERALINS",
+        "StockPE": 15.3465346534653
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GLOBALINS",
+        "StockPE": 16.25
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GREENDELT",
+        "StockPE": 13.9189189189189
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ICICL",
+        "StockPE": 20.2127659574468
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ISLAMIINS",
+        "StockPE": 15.7281553398058
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "JANATAINS",
+        "StockPE": 22.5949367088608
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "KARNAPHULI",
+        "StockPE": 19.9305555555556
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MEGHNAINS",
+        "StockPE": 22.8409090909091
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MERCINS",
+        "StockPE": 50
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NITOLINS",
+        "StockPE": 30.506329113924
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NORTHRNINS",
+        "StockPE": 23.3707865168539
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PARAMOUNT",
+        "StockPE": 15.2283105022831
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PEOPLESINS",
+        "StockPE": 11.296928327645
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PHENIXINS",
+        "StockPE": 18.3793103448276
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PIONEERINS",
+        "StockPE": 11.7637540453074
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PRAGATIINS",
+        "StockPE": 12.952380952381
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PRIMEINSUR",
+        "StockPE": 22.8846153846154
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PROVATIINS",
+        "StockPE": 26.7410714285714
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PURABIGEN",
+        "StockPE": 19.2261904761905
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RELIANCINS",
+        "StockPE": 8.91871165644172
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "REPUBLIC",
+        "StockPE": 19.1284403669725
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RUPALIINS",
+        "StockPE": 22.112676056338
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SICL",
+        "StockPE": 18.047619047619
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SIPLC",
+        "StockPE": 22.7286135693215
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SONARBAINS",
+        "StockPE": 38.9423076923077
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "STANDARINS",
+        "StockPE": 18.1818181818182
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "TAKAFULINS",
+        "StockPE": 19.9275362318841
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UNIONINS",
+        "StockPE": 21.1382113821138
+      },
+      {
+        "SectorPE": 16.6,
+        "SectorName": "Insurance",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UNITEDINS",
+        "StockPE": 16.7336683417085
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AAMRANET",
+        "StockPE": 20.21286983693
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AAMRATECH",
+        "StockPE": -16.9754282613751
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ADNTEL",
+        "StockPE": 25.5002585829653
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AGNISYSL",
+        "StockPE": 28.791490922428
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BDCOM",
+        "StockPE": 49.3421052631579
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DAFODILCOM",
+        "StockPE": 497.142857142857
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EGEN",
+        "StockPE": 35.0877192982456
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GENEXIL",
+        "StockPE": 13.2373186487345
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "INTECH",
+        "StockPE": -68.4469795177599
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ISNLTD",
+        "StockPE": -158.413274565725
+      },
+      {
+        "SectorPE": 24.79,
+        "SectorName": "IT Sector",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ITC",
+        "StockPE": 12.9490392648287
+      },
+      {
+        "SectorPE": 29.37,
+        "SectorName": "Jute",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "JUTESPINN",
+        "StockPE": -5.91008716716006
+      },
+      {
+        "SectorPE": 29.37,
+        "SectorName": "Jute",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NORTHERN",
+        "StockPE": -4.56730769230769
+      },
+      {
+        "SectorPE": 29.37,
+        "SectorName": "Jute",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SONALIANSH",
+        "StockPE": 29.3661199261499
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AMANFEED",
+        "StockPE": 51.1805830365387
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ARAMIT",
+        "StockPE": -45.1260504201681
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BERGERPBL",
+        "StockPE": 10.1412659603369
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BEXIMCO",
+        "StockPE": -3.30729166666667
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BSC",
+        "StockPE": 6.68146338386011
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GQBALLPEN",
+        "StockPE": -293.73807653462
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "HAMI",
+        "StockPE": 499.485227591801
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "INDEXAGRO",
+        "StockPE": 19.337818229785
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "KBPPWBIL",
+        "StockPE": 51.0486743173724
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MIRACLEIND",
+        "StockPE": -9.30451127819549
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NFML",
+        "StockPE": -85.9090909090909
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SAVAREFR",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SINOBANGLA",
+        "StockPE": 37.9453306162603
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SKTRIMS",
+        "StockPE": -10.6060606060606
+      },
+      {
+        "SectorPE": 10.34,
+        "SectorName": "Miscellaneous",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "USMANIAGL",
+        "StockPE": -12.9355647182472
+      },
+      {
+        "SectorPE": 30.12,
+        "SectorName": "Paper and Printing",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BPML",
+        "StockPE": -0.945239145503812
+      },
+      {
+        "SectorPE": 30.12,
+        "SectorName": "Paper and Printing",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "HAKKANIPUL",
+        "StockPE": 193.548387096774
+      },
+      {
+        "SectorPE": 30.12,
+        "SectorName": "Paper and Printing",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "KPPL",
+        "StockPE": -61.6666666666667
+      },
+      {
+        "SectorPE": 30.12,
+        "SectorName": "Paper and Printing",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MAGURAPLEX",
+        "StockPE": 33.687159074156
+      },
+      {
+        "SectorPE": 30.12,
+        "SectorName": "Paper and Printing",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MONOSPOOL",
+        "StockPE": 25.5053802170096
+      },
+      {
+        "SectorPE": 30.12,
+        "SectorName": "Paper and Printing",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SONALIPAPR",
+        "StockPE": 27.4659250866893
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ACI",
+        "StockPE": -35.2556031226391
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ACIFORMULA",
+        "StockPE": 15.520619731146
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ACMELAB",
+        "StockPE": 6.55997059599051
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ACMEPL",
+        "StockPE": -24.2606516290727
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ACTIVEFINE",
+        "StockPE": 39.3290919606709
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ADVENT",
+        "StockPE": 35.3155616313511
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AFCAGRO",
+        "StockPE": 30.0751879699248
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AMBEEPHA",
+        "StockPE": 259.498303280325
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ASIATICLAB",
+        "StockPE": 22.6889642241624
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BEACONPHAR",
+        "StockPE": 13.3821949832565
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BXPHARMA",
+        "StockPE": 7.05008021338694
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BXSYNTH",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CENTRALPHL",
+        "StockPE": -35.8851674641148
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FARCHEM",
+        "StockPE": -4.52050371327091
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GHCL",
+        "StockPE": -6.11418656531439
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "IBNSINA",
+        "StockPE": 11.999924623589
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "IBP",
+        "StockPE": 451.127819548872
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "JHRML",
+        "StockPE": 56.390977443609
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "JMISMDL",
+        "StockPE": -37.4384236453202
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "KEYACOSMET",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "KOHINOOR",
+        "StockPE": 32.8184527512635
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "LIBRAINFU",
+        "StockPE": 114.68045112782
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MARICO",
+        "StockPE": 12.5813008130081
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NAVANAPHAR",
+        "StockPE": 11.1297981796597
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ORIONINFU",
+        "StockPE": 128.984432913269
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ORIONPHARM",
+        "StockPE": -13.9421401185082
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PHARMAID",
+        "StockPE": 22.6643341025832
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RECKITTBEN",
+        "StockPE": 25.7259443494482
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RENATA",
+        "StockPE": 17.2685268836633
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SALVO",
+        "StockPE": 59.4668489405332
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SILCOPHL",
+        "StockPE": 44.8778195488722
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SILVAPHL",
+        "StockPE": -15.9774436090226
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SQURPHARMA",
+        "StockPE": 7.06663566131824
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "TECHNODRUG",
+        "StockPE": 27.7813177010322
+      },
+      {
+        "SectorPE": 9.93,
+        "SectorName": "Pharmaceuticals and Chemicals",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "WATACHEM",
+        "StockPE": 124.016938898972
+      },
+      {
+        "SectorPE": 18.61,
+        "SectorName": "Services and Real Estate",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "EHL",
+        "StockPE": 10.3454124031884
+      },
+      {
+        "SectorPE": 18.61,
+        "SectorName": "Services and Real Estate",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SAIFPOWER",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 18.61,
+        "SectorName": "Services and Real Estate",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SAMORITA",
+        "StockPE": 100.673762327898
+      },
+      {
+        "SectorPE": 18.61,
+        "SectorName": "Services and Real Estate",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SAPORTL",
+        "StockPE": 28.4406668846028
+      },
+      {
+        "SectorPE": 17.31,
+        "SectorName": "Tannery Industries",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "APEXFOOT",
+        "StockPE": 33.222230834819
+      },
+      {
+        "SectorPE": 17.31,
+        "SectorName": "Tannery Industries",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "APEXTANRY",
+        "StockPE": -5.11239538434776
+      },
+      {
+        "SectorPE": 17.31,
+        "SectorName": "Tannery Industries",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BATASHOE",
+        "StockPE": 12.2742066720911
+      },
+      {
+        "SectorPE": 17.31,
+        "SectorName": "Tannery Industries",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FORTUNE",
+        "StockPE": -15.3832858007087
+      },
+      {
+        "SectorPE": 17.31,
+        "SectorName": "Tannery Industries",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "LEGACYFOOT",
+        "StockPE": 1355.26315789474
+      },
+      {
+        "SectorPE": 17.31,
+        "SectorName": "Tannery Industries",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SAMATALETH",
+        "StockPE": -1096.67024704619
+      },
+      {
+        "SectorPE": 12.95,
+        "SectorName": "Telecommunication",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BSCPLC",
+        "StockPE": 9.96513486962496
+      },
+      {
+        "SectorPE": 12.95,
+        "SectorName": "Telecommunication",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GP",
+        "StockPE": 11.9486692015209
+      },
+      {
+        "SectorPE": 12.95,
+        "SectorName": "Telecommunication",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ROBI",
+        "StockPE": 16.7021276595745
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ACFL",
+        "StockPE": 244.897959183673
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AIL",
+        "StockPE": 11.907451031011
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "AL-HAJTEX",
+        "StockPE": -31.9379529905846
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ALIF",
+        "StockPE": 27.7255639097744
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ALLTEX",
+        "StockPE": 614.035087719298
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ANLIMAYARN",
+        "StockPE": -9.18367346938776
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "APEXSPINN",
+        "StockPE": 102.443609022556
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ARGONDENIM",
+        "StockPE": 19.1771563740813
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "CNATEX",
+        "StockPE": 11.1147433801896
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DACCADYE",
+        "StockPE": -0.280564893462325
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DELTASPINN",
+        "StockPE": 190.47619047619
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DSHGARME",
+        "StockPE": 471.679197994988
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DSSL",
+        "StockPE": -54.84298982751
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "DULAMIACOT",
+        "StockPE": 729.323308270677
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ENVOYTEX",
+        "StockPE": 7.41667411312662
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ESQUIRENIT",
+        "StockPE": -20.0237435694499
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ETL",
+        "StockPE": 44.4589735207584
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FAMILYTEX",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "FEKDIL",
+        "StockPE": -17.8619136674173
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "GENNEXT",
+        "StockPE": -62.0300751879699
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "HFL",
+        "StockPE": -2.77972027972028
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "HRTEX",
+        "StockPE": -0.827271430609043
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "HWAWELLTEX",
+        "StockPE": 13.0618517095659
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "KTL",
+        "StockPE": 68.2475419317524
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MAKSONSPIN",
+        "StockPE": -1.07878391631252
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MALEKSPIN",
+        "StockPE": 9.26822005508822
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MATINSPINN",
+        "StockPE": 14.3418247110313
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "METROSPIN",
+        "StockPE": -5.26827272262288
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MHSML",
+        "StockPE": 19.957300659055
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MITHUNKNIT",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MLDYEING",
+        "StockPE": -12.1397243107769
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "MONNOFABR",
+        "StockPE": 845.864661654135
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NEWLINE",
+        "StockPE": 2.96052631578947
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "NURANI",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PDL",
+        "StockPE": 451.127819548872
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PRIMETEX",
+        "StockPE": -2.18705110452551
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PTL",
+        "StockPE": 9.7319321696053
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "QUEENSOUTH",
+        "StockPE": 55.2468126838836
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RAHIMTEXT",
+        "StockPE": 76.4229414114998
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "REGENTTEX",
+        "StockPE": -5.17422588729889
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RINGSHINE",
+        "StockPE": -1.46026222581246
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "RNSPIN",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SAFKOSPINN",
+        "StockPE": -4.67887986219419
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SAIHAMCOT",
+        "StockPE": 21.4142952317503
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SAIHAMTEX",
+        "StockPE": 45.2631578947368
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SHARPIND",
+        "StockPE": -13.088276246171
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SHASHADNIM",
+        "StockPE": 54.3666859456333
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SHEPHERD",
+        "StockPE": -10.0456058178232
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SIMTEX",
+        "StockPE": 20.9899749373434
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SONARGAON",
+        "StockPE": -457.297088876036
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SQUARETEXT",
+        "StockPE": 24.7046186895811
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "STYLECRAFT",
+        "StockPE": -725.995316159251
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "TALLUSPIN",
+        "StockPE": -3.22234156820623
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "TAMIJTEX",
+        "StockPE": 22.8855549010776
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "TOSRIFA",
+        "StockPE": 65.5639097744361
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "TUNGHAI",
+        "StockPE": 0
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "VFSTDL",
+        "StockPE": 393.483709273183
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ZAHEENSPIN",
+        "StockPE": -22.1983530254207
+      },
+      {
+        "SectorPE": 16.67,
+        "SectorName": "Textile",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "ZAHINTEX",
+        "StockPE": -1.64874551971326
+      },
+      {
+        "SectorPE": 18.73,
+        "SectorName": "Travel and Leisure",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "BESTHLDNG",
+        "StockPE": 45.1127819548872
+      },
+      {
+        "SectorPE": 18.73,
+        "SectorName": "Travel and Leisure",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "PENINSULA",
+        "StockPE": -190.47619047619
+      },
+      {
+        "SectorPE": 18.73,
+        "SectorName": "Travel and Leisure",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "SEAPEARL",
+        "StockPE": -17.7759212846932
+      },
+      {
+        "SectorPE": 18.73,
+        "SectorName": "Travel and Leisure",
+        "MarketPE": 9.11,
+        "MarketName": "Market PE",
+        "StockName": "UNIQUEHRL",
+        "StockPE": 10.7878391631252
+      }
+    ]
+  ]
+}

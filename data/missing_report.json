@@ -1,0 +1,2561 @@
+{
+  "fetchedAt": "2026-08-18T02:14:11.478Z",
+  "missingReport": [
+    {
+      "symbol": "1JANATAMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "1STPRIMFMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AAMRANET",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AAMRATECH",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ABB1STMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ABBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ABBLPBOND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ACFL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ACHIASF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ACI",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ACIFORMULA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ACMELAB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ACMEPL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ACTIVEFINE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ADNTEL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ADVENT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AFCAGRO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AFTABAUTO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AGNISYSL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AGRANINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AIBL1STIMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AL-HAJTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ALARABANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ALIF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ALLTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AMANFEED",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AMBEEPHA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AMCL(PRAN)",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AMPL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ANLIMAYARN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ANWARGALV",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AOL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AOPLC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "APEXFOODS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "APEXFOOT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "APEXSPINN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "APEXTANRY",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "APEXWEAV",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "APOLOISPAT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "APSCLBOND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ARAMIT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ARAMITCEM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ARGONDENIM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ASIAINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ASIAPACINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ASIATICLAB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ATCSLGF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ATLASBANG",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "AZIZPIPES",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BANGAS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BANKASIA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BARKAPOWER",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BATASHOE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BATBC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BAYLEASING",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BBS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BBSCABLES",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BDAUTOCA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BDCOM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BDFINANCE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BDLAMPS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BDPAINTS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BDTHAI",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BDTHAIFOOD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BDWELDING",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BEACHHATCH",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BEACONPHAR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BENGALBISC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BENGALWTL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BERGERPBL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BESTHLDNG",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BEXGSUKUK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BEXIMCO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BGIC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BIFC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BNICL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BPML",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BPPL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BRACBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BSC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BSCPLC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BSRMLTD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BSRMSTEEL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BXPHARMA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "BXSYNTH",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CAPITECGBF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CAPMBDBLMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CAPMIBBLMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CBLPBOND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CENTRALINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CENTRALPHL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CITYBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CITYGENINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CLICL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CNATEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CONFIDCEM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CONTININS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "COPPERTECH",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CRAFTSMAN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CROWNCEMNT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CRYSTALINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "CVOPRL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DACCADYE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DAFODILCOM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DBH",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DBH1STMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DBLPBOND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DELTALIFE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DELTASPINN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DESCO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DESHBANDHU",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DGIC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DHAKABANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DHAKAINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DOMINAGE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DOREENPWR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DSHGARME",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DSSL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DULAMIACOT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "DUTCHBANGL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EASTERNINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EASTLAND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EASTRNLUB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EBL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EBL1STMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EBLNRBMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ECABLES",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EGEN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EHL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EMERALDOIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ENVOYTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EPGL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ESQUIRENIT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ETL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EXIM1STMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "EXIMBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FAMILYTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FARCHEM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FAREASTFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FAREASTLIF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FASFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FBFIF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FEDERALINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FEKDIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FINEFOODS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FIRSTFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FIRSTSBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FORTUNE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FUWANGCER",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "FUWANGFOOD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GBBPOWER",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GEMINISEA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GENEXIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GENNEXT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GHAIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GHCL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GIB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GLDNJMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GLOBALINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GOLDENSON",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GP",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GPHISPAT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GQBALLPEN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GRAMEENS2",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GREENDELMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GREENDELT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "GSPFINANCE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "HAKKANIPUL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "HAMI",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "HEIDELBCEM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "HFL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "HIMADRI",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "HRTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "HWAWELLTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "IBNSINA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "IBP",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ICB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ICB3RDNRB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ICBAGRANI1",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ICBAMCL2ND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ICBEPMF1S1",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ICBIBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ICBSONALI1",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ICICL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "IDLC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "IFADAUTOS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "IFIC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "IFIC1STMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "IFILISLMF1",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ILFSL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "INDEXAGRO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "INTECH",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "INTRACO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "IPDC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ISLAMIBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ISLAMICFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ISLAMIINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ISNLTD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ITC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "JAMUNABANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "JAMUNAOIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "JANATAINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "JHRML",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "JMISMDL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "JUTESPINN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KARNAPHULI",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KAY&QUE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KBPPWBIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KBSEED",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KDSALTD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KEYACOSMET",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KFL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KOHINOOR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KPCL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KPPL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "KTL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "LANKABAFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "LEGACYFOOT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "LHB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "LIBRAINFU",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "LINDEBD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "LOVELLO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "LRBDL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "LRGLOBMF1",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MAGURAPLEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MAKSONSPIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MALEKSPIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MAMUNAGRO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MARICO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MASTERAGRO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MATINSPINN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MBL1STMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MBPLCPBOND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MEGCONMILK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MEGHNACEM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MEGHNAINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MEGHNALIFE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MEGHNAPET",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MERCANBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MERCINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "METROSPIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MHSML",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MIDASFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MIDLANDBNK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MIRACLEIND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MIRAKHTER",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MITHUNKNIT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MJLBD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MKFOOTWEAR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MLDYEING",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MONNOAGML",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MONNOCERA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MONNOFABR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MONOSPOOL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MOSTFAMETL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MPETROLEUM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "MTB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NAHEEACP",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NATLIFEINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NAVANACNG",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NAVANAPHAR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NBL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NCCBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NCCBLMF1",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NEWLINE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NFML",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NHFIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NIALCO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NITOLINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NORTHERN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NORTHRNINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NPOLYMER",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NRBBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NRBCBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NTC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NTLTUBES",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "NURANI",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "OAL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "OIMEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "OLYMPIC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ONEBANKPLC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ORIONINFU",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ORIONPHARM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ORYZAAGRO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PADMALIFE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PADMAOIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PARAMOUNT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PDL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PENINSULA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PEOPLESINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PF1STMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PHARMAID",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PHENIXINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PHOENIXFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PHPMF1",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PIONEERINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PLFSL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "POPULAR1MF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "POPULARLIF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "POWERGRID",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PRAGATIINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PRAGATILIF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PREMIERBAN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PREMIERCEM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PREMIERLEA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PRIME1ICBA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PRIMEBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PRIMEFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PRIMEINSUR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PRIMELIFE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PRIMETEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PROGRESLIF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PROVATIINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PTL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PUBALIBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "PURABIGEN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "QUASEMIND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "QUEENSOUTH",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RAHIMAFOOD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RAHIMTEXT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RAKCERAMIC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RANFOUNDRY",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RDFOOD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RECKITTBEN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "REGENTTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RELIANCE1",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RELIANCINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RENATA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RENWICKJA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "REPUBLIC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RINGSHINE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RNSPIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ROBI",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RSRMSTEEL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RUNNERAUTO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RUPALIBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RUPALIINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "RUPALILIFE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SADHESIVE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SAFKOSPINN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SAIFPOWER",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SAIHAMCOT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SAIHAMTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SALAMCRST",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SALVO",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SAMATALETH",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SAMORITA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SANDHANINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SAPORTL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SAVAREFR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SBACBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SEAPEARL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SEB1PBOND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SEMLFBSLGF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SEMLIBBLSF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SEMLLECMF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SHAHJABANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SHARPIND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SHASHADNIM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SHEPHERD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SHURWID",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SHYAMPSUG",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SIBL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SICL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SILCOPHL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SILVAPHL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SIMTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SINGERBD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SINOBANGLA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SIPLC",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SKTRIMS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SONALIANSH",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SONALILIFE",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SONALIPAPR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SONARBAINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SONARGAON",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SOUTHEASTB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SPCERAMICS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SPCL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SQUARETEXT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SQURPHARMA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SSSTEEL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "STANCERAM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "STANDARINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "STANDBANKL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "STYLECRAFT",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SUMITPOWER",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "SUNLIFEINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TAKAFULINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TALLUSPIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TAMIJTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TECHNODRUG",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TILIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TITASGAS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TOSRIFA",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TRUSTB1MF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TRUSTBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "TUNGHAI",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UCB",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UCB2PBOND",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UNILEVERCL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UNIONBANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UNIONCAP",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UNIONINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UNIQUEHRL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UNITEDFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UNITEDINS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UPGDCL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "USMANIAGL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UTTARABANK",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "UTTARAFIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "VAMLBDMF1",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "VAMLRBBF",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "VFSTDL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "WALTONHIL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "WATACHEM",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "WEBCOATS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "WMSHIPYARD",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "WONDERTOYS",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "YPL",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "YUSUFLOUR",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ZAHEENSPIN",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ZAHINTEX",
+      "missing": [
+        "eps"
+      ]
+    },
+    {
+      "symbol": "ZEALBANGLA",
+      "missing": [
+        "eps"
+      ]
+    }
+  ]
+}

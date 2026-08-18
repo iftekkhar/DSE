@@ -1,0 +1,300 @@
+{
+  "capturedAt": "2026-08-18T01:38:04.175Z",
+  "symbol": "1JANATAMF",
+  "captures": [
+    {
+      "url": "https://www.amarstock.com/latest-share-price",
+      "type": "document",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "timestamp": "2026-08-18T01-37-49-159Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-49-159Z_https___www.amarstock.com_latest-share-price.txt"
+    },
+    {
+      "url": "https://www.amarstock.com/Content/manifest.json",
+      "type": "manifest",
+      "status": 200,
+      "contentType": "application/json",
+      "timestamp": "2026-08-18T01-37-49-193Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-49-193Z_https___www.amarstock.com_Content_manifest.json.json"
+    },
+    {
+      "url": "https://www.amarstock.com/info/Stocks",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-49-745Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/market/status-ex",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-50-133Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/NoticeScroll",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-50-133Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Info/DSE",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-50-133Z"
+    },
+    {
+      "url": "https://www.amarstock.com/data/lastIndexEx",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-50-133Z"
+    },
+    {
+      "url": "https://www.amarstock.com/823af3f1ebdd",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "timestamp": "2026-08-18T01-37-50-176Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-50-176Z_https___www.amarstock.com_823af3f1ebdd.json"
+    },
+    {
+      "url": "https://www.amarstock.com/Account/Me",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "timestamp": "2026-08-18T01-37-50-199Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-50-199Z_https___www.amarstock.com_Account_Me.json"
+    },
+    {
+      "url": "https://www.amarstock.com/UserSetting/GetWatchlist",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "timestamp": "2026-08-18T01-37-50-199Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-50-199Z_https___www.amarstock.com_UserSetting_GetWatchlist.json"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-1HY8WKE7V3&gtm=45je68e1v885122846za200zd885122846&_p=1787017069137&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAGAC&cid=1013594382.1787017070&frm=0&pscdl=noapi&rcb=19&sr=800x600&uaa=arm&uab=64&uafvl=Not%253FA_Brand%3B24.0.0.0%7CChromium%3B152.0.7977.42&uam=&uamb=0&uap=macOS&uapv=26.3.1&uaw=0&ul=en-gb&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~119367802~119367810~119381664~120315470~120385422&sid=1787017070&sct=1&seg=0&dl=https%3A%2F%2Fwww.amarstock.com%2Flatest-share-price&dt=Latest%20Share%20Price%20%7C%20Dhaka%20Stock%20Exchange&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=1283",
+      "type": "fetch",
+      "status": 204,
+      "contentType": "text/plain",
+      "timestamp": "2026-08-18T01-37-50-493Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Content/manifest.json",
+      "type": "manifest",
+      "status": 200,
+      "contentType": "application/json",
+      "timestamp": "2026-08-18T01-37-54-756Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-54-756Z_https___www.amarstock.com_Content_manifest.json.json"
+    },
+    {
+      "url": "https://staticv2.amarstock.com/bundles/js/latestprice-onRealTime?v=ABt_tFLLmHyyTKd0gg5SCUXTpkHazwuUr390VsyuZ-k1",
+      "type": "script",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "timestamp": "2026-08-18T01-37-54-979Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-54-979Z_https___staticv2.amarstock.com_bundles_js_latestprice-onRealTime_v_ABt_tFLLmHyyTKd0gg5SCUXTpkHazwuUr390VsyuZ-k1.txt"
+    },
+    {
+      "url": "https://www.amarstock.com/info/NoticeScroll",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-569Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/market/status-ex",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-569Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Info/DSE",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-575Z"
+    },
+    {
+      "url": "https://www.amarstock.com/data/lastIndexEx",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-575Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Home/GetSortedBetaValus",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-577Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Home/GetFearGreedOnly",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-577Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Home/GetIndexProjectedVol",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-578Z"
+    },
+    {
+      "url": "https://www.amarstock.com/data/index/summery",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-578Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Account/Me",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "timestamp": "2026-08-18T01-37-55-576Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-55-576Z_https___www.amarstock.com_Account_Me.json"
+    },
+    {
+      "url": "https://www.amarstock.com/Home/GetIndexMovement",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-657Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/sector/composition/map",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-681Z"
+    },
+    {
+      "url": "https://www.amarstock.com/pe-data-chart",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "timestamp": "2026-08-18T01-37-55-654Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-55-654Z_https___www.amarstock.com_pe-data-chart.json"
+    },
+    {
+      "url": "https://www.amarstock.com/info/sector/composition",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-683Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Home/ScanHome",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "timestamp": "2026-08-18T01-37-55-659Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-55-659Z_https___www.amarstock.com_Home_ScanHome.json"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-1HY8WKE7V3&gtm=45je68e1v885122846za200zd885122846&_p=1787017074730&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AEAEAGQC&ae=a&cid=1013594382.1787017070&frm=0&pscdl=noapi&rcb=15&sr=800x600&uaa=arm&uab=64&uafvl=Not%253FA_Brand%3B24.0.0.0%7CChromium%3B152.0.7977.42&uam=&uamb=0&uap=macOS&uapv=26.3.1&uaw=0&ul=en-gb&gaf=2&_s=1&tag_exp=115938465~115938469~118897920~118897930~119367802~119367810~120385422&sid=1787017070&sct=1&seg=0&dl=https%3A%2F%2Fwww.amarstock.com%2F%3Fs%3D1JANATAMF&dt=Share%20Market%20Tools%20For%20Dhaka%20Stock%20Exchange%20(DSE)%20Bangladesh&en=view_search_results&ep.search_term=1JANATAMF&tfd=1181",
+      "type": "fetch",
+      "status": 204,
+      "contentType": "text/plain",
+      "timestamp": "2026-08-18T01-37-55-913Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/getYesterdayBlockQuotes",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-971Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/getBBankInflation",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-971Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/getExchangeRate",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-55-972Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/getSpotbuysell",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-56-135Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/getHaltedBuySell",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-56-135Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/getCallMoney",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-56-136Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Home/GetCircuitBreaker",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-56-514Z"
+    },
+    {
+      "url": "https://www.amarstock.com/info/News",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/x-msgpack",
+      "timestamp": "2026-08-18T01-37-56-515Z"
+    },
+    {
+      "url": "https://www.amarstock.com/Home/MostActiveBlockEx",
+      "type": "xhr",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "timestamp": "2026-08-18T01-37-56-516Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-37-56-516Z_https___www.amarstock.com_Home_MostActiveBlockEx.json"
+    },
+    {
+      "url": "https://www.amarstock.com/Share/Details/1JANATAMF",
+      "type": "document",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "timestamp": "2026-08-18T01-38-00-244Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-38-00-244Z_https___www.amarstock.com_Share_Details_1JANATAMF.txt"
+    },
+    {
+      "url": "https://www.amarstock.com/Share/1JANATAMF",
+      "type": "document",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "timestamp": "2026-08-18T01-38-01-250Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-38-01-250Z_https___www.amarstock.com_Share_1JANATAMF.txt"
+    },
+    {
+      "url": "https://www.amarstock.com/Quote/1JANATAMF",
+      "type": "document",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "timestamp": "2026-08-18T01-38-02-274Z",
+      "saved": "/Users/iftekhar/My Codes/dse-dashboard/data/debug/2026-08-18T01-38-02-274Z_https___www.amarstock.com_Quote_1JANATAMF.txt"
+    }
+  ]
+}
