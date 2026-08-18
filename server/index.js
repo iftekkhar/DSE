@@ -1,4 +1,3 @@
-/* eslint-env node */
 /* eslint-disable no-unused-vars, no-empty, no-undef */
 import express from 'express';
 import axios from 'axios';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Search, Bell, User } from 'lucide-react';
+import { Search, Bell, User, AlertCircle, ChevronUp, ChevronDown } from 'lucide-react';
 import heroImage from './assets/hero.png';
 import { fetchDSEData } from './services/api';
 import { defaultCriteria } from './config/criteria';
@@ -58,7 +58,7 @@ export default function App() {
     const pct = totalKPIs > 0 ? (score / totalKPIs) : 0;
 
     // Map score percentage into discrete levels
-    let level = 1;
+    let level;
     if (pct >= 0.75) level = 4; // BUY
     else if (pct >= 0.5) level = 3; // HOLD
     else if (pct >= 0.25) level = 2; // RISK
