@@ -136,9 +136,33 @@ export default function App() {
     <div className="flex min-h-screen bg-[#f4f7fe] font-sans text-slate-800 relative">
 
       {/* Main Content */}
-      <div className="flex-1 p-4 md:p-8 w-full transition-all duration-300">
+      {/* Sidebar */}
+      <aside className="w-72 hidden md:flex flex-col bg-gradient-to-b from-[#3b56ff] to-[#6b4bff] text-white min-h-screen p-6 gap-6">
+        <div className="flex items-center gap-3">
+          <img src={heroImage} alt="Logo" className="w-12 h-12 rounded-lg object-cover ring-2 ring-white/20" />
+          <div>
+            <div className="text-sm font-semibold tracking-widest">SHREVOU</div>
+            <div className="text-xs opacity-80">Dashboard</div>
+          </div>
+        </div>
+
+        <nav className="flex-1">
+          <ul className="space-y-2 mt-6">
+            <li className="px-3 py-2 rounded-lg bg-white/6">Dashboard</li>
+            <li className="px-3 py-2 rounded-lg hover:bg-white/4">Site Details</li>
+            <li className="px-3 py-2 rounded-lg hover:bg-white/4">Migrations</li>
+            <li className="px-3 py-2 rounded-lg hover:bg-white/4">Backups</li>
+            <li className="px-3 py-2 rounded-lg hover:bg-white/4">Collaborators</li>
+          </ul>
+        </nav>
+
+        <div className="text-xs opacity-80">v0.1.0</div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 p-4 md:p-8 w-full transition-all duration-300">
         {/* Top Header */}
-        <div className="w-full -mx-4 md:-mx-8 bg-gradient-to-br from-[#3b56ff] to-[#6b4bff] py-2 px-4 md:px-8 mb-4 shadow-sm">
+        <div className="w-full bg-gradient-to-br from-[#3b56ff] to-[#6b4bff] py-3 px-4 md:px-6 mb-6 rounded-xl shadow-sm">
           <div className="flex items-center gap-4 w-full">
             <div className="flex items-center gap-3">
               <img src={heroImage} alt="Site logo" className="w-10 h-10 rounded-md object-cover" />
@@ -297,7 +321,7 @@ export default function App() {
 
         {/* Stock Table */}
         {!loading && (
-          <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+          <div className="card overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>

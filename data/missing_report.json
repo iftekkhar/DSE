@@ -1,2560 +1,5968 @@
 {
-  "fetchedAt": "2026-08-18T02:14:11.478Z",
+  "fetchedAt": "2026-08-18T02:17:56.034Z",
   "missingReport": [
     {
       "symbol": "1JANATAMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "1STPRIMFMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AAMRANET",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AAMRATECH",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ABB1STMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ABBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ABBLPBOND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ACFL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ACHIASF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ACI",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ACIFORMULA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ACMELAB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ACMEPL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ACTIVEFINE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ADNTEL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ADVENT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AFCAGRO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AFTABAUTO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AGNISYSL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AGRANINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AIBL1STIMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AL-HAJTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ALARABANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ALIF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ALLTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AMANFEED",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AMBEEPHA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AMCL(PRAN)",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AMPL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ANLIMAYARN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ANWARGALV",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AOL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AOPLC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "APEXFOODS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "APEXFOOT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "APEXSPINN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "APEXTANRY",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "APEXWEAV",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "APOLOISPAT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "APSCLBOND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ARAMIT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ARAMITCEM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ARGONDENIM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ASIAINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ASIAPACINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ASIATICLAB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ATCSLGF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ATLASBANG",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "AZIZPIPES",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BANGAS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BANKASIA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BARKAPOWER",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BATASHOE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BATBC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BAYLEASING",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BBS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BBSCABLES",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BDAUTOCA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BDCOM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BDFINANCE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BDLAMPS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BDPAINTS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BDTHAI",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BDTHAIFOOD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BDWELDING",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BEACHHATCH",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BEACONPHAR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BENGALBISC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BENGALWTL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BERGERPBL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BESTHLDNG",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BEXGSUKUK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BEXIMCO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BGIC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BIFC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BNICL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BPML",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BPPL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BRACBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BSC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BSCPLC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BSRMLTD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BSRMSTEEL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BXPHARMA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "BXSYNTH",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CAPITECGBF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CAPMBDBLMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CAPMIBBLMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CBLPBOND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CENTRALINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CENTRALPHL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CITYBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CITYGENINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CLICL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CNATEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CONFIDCEM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CONTININS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "COPPERTECH",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CRAFTSMAN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CROWNCEMNT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CRYSTALINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "CVOPRL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DACCADYE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DAFODILCOM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DBH",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DBH1STMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DBLPBOND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DELTALIFE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DELTASPINN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DESCO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DESHBANDHU",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DGIC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DHAKABANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DHAKAINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DOMINAGE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DOREENPWR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DSHGARME",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DSSL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DULAMIACOT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "DUTCHBANGL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EASTERNINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EASTLAND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EASTRNLUB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EBL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EBL1STMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EBLNRBMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ECABLES",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EGEN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EHL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EMERALDOIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ENVOYTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EPGL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ESQUIRENIT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ETL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EXIM1STMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "EXIMBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FAMILYTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FARCHEM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FAREASTFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FAREASTLIF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FASFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FBFIF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FEDERALINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FEKDIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FINEFOODS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FIRSTFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FIRSTSBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FORTUNE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FUWANGCER",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "FUWANGFOOD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GBBPOWER",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GEMINISEA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GENEXIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GENNEXT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GHAIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GHCL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GIB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GLDNJMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GLOBALINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GOLDENSON",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GP",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GPHISPAT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GQBALLPEN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GRAMEENS2",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GREENDELMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GREENDELT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "GSPFINANCE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "HAKKANIPUL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "HAMI",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "HEIDELBCEM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "HFL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "HIMADRI",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "HRTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "HWAWELLTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "IBNSINA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "IBP",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ICB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ICB3RDNRB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ICBAGRANI1",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ICBAMCL2ND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ICBEPMF1S1",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ICBIBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ICBSONALI1",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ICICL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "IDLC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "IFADAUTOS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "IFIC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "IFIC1STMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "IFILISLMF1",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ILFSL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "INDEXAGRO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "INTECH",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "INTRACO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "IPDC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ISLAMIBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ISLAMICFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ISLAMIINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ISNLTD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ITC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "JAMUNABANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "JAMUNAOIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "JANATAINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "JHRML",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "JMISMDL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "JUTESPINN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KARNAPHULI",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KAY&QUE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KBPPWBIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KBSEED",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KDSALTD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KEYACOSMET",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KFL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KOHINOOR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KPCL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KPPL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "KTL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "LANKABAFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "LEGACYFOOT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "LHB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "LIBRAINFU",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "LINDEBD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "LOVELLO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "LRBDL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "LRGLOBMF1",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MAGURAPLEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MAKSONSPIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MALEKSPIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MAMUNAGRO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MARICO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MASTERAGRO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MATINSPINN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MBL1STMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MBPLCPBOND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MEGCONMILK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MEGHNACEM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MEGHNAINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MEGHNALIFE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MEGHNAPET",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MERCANBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MERCINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "METROSPIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MHSML",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MIDASFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MIDLANDBNK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MIRACLEIND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MIRAKHTER",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MITHUNKNIT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MJLBD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MKFOOTWEAR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MLDYEING",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MONNOAGML",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MONNOCERA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MONNOFABR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MONOSPOOL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MOSTFAMETL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MPETROLEUM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "MTB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NAHEEACP",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NATLIFEINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NAVANACNG",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NAVANAPHAR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NBL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NCCBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NCCBLMF1",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NEWLINE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NFML",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NHFIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NIALCO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NITOLINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NORTHERN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NORTHRNINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NPOLYMER",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NRBBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NRBCBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NTC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NTLTUBES",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "NURANI",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "OAL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "OIMEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "OLYMPIC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ONEBANKPLC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ORIONINFU",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ORIONPHARM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ORYZAAGRO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PADMALIFE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PADMAOIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PARAMOUNT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PDL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PENINSULA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PEOPLESINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PF1STMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PHARMAID",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PHENIXINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PHOENIXFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PHPMF1",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PIONEERINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PLFSL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "POPULAR1MF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "POPULARLIF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "POWERGRID",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PRAGATIINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PRAGATILIF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PREMIERBAN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PREMIERCEM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PREMIERLEA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PRIME1ICBA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PRIMEBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PRIMEFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PRIMEINSUR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PRIMELIFE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PRIMETEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PROGRESLIF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PROVATIINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PTL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PUBALIBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "PURABIGEN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "QUASEMIND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "QUEENSOUTH",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RAHIMAFOOD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RAHIMTEXT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RAKCERAMIC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RANFOUNDRY",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RDFOOD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RECKITTBEN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "REGENTTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RELIANCE1",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RELIANCINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RENATA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RENWICKJA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "REPUBLIC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RINGSHINE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RNSPIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ROBI",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RSRMSTEEL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RUNNERAUTO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RUPALIBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RUPALIINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "RUPALILIFE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SADHESIVE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SAFKOSPINN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SAIFPOWER",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SAIHAMCOT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SAIHAMTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SALAMCRST",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SALVO",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SAMATALETH",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SAMORITA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SANDHANINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SAPORTL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SAVAREFR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SBACBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SEAPEARL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SEB1PBOND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SEMLFBSLGF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SEMLIBBLSF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SEMLLECMF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SHAHJABANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SHARPIND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SHASHADNIM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SHEPHERD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SHURWID",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SHYAMPSUG",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SIBL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SICL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SILCOPHL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SILVAPHL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SIMTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SINGERBD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SINOBANGLA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SIPLC",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SKTRIMS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SONALIANSH",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SONALILIFE",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SONALIPAPR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SONARBAINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SONARGAON",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SOUTHEASTB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SPCERAMICS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SPCL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SQUARETEXT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SQURPHARMA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SSSTEEL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "STANCERAM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "STANDARINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "STANDBANKL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "STYLECRAFT",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SUMITPOWER",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "SUNLIFEINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TAKAFULINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TALLUSPIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TAMIJTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TECHNODRUG",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TILIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TITASGAS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TOSRIFA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TRUSTB1MF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TRUSTBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "TUNGHAI",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UCB",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UCB2PBOND",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UNILEVERCL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UNIONBANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UNIONCAP",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UNIONINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UNIQUEHRL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UNITEDFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UNITEDINS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UPGDCL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "USMANIAGL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UTTARABANK",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "UTTARAFIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "VAMLBDMF1",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "VAMLRBBF",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "VFSTDL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "WALTONHIL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "WATACHEM",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "WEBCOATS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "WMSHIPYARD",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "WONDERTOYS",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "YPL",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "YUSUFLOUR",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ZAHEENSPIN",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ZAHINTEX",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     },
     {
       "symbol": "ZEALBANGLA",
       "missing": [
-        "eps"
+        "ltp",
+        "change",
+        "changePercent",
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume"
       ]
     }
   ]

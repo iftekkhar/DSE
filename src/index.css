@@ -1,8 +1,24 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root{
+  --bg: #f4f7fe;
+  --muted: #64748b;
+  --accent-500: #4318ff;
+  --accent-600: #3b56ff;
+}
 
 body {
   margin: 0;
-  background-color: #0b0f19;
-  color: #f8fafc;
-  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: #0f172a; /* slate-900 */
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
+
+/* Utility tweaks for a cleaner dashboard look */
+.container-pad { padding-left: 1rem; padding-right: 1rem; }
+.card { background: white; border-radius: 16px; box-shadow: 0 6px 18px rgba(15,23,42,0.06); }
+.small-muted { color: var(--muted); font-size: 0.85rem; }
+
+/* Make inputs subtle on gradient header */
+.header-input { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.08); }
