@@ -1,9 +1,9 @@
-name: DSE Hourly Auto-Scraper (9AM - 6PM BST)
+name: DSE Market Hours Auto-Scraper (Sun-Thu 10AM - 3PM BST)
 
 on:
   schedule:
-    # Runs at minute 0 past every hour from 03:00 to 12:00 UTC (09:00 to 18:00 BST)
-    - cron: '0 3-12 * * *'
+    # Runs hourly during DSE trading hours: 04:00 to 09:00 UTC (10:00 AM to 03:00 PM BST), Sunday to Thursday
+    - cron: '0 4-9 * * 0-4'
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 jobs:

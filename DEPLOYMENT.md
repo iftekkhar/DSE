@@ -1,14 +1,14 @@
-# Deploying DSE Backend & Auto-Scraper API (100% Free)
+# DSE Live Scraper & SQLite Analytics Terminal (100% Free)
 
-This backend runs as a standalone **Scraper, Storage & Analytics API** with hourly auto-scraping from 9:00 AM to 6:00 PM Bangladesh time. Your working frontend connects directly to this live API.
+This backend runs as a standalone **Official DSE Scraper, SQLite Database & Analytics API**.
 
 ---
 
-## 🕒 Hourly Auto-Scraper Schedule
-- **Schedule**: Every hour from **9:00 AM to 6:00 PM BST** (`0 9-18 * * *`)
-- **Timezone**: `Asia/Dhaka` (UTC+6)
-- **Live Scrape Target**: Dhaka Stock Exchange (`dsebd.org`) & AmarStock
-- **Data Persistence**: Updates `data/latest.json` and appends historical snapshots to `data/history.json`
+## 🕒 DSE Automated Schedules (Market Open Only)
+- **Market Hours Scrape**: Every hour from **10:00 AM to 3:00 PM BST, Sunday to Thursday** (`0 10-15 * * 0-4`)
+- **Daily Closing Archive**: **3:30 PM BST, Sunday to Thursday** (`30 15 * * 0-4`) $\rightarrow$ commits official closing prices to SQLite (`data/dse.db`)
+- **Weekly Fundamentals Crawl**: **Saturdays at 12:00 PM BST** (`0 12 * * 6`) $\rightarrow$ crawls audited EPS, NAVPS, and P/E from official DSE company disclosures
+- **Historical Data**: Managed in embedded **SQLite (`data/dse.db`)** with instant **Excel (.xlsx)** export via `/api/export/excel`.
 
 ---
 
