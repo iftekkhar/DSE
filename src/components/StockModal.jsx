@@ -423,29 +423,6 @@ export default function StockModal({
                 <span className="text-[8px] text-amber-700 block mt-0.5">{auditedYear}</span>
               </div>
             </div>
-
-            {/* Daily P/E vs Audited P/E Deep-Dive */}
-            <div className="mt-2.5 p-2.5 rounded-lg bg-blue-50/70 border border-blue-200/60 text-xs">
-              <div className="flex items-center justify-between font-bold text-slate-800 mb-1.5">
-                <span className="flex items-center gap-1 text-blue-900 font-display">
-                  <Info className="w-3.5 h-3.5 text-blue-600" />
-                  P/E Multiple Comparison: Daily vs. Audited
-                </span>
-                <span className="text-[10px] text-blue-900 font-mono bg-blue-100/80 px-1.5 py-0.5 rounded border border-blue-200">
-                  Daily: <strong>{stock.pe}x</strong> | Audited: <strong>{stock.auditedPe || stock.pe}x</strong>
-                </span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[10.5px] text-slate-600 leading-snug">
-                <div className="bg-white p-2 rounded border border-blue-100">
-                  <strong className="text-blue-950 block mb-0.5">📊 Daily Closing P/E ({stock.pe}x)</strong>
-                  <span>Calculated from today's closing settlement (৳{stock.ltp !== null ? stock.ltp.toFixed(2) : '—'}) ÷ running EPS (৳{stock.eps}). Fluctuates each trading session with market price changes. Evaluated in the 7-Point Matrix.</span>
-                </div>
-                <div className="bg-white p-2 rounded border border-blue-100">
-                  <strong className="text-emerald-950 block mb-0.5">🏛️ Audited Statement P/E ({stock.auditedPe || stock.pe}x)</strong>
-                  <span>Calculated against official annual audited financial statements ({auditedPeriod}). Removes short-term market volatility to reflect fundamental corporate earning power.</span>
-                </div>
-              </div>
-            </div>
           </div>
           {(() => {
             const epsVal = stock.eps || (stock.pe && stock.ltp ? stock.ltp / stock.pe : 0);
