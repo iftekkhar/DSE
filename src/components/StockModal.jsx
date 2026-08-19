@@ -1,11 +1,19 @@
 import { useState, useEffect, useMemo } from 'react';
 import {
   X, Star, CheckCircle2, AlertTriangle, XCircle,
-  Sparkles, Scale, Info, Activity, Clock, FileSpreadsheet, TrendingUp, TrendingDown
+  Sparkles, Scale, Info, Activity, Clock, FileSpreadsheet, TrendingUp, TrendingDown,
+  ShieldCheck, Award, DollarSign
 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { fetchStockHistory, generateHistoryData, downloadExcel } from '../services/api';
-import { getFallbackTag } from '../services/dseData';
+import {
+  getFallbackTag,
+  calculateGrahamNumber,
+  calculateMarginOfSafety,
+  calculateEarningsYield,
+  getMoatAssessment,
+  calculateBuffettScore
+} from '../services/dseData';
 import { KPI_DESCRIPTIONS } from '../config/criteria';
 
 const TIME_RANGES = [
@@ -346,6 +354,111 @@ export default function StockModal({
               ))}
             </div>
           </div>
+
+          {/* Warren Buffett & Benjamin Graham Value Analysis */}
+          {(() => {
+            const epsVal = stock.eps || (stock.pe && stock.ltp ? stock.ltp / stock.pe : 0);
+            const navpsVal = stock.navPerShare || (stock.ltp ? stock.ltp * 0.75 : 0);
+            const grahamNum = calculateGrahamNumber(epsVal, navpsVal);
+            const mos = calculateMarginOfSafety(stock.ltp, grahamNum);
+            const ey = calculateEarningsYield(stock.pe);
+            const moat = getMoatAssessment(stock.roe);
+            const bScore = calculateBuffettScore(stock);
+            const treasurySpread = ey ? Number((ey - 11.5).toFixed(2)) : null;
+
+            return (
+              <div className="p-3.5 rounded-xl border border-emerald-200/80 bg-gradient-to-br from-emerald-50/40 via-white to-blue-50/30">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-1.5">
+                    <Award className="w-4 h-4 text-emerald-700" />
+                    <h3 className="font-display text-xs font-bold text-slate-800 uppercase tracking-wider">
+                      Warren Buffett & Graham Value Insights
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] text-slate-500 font-semibold">Buffett Quality:</span>
+                    <span className={`px-2 py-0.5 rounded-full text-xs font-bold font-mono ${
+                      bScore >= 75
+                        ? 'bg-emerald-600 text-white'
+                        : bScore >= 55
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-amber-600 text-white'
+                    }`}>
+                      {bScore} / 100
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  {/* Moat Assessment */}
+                  <div className="p-2.5 rounded-lg bg-white border border-slate-200/70 shadow-2xs">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] text-slate-500 font-semibold">Economic Moat</span>
+                      <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
+                        moat.tier === 'Wide Moat'
+                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                          : moat.tier === 'Narrow Moat'
+                            ? 'bg-blue-100 text-blue-800 border border-blue-300'
+                            : 'bg-slate-100 text-slate-700 border border-slate-300'
+                      }`}>
+                        {moat.badge}
+                      </span>
+                    </div>
+                    <div className="text-xs font-medium text-slate-700 leading-snug">
+                      {moat.desc}
+                    </div>
+                    <div className="mt-1 text-[10px] text-slate-500 font-mono">
+                      ROE: <span className="font-bold text-slate-800">{stock.roe ? `${stock.roe}%` : 'N/A'}</span>
+                    </div>
+                  </div>
+
+                  {/* Benjamin Graham Intrinsic Value */}
+                  <div className="p-2.5 rounded-lg bg-white border border-slate-200/70 shadow-2xs">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] text-slate-500 font-semibold">Graham Fair Value</span>
+                      {mos !== null && (
+                        <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
+                          mos >= 0
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                            : 'bg-rose-100 text-rose-800 border border-rose-300'
+                        }`}>
+                          {mos >= 0 ? `+${mos}% Discount` : `${mos}% Premium`}
+                        </span>
+                      )}
+                    </div>
+                    <div className="font-mono text-base font-black text-slate-900">
+                      {grahamNum ? `৳${grahamNum}` : '৳--'}
+                    </div>
+                    <div className="text-[10px] text-slate-500">
+                      Margin of Safety: <span className={`font-bold ${mos >= 0 ? 'text-emerald-700' : 'text-rose-700'}`}>{mos !== null ? `${mos}%` : 'N/A'}</span>
+                    </div>
+                  </div>
+
+                  {/* Earnings Yield vs Risk-Free */}
+                  <div className="p-2.5 rounded-lg bg-white border border-slate-200/70 shadow-2xs">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] text-slate-500 font-semibold">Earnings Yield (1/PE)</span>
+                      {treasurySpread !== null && (
+                        <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
+                          treasurySpread >= 0
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                            : 'bg-amber-100 text-amber-800 border border-amber-300'
+                        }`}>
+                          {treasurySpread >= 0 ? `+${treasurySpread}% vs Bond` : `${treasurySpread}% vs Bond`}
+                        </span>
+                      )}
+                    </div>
+                    <div className="font-mono text-base font-black text-slate-900">
+                      {ey ? `${ey}%` : '--'}
+                    </div>
+                    <div className="text-[10px] text-slate-500">
+                      Govt 10Y Bond Benchmark: <span className="font-mono font-bold text-slate-700">11.50%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Historical Closing Price & Multi-Timeframe Chart */}
           <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">

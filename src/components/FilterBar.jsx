@@ -18,10 +18,11 @@ export default function FilterBar({
   const tabs = [
     { id: 'all', label: 'All Equities', count: stocksCount },
     { id: 'watchlist', label: 'Watchlist', count: watchlistCount, isWatchlist: true },
-    { id: 'buy', label: 'Buy Signals' },
-    { id: 'value', label: 'Value Picks' },
-    { id: 'momentum', label: 'Momentum' },
-    { id: 'risk', label: 'Risk Alerts' }
+    { id: 'buffett', label: '🏰 Buffett Moats', isBuffett: true },
+    { id: 'value', label: '💎 Deep Value' },
+    { id: 'buy', label: '🟢 Buy Signals' },
+    { id: 'momentum', label: '🚀 Momentum' },
+    { id: 'risk', label: '⚠️ Risk Alerts' }
   ];
 
   return (
@@ -38,7 +39,9 @@ export default function FilterBar({
                 isActive
                   ? tab.isWatchlist
                     ? 'bg-amber-500 text-white shadow-xs'
-                    : 'bg-[#2563eb] text-white shadow-xs'
+                    : tab.isBuffett
+                      ? 'bg-emerald-700 text-white shadow-xs'
+                      : 'bg-[#2563eb] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
@@ -81,7 +84,9 @@ export default function FilterBar({
             onChange={(e) => setSortBy(e.target.value)}
             className="bg-transparent text-slate-800 font-semibold focus:outline-none cursor-pointer text-xs"
           >
-            <option value="score_desc">Score (High to Low)</option>
+            <option value="score_desc">Verdict Score (High to Low)</option>
+            <option value="buffett_desc">🏰 Buffett Quality (High to Low)</option>
+            <option value="margin_desc">🛡️ Margin of Safety (High to Low)</option>
             <option value="gainers">Top Gainers (%)</option>
             <option value="losers">Top Losers (%)</option>
             <option value="pe_asc">P/E (Low to High)</option>

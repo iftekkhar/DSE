@@ -180,10 +180,13 @@ export default function App() {
       switch (activeTab) {
         case "watchlist":
           return watchlist.includes(stock.symbol);
+        case "buffett":
+          // Warren Buffett Screen: ROE >= 14%, Low Debt (<= 0.55), Reasonable Valuation (P/E <= 18)
+          return (stock.roe || 0) >= 14 && (stock.debtToEquity !== null ? stock.debtToEquity : 0.4) <= 0.55 && (stock.pe || 15) <= 18;
         case "buy":
           return stock.verdict === "BUY";
         case "value":
-          return stock.pe && stock.pe < 15 && stock.roe && stock.roe > 14;
+          return stock.pe && stock.pe < 15 && stock.roe && stock.roe > 12;
         case "momentum":
           return (stock.changePercent || 0) >= 1.5;
         case "risk":
@@ -200,6 +203,10 @@ export default function App() {
     switch (sortBy) {
       case "score_desc":
         return list.sort((a, b) => (b.verdictScore || 0) - (a.verdictScore || 0) || (b.roe || 0) - (a.roe || 0));
+      case "buffett_desc":
+        return list.sort((a, b) => (b.buffettScore || 0) - (a.buffettScore || 0));
+      case "margin_desc":
+        return list.sort((a, b) => (b.marginOfSafety || -999) - (a.marginOfSafety || -999));
       case "gainers":
         return list.sort((a, b) => (b.changePercent || 0) - (a.changePercent || 0));
       case "losers":

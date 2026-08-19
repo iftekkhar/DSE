@@ -75,13 +75,23 @@ export default function StockTable({
                   {/* Scrip / Company */}
                   <td className="py-3 px-4">
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="font-display font-black text-sm text-slate-900 tracking-tight group-hover:text-[#2563eb] transition-colors">
                           {stock.symbol}
                         </span>
-                        <span className="text-[10px] text-slate-400 bg-slate-100 px-1.5 py-0.2 rounded">
+                        <span className="text-[10px] text-slate-500 bg-slate-100 px-1.5 py-0.2 rounded font-medium">
                           {stock.sector || 'Equities'}
                         </span>
+                        {stock.moat?.tier === 'Wide Moat' && (
+                          <span className="text-[9px] font-bold bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded border border-emerald-300">
+                            🏰 Wide Moat
+                          </span>
+                        )}
+                        {stock.marginOfSafety !== null && stock.marginOfSafety > 15 && (
+                          <span className="text-[9px] font-bold bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded border border-blue-300">
+                            +{stock.marginOfSafety}% Safety
+                          </span>
+                        )}
                       </div>
                       <span className="text-[11px] text-slate-400 truncate max-w-[200px]">
                         {stock.fullName || stock.symbol}

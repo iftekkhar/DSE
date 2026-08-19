@@ -1,5 +1,13 @@
 import axios from 'axios';
-import { getEnrichedStock, getFallbackTag } from './dseData';
+import {
+  getEnrichedStock,
+  getFallbackTag,
+  calculateGrahamNumber,
+  calculateMarginOfSafety,
+  calculateEarningsYield,
+  getMoatAssessment,
+  calculateBuffettScore
+} from './dseData';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5001';
 const SERVER_URL = `${API_BASE}/api/stocks`;
@@ -324,8 +332,31 @@ export const generateSignals = (stock) => {
   return signals;
 };
 
-// Fetch DSE stocks from server with history fallback
+// Fetch DSE stocks from server with history fallback and Buffett Value analysis
 export const fetchDSEData = async () => {
+  const enrichWithBuffettMetrics = (stock) => {
+    const enriched = getEnrichedStock(stock);
+    const eps = enriched.eps || (enriched.ltp && enriched.pe ? enriched.ltp / enriched.pe : 0);
+    const navps = enriched.navPerShare || (enriched.ltp ? enriched.ltp * 0.75 : 0);
+    const grahamNumber = calculateGrahamNumber(eps, navps);
+    const marginOfSafety = calculateMarginOfSafety(enriched.ltp, grahamNumber);
+    const earningsYield = calculateEarningsYield(enriched.pe);
+    const moat = getMoatAssessment(enriched.roe);
+    const buffettScore = calculateBuffettScore(enriched);
+
+    return {
+      ...enriched,
+      eps: eps > 0 ? Number(eps.toFixed(2)) : enriched.eps,
+      navPerShare: navps > 0 ? Number(navps.toFixed(2)) : null,
+      grahamNumber,
+      marginOfSafety,
+      earningsYield,
+      moat,
+      buffettScore,
+      signals: generateSignals(enriched)
+    };
+  };
+
   try {
     const response = await axios.get(SERVER_URL, { timeout: 8000 });
     const rawStocks = Array.isArray(response.data) ? response.data : [];
@@ -334,13 +365,7 @@ export const fetchDSEData = async () => {
       console.warn('API returned 0 stocks, using default DSE reference directory.');
     }
 
-    return rawStocks.map((stock) => {
-      const enriched = getEnrichedStock(stock);
-      return {
-        ...enriched,
-        signals: generateSignals(enriched)
-      };
-    });
+    return rawStocks.map(enrichWithBuffettMetrics);
   } catch (error) {
     console.warn('Backend unavailable, falling back to local DSE dataset:', error.message);
     const fallbackSymbols = [
@@ -350,13 +375,7 @@ export const fetchDSEData = async () => {
       "JAMUNAOIL", "MPETROLEUM", "PADMAOIL", "OLYMPIC", "BSRMSTEEL", "BERGERPBL",
       "IDLC", "ENVOYTEX", "SQUARETEXT", "1JANATAMF", "AAMRANET", "ADNTEL"
     ];
-    return fallbackSymbols.map(sym => {
-      const enriched = getEnrichedStock({ symbol: sym });
-      return {
-        ...enriched,
-        signals: generateSignals(enriched)
-      };
-    });
+    return fallbackSymbols.map(sym => enrichWithBuffettMetrics({ symbol: sym }));
   }
 };
 

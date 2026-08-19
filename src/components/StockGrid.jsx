@@ -37,9 +37,16 @@ export default function StockGrid({
                     {stock.symbol.slice(0, 3)}
                   </div>
                   <div>
-                    <h3 className="font-display font-black text-sm text-slate-900 group-hover:text-[#2563eb] transition-colors leading-tight">
-                      {stock.symbol}
-                    </h3>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <h3 className="font-display font-black text-sm text-slate-900 group-hover:text-[#2563eb] transition-colors leading-tight">
+                        {stock.symbol}
+                      </h3>
+                      {stock.moat?.tier === 'Wide Moat' && (
+                        <span className="text-[8px] font-bold bg-emerald-100 text-emerald-800 px-1 py-0.2 rounded border border-emerald-300">
+                          🏰 Moat
+                        </span>
+                      )}
+                    </div>
                     <p className="text-[10px] text-slate-400 font-medium truncate max-w-[120px]">
                       {stock.fullName || stock.symbol}
                     </p>

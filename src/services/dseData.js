@@ -19,6 +19,96 @@ export const DSE_SECTORS = [
   "Miscellaneous"
 ];
 
+// -------------------------------------------------------------
+// WARREN BUFFETT & BENJAMIN GRAHAM VALUE INVESTING CALCULATIONS
+// -------------------------------------------------------------
+
+// 1. Benjamin Graham Number (Intrinsic Fair Value: sqrt(22.5 * EPS * NAVPS))
+export const calculateGrahamNumber = (eps, navps) => {
+  const e = Number(eps || 0);
+  const n = Number(navps || 0);
+  if (e <= 0 || n <= 0) return null;
+  return Number(Math.sqrt(22.5 * e * n).toFixed(2));
+};
+
+// 2. Margin of Safety % ((Fair Value - Price) / Fair Value * 100)
+export const calculateMarginOfSafety = (price, grahamNumber) => {
+  const p = Number(price || 0);
+  const g = Number(grahamNumber || 0);
+  if (p <= 0 || g <= 0) return null;
+  return Number((((g - p) / g) * 100).toFixed(2));
+};
+
+// 3. Earnings Yield % (1 / PE * 100)
+export const calculateEarningsYield = (pe) => {
+  const val = Number(pe || 0);
+  if (val <= 0) return null;
+  return Number(((1 / val) * 100).toFixed(2));
+};
+
+// 4. Warren Buffett Economic Moat Assessment
+export const getMoatAssessment = (roe) => {
+  const r = Number(roe || 0);
+  if (r >= 20) {
+    return {
+      tier: 'Wide Moat',
+      badge: '🏰 Wide Moat',
+      color: 'emerald',
+      desc: 'Exceptional pricing power and compounding returns on shareholder capital.'
+    };
+  }
+  if (r >= 14) {
+    return {
+      tier: 'Narrow Moat',
+      badge: '🛡️ Narrow Moat',
+      color: 'blue',
+      desc: 'Sustainable competitive advantage with steady above-average capital returns.'
+    };
+  }
+  return {
+    tier: 'No Moat',
+    badge: '⚖️ No Moat',
+    color: 'slate',
+    desc: 'Vulnerable to price competition or commoditized industry dynamics.'
+  };
+};
+
+// 5. Composite Buffett Quality & Value Score (0 - 100)
+export const calculateBuffettScore = (stock) => {
+  if (!stock) return 50;
+  let score = 0;
+
+  // A. Economic Moat (ROE) - Max 30 pts
+  const roe = Number(stock.roe || 0);
+  if (roe >= 22) score += 30;
+  else if (roe >= 16) score += 22;
+  else if (roe >= 12) score += 14;
+  else if (roe >= 8) score += 6;
+
+  // B. Financial Health (Debt to Equity) - Max 25 pts
+  const de = Number(stock.debtToEquity || 0.5);
+  if (de <= 0.20) score += 25;
+  else if (de <= 0.40) score += 20;
+  else if (de <= 0.60) score += 12;
+  else if (de <= 0.80) score += 5;
+
+  // C. Margin of Safety / Valuation (P/E) - Max 25 pts
+  const pe = Number(stock.pe || 15);
+  if (pe > 0 && pe <= 10) score += 25;
+  else if (pe > 0 && pe <= 14) score += 18;
+  else if (pe > 0 && pe <= 18) score += 10;
+  else if (pe > 0 && pe <= 24) score += 4;
+
+  // D. Liquidity Solvency (Current Ratio) - Max 20 pts
+  const cr = Number(stock.currentRatio || 1.2);
+  if (cr >= 1.8) score += 20;
+  else if (cr >= 1.4) score += 15;
+  else if (cr >= 1.1) score += 10;
+  else if (cr >= 0.9) score += 4;
+
+  return Math.min(100, Math.max(0, score));
+};
+
 // Rich Symbol Metadata Directory
 export const STOCK_DIRECTORY = {
   // Top Tier Banks
