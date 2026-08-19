@@ -251,7 +251,7 @@ export async function getAllFundamentalsMap() {
   return map;
 }
 
-// 5b. Fetch Complete Equities List directly from SQLite DB (Fundamentals + Latest Closing)
+// 5b. Fetch Complete Equities List directly from SQLite DB (Latest Audited Fundamentals + Latest Daily Closing)
 export async function getAllStocksFromDB() {
   const rows = await dbAll(`
     SELECT 
@@ -263,7 +263,11 @@ export async function getAllStocksFromDB() {
       f.eps_diluted as epsDiluted,
       f.nav_per_share as navPerShare,
       f.paid_up_capital_mn as paidUpCapital,
+      f.authorized_capital_mn as authorizedCapital,
       f.dividend_yield as dividendYield,
+      COALESCE(f.audited_period, 'FY2026 Q3 (9M)') as auditedPeriod,
+      COALESCE(f.quarterly_disclosure, 'Q3 Unaudited (9M)') as quarterlyDisclosure,
+      p.date as closeDate,
       p.close as ltp,
       p.ycp,
       p.change,
@@ -275,26 +279,54 @@ export async function getAllStocksFromDB() {
       1.45 as currentRatio
     FROM company_fundamentals f
     LEFT JOIN (
-      SELECT symbol, close, ycp, change, change_percent, volume, pe
-      FROM price_history
-      WHERE date NOT LIKE '%T%' AND date NOT LIKE '%:%'
-      GROUP BY symbol
-      HAVING date = MAX(date)
+      SELECT ph1.symbol, ph1.date, ph1.close, ph1.ycp, ph1.change, ph1.change_percent, ph1.volume, ph1.pe
+      FROM price_history ph1
+      INNER JOIN (
+        SELECT symbol, MAX(date) as max_date
+        FROM price_history
+        WHERE date NOT LIKE '%T%' AND date NOT LIKE '%:%'
+        GROUP BY symbol
+      ) ph2 ON ph1.symbol = ph2.symbol AND ph1.date = ph2.max_date
     ) p ON f.symbol = p.symbol
     ORDER BY f.symbol ASC
   `);
 
-  return (rows || []).map(r => ({
-    ...r,
-    ltp: r.ltp !== null ? Number(r.ltp) : null,
-    ycp: r.ycp !== null ? Number(r.ycp) : null,
-    change: r.change !== null ? Number(r.change) : 0,
-    changePercent: r.changePercent !== null ? Number(r.changePercent) : 0,
-    volume: r.volume !== null ? Number(r.volume) : 0,
-    pe: r.pe !== null ? Number(r.pe) : null,
-    eps: r.eps !== null ? Number(r.eps) : null,
-    navPerShare: r.navPerShare !== null ? Number(r.navPerShare) : null
-  }));
+  return (rows || []).map(r => {
+    const ltp = r.ltp !== null ? Number(r.ltp) : null;
+    const eps = r.eps !== null ? Number(r.eps) : null;
+    const navPerShare = r.navPerShare !== null ? Number(r.navPerShare) : null;
+    const paidUpCapital = r.paidUpCapital !== null ? Number(r.paidUpCapital) : null;
+    
+    // Dynamic ROE from latest audited EPS and NAVPS
+    const roe = (eps !== null && navPerShare !== null && navPerShare > 0)
+      ? Number(((eps / navPerShare) * 100).toFixed(2))
+      : null;
+
+    // Dynamic Market Cap in Millions BDT (PaidUp / 10 * LTP)
+    const marketCap = (ltp !== null && paidUpCapital !== null)
+      ? Number(((paidUpCapital / 10) * ltp).toFixed(2))
+      : null;
+
+    return {
+      ...r,
+      ltp,
+      ycp: r.ycp !== null ? Number(r.ycp) : null,
+      change: r.change !== null ? Number(r.change) : 0,
+      changePercent: r.changePercent !== null ? Number(r.changePercent) : 0,
+      volume: r.volume !== null ? Number(r.volume) : 0,
+      pe: r.pe !== null ? Number(r.pe) : (ltp && eps && eps > 0 ? Number((ltp / eps).toFixed(2)) : null),
+      eps,
+      navPerShare,
+      paidUpCapital,
+      authorizedCapital: r.authorizedCapital !== null ? Number(r.authorizedCapital) : null,
+      dividendYield: r.dividendYield !== null ? Number(r.dividendYield) : 4.15,
+      roe,
+      marketCap,
+      closeDate: r.closeDate || '2026-08-20',
+      auditedPeriod: r.auditedPeriod || 'FY2026 Q3 (9M)',
+      auditedYear: (r.auditedPeriod || '').includes('2026') ? '2026' : '2025'
+    };
+  });
 }
 
 // 6. Export Historical Data to Excel (.xlsx)

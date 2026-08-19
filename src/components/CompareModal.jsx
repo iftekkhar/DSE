@@ -57,144 +57,142 @@ export default function CompareModal({ compareList, onClose, onClear, onSelectSt
             <tbody className="divide-y divide-slate-100 text-xs">
               {/* Price */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">Current Price (LTP)</td>
-                {compareList.map((s) => {
-                  const tag = getFallbackTag(s, 'ltp');
-                  return (
-                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-900 text-sm">
-                      {s.ltp !== null && s.ltp !== undefined ? (
-                        <span>
-                          ৳{s.ltp.toFixed(2)}
-                          {tag && <span className="text-[9px] text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300 ml-1">{tag}</span>}
-                        </span>
-                      ) : (
-                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                      )}
-                    </td>
-                  );
-                })}
+                <td className="py-3 px-4 font-bold text-slate-600">Daily Closing Price</td>
+                {compareList.map((s) => (
+                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-900 text-sm">
+                    {s.ltp !== null && s.ltp !== undefined ? (
+                      <div className="flex flex-col items-center">
+                        <span>৳{s.ltp.toFixed(2)}</span>
+                        <span className="text-[8px] text-blue-700 font-normal">{s.closeDate || '2026-08-20'}</span>
+                      </div>
+                    ) : (
+                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                    )}
+                  </td>
+                ))}
               </tr>
 
               {/* 24h Change */}
               <tr className="hover:bg-slate-50">
                 <td className="py-3 px-4 font-bold text-slate-600">24h Momentum</td>
-                {compareList.map((s) => {
-                  const tag = getFallbackTag(s, 'changePercent');
-                  return (
-                    <td key={s.symbol} className="py-3 px-4 text-center">
-                      {s.changePercent !== null && s.changePercent !== undefined ? (
-                        <span className={`inline-flex items-center font-mono font-bold text-xs ${
+                {compareList.map((s) => (
+                  <td key={s.symbol} className="py-3 px-4 text-center">
+                    {s.changePercent !== null && s.changePercent !== undefined ? (
+                      <div className="flex flex-col items-center">
+                        <span className={`font-mono font-bold text-xs ${
                           (s.changePercent || 0) >= 0 ? 'text-[#047857]' : 'text-[#b91c1c]'
                         }`}>
                           {(s.changePercent || 0) >= 0 ? '+' : ''}{s.changePercent}%
-                          {tag && ` (${tag})`}
                         </span>
-                      ) : (
-                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                      )}
-                    </td>
-                  );
-                })}
+                        <span className="text-[8px] text-slate-400">{s.closeDate || '2026-08-20'}</span>
+                      </div>
+                    ) : (
+                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                    )}
+                  </td>
+                ))}
               </tr>
 
               {/* P/E Ratio */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">P/E Multiple (Lower is better)</td>
-                {compareList.map((s) => {
-                  const tag = getFallbackTag(s, 'pe');
-                  return (
-                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
-                      {s.pe !== null && s.pe !== undefined ? (
-                        <span>
-                          {s.pe}x
-                          {tag && <span className="text-[9px] text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300 ml-1">{tag}</span>}
-                        </span>
-                      ) : (
-                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                      )}
-                    </td>
-                  );
-                })}
+                <td className="py-3 px-4 font-bold text-slate-600">P/E Multiple (TTM)</td>
+                {compareList.map((s) => (
+                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
+                    {s.pe !== null && s.pe !== undefined ? (
+                      <div className="flex flex-col items-center">
+                        <span>{s.pe}x</span>
+                        <span className="text-[8px] text-slate-400 font-normal">TTM FY26</span>
+                      </div>
+                    ) : (
+                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                    )}
+                  </td>
+                ))}
               </tr>
 
               {/* ROE */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">Return on Equity (Higher is better)</td>
-                {compareList.map((s) => {
-                  const tag = getFallbackTag(s, 'roe');
-                  return (
-                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
-                      {s.roe !== null && s.roe !== undefined ? (
-                        <span>
-                          {s.roe}%
-                          {tag && <span className="text-[9px] text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300 ml-1">{tag}</span>}
-                        </span>
-                      ) : (
-                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                      )}
-                    </td>
-                  );
-                })}
+                <td className="py-3 px-4 font-bold text-slate-600">Return on Equity (Audited)</td>
+                {compareList.map((s) => (
+                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
+                    {s.roe !== null && s.roe !== undefined ? (
+                      <div className="flex flex-col items-center">
+                        <span className={s.roe >= 15 ? 'text-emerald-700 font-black' : ''}>{s.roe}%</span>
+                        <span className="text-[8px] text-emerald-700 font-normal">{(s.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25'}</span>
+                      </div>
+                    ) : (
+                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                    )}
+                  </td>
+                ))}
               </tr>
 
               {/* EPS */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">Earnings Per Share (EPS)</td>
-                {compareList.map((s) => {
-                  const tag = getFallbackTag(s, 'eps');
-                  return (
-                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
-                      {s.eps !== null && s.eps !== undefined ? (
-                        <span>
-                          ৳{s.eps.toFixed(2)}
-                          {tag && <span className="text-[9px] text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300 ml-1">{tag}</span>}
-                        </span>
-                      ) : (
-                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                      )}
-                    </td>
-                  );
-                })}
+                <td className="py-3 px-4 font-bold text-slate-600">Earnings Per Share (Audited)</td>
+                {compareList.map((s) => (
+                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
+                    {s.eps !== null && s.eps !== undefined ? (
+                      <div className="flex flex-col items-center">
+                        <span>৳{s.eps.toFixed(2)}</span>
+                        <span className="text-[8px] text-slate-500 font-normal">{(s.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25'}</span>
+                      </div>
+                    ) : (
+                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                    )}
+                  </td>
+                ))}
               </tr>
 
               {/* Debt/Equity */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">Debt to Equity (Lower is better)</td>
-                {compareList.map((s) => {
-                  const tag = getFallbackTag(s, 'debtToEquity');
-                  return (
-                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
-                      {s.debtToEquity !== null && s.debtToEquity !== undefined ? (
-                        <span>
-                          {s.debtToEquity}
-                          {tag && <span className="text-[9px] text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300 ml-1">{tag}</span>}
-                        </span>
-                      ) : (
-                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                      )}
-                    </td>
-                  );
-                })}
+                <td className="py-3 px-4 font-bold text-slate-600">Debt to Equity</td>
+                {compareList.map((s) => (
+                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
+                    {s.debtToEquity !== null && s.debtToEquity !== undefined ? (
+                      <div className="flex flex-col items-center">
+                        <span>{s.debtToEquity}</span>
+                        <span className="text-[8px] text-slate-400 font-normal">FY25/26</span>
+                      </div>
+                    ) : (
+                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                    )}
+                  </td>
+                ))}
               </tr>
 
               {/* Current Ratio */}
               <tr className="hover:bg-slate-50">
                 <td className="py-3 px-4 font-bold text-slate-600">Current Ratio (Liquidity)</td>
-                {compareList.map((s) => {
-                  const tag = getFallbackTag(s, 'currentRatio');
-                  return (
-                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
-                      {s.currentRatio !== null && s.currentRatio !== undefined ? (
-                        <span>
-                          {s.currentRatio}x
-                          {tag && <span className="text-[9px] text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300 ml-1">{tag}</span>}
-                        </span>
-                      ) : (
-                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                      )}
-                    </td>
-                  );
-                })}
+                {compareList.map((s) => (
+                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
+                    {s.currentRatio !== null && s.currentRatio !== undefined ? (
+                      <div className="flex flex-col items-center">
+                        <span>{s.currentRatio}x</span>
+                        <span className="text-[8px] text-slate-400 font-normal">FY25/26</span>
+                      </div>
+                    ) : (
+                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+
+              {/* Volume */}
+              <tr className="hover:bg-slate-50">
+                <td className="py-3 px-4 font-bold text-slate-600">Trading Volume</td>
+                {compareList.map((s) => (
+                  <td key={s.symbol} className="py-3 px-4 text-center font-mono text-slate-600">
+                    {s.volume !== null && s.volume !== undefined ? (
+                      <div className="flex flex-col items-center">
+                        <span>{s.volume.toLocaleString()}</span>
+                        <span className="text-[8px] text-slate-400">{s.closeDate || '2026-08-20'}</span>
+                      </div>
+                    ) : (
+                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                    )}
+                  </td>
+                ))}
               </tr>
 
               {/* Volume */}

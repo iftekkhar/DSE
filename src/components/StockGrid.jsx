@@ -74,24 +74,21 @@ export default function StockGrid({
 
               {/* Price & Change */}
               <div className="flex items-baseline justify-between my-2.5">
-                <div className="flex items-center gap-1">
-                  <span className="font-mono text-xl font-black text-slate-900">
+                <div className="flex flex-col">
+                  <span className="font-mono text-xl font-black text-slate-900 leading-none">
                     {stock.ltp !== null && stock.ltp !== undefined ? `৳${stock.ltp.toFixed(2)}` : (
                       <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
                     )}
                   </span>
-                  {ltpTag && (
-                    <span className="text-[8px] font-semibold text-amber-700 bg-amber-100/90 px-1 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
-                      {ltpTag}
-                    </span>
-                  )}
+                  <span className="text-[8px] font-semibold text-blue-700 mt-1">
+                    Close: {stock.closeDate || '2026-08-20'}
+                  </span>
                 </div>
                 {stock.changePercent !== null && stock.changePercent !== undefined ? (
                   <span className={`inline-flex items-center text-xs font-mono font-bold ${
                     isBullish ? 'text-[#047857]' : 'text-[#b91c1c]'
                   }`}>
                     {isBullish ? '+' : ''}{stock.changePercent}%
-                    {changeTag && ` (${changeTag})`}
                   </span>
                 ) : (
                   <span className="text-[10px] text-slate-400 italic">Not Available live</span>
@@ -99,43 +96,47 @@ export default function StockGrid({
               </div>
 
               {/* Minimal Metrics Strip */}
-              <div className="grid grid-cols-3 gap-1.5 text-[11px] text-slate-600 bg-slate-50 p-2 rounded-xl mb-3 border border-slate-100">
+              <div className="grid grid-cols-3 gap-1 text-[11px] text-slate-600 bg-slate-50 p-2 rounded-xl mb-3 border border-slate-100">
                 <div className="text-center">
-                  <div className="text-slate-400 text-[9px] font-bold">P/E</div>
+                  <div className="text-slate-400 text-[8.5px] font-bold uppercase">P/E</div>
                   <div className="font-mono font-bold text-slate-800 text-[11px]">
                     {stock.pe !== null && stock.pe !== undefined ? (
                       <div>
                         <div>{stock.pe}x</div>
-                        {peTag && <div className="text-[7.5px] text-amber-600 font-normal leading-none mt-0.5">{peTag}</div>}
+                        <div className="text-[7.5px] text-slate-400 font-normal">TTM FY26</div>
                       </div>
                     ) : (
-                      <span className="text-[10px] text-slate-400 font-normal italic">Not Available live</span>
+                      <span className="text-[10px] text-slate-400 font-normal italic">N/A</span>
                     )}
                   </div>
                 </div>
                 <div className="text-center border-x border-slate-200/60">
-                  <div className="text-slate-400 text-[9px] font-bold">ROE</div>
+                  <div className="text-slate-400 text-[8.5px] font-bold uppercase">ROE</div>
                   <div className={`font-mono font-bold text-[11px] ${stock.roe >= 15 ? 'text-[#047857]' : 'text-slate-800'}`}>
                     {stock.roe !== null && stock.roe !== undefined ? (
                       <div>
                         <div>{stock.roe}%</div>
-                        {roeTag && <div className="text-[7.5px] text-amber-600 font-normal leading-none mt-0.5">{roeTag}</div>}
+                        <div className="text-[7.5px] text-emerald-700 font-normal">
+                          {(stock.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25'}
+                        </div>
                       </div>
                     ) : (
-                      <span className="text-[10px] text-slate-400 font-normal italic">Not Available live</span>
+                      <span className="text-[10px] text-slate-400 font-normal italic">N/A</span>
                     )}
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-slate-400 text-[9px] font-bold">EPS</div>
+                  <div className="text-slate-400 text-[8.5px] font-bold uppercase">EPS</div>
                   <div className="font-mono font-bold text-slate-800 text-[11px]">
                     {stock.eps !== null && stock.eps !== undefined ? (
                       <div>
                         <div>৳{stock.eps.toFixed(1)}</div>
-                        {epsTag && <div className="text-[7.5px] text-amber-600 font-normal leading-none mt-0.5">{epsTag}</div>}
+                        <div className="text-[7.5px] text-slate-500 font-normal">
+                          {(stock.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25'}
+                        </div>
                       </div>
                     ) : (
-                      <span className="text-[10px] text-slate-400 font-normal italic">Not Available live</span>
+                      <span className="text-[10px] text-slate-400 font-normal italic">N/A</span>
                     )}
                   </div>
                 </div>

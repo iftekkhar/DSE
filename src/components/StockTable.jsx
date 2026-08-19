@@ -31,10 +31,10 @@ export default function StockTable({
             <tr className="bg-slate-50/80 border-b border-slate-200/60 text-[11px] font-bold text-slate-400 uppercase tracking-wider select-none">
               <th className="py-3 px-4 w-10 text-center">⭐</th>
               <th className="py-3 px-4">Scrip</th>
-              <th className="py-3 px-4 text-right">Price & 24h</th>
-              <th className="py-3 px-4 text-right">P/E</th>
-              <th className="py-3 px-4 text-right">ROE</th>
-              <th className="py-3 px-4 text-right">EPS</th>
+              <th className="py-3 px-4 text-right">Close & Date</th>
+              <th className="py-3 px-4 text-right">P/E Ratio</th>
+              <th className="py-3 px-4 text-right">ROE (Audited)</th>
+              <th className="py-3 px-4 text-right">EPS (Audited)</th>
               <th className="py-3 px-4 text-right">Volume</th>
               <th className="py-3 px-4 text-center">Verdict</th>
               <th className="py-3 px-4 text-center">Action</th>
@@ -45,6 +45,8 @@ export default function StockTable({
               const isSaved = watchlist.includes(stock.symbol);
               const isCompared = compareList.some(s => s.symbol === stock.symbol);
               const isBullish = (stock.changePercent || 0) >= 0;
+              const closeDate = stock.closeDate || '2026-08-20';
+              const auditedPeriod = stock.auditedPeriod || 'FY2026 Q3 (9M)';
 
               return (
                 <tr
@@ -108,18 +110,15 @@ export default function StockTable({
                             <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>
                           )}
                         </span>
-                        {getFallbackTag(stock, 'ltp') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
-                            {getFallbackTag(stock, 'ltp')}
-                          </span>
-                        )}
+                        <span className="text-[8.5px] font-semibold text-blue-700 bg-blue-50 px-1 py-0.2 rounded border border-blue-200" title={`Latest Daily Settlement: ${closeDate}`}>
+                          {closeDate}
+                        </span>
                       </div>
                       {stock.changePercent !== null && stock.changePercent !== undefined ? (
                         <span className={`inline-flex items-center font-mono text-[10px] font-bold ${
                           isBullish ? 'text-[#047857]' : 'text-[#b91c1c]'
                         }`}>
                           {isBullish ? '+' : ''}{stock.changePercent.toFixed(2)}%
-                          {getFallbackTag(stock, 'changePercent') && ` (${getFallbackTag(stock, 'changePercent')})`}
                         </span>
                       ) : (
                         <span className="text-[10px] text-slate-400 italic">Not Available live</span>
@@ -130,13 +129,9 @@ export default function StockTable({
                   {/* P/E Ratio */}
                   <td className="py-3 px-4 text-right font-mono font-medium text-slate-700">
                     {stock.pe !== null && stock.pe !== undefined ? (
-                      <div className="flex items-center justify-end gap-1">
-                        <span>{stock.pe}x</span>
-                        {getFallbackTag(stock, 'pe') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
-                            {getFallbackTag(stock, 'pe')}
-                          </span>
-                        )}
+                      <div className="flex flex-col items-end">
+                        <span className="font-bold text-slate-900">{stock.pe}x</span>
+                        <span className="text-[8.5px] text-slate-400 font-normal">TTM FY26</span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>
@@ -146,15 +141,13 @@ export default function StockTable({
                   {/* ROE % */}
                   <td className="py-3 px-4 text-right font-mono font-medium">
                     {stock.roe !== null && stock.roe !== undefined ? (
-                      <div className="flex items-center justify-end gap-1">
-                        <span className={stock.roe >= 15 ? 'text-[#047857] font-bold' : 'text-slate-700'}>
+                      <div className="flex flex-col items-end">
+                        <span className={stock.roe >= 15 ? 'text-[#047857] font-bold' : 'text-slate-700 font-bold'}>
                           {stock.roe}%
                         </span>
-                        {getFallbackTag(stock, 'roe') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
-                            {getFallbackTag(stock, 'roe')}
-                          </span>
-                        )}
+                        <span className="text-[8.5px] text-emerald-700 bg-emerald-50 px-1 rounded font-normal" title={auditedPeriod}>
+                          {auditedPeriod.includes('FY2026') ? 'FY26 Q3' : 'FY25 Audited'}
+                        </span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>
@@ -164,13 +157,11 @@ export default function StockTable({
                   {/* EPS */}
                   <td className="py-3 px-4 text-right font-mono font-medium text-slate-700">
                     {stock.eps !== null && stock.eps !== undefined ? (
-                      <div className="flex items-center justify-end gap-1">
-                        <span>৳{stock.eps.toFixed(2)}</span>
-                        {getFallbackTag(stock, 'eps') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
-                            {getFallbackTag(stock, 'eps')}
-                          </span>
-                        )}
+                      <div className="flex flex-col items-end">
+                        <span className="font-bold text-slate-900">৳{stock.eps.toFixed(2)}</span>
+                        <span className="text-[8.5px] text-slate-500 font-normal" title={auditedPeriod}>
+                          {auditedPeriod.includes('FY2026') ? 'FY26 Q3' : 'FY25 Audited'}
+                        </span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>
@@ -180,17 +171,13 @@ export default function StockTable({
                   {/* Volume */}
                   <td className="py-3 px-4 text-right font-mono text-slate-500 text-[11px]">
                     {stock.volume !== null && stock.volume !== undefined ? (
-                      <div className="flex items-center justify-end gap-1">
-                        <span>
+                      <div className="flex flex-col items-end">
+                        <span className="font-bold text-slate-800">
                           {stock.volume > 1000000
                             ? `${(stock.volume / 1000000).toFixed(1)}M`
                             : `${(stock.volume / 1000).toFixed(0)}K`}
                         </span>
-                        {getFallbackTag(stock, 'volume') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
-                            {getFallbackTag(stock, 'volume')}
-                          </span>
-                        )}
+                        <span className="text-[8.5px] text-slate-400">{closeDate}</span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>

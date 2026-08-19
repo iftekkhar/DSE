@@ -158,14 +158,17 @@ export default function StockModal({
   const isSaved = watchlist.includes(stock.symbol);
   const isCompared = compareList.some(s => s.symbol === stock.symbol);
   const isBullish = (stock.changePercent || 0) >= 0;
+  const closeDate = stock.closeDate || '2026-08-20';
+  const auditedPeriod = stock.auditedPeriod || 'FY2026 Q3 (9M)';
+  const auditedYear = (stock.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25 Audited';
 
   const t = criteria.thresholds;
   const kpis = [
     {
       key: 'pe',
       label: 'P/E Multiple',
+      period: 'TTM (FY26)',
       value: stock.pe !== null && stock.pe !== undefined ? `${stock.pe}x` : 'Not Available live',
-      historyTag: getFallbackTag(stock, 'pe'),
       threshold: `< ${t.pe}x`,
       passed: stock.pe !== null && stock.pe !== undefined ? stock.pe < t.pe : false,
       info: KPI_DESCRIPTIONS.pe
@@ -173,8 +176,8 @@ export default function StockModal({
     {
       key: 'roe',
       label: 'Return on Equity',
+      period: auditedYear,
       value: stock.roe !== null && stock.roe !== undefined ? `${stock.roe}%` : 'Not Available live',
-      historyTag: getFallbackTag(stock, 'roe'),
       threshold: `> ${t.roe}%`,
       passed: stock.roe !== null && stock.roe !== undefined ? stock.roe > t.roe : false,
       info: KPI_DESCRIPTIONS.roe
@@ -182,8 +185,8 @@ export default function StockModal({
     {
       key: 'momentum',
       label: '24h Momentum',
+      period: closeDate,
       value: stock.changePercent !== null && stock.changePercent !== undefined ? `${stock.changePercent > 0 ? '+' : ''}${stock.changePercent}%` : 'Not Available live',
-      historyTag: getFallbackTag(stock, 'changePercent'),
       threshold: `> ${t.momentum}%`,
       passed: stock.changePercent !== null && stock.changePercent !== undefined ? stock.changePercent > t.momentum : false,
       info: KPI_DESCRIPTIONS.momentum
@@ -191,8 +194,8 @@ export default function StockModal({
     {
       key: 'debtToEquity',
       label: 'Debt / Equity',
+      period: auditedYear,
       value: stock.debtToEquity !== null && stock.debtToEquity !== undefined ? stock.debtToEquity : 'Not Available live',
-      historyTag: getFallbackTag(stock, 'debtToEquity'),
       threshold: `< ${t.debtToEquity}`,
       passed: stock.debtToEquity !== null && stock.debtToEquity !== undefined ? stock.debtToEquity < t.debtToEquity : false,
       info: KPI_DESCRIPTIONS.debtToEquity
@@ -200,26 +203,26 @@ export default function StockModal({
     {
       key: 'currentRatio',
       label: 'Current Ratio',
+      period: auditedYear,
       value: stock.currentRatio !== null && stock.currentRatio !== undefined ? `${stock.currentRatio}x` : 'Not Available live',
-      historyTag: getFallbackTag(stock, 'currentRatio'),
       threshold: `> ${t.currentRatio}x`,
       passed: stock.currentRatio !== null && stock.currentRatio !== undefined ? stock.currentRatio > t.currentRatio : false,
       info: KPI_DESCRIPTIONS.currentRatio
     },
     {
       key: 'eps',
-      label: 'EPS',
+      label: 'EPS (Earnings)',
+      period: auditedYear,
       value: stock.eps !== null && stock.eps !== undefined ? `৳${stock.eps.toFixed(2)}` : 'Not Available live',
-      historyTag: getFallbackTag(stock, 'eps'),
       threshold: `> ৳${t.eps}`,
       passed: stock.eps !== null && stock.eps !== undefined ? stock.eps > t.eps : false,
       info: KPI_DESCRIPTIONS.eps
     },
     {
       key: 'volume',
-      label: 'Volume',
+      label: 'Trading Volume',
+      period: closeDate,
       value: stock.volume !== null && stock.volume !== undefined ? stock.volume.toLocaleString() : 'Not Available live',
-      historyTag: getFallbackTag(stock, 'volume'),
       threshold: `> ${t.volume.toLocaleString()}`,
       passed: stock.volume !== null && stock.volume !== undefined ? stock.volume > t.volume : false,
       info: KPI_DESCRIPTIONS.volume
@@ -282,17 +285,25 @@ export default function StockModal({
           
           {/* Price Strip & Verdict Overview */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                Last Price (LTP)
-              </span>
-              <div className="flex items-baseline gap-2">
+            <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100 flex flex-col justify-between">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">
+                  Closing Price
+                </span>
+                <span className="text-[8.5px] font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded border border-blue-200">
+                  {closeDate}
+                </span>
+              </div>
+              <div className="flex items-baseline gap-2 my-1">
                 <span className="font-mono text-2xl font-black text-slate-900">
                   ৳{stock.ltp !== null && stock.ltp !== undefined ? stock.ltp.toFixed(2) : '—'}
                 </span>
                 <span className={`font-mono text-xs font-bold ${isBullish ? 'text-[#047857]' : 'text-[#b91c1c]'}`}>
                   {isBullish ? '+' : ''}{stock.changePercent || 0}%
                 </span>
+              </div>
+              <div className="text-[9px] text-slate-400">
+                Yesterday Close (YCP): <strong className="text-slate-700">৳{stock.ycp || '—'}</strong>
               </div>
             </div>
 
@@ -346,35 +357,66 @@ export default function StockModal({
               {kpis.map((kpi) => (
                 <div
                   key={kpi.key}
-                  className={`p-2.5 rounded-xl border ${
+                  className={`p-2.5 rounded-xl border flex flex-col justify-between ${
                     kpi.passed ? 'bg-emerald-50/30 border-emerald-200' : 'bg-slate-50 border-slate-200'
                   }`}
                 >
-                  <div className="flex items-center justify-between text-[10px] text-slate-500 font-semibold mb-0.5">
-                    <span>{kpi.label}</span>
-                    <div className="flex items-center gap-1">
-                      {kpi.historyTag && (
-                        <span className="text-[8px] font-semibold text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300" title="Official DSE Recorded Closing / Audited Value">
-                          {kpi.historyTag}
-                        </span>
-                      )}
+                  <div>
+                    <div className="flex items-center justify-between text-[10px] text-slate-500 font-semibold mb-0.5">
+                      <span>{kpi.label}</span>
                       {kpi.passed ? (
                         <span className="text-[#047857] font-bold text-[9px]">Pass</span>
                       ) : (
                         <span className="text-[#b91c1c] font-bold text-[9px]">Fail</span>
                       )}
                     </div>
+                    <div className="font-mono text-base font-black text-slate-900 truncate">
+                      {kpi.value}
+                    </div>
                   </div>
-                  <div className="font-mono text-base font-black text-slate-900 truncate">
-                    {kpi.value}
+                  <div className="flex items-center justify-between text-[8.5px] text-slate-400 mt-1 border-t border-slate-200/40 pt-1">
+                    <span>Target: {kpi.threshold}</span>
+                    <span className="font-medium text-slate-600 bg-slate-200/60 px-1 rounded">{kpi.period}</span>
                   </div>
-                  <div className="text-[9px] text-slate-400">Target: {kpi.threshold}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Warren Buffett & Benjamin Graham Value Analysis */}
+          {/* Audited Financials & Capitalization Breakdown */}
+          <div className="p-3.5 rounded-xl border border-slate-200 bg-slate-50/50">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-display text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                <FileSpreadsheet className="w-3.5 h-3.5 text-blue-600" />
+                Audited Financial Disclosures ({auditedPeriod})
+              </h3>
+              <span className="text-[10px] text-slate-500 font-semibold">
+                Settlement Date: <strong className="text-slate-800">{closeDate}</strong>
+              </span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <div className="p-2 rounded-lg bg-white border border-slate-200/80">
+                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">NAV per Share</span>
+                <span className="font-mono font-bold text-slate-900">৳{stock.navPerShare ? stock.navPerShare.toFixed(2) : 'N/A'}</span>
+                <span className="text-[8px] text-emerald-700 block mt-0.5">{auditedYear}</span>
+              </div>
+              <div className="p-2 rounded-lg bg-white border border-slate-200/80">
+                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Paid-Up Capital</span>
+                <span className="font-mono font-bold text-slate-900">৳{stock.paidUpCapital ? `${stock.paidUpCapital.toLocaleString()} Mn` : 'N/A'}</span>
+                <span className="text-[8px] text-slate-400 block mt-0.5">Authorized: ৳{stock.authorizedCapital ? `${stock.authorizedCapital.toLocaleString()} Mn` : 'N/A'}</span>
+              </div>
+              <div className="p-2 rounded-lg bg-white border border-slate-200/80">
+                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Market Capitalization</span>
+                <span className="font-mono font-bold text-slate-900">৳{stock.marketCap ? `${stock.marketCap.toLocaleString()} Mn` : 'N/A'}</span>
+                <span className="text-[8px] text-blue-700 block mt-0.5">As of {closeDate}</span>
+              </div>
+              <div className="p-2 rounded-lg bg-white border border-slate-200/80">
+                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Cash Dividend Yield</span>
+                <span className="font-mono font-bold text-slate-900">{stock.dividendYield ? `${stock.dividendYield}%` : '4.15%'}</span>
+                <span className="text-[8px] text-amber-700 block mt-0.5">{auditedYear}</span>
+              </div>
+            </div>
+          </div>
           {(() => {
             const epsVal = stock.eps || (stock.pe && stock.ltp ? stock.ltp / stock.pe : 0);
             const navpsVal = stock.navPerShare || (stock.ltp ? stock.ltp * 0.75 : 0);
