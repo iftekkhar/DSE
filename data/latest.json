@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-19T22:50:37.329Z",
+  "fetchedAt": "2026-08-19T22:53:33.129Z",
   "count": 440,
   "stocks": [
     {
@@ -123,7 +123,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -1647,7 +1647,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -1976,7 +1976,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -2516,7 +2516,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -2570,7 +2570,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -2606,7 +2606,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -2714,7 +2714,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -2894,7 +2894,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -3511,7 +3511,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -4328,7 +4328,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -6477,7 +6477,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -6531,7 +6531,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -6711,7 +6711,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -7575,7 +7575,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -7611,7 +7611,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
@@ -7791,7 +7791,7 @@
       "roe": null,
       "debtToEquity": null,
       "currentRatio": null,
-      "volume": null,
+      "volume": 0,
       "navPerShare": null,
       "paidUpCapital": null,
       "_historyFallback": {}
