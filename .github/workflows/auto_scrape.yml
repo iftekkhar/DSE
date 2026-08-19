@@ -34,12 +34,9 @@ jobs:
         env:
           TZ: 'Asia/Dhaka'
 
-      - name: Ping Live Server (if deployed)
-        if: env.LIVE_APP_URL != ''
+      - name: Ping Live Cloud Backend
         run: |
-          curl -s -X POST "${{ secrets.LIVE_APP_URL }}/api/scrape" || echo "Live server ping completed"
-        env:
-          LIVE_APP_URL: ${{ secrets.LIVE_APP_URL }}
+          curl -s -X POST "${{ secrets.LIVE_APP_URL || 'https://dse-xvn2.onrender.com' }}/api/scrape" || echo "Live backend ping completed"
 
       - name: Commit & Push updated data (latest.json & history.json)
         run: |
