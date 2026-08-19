@@ -12,3 +12,16 @@ services:
         value: Asia/Dhaka
       - key: PORT
         value: 5001
+
+  - type: static
+    name: dse-frontend
+    plan: free
+    buildCommand: npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://dse-xvn2.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
