@@ -13,8 +13,7 @@ import db, {
   getLatestRecordedClosing,
   saveFundamentals,
   getAllFundamentalsMap,
-  exportToExcel,
-  seedFromHistoryJson
+  exportToExcel
 } from './db.js';
 
 let cron;

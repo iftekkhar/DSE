@@ -392,15 +392,17 @@ export const fetchStockHistory = async (symbol) => {
         seen.add(dateStr);
         const dateObj = new Date(dateStr);
         const label = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' });
+        const price = Number(pt.ltp ?? pt.close ?? 0);
+        if (price <= 0) continue;
         uniquePoints.push({
           day: label,
           rawDate: dateStr,
           dateObj: dateObj,
-          price: pt.ltp,
-          volume: pt.volume || 0,
+          price: price,
+          volume: Number(pt.volume || 0),
           timestamp: dateStr,
-          change: pt.change,
-          changePercent: pt.changePercent
+          change: Number(pt.change || 0),
+          changePercent: Number(pt.changePercent || 0)
         });
       }
       return uniquePoints.sort((a, b) => new Date(a.rawDate) - new Date(b.rawDate));

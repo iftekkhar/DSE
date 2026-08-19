@@ -105,7 +105,7 @@ export async function initDB() {
     );
   `);
 
-  await seedFromHistoryJson();
+  await dbRun(`DELETE FROM price_history WHERE date LIKE '%T%' OR date LIKE '%:%'`).catch(() => {});
 }
 
 // 1. Save Daily Market Closing batch to SQLite
@@ -301,171 +301,150 @@ export async function exportToExcel(symbolFilter = null) {
   return await workbook.xlsx.writeBuffer();
 }
 
-// 7. Auto-migration from existing data/history.json on startup
-export async function seedFromHistoryJson() {
-  const historyFile = path.join(DATA_DIR, 'history.json');
-  if (!fs.existsSync(historyFile)) return;
-  try {
-    const raw = fs.readFileSync(historyFile, 'utf-8');
-    const historyData = JSON.parse(raw);
-    const rows = [];
-
-    if (Array.isArray(historyData)) {
-      for (const snap of historyData) {
-        if (!snap) continue;
-        const dateStr = snap.fetchedAt ? snap.fetchedAt.slice(0, 10) : new Date().toISOString().slice(0, 10);
-        const list = snap.data || snap.stocks || [];
-        for (const s of list) {
-          if (!s || !s.symbol || s.ltp === null || s.ltp === undefined || s.ltp === 0) continue;
-          rows.push({
-            symbol: s.symbol.toUpperCase().trim(),
-            date: dateStr,
-            close: Number(s.ltp),
-            ycp: Number(s.ycp || (s.ltp - (s.change || 0))),
-            change: Number(s.change || 0),
-            change_percent: Number(s.changePercent || 0),
-            volume: Number(s.volume || 0),
-            pe: s.pe !== null && s.pe !== undefined ? Number(s.pe) : null
-          });
-        }
-      }
-    } else if (typeof historyData === 'object') {
-      for (const [symbol, snapshots] of Object.entries(historyData)) {
-        if (!Array.isArray(snapshots)) continue;
-        for (const s of snapshots) {
-          if (!s || s.ltp === null || s.ltp === undefined) continue;
-          const dateStr = s.fetchedAt ? s.fetchedAt.slice(0, 10) : new Date().toISOString().slice(0, 10);
-          rows.push({
-            symbol: symbol.toUpperCase().trim(),
-            date: dateStr,
-            close: Number(s.ltp),
-            ycp: Number(s.ycp || 0),
-            change: Number(s.change || 0),
-            change_percent: Number(s.changePercent || 0),
-            volume: Number(s.volume || 0),
-            pe: s.pe !== null && s.pe !== undefined ? Number(s.pe) : null
-          });
-        }
-      }
-    }
-
-    if (rows.length > 0) {
-      const seeded = await saveDailyClosingToDB(rows);
-      console.log(`[SQLITE] Seeded ${seeded} historical records into SQLite database.`);
-    }
-  } catch (err) {
-    console.warn('[SQLITE] Seed notice:', err.message);
+// 7. Auto-seed SQLite Database from Master Excel Dataset on startup
+export async function seed20YearFromMasterExcel() {
+  const EXCEL_PATH = path.join(DATA_DIR, 'DSE_20_Year_Master_Dataset_2005_2026.xlsx');
+  if (!fs.existsSync(EXCEL_PATH)) {
+    console.warn('[SQLITE] Master Excel file not found at:', EXCEL_PATH);
+    return;
   }
-}
 
-// 8. Auto-populate 20-Year Historical Archive (2005-2026) on boot if table is empty
-export async function seed20YearHistoricalArchive() {
   try {
-    const row = await dbGet('SELECT COUNT(*) as total FROM price_history');
-    if (row && row.total > 5000) {
-      console.log(`[SQLITE] Database already contains ${row.total} historical records.`);
+    const row = await dbGet('SELECT COUNT(*) as total FROM price_history WHERE date NOT LIKE "%T%" AND date NOT LIKE "%:%"');
+    if (row && row.total > 50000) {
+      console.log(`[SQLITE] Master SQLite Database ready with ${row.total} daily closing records.`);
       return;
     }
 
-    console.log('[SQLITE] Populating 20-Year Historical DSE Database (2005–2026)...');
+    console.log('[SQLITE] Streaming Master Excel dataset into SQLite database (2005–2026)...');
+    await dbRun('PRAGMA synchronous = OFF');
+    await dbRun('PRAGMA journal_mode = MEMORY');
 
-    const SYMBOLS_FILE = path.join(__dirname, 'symbols.json');
-    let symbols = [];
-    try {
-      if (fs.existsSync(SYMBOLS_FILE)) {
-        symbols = JSON.parse(fs.readFileSync(SYMBOLS_FILE, 'utf-8'));
+    const options = { entries: 'emit', sharedStrings: 'cache', worksheets: 'emit' };
+    const workbookReader = new ExcelJS.stream.xlsx.WorkbookReader(EXCEL_PATH, options);
+
+    let priceCount = 0;
+    let dirCount = 0;
+    let kpiCount = 0;
+
+    for await (const worksheetReader of workbookReader) {
+      const sheetName = worksheetReader.name;
+
+      if (sheetName === 'Company_Directory') {
+        await dbRun('BEGIN TRANSACTION');
+        const stmtDir = db.prepare(`
+          INSERT INTO company_fundamentals (symbol, name, sector, category, paid_up_capital_mn, authorized_capital_mn, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+          ON CONFLICT(symbol) DO UPDATE SET
+            name = excluded.name,
+            sector = excluded.sector,
+            category = excluded.category,
+            paid_up_capital_mn = excluded.paid_up_capital_mn,
+            authorized_capital_mn = excluded.authorized_capital_mn,
+            updated_at = datetime('now')
+        `);
+
+        for await (const row of worksheetReader) {
+          if (row.number === 1) continue;
+          const symbol = String(row.values[1] || '').toUpperCase().trim();
+          const name = String(row.values[2] || '');
+          const sector = String(row.values[3] || '');
+          const category = String(row.values[4] || 'A');
+          const paidUp = Number(row.values[7] || 0);
+          const authCap = Number(row.values[8] || 0);
+
+          if (symbol) {
+            stmtDir.run([symbol, name, sector, category, paidUp, authCap]);
+            dirCount++;
+          }
+        }
+        stmtDir.finalize();
+        await dbRun('COMMIT');
+        console.log(`[SQLITE] Seeded ${dirCount} company directory profiles.`);
+      } else if (sheetName === 'Audited_Quarterly_KPIs') {
+        await dbRun('BEGIN TRANSACTION');
+        const stmtKpi = db.prepare(`
+          UPDATE company_fundamentals SET
+            eps_basic = ?,
+            eps_diluted = ?,
+            nav_per_share = ?,
+            dividend_yield = ?,
+            audited_period = ?,
+            quarterly_disclosure = ?,
+            updated_at = datetime('now')
+          WHERE symbol = ?
+        `);
+
+        for await (const row of worksheetReader) {
+          if (row.number === 1) continue;
+          const symbol = String(row.values[1] || '').toUpperCase().trim();
+          const year = Number(row.values[2] || 0);
+          const period = String(row.values[3] || '');
+          const epsBasic = Number(row.values[4] || 0);
+          const epsDiluted = Number(row.values[5] || 0);
+          const navps = Number(row.values[6] || 0);
+          const divYield = Number(row.values[11] || 0);
+
+          if (symbol && (year === 2026 || year === 2025)) {
+            stmtKpi.run([epsBasic, epsDiluted, navps, divYield, `FY${year} ${period}`, period, symbol]);
+            kpiCount++;
+          }
+        }
+        stmtKpi.finalize();
+        await dbRun('COMMIT');
+        console.log(`[SQLITE] Updated ${kpiCount} audited KPI records.`);
+      } else if (sheetName === 'Daily_Price_History') {
+        await dbRun('BEGIN TRANSACTION');
+        const stmtPrice = db.prepare(`
+          INSERT INTO price_history (symbol, date, open, high, low, close, ycp, change, change_percent, volume, pe)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ON CONFLICT(symbol, date) DO UPDATE SET
+            open = excluded.open,
+            high = excluded.high,
+            low = excluded.low,
+            close = excluded.close,
+            ycp = excluded.ycp,
+            change = excluded.change,
+            change_percent = excluded.change_percent,
+            volume = excluded.volume,
+            pe = excluded.pe
+        `);
+
+        for await (const row of worksheetReader) {
+          if (row.number === 1) continue;
+          const symbol = String(row.values[1] || '').toUpperCase().trim();
+          const dateStr = String(row.values[2] || '').slice(0, 10);
+          const open = Number(row.values[3] || 0);
+          const high = Number(row.values[4] || 0);
+          const low = Number(row.values[5] || 0);
+          const close = Number(row.values[6] || 0);
+          const ycp = Number(row.values[7] || 0);
+          const change = Number(row.values[8] || 0);
+          const changePercent = Number(row.values[9] || 0);
+          const volume = Number(row.values[10] || 0);
+          const pe = Number(row.values[11] || 0);
+
+          if (symbol && dateStr && close > 0) {
+            stmtPrice.run([symbol, dateStr, open, high, low, close, ycp, change, changePercent, volume, pe]);
+            priceCount++;
+          }
+        }
+        stmtPrice.finalize();
+        await dbRun('COMMIT');
+        console.log(`[SQLITE] Ingested ${priceCount} daily closing records from Excel.`);
       }
-    } catch (e) {
-      symbols = ['BRACBANK', 'GP', 'SQURPHARMA', 'BATBC', 'LHBL', 'ISLAMIBANK', 'BEXIMCO', 'RENATA', 'OLYMPIC'];
     }
-
-    // Generate intervals
-    const dates = [];
-    const start = new Date('2005-01-01');
-    const end = new Date();
-    const curr = new Date(start);
-    while (curr <= end) {
-      const day = curr.getDay();
-      const year = curr.getFullYear();
-      if (year < 2024) {
-        if (day === 4 || curr.getDate() === 1) dates.push(curr.toISOString().slice(0, 10));
-      } else {
-        if (day >= 0 && day <= 4) dates.push(curr.toISOString().slice(0, 10));
-      }
-      curr.setDate(curr.getDate() + 1);
-    }
-
-    const BASELINES = {
-      'BRACBANK': { ipoYear: 2007, startPrice: 18.0, current: 62.8, pe: 6.37 },
-      'GP': { ipoYear: 2009, startPrice: 120.0, current: 249.8, pe: 12.31 },
-      'SQURPHARMA': { ipoYear: 2005, startPrice: 45.0, current: 215.0, pe: 14.5 },
-      'BATBC': { ipoYear: 2005, startPrice: 50.0, current: 240.8, pe: 11.2 },
-      'LHBL': { ipoYear: 2005, startPrice: 15.0, current: 68.5, pe: 13.8 },
-      'ISLAMIBANK': { ipoYear: 2005, startPrice: 20.0, current: 32.5, pe: 9.1 },
-      'BEXIMCO': { ipoYear: 2005, startPrice: 12.0, current: 25.1, pe: 18.2 },
-      'RENATA': { ipoYear: 2005, startPrice: 180.0, current: 720.0, pe: 19.5 },
-      'OLYMPIC': { ipoYear: 2005, startPrice: 25.0, current: 155.0, pe: 16.0 }
-    };
-
-    await dbRun('BEGIN TRANSACTION');
-    const stmt = db.prepare(`
-      INSERT INTO price_history (symbol, date, close, ycp, change, change_percent, volume, pe)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(symbol, date) DO UPDATE SET
-        close = excluded.close,
-        ycp = excluded.ycp,
-        change = excluded.change,
-        change_percent = excluded.change_percent,
-        volume = excluded.volume,
-        pe = excluded.pe
-    `);
-
-    let count = 0;
-    for (const sym of symbols) {
-      const symbol = sym.toUpperCase().trim();
-      const cfg = BASELINES[symbol] || {
-        ipoYear: 2005 + (symbol.charCodeAt(0) % 15),
-        startPrice: 10 + (symbol.charCodeAt(symbol.length - 1) % 40),
-        current: 20 + (symbol.charCodeAt(0) % 100),
-        pe: 8 + (symbol.charCodeAt(0) % 15)
-      };
-
-      const eligibleDates = dates.filter(d => parseInt(d.slice(0, 4), 10) >= cfg.ipoYear);
-      if (eligibleDates.length === 0) continue;
-
-      let currentP = cfg.startPrice;
-      const priceStep = (cfg.current - cfg.startPrice) / eligibleDates.length;
-
-      for (let i = 0; i < eligibleDates.length; i++) {
-        const d = eligibleDates[i];
-        const noise = (Math.sin(i * 0.1) * 0.03) + ((Math.random() - 0.48) * 0.02);
-        currentP = Math.max(1.0, currentP + priceStep + (currentP * noise));
-        if (i === eligibleDates.length - 1) currentP = cfg.current;
-
-        const close = Number(currentP.toFixed(2));
-        const ycp = Number((close / (1 + noise)).toFixed(2));
-        const change = Number((close - ycp).toFixed(2));
-        const change_percent = Number(((change / ycp) * 100).toFixed(2));
-        const volume = Math.floor(25000 + Math.random() * 500000);
-        const pe = Number((cfg.pe * (0.85 + (Math.sin(i * 0.05) * 0.25))).toFixed(2));
-
-        stmt.run([symbol, d, close, ycp, change, change_percent, volume, pe]);
-        count++;
-      }
-    }
-
-    stmt.finalize();
-    await dbRun('COMMIT');
-    console.log(`[SQLITE] 20-Year Archive populated: ${count} daily records seeded.`);
   } catch (err) {
-    await dbRun('ROLLBACK').catch(() => {});
-    console.warn('[SQLITE] 20-Year Archive seed error:', err.message);
+    console.error('[SQLITE] Master Excel seeding error:', err.message);
   }
 }
 
-// Initialize tables and historical archive immediately
+// Clean old corrupted snapshot data and initialize
 initDB()
-  .then(() => seed20YearHistoricalArchive())
+  .then(async () => {
+    await dbRun(`DELETE FROM price_history WHERE date LIKE '%T%' OR date LIKE '%:%'`).catch(() => {});
+    await seed20YearFromMasterExcel();
+  })
   .catch(e => console.error('[SQLITE] Init error:', e.message));
 
 export default db;

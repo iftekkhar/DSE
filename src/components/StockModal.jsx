@@ -67,13 +67,16 @@ export default function StockModal({
     const seenDates = new Set();
     const fullTimeline = [];
     for (const pt of rawTimeline) {
-      const dStr = String(pt.rawDate || pt.timestamp || '').slice(0, 10);
-      if (dStr && !seenDates.has(dStr)) {
+      const dStr = String(pt.rawDate || pt.timestamp || pt.fetchedAt || '').slice(0, 10);
+      const price = Number(pt.price ?? pt.ltp ?? pt.close ?? 0);
+      if (dStr && price > 0 && !seenDates.has(dStr)) {
         seenDates.add(dStr);
         fullTimeline.push({
           ...pt,
           rawDate: dStr,
           timestamp: dStr,
+          price: price,
+          volume: Number(pt.volume || 0),
           dateObj: new Date(dStr)
         });
       }
@@ -91,7 +94,7 @@ export default function StockModal({
       ? fullTimeline
       : fullTimeline.filter(pt => pt.rawDate >= cutoffStr);
 
-    if (!slice || slice.length === 0) {
+    if (!slice || slice.length < Math.min(5, fullTimeline.length)) {
       slice = fullTimeline.slice(-currentCfg.limit);
     }
 
