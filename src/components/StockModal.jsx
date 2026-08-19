@@ -9,13 +9,13 @@ import { getFallbackTag } from '../services/dseData';
 import { KPI_DESCRIPTIONS } from '../config/criteria';
 
 const TIME_RANGES = [
-  { id: '7D', label: '7D', fullLabel: 'Last 7 Days (Closing Balance)', limit: 7 },
-  { id: '1M', label: '1M', fullLabel: '1 Month', limit: 30 },
-  { id: '3M', label: '3M', fullLabel: '3 Months', limit: 90 },
-  { id: '6M', label: '6M', fullLabel: '6 Months', limit: 180 },
-  { id: '1Y', label: '1Y', fullLabel: '1 Year', limit: 365 },
-  { id: '5Y', label: '5Y', fullLabel: '5 Years', limit: 1825 },
-  { id: '20Y', label: '20Y', fullLabel: '20 Years (All Archive)', limit: 7500 }
+  { id: '7D', label: '7D', fullLabel: 'Last 7 Days (Closing Balance)', days: 7, limit: 7 },
+  { id: '1M', label: '1M', fullLabel: '1 Month', days: 30, limit: 30 },
+  { id: '3M', label: '3M', fullLabel: '3 Months', days: 90, limit: 90 },
+  { id: '6M', label: '6M', fullLabel: '6 Months', days: 180, limit: 180 },
+  { id: '1Y', label: '1Y', fullLabel: '1 Year', days: 365, limit: 365 },
+  { id: '5Y', label: '5Y', fullLabel: '5 Years', days: 1825, limit: 1825 },
+  { id: '20Y', label: '20Y', fullLabel: '20 Years (All Archive)', days: 7500, limit: 7500 }
 ];
 
 export default function StockModal({
@@ -45,19 +45,31 @@ export default function StockModal({
   }, [stock?.symbol]);
 
   // Compute filtered timeline data for chart & performance metrics
-  const { chartData, metrics, totalHistoryCount } = useMemo(() => {
+  const { chartData, metrics } = useMemo(() => {
     const fullTimeline = generateHistoryData(stock, savedHistory);
 
     if (!fullTimeline || fullTimeline.length === 0) {
       const fallback = stock?.ltp !== null && stock?.ltp !== undefined
         ? [{ day: 'Latest Close', price: stock.ltp, volume: stock.volume || 0 }]
         : [];
-      return { chartData: fallback, metrics: null, totalHistoryCount: 0 };
+      return { chartData: fallback, metrics: null };
     }
 
     const currentCfg = TIME_RANGES.find(r => r.id === timeRange) || TIME_RANGES[0];
-    let slice = fullTimeline.slice(-currentCfg.limit);
-    if (slice.length === 0) slice = fullTimeline;
+
+    // Filter by calendar cutoff date for accurate real-world timeframes
+    const now = new Date();
+    const cutoff = new Date(now);
+    cutoff.setDate(cutoff.getDate() - currentCfg.days);
+    const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+    let slice = timeRange === '20Y'
+      ? fullTimeline
+      : fullTimeline.filter(pt => (pt.rawDate || (pt.timestamp ? pt.timestamp.slice(0, 10) : '')) >= cutoffStr);
+
+    if (!slice || slice.length === 0) {
+      slice = fullTimeline.slice(-currentCfg.limit);
+    }
 
     // Calculate metrics on the full slice
     const startP = slice[0]?.price || 0;
@@ -68,18 +80,37 @@ export default function StockModal({
     const highP = Math.max(...allPrices);
     const lowP = Math.min(...allPrices);
 
-    // Downsample if more than 70 data points for silky-smooth SVG rendering
-    let displayPoints = slice;
-    if (slice.length > 70) {
-      const step = Math.ceil(slice.length / 70);
-      displayPoints = [];
+    // Downsample if more than 60 data points for silky-smooth SVG rendering
+    let displaySlice = slice;
+    if (slice.length > 60) {
+      const step = Math.ceil(slice.length / 60);
+      displaySlice = [];
       for (let i = 0; i < slice.length; i += step) {
-        displayPoints.push(slice[i]);
+        displaySlice.push(slice[i]);
       }
-      if (displayPoints[displayPoints.length - 1] !== slice[slice.length - 1]) {
-        displayPoints.push(slice[slice.length - 1]);
+      if (displaySlice[displaySlice.length - 1] !== slice[slice.length - 1]) {
+        displaySlice.push(slice[slice.length - 1]);
       }
     }
+
+    // Format tick labels based on active time range
+    const displayPoints = displaySlice.map((pt) => {
+      const dObj = pt.dateObj || new Date(pt.rawDate || pt.timestamp);
+      let dayLabel = pt.day;
+      if (timeRange === '7D') {
+        dayLabel = dObj.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric' });
+      } else if (timeRange === '1M' || timeRange === '3M') {
+        dayLabel = dObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      } else if (timeRange === '6M' || timeRange === '1Y') {
+        dayLabel = dObj.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+      } else {
+        dayLabel = dObj.toLocaleDateString('en-US', { year: 'numeric' });
+      }
+      return {
+        ...pt,
+        day: dayLabel
+      };
+    });
 
     return {
       chartData: displayPoints,
