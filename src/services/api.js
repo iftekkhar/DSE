@@ -447,3 +447,10 @@ export const exportToCSV = (stocks, filename = 'dse-analytics-export.csv') => {
   link.click();
   document.body.removeChild(link);
 };
+
+// Download Historical Data in Excel (.xlsx) format from SQLite
+export const downloadExcel = (symbol = 'ALL') => {
+  const url = `${API_BASE}/api/export/excel?symbol=${encodeURIComponent(symbol)}`;
+  window.open(url, '_blank');
+};
+

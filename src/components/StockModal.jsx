@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import {
   X, Star, CheckCircle2, AlertTriangle, XCircle,
-  Sparkles, Scale, Info, Activity, Clock
+  Sparkles, Scale, Info, Activity, Clock, FileSpreadsheet
 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { generateHistoryData, fetchStockHistory } from '../services/api';
+import { generateHistoryData, fetchStockHistory, downloadExcel } from '../services/api';
 import { getFallbackTag } from '../services/dseData';
 import { KPI_DESCRIPTIONS } from '../config/criteria';
 
@@ -269,7 +269,17 @@ export default function StockModal({
                   </span>
                 )}
               </div>
-              <span className="text-[10px] text-slate-400 font-mono">BDT</span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => downloadExcel(stock.symbol)}
+                  className="flex items-center gap-1 text-[10px] bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded border border-emerald-300 transition-colors shadow-xs"
+                  title="Download company 20-year history in Excel (.xlsx)"
+                >
+                  <FileSpreadsheet className="w-3 h-3 text-emerald-600" />
+                  <span>Export Excel</span>
+                </button>
+                <span className="text-[10px] text-slate-400 font-mono">BDT</span>
+              </div>
             </div>
 
             {loadingHistory ? (

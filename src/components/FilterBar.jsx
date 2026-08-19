@@ -1,5 +1,6 @@
-import { Download, Grid, List, ArrowUpDown, Filter } from 'lucide-react';
+import { Download, Grid, List, ArrowUpDown, Filter, FileSpreadsheet } from 'lucide-react';
 import { DSE_SECTORS } from '../services/dseData';
+import { downloadExcel } from '../services/api';
 
 export default function FilterBar({
   activeTab,
@@ -112,11 +113,21 @@ export default function FilterBar({
           </button>
         </div>
 
+        {/* Export Excel (.xlsx) */}
+        <button
+          onClick={() => downloadExcel('ALL')}
+          className="flex items-center gap-1.5 px-2.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold rounded-xl border border-emerald-200 transition-all text-xs shadow-xs"
+          title="Download SQLite Historical Data in Excel (.xlsx)"
+        >
+          <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
+          <span className="hidden sm:inline">Export Excel</span>
+        </button>
+
         {/* Export CSV */}
         <button
           onClick={onExportCSV}
           className="p-1.5 bg-slate-50 hover:bg-slate-100 text-slate-600 rounded-xl border border-slate-200 transition-colors"
-          title="Export to CSV"
+          title="Export Table to CSV"
         >
           <Download className="w-3.5 h-3.5 text-slate-500" />
         </button>
