@@ -363,13 +363,16 @@ export const fetchDSEData = async () => {
 // Fetch real history timeline saved in the backend for a specific symbol
 export const fetchStockHistory = async (symbol) => {
   try {
-    const res = await axios.get(`${HISTORY_URL}/${symbol}`, { timeout: 5000 });
+    const res = await axios.get(`${HISTORY_URL}/${symbol}?limit=7500`, { timeout: 10000 });
     if (res.data && Array.isArray(res.data.history) && res.data.history.length > 0) {
       return res.data.history.map((pt, idx) => {
+        const dateStr = pt.fetchedAt ? pt.fetchedAt.slice(0, 10) : '';
         const dateObj = pt.fetchedAt ? new Date(pt.fetchedAt) : new Date();
-        const label = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        const label = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' });
         return {
           day: label || `Snapshot ${idx + 1}`,
+          rawDate: dateStr,
+          dateObj: dateObj,
           price: pt.ltp,
           volume: pt.volume || 0,
           timestamp: pt.fetchedAt,

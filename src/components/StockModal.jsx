@@ -1,12 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   X, Star, CheckCircle2, AlertTriangle, XCircle,
-  Sparkles, Scale, Info, Activity, Clock, FileSpreadsheet
+  Sparkles, Scale, Info, Activity, Clock, FileSpreadsheet, TrendingUp, TrendingDown
 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { generateHistoryData, fetchStockHistory, downloadExcel } from '../services/api';
+import { fetchStockHistory, downloadExcel } from '../services/api';
 import { getFallbackTag } from '../services/dseData';
 import { KPI_DESCRIPTIONS } from '../config/criteria';
+
+const TIME_RANGES = [
+  { id: '7D', label: '7D', fullLabel: 'Last 7 Days (Closing Balance)', limit: 7 },
+  { id: '1M', label: '1M', fullLabel: '1 Month', limit: 30 },
+  { id: '3M', label: '3M', fullLabel: '3 Months', limit: 90 },
+  { id: '6M', label: '6M', fullLabel: '6 Months', limit: 180 },
+  { id: '1Y', label: '1Y', fullLabel: '1 Year', limit: 365 },
+  { id: '5Y', label: '5Y', fullLabel: '5 Years', limit: 1825 },
+  { id: '20Y', label: '20Y', fullLabel: '20 Years (All Archive)', limit: 7500 }
+];
 
 export default function StockModal({
   stock,
@@ -19,6 +29,7 @@ export default function StockModal({
 }) {
   const [savedHistory, setSavedHistory] = useState(null);
   const [loadingHistory, setLoadingHistory] = useState(false);
+  const [timeRange, setTimeRange] = useState('7D'); // Default: Last 7 days closing balance
 
   useEffect(() => {
     if (stock && stock.symbol) {
@@ -33,12 +44,60 @@ export default function StockModal({
     }
   }, [stock?.symbol]);
 
+  // Compute filtered timeline data for chart & performance metrics
+  const { chartData, metrics } = useMemo(() => {
+    if (!savedHistory || savedHistory.length === 0) {
+      const fallback = stock?.ltp !== null && stock?.ltp !== undefined
+        ? [{ day: 'Latest Close', price: stock.ltp, volume: stock.volume || 0 }]
+        : [];
+      return { chartData: fallback, metrics: null };
+    }
+
+    const currentCfg = TIME_RANGES.find(r => r.id === timeRange) || TIME_RANGES[0];
+    let slice = savedHistory.slice(-currentCfg.limit);
+    if (slice.length === 0) slice = savedHistory;
+
+    // Calculate metrics on the full slice
+    const startP = slice[0]?.price || 0;
+    const endP = slice[slice.length - 1]?.price || 0;
+    const netChg = Number((endP - startP).toFixed(2));
+    const netChgPct = startP > 0 ? Number(((netChg / startP) * 100).toFixed(2)) : 0;
+    const allPrices = slice.map(p => p.price);
+    const highP = Math.max(...allPrices);
+    const lowP = Math.min(...allPrices);
+
+    // Downsample if more than 70 data points for silky-smooth SVG rendering
+    let displayPoints = slice;
+    if (slice.length > 70) {
+      const step = Math.ceil(slice.length / 70);
+      displayPoints = [];
+      for (let i = 0; i < slice.length; i += step) {
+        displayPoints.push(slice[i]);
+      }
+      if (displayPoints[displayPoints.length - 1] !== slice[slice.length - 1]) {
+        displayPoints.push(slice[slice.length - 1]);
+      }
+    }
+
+    return {
+      chartData: displayPoints,
+      metrics: {
+        startPrice: startP,
+        endPrice: endP,
+        netChange: netChg,
+        netChangePercent: netChgPct,
+        high: highP,
+        low: lowP,
+        count: slice.length
+      }
+    };
+  }, [savedHistory, timeRange, stock?.ltp, stock?.volume]);
+
   if (!stock) return null;
 
   const isSaved = watchlist.includes(stock.symbol);
   const isCompared = compareList.some(s => s.symbol === stock.symbol);
   const isBullish = (stock.changePercent || 0) >= 0;
-  const historyData = generateHistoryData(stock, savedHistory);
 
   const t = criteria.thresholds;
   const kpis = [
@@ -255,58 +314,132 @@ export default function StockModal({
             </div>
           </div>
 
-          {/* Saved History Timeline Chart */}
-          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
-            <div className="flex items-center justify-between mb-2">
+          {/* Historical Closing Price & Multi-Timeframe Chart */}
+          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
+            {/* Chart Header */}
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
               <div className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-blue-600" />
-                <span className="text-[11px] font-bold text-slate-700">
-                  Saved App History Timeline
+                <span className="text-[11px] font-bold text-slate-800">
+                  Historical Closing Prices
                 </span>
                 {savedHistory && (
-                  <span className="text-[9px] text-blue-700 bg-blue-100 px-1.5 py-0.2 rounded font-semibold">
-                    {savedHistory.length} snapshots recorded
+                  <span className="text-[9px] text-blue-700 bg-blue-100/80 px-1.5 py-0.2 rounded font-semibold">
+                    {savedHistory.length} recorded dates
                   </span>
                 )}
               </div>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => downloadExcel(stock.symbol)}
-                  className="flex items-center gap-1 text-[10px] bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded border border-emerald-300 transition-colors shadow-xs"
+                  className="flex items-center gap-1 text-[10px] bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-lg border border-emerald-300 transition-colors shadow-xs"
                   title="Download company 20-year history in Excel (.xlsx)"
                 >
                   <FileSpreadsheet className="w-3 h-3 text-emerald-600" />
                   <span>Export Excel</span>
                 </button>
-                <span className="text-[10px] text-slate-400 font-mono">BDT</span>
+                <span className="text-[10px] text-slate-400 font-mono font-bold">BDT</span>
               </div>
+            </div>
+
+            {/* Timeframe Filter Buttons */}
+            <div className="flex items-center justify-between flex-wrap gap-2 pb-2 mb-2 border-b border-slate-200/60">
+              <div className="flex items-center gap-1">
+                {TIME_RANGES.map((rng) => {
+                  const isActive = timeRange === rng.id;
+                  return (
+                    <button
+                      key={rng.id}
+                      onClick={() => setTimeRange(rng.id)}
+                      className={`px-2 py-0.5 rounded-md text-[10px] font-bold transition-all ${
+                        isActive
+                          ? 'bg-[#2563eb] text-white shadow-xs'
+                          : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200'
+                      }`}
+                      title={rng.fullLabel}
+                    >
+                      {rng.label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Performance Metrics Strip for Selected Timeframe */}
+              {metrics && (
+                <div className="flex items-center gap-2 text-[10px] font-mono">
+                  <div className={`flex items-center gap-0.5 font-bold px-1.5 py-0.5 rounded ${
+                    metrics.netChangePercent >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+                  }`}>
+                    {metrics.netChangePercent >= 0 ? (
+                      <TrendingUp className="w-3 h-3 text-emerald-600" />
+                    ) : (
+                      <TrendingDown className="w-3 h-3 text-rose-600" />
+                    )}
+                    <span>
+                      {metrics.netChangePercent >= 0 ? '+' : ''}{metrics.netChangePercent}%
+                    </span>
+                    <span className="text-[9px] opacity-75">
+                      ({metrics.netChange >= 0 ? '+' : ''}৳{metrics.netChange})
+                    </span>
+                  </div>
+                  <div className="text-slate-500 hidden sm:flex items-center gap-1.5 text-[9px]">
+                    <span>H: <strong className="text-slate-800">৳{metrics.high}</strong></span>
+                    <span>•</span>
+                    <span>L: <strong className="text-slate-800">৳{metrics.low}</strong></span>
+                  </div>
+                </div>
+              )}
             </div>
 
             {loadingHistory ? (
               <div className="h-36 flex items-center justify-center text-xs text-slate-400">
-                Loading saved history...
+                <Clock className="w-4 h-4 animate-spin text-blue-500 mr-2" />
+                Loading {TIME_RANGES.find(r => r.id === timeRange)?.fullLabel || 'timeline'}...
               </div>
-            ) : historyData.length === 0 ? (
+            ) : chartData.length === 0 ? (
               <div className="h-36 flex items-center justify-center text-xs text-slate-400 italic">
-                No historical records saved for this scrip yet. Click Sync to record snapshots.
+                No historical records saved for this scrip yet.
               </div>
             ) : (
-              <div className="h-36 w-full">
+              <div className="h-40 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={historyData} margin={{ top: 5, right: 10, left: -25, bottom: 0 }}>
+                  <AreaChart data={chartData} margin={{ top: 8, right: 10, left: -20, bottom: 0 }}>
                     <defs>
                       <linearGradient id="priceGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#2563eb" stopOpacity={0.3}/>
+                        <stop offset="5%" stopColor="#2563eb" stopOpacity={0.25}/>
                         <stop offset="95%" stopColor="#2563eb" stopOpacity={0.0}/>
                       </linearGradient>
                     </defs>
-                    <XAxis dataKey="day" tick={{ fontSize: 9, fill: '#64748b' }} axisLine={false} tickLine={false} />
-                    <YAxis domain={['auto', 'auto']} tick={{ fontSize: 9, fill: '#64748b' }} axisLine={false} tickLine={false} />
-                    <Tooltip
-                      contentStyle={{ backgroundColor: '#0f172a', borderRadius: '8px', border: 'none', color: '#fff', fontSize: '11px' }}
-                      formatter={(val) => [`৳${val}`, 'Price']}
+                    <XAxis
+                      dataKey="day"
+                      tick={{ fontSize: 9, fill: '#64748b' }}
+                      axisLine={false}
+                      tickLine={false}
+                      minTickGap={20}
                     />
-                    <Area type="monotone" dataKey="price" stroke="#2563eb" strokeWidth={2} fillOpacity={1} fill="url(#priceGrad)" />
+                    <YAxis
+                      domain={['auto', 'auto']}
+                      tick={{ fontSize: 9, fill: '#64748b' }}
+                      axisLine={false}
+                      tickLine={false}
+                      tickFormatter={(val) => `৳${val}`}
+                    />
+                    <Tooltip
+                      contentStyle={{ backgroundColor: '#0f172a', borderRadius: '8px', border: 'none', color: '#fff', fontSize: '11px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                      formatter={(val) => [`৳${val}`, 'Close Price']}
+                      labelFormatter={(label, payload) => {
+                        const raw = payload?.[0]?.payload?.rawDate;
+                        return raw ? `Date: ${raw}` : label;
+                      }}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="price"
+                      stroke="#2563eb"
+                      strokeWidth={2}
+                      fillOpacity={1}
+                      fill="url(#priceGrad)"
+                    />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>

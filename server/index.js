@@ -428,8 +428,9 @@ app.get('/api/fundamentals', async (req, res) => {
 // Fetch Historical Timeline Strictly from SQLite
 app.get('/api/history/:symbol', async (req, res) => {
   const sym = req.params.symbol;
+  const limit = parseInt(req.query.limit || '7500', 10);
   try {
-    const rows = await getHistoricalTimeline(sym, 365);
+    const rows = await getHistoricalTimeline(sym, limit);
     res.json({ symbol: sym, history: rows });
   } catch (err) {
     res.json({ symbol: sym, history: [] });
