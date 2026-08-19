@@ -163,12 +163,12 @@ export default function StockModal({
   const kpis = [
     {
       key: 'pe',
-      label: 'P/E Multiple',
+      label: 'Daily P/E',
       period: `Daily: ${dateLabel}`,
       value: stock.pe !== null && stock.pe !== undefined ? `${stock.pe}x` : 'Not Available live',
       threshold: `< ${t.pe}x`,
       passed: stock.pe !== null && stock.pe !== undefined ? stock.pe < t.pe : false,
-      info: KPI_DESCRIPTIONS.pe
+      info: 'Daily Closing P/E calculated from the latest daily settlement price divided by trailing/annualized EPS.'
     },
     {
       key: 'roe',
@@ -348,7 +348,7 @@ export default function StockModal({
           <div>
             <h3 className="font-display text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
               <Activity className="w-3.5 h-3.5 text-[#2563eb]" />
-              7-Point Fundamental Matrix
+              7-Point Fundamental Matrix (Daily Closing P/E: {stock.pe}x)
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {kpis.map((kpi) => (
@@ -391,24 +391,34 @@ export default function StockModal({
                 Settlement Date: <strong className="text-slate-800">{dateLabel}</strong>
               </span>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-xs">
+              <div className="p-2 rounded-lg bg-white border border-slate-200/80">
+                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Audited P/E</span>
+                <span className="font-mono font-bold text-emerald-800 text-sm">{stock.auditedPe || stock.pe}x</span>
+                <span className="text-[8px] text-emerald-700 block mt-0.5">{auditedYear}</span>
+              </div>
+              <div className="p-2 rounded-lg bg-white border border-slate-200/80">
+                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Audited EPS</span>
+                <span className="font-mono font-bold text-slate-900 text-sm">৳{stock.eps ? stock.eps.toFixed(2) : 'N/A'}</span>
+                <span className="text-[8px] text-slate-500 block mt-0.5">{auditedYear}</span>
+              </div>
               <div className="p-2 rounded-lg bg-white border border-slate-200/80">
                 <span className="text-[9.5px] text-slate-400 font-bold uppercase block">NAV per Share</span>
-                <span className="font-mono font-bold text-slate-900">৳{stock.navPerShare ? stock.navPerShare.toFixed(2) : 'N/A'}</span>
+                <span className="font-mono font-bold text-slate-900 text-sm">৳{stock.navPerShare ? stock.navPerShare.toFixed(2) : 'N/A'}</span>
                 <span className="text-[8px] text-emerald-700 block mt-0.5">{auditedYear}</span>
               </div>
               <div className="p-2 rounded-lg bg-white border border-slate-200/80">
                 <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Paid-Up Capital</span>
-                <span className="font-mono font-bold text-slate-900">৳{stock.paidUpCapital ? `${stock.paidUpCapital.toLocaleString()} Mn` : 'N/A'}</span>
-                <span className="text-[8px] text-slate-400 block mt-0.5">Authorized: ৳{stock.authorizedCapital ? `${stock.authorizedCapital.toLocaleString()} Mn` : 'N/A'}</span>
+                <span className="font-mono font-bold text-slate-900">৳{stock.paidUpCapital ? `${stock.paidUpCapital.toLocaleString()}M` : 'N/A'}</span>
+                <span className="text-[8px] text-slate-400 block mt-0.5">Auth: ৳{stock.authorizedCapital ? `${stock.authorizedCapital.toLocaleString()}M` : 'N/A'}</span>
               </div>
               <div className="p-2 rounded-lg bg-white border border-slate-200/80">
-                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Market Capitalization</span>
-                <span className="font-mono font-bold text-slate-900">৳{stock.marketCap ? `${stock.marketCap.toLocaleString()} Mn` : 'N/A'}</span>
+                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Market Cap</span>
+                <span className="font-mono font-bold text-slate-900">৳{stock.marketCap ? `${stock.marketCap.toLocaleString()}M` : 'N/A'}</span>
                 <span className="text-[8px] text-blue-700 block mt-0.5">As of {dateLabel}</span>
               </div>
               <div className="p-2 rounded-lg bg-white border border-slate-200/80">
-                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Cash Dividend Yield</span>
+                <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Dividend Yield</span>
                 <span className="font-mono font-bold text-slate-900">{stock.dividendYield ? `${stock.dividendYield}%` : '4.15%'}</span>
                 <span className="text-[8px] text-amber-700 block mt-0.5">{auditedYear}</span>
               </div>
@@ -428,11 +438,11 @@ export default function StockModal({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[10.5px] text-slate-600 leading-snug">
                 <div className="bg-white p-2 rounded border border-blue-100">
                   <strong className="text-blue-950 block mb-0.5">📊 Daily Closing P/E ({stock.pe}x)</strong>
-                  <span>Calculated from today's closing settlement (৳{stock.ltp !== null ? stock.ltp.toFixed(2) : '—'}) ÷ running EPS (৳{stock.eps}). Fluctuates each trading session with market price changes.</span>
+                  <span>Calculated from today's closing settlement (৳{stock.ltp !== null ? stock.ltp.toFixed(2) : '—'}) ÷ running EPS (৳{stock.eps}). Fluctuates each trading session with market price changes. Evaluated in the 7-Point Matrix.</span>
                 </div>
                 <div className="bg-white p-2 rounded border border-blue-100">
-                  <strong className="text-emerald-950 block mb-0.5">🏛️ Audited P/E ({stock.auditedPe || stock.pe}x)</strong>
-                  <span>Calculated against official annual audited financial statements ({auditedPeriod}). Removes short-term volatility to reflect fundamental corporate earning power.</span>
+                  <strong className="text-emerald-950 block mb-0.5">🏛️ Audited Statement P/E ({stock.auditedPe || stock.pe}x)</strong>
+                  <span>Calculated against official annual audited financial statements ({auditedPeriod}). Removes short-term market volatility to reflect fundamental corporate earning power.</span>
                 </div>
               </div>
             </div>
