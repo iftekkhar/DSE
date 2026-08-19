@@ -1,38 +1,107 @@
-// Default scoring thresholds and weights for verdict computation
-export const defaultCriteria = {
-  thresholds: {
-    pe: 15,            // P/E below this is considered undervalued
-    roe: 15,           // ROE above this is considered good
-    momentum: 1.5,     // % change threshold for positive momentum
-    debtToEquity: 0.6, // below this considered low leverage
-    currentRatio: 1.2, // above this considered healthy liquidity
-    eps: 2,            // EPS above this considered healthy
-    volume: 1000       // trading volume above this considered active
+// Configurable KPI Scoring Presets & Explanations
+
+export const STRATEGY_PRESETS = [
+  {
+    id: "balanced",
+    name: "🎯 DSE Balanced (Standard)",
+    description: "Well-rounded criteria balancing reasonable valuation, capital returns, and low debt.",
+    thresholds: {
+      pe: 15,
+      roe: 15,
+      momentum: 1.0,
+      debtToEquity: 0.60,
+      currentRatio: 1.20,
+      eps: 2.0,
+      volume: 10000
+    }
   },
-  weights: {
-    // kept for backward-compatibility but scoring is now 1 point per KPI in the UI logic
-    pe: 1,
-    roe: 1,
-    momentum: 1,
-    debtToEquity: 1,
-    currentRatio: 1,
-    eps: 1,
-    volume: 1
+  {
+    id: "value",
+    name: "🏛️ Warren Buffett Deep Value",
+    description: "Focus on deeply undervalued bargains with fortress balance sheets and high ROE.",
+    thresholds: {
+      pe: 12,
+      roe: 18,
+      momentum: -0.5,
+      debtToEquity: 0.40,
+      currentRatio: 1.40,
+      eps: 3.5,
+      volume: 25000
+    }
   },
-  // Descriptions shown in tooltips for KPI cards
-  descriptions: {
-    pe: 'Price-to-Earnings ratio. Lower often indicates undervaluation compared to peers.',
-    roe: 'Return on Equity. Higher values indicate efficient use of shareholder capital.',
-    momentum: 'Short-term price momentum (percentage change). Positive values indicate upward movement.',
-    debtToEquity: 'Debt-to-Equity ratio. Lower values mean lower leverage and financial risk.',
-    currentRatio: 'Current ratio (current assets / current liabilities). Higher values indicate better short-term liquidity.',
-    eps: 'Earnings per share. Higher EPS generally indicates better profitability.',
-    volume: 'Trading volume. Higher volume implies better liquidity and easier execution.'
+  {
+    id: "growth",
+    name: "🚀 High Growth & Momentum",
+    description: "Targets aggressive price velocity, strong earnings per share expansion, and high liquidity.",
+    thresholds: {
+      pe: 22,
+      roe: 14,
+      momentum: 2.5,
+      debtToEquity: 0.70,
+      currentRatio: 1.10,
+      eps: 4.0,
+      volume: 100000
+    }
   },
-  // status color classes used throughout the app for consistency
-  statusClasses: {
-    pass: 'text-emerald-600',   // green
-    fail: 'text-rose-600',      // red
-    neutral: 'text-amber-600'   // yellow
+  {
+    id: "defensive",
+    name: "🛡️ Capital Preservation",
+    description: "Ultra-conservative criteria prioritizing zero debt stress, high liquidity buffer, and steady EPS.",
+    thresholds: {
+      pe: 14,
+      roe: 12,
+      momentum: 0.0,
+      debtToEquity: 0.35,
+      currentRatio: 1.60,
+      eps: 2.5,
+      volume: 15000
+    }
+  }
+];
+
+export const defaultCriteria = STRATEGY_PRESETS[0];
+
+export const KPI_DESCRIPTIONS = {
+  pe: {
+    title: "Price-to-Earnings (P/E)",
+    rule: "Lower is Better (< threshold)",
+    unit: "x",
+    explanation: "Compares the stock's current share price to its annual per-share earnings. A low P/E suggests the stock may be undervalued relative to its earning power."
+  },
+  roe: {
+    title: "Return on Equity (ROE)",
+    rule: "Higher is Better (> threshold)",
+    unit: "%",
+    explanation: "Measures how efficiently management uses shareholder capital to generate profits. A high ROE (>15%) indicates a strong competitive advantage."
+  },
+  momentum: {
+    title: "Daily Price Momentum",
+    rule: "Higher is Better (> threshold)",
+    unit: "%",
+    explanation: "Percentage price change over recent trading sessions. Positive momentum indicates active accumulation and buying volume."
+  },
+  debtToEquity: {
+    title: "Debt-to-Equity Ratio",
+    rule: "Lower is Better (< threshold)",
+    unit: "",
+    explanation: "Total debt divided by total shareholder equity. Lower values (<0.5) denote a solid balance sheet with minimal risk from interest burdens."
+  },
+  currentRatio: {
+    title: "Current Liquidity Ratio",
+    rule: "Higher is Better (> threshold)",
+    unit: "x",
+    explanation: "Measures ability to pay short-term obligations (Current Assets / Current Liabilities). Ratios above 1.2 indicate healthy cash flow and working capital."
+  },
+  eps: {
+    title: "Earnings Per Share (EPS)",
+    rule: "Higher is Better (> threshold)",
+    unit: "BDT",
+    explanation: "Net profit generated per outstanding share. High and growing EPS fuels dividend payouts and capital appreciation."
+  },
+  volume: {
+    title: "Trading Volume",
+    rule: "Higher is Better (> threshold)",
+    unit: "shares",
+    explanation: "Number of shares traded. High volume ensures liquidity, narrow bid-ask spreads, and effortless entry and exit for investors."
   }
 };

@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "node server/index.js",
     "dev": "vite",
     "build": "vite build",
+    "render-build": "npm install && npm run build",
     "lint": "eslint .",
     "preview": "vite preview",
     "scraper-server": "node server/index.js"

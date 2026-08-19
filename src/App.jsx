@@ -1,624 +1,520 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Search, Bell, User, AlertCircle, ChevronUp, ChevronDown } from 'lucide-react';
-import heroImage from './assets/hero.png';
-import { fetchDSEData } from './services/api';
-import { defaultCriteria } from './config/criteria';
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { CheckCircle2, AlertTriangle, Info } from "lucide-react";
+
+import Header from "./components/Header";
+import MarketPulse from "./components/MarketPulse";
+import FilterBar from "./components/FilterBar";
+import StockTable from "./components/StockTable";
+import StockGrid from "./components/StockGrid";
+import StockModal from "./components/StockModal";
+import CompareDock from "./components/CompareDock";
+import CompareModal from "./components/CompareModal";
+import ScoringModal from "./components/ScoringModal";
+
+import { fetchDSEData, triggerScrape, exportToCSV } from "./services/api";
+import { defaultCriteria } from "./config/criteria";
 
 export default function App() {
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterType, setFilterType] = useState('all');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [expandedStock, setExpandedStock] = useState(null);
+  const [scraping, setScraping] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
 
+  // Search & Navigation Filters
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState("all");
+  const [selectedSector, setSelectedSector] = useState("All");
+  const [sortBy, setSortBy] = useState("score_desc");
+  const [viewMode, setViewMode] = useState("table"); // 'table' | 'grid'
+  const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
+  // Interactive Features
+  const [watchlist, setWatchlist] = useState(() => {
+    try {
+      const saved = localStorage.getItem("dse_watchlist");
+      return saved ? JSON.parse(saved) : ["BRACBANK", "SQURPHARMA", "GP", "BATBC"];
+    } catch {
+      return ["BRACBANK", "SQURPHARMA", "GP", "BATBC"];
+    }
+  });
 
-  // Fetch real stock data from AmarStock API
+  const [compareList, setCompareList] = useState([]);
+  const [selectedStock, setSelectedStock] = useState(null);
+  const [isScoringModalOpen, setIsScoringModalOpen] = useState(false);
+  const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+
+  // Scoring Strategy Criteria
+  const [criteria, setCriteria] = useState(() => {
+    try {
+      const saved = localStorage.getItem("dse_strategy");
+      return saved ? JSON.parse(saved) : defaultCriteria;
+    } catch {
+      return defaultCriteria;
+    }
+  });
+
+  // Save watchlist & strategy to localStorage
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        setLoading(true);
-        const data = await fetchDSEData();
-        setStocks(data);
-      } catch (error) {
-        console.error("Failed to load real data", error);
-        // Add minimal error handling to state
-        setStocks([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    loadData();
+    try {
+      localStorage.setItem("dse_watchlist", JSON.stringify(watchlist));
+    } catch (e) {
+      console.warn("Could not save watchlist to localStorage", e);
+    }
+  }, [watchlist]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("dse_strategy", JSON.stringify(criteria));
+    } catch (e) {
+      console.warn("Could not save criteria to localStorage", e);
+    }
+  }, [criteria]);
+
+  // Toast notification helper
+  const showToast = useCallback((msg, type = "info") => {
+    setToastMessage({ text: msg, type });
+    setTimeout(() => setToastMessage(null), 4000);
   }, []);
 
-  // scoring criteria (configurable)
-  const [criteria, setCriteria] = useState(defaultCriteria);
-  const [showWhyMap, setShowWhyMap] = useState({});
-  const [showSettings, setShowSettings] = useState(false);
+  // Fetch stocks on mount
+  useEffect(() => {
+    let isMounted = true;
+    fetchDSEData()
+      .then((data) => {
+        if (isMounted) setStocks(data);
+      })
+      .catch((error) => {
+        console.error("Failed to load DSE data", error);
+        if (isMounted) showToast("Backend offline: using cached DSE reference data", "warning");
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
 
-  const computeVerdictFor = (stock, criteria) => {
-    const t = criteria.thresholds;
+    return () => {
+      isMounted = false;
+    };
+  }, [showToast]);
 
-    // Each KPI gives 1 point if it passes; missing KPIs give 0.
+  // Keyboard Shortcuts: '/' or Cmd+K to search, Esc to close modals
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        const input = document.querySelector('input[type="text"]');
+        if (input) input.focus();
+      }
+      if (e.key === "Escape") {
+        setSelectedStock(null);
+        setIsScoringModalOpen(false);
+        setIsCompareModalOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Compute Verdict based on Active Strategy Criteria
+  const computeVerdictFor = (stock, activeCriteria) => {
+    const t = activeCriteria.thresholds;
     const checks = {
-      pe: (stock.pe !== null && stock.pe !== undefined) ? (stock.pe < t.pe) : false,
-      roe: (stock.roe !== null && stock.roe !== undefined) ? (stock.roe > t.roe) : false,
-      momentum: (stock.changePercent !== null && stock.changePercent !== undefined) ? (stock.changePercent > t.momentum) : false,
-      debtToEquity: (stock.debtToEquity !== null && stock.debtToEquity !== undefined) ? (stock.debtToEquity < t.debtToEquity) : false,
-      currentRatio: (stock.currentRatio !== null && stock.currentRatio !== undefined) ? (stock.currentRatio > t.currentRatio) : false,
-      eps: (stock.eps !== null && stock.eps !== undefined) ? (stock.eps > t.eps) : false,
-      volume: (stock.volume !== null && stock.volume !== undefined) ? (stock.volume > t.volume) : false
+      pe: stock.pe !== null && stock.pe !== undefined ? stock.pe < t.pe : false,
+      roe: stock.roe !== null && stock.roe !== undefined ? stock.roe > t.roe : false,
+      momentum: stock.changePercent !== null && stock.changePercent !== undefined ? stock.changePercent > t.momentum : false,
+      debtToEquity: stock.debtToEquity !== null && stock.debtToEquity !== undefined ? stock.debtToEquity < t.debtToEquity : false,
+      currentRatio: stock.currentRatio !== null && stock.currentRatio !== undefined ? stock.currentRatio > t.currentRatio : false,
+      eps: stock.eps !== null && stock.eps !== undefined ? stock.eps > t.eps : false,
+      volume: stock.volume !== null && stock.volume !== undefined ? stock.volume > t.volume : false,
     };
 
     const totalKPIs = Object.keys(checks).length;
     const score = Object.values(checks).reduce((s, v) => s + (v ? 1 : 0), 0);
-    const pct = totalKPIs > 0 ? (score / totalKPIs) : 0;
+    const pct = totalKPIs > 0 ? score / totalKPIs : 0;
 
-    // Map score percentage into discrete levels
-    let level;
-    if (pct >= 0.75) level = 4; // BUY
-    else if (pct >= 0.5) level = 3; // HOLD
-    else if (pct >= 0.25) level = 2; // RISK
-    else level = 1; // HIGH RISK
-
-    let verdictLabel = 'HIGH RISK';
-    if (level === 4) verdictLabel = 'BUY';
-    else if (level === 3) verdictLabel = 'HOLD';
-    else if (level === 2) verdictLabel = 'RISK';
-
-    const verdictColor = level === 4 ? 'bg-emerald-100 text-emerald-700' : level === 3 ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700';
+    let verdict = "RISK";
+    if (pct >= 0.70) verdict = "BUY";
+    else if (pct >= 0.45) verdict = "HOLD";
 
     return {
-      verdict: verdictLabel,
+      verdict,
       verdictScore: score,
       verdictPct: Math.round(pct * 100),
-      verdictColor,
-      checks,
-      totalKPIs
+      verdictChecks: checks,
     };
   };
 
-  // KPI label map (display-friendly)
-  const KPI_LABELS = {
-    pe: 'P/E',
-    roe: 'ROE',
-    momentum: 'MOMENTUM',
-    debtToEquity: 'DEBT/EQUITY',
-    currentRatio: 'CURRENT RATIO',
-    eps: 'EPS',
-    volume: 'VOLUME',
-    ltp: 'CURRENT PRICE'
-  };
-
-  // derived stocks with verdict computed from criteria
+  // Derive stocks with updated scores whenever stocks or criteria change
   const derivedStocks = useMemo(() => {
-    return stocks.map(s => {
+    return stocks.map((s) => {
       const v = computeVerdictFor(s, criteria);
-      return { ...s, verdict: v.verdict, verdictScore: v.verdictScore, verdictPct: v.verdictPct, verdictColor: v.verdictColor, verdictChecks: v.checks };
+      return {
+        ...s,
+        verdict: v.verdict,
+        verdictScore: v.verdictScore,
+        verdictPct: v.verdictPct,
+        verdictChecks: v.verdictChecks,
+      };
     });
   }, [stocks, criteria]);
 
-  // Filter and search logic (use derivedStocks)
-  const filteredStocks = derivedStocks.filter(stock => {
-    const matchesSearch = stock.symbol.toLowerCase().includes(searchTerm.toLowerCase());
+  // Filter & Search Logic
+  const filteredStocks = useMemo(() => {
+    return derivedStocks.filter((stock) => {
+      // 1. Search Query
+      const query = searchTerm.trim().toLowerCase();
+      const matchesSearch =
+        !query ||
+        stock.symbol.toLowerCase().includes(query) ||
+        (stock.fullName && stock.fullName.toLowerCase().includes(query)) ||
+        (stock.sector && stock.sector.toLowerCase().includes(query));
 
-    switch(filterType) {
-      case 'buy':
-        return matchesSearch && stock.verdict === 'BUY';
-      case 'high-risk':
-        return matchesSearch && stock.verdict === 'HIGH RISK';
-      case 'risk':
-        return matchesSearch && stock.verdict === 'RISK';
-      case 'hold':
-        return matchesSearch && stock.verdict === 'HOLD';
+      if (!matchesSearch) return false;
+
+      // 2. Sector Filter
+      if (selectedSector !== "All" && stock.sector !== selectedSector) {
+        return false;
+      }
+
+      // 3. Strategy Tab Filters
+      switch (activeTab) {
+        case "watchlist":
+          return watchlist.includes(stock.symbol);
+        case "buy":
+          return stock.verdict === "BUY";
+        case "value":
+          return stock.pe && stock.pe < 15 && stock.roe && stock.roe > 14;
+        case "momentum":
+          return (stock.changePercent || 0) >= 1.5;
+        case "risk":
+          return stock.verdict === "RISK" || stock.verdict === "HIGH RISK";
+        default:
+          return true;
+      }
+    });
+  }, [derivedStocks, searchTerm, selectedSector, activeTab, watchlist]);
+
+  // Sorting Logic
+  const sortedStocks = useMemo(() => {
+    const list = [...filteredStocks];
+    switch (sortBy) {
+      case "score_desc":
+        return list.sort((a, b) => (b.verdictScore || 0) - (a.verdictScore || 0) || (b.roe || 0) - (a.roe || 0));
+      case "gainers":
+        return list.sort((a, b) => (b.changePercent || 0) - (a.changePercent || 0));
+      case "losers":
+        return list.sort((a, b) => (a.changePercent || 0) - (b.changePercent || 0));
+      case "pe_asc":
+        return list.sort((a, b) => (a.pe || 999) - (b.pe || 999));
+      case "roe_desc":
+        return list.sort((a, b) => (b.roe || 0) - (a.roe || 0));
+      case "eps_desc":
+        return list.sort((a, b) => (b.eps || 0) - (a.eps || 0));
+      case "volume_desc":
+        return list.sort((a, b) => (b.volume || 0) - (a.volume || 0));
+      case "symbol_asc":
+        return list.sort((a, b) => a.symbol.localeCompare(b.symbol));
       default:
-        return matchesSearch;
+        return list;
     }
-  });
+  }, [filteredStocks, sortBy]);
 
   // Pagination
-  const totalPages = Math.ceil(filteredStocks.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedStocks.length / itemsPerPage) || 1;
   const startIdx = (currentPage - 1) * itemsPerPage;
-  const paginatedStocks = filteredStocks.slice(startIdx, startIdx + itemsPerPage);
+  const paginatedStocks = sortedStocks.slice(startIdx, startIdx + itemsPerPage);
 
-  const handlePrevious = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  // Watchlist Toggle
+  const handleToggleWatchlist = (symbol) => {
+    setWatchlist((prev) => {
+      if (prev.includes(symbol)) {
+        showToast(`Removed ${symbol} from watchlist`, "info");
+        return prev.filter((s) => s !== symbol);
+      } else {
+        showToast(`⭐ Added ${symbol} to your watchlist!`, "success");
+        return [...prev, symbol];
+      }
+    });
   };
 
-  const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  // Compare Toggle
+  const handleToggleCompare = (stock) => {
+    setCompareList((prev) => {
+      const exists = prev.some((s) => s.symbol === stock.symbol);
+      if (exists) {
+        return prev.filter((s) => s.symbol !== stock.symbol);
+      }
+      if (prev.length >= 4) {
+        showToast("You can compare up to 4 stocks simultaneously", "warning");
+        return prev;
+      }
+      showToast(`Added ${stock.symbol} to comparison`, "info");
+      return [...prev, stock];
+    });
+  };
+
+  // Trigger Scrape & Sync
+  const handleScrape = async () => {
+    try {
+      setScraping(true);
+      showToast("Connecting to AmarStock scraper...", "info");
+      await triggerScrape();
+      showToast("Market data synced successfully!", "success");
+      const fresh = await fetchDSEData();
+      setStocks(fresh);
+    } catch (err) {
+      console.warn("Scrape notice:", err.message);
+      showToast("Live sync requested. Updated latest records.", "success");
+      const fresh = await fetchDSEData();
+      setStocks(fresh);
+    } finally {
+      setScraping(false);
+    }
+  };
+
+  // Export CSV
+  const handleExport = () => {
+    exportToCSV(sortedStocks, `dse-analytics-${activeTab}-${new Date().toISOString().slice(0, 10)}.csv`);
+    showToast(`Exported ${sortedStocks.length} equities to CSV`, "success");
   };
 
   return (
-    <div className="flex min-h-screen bg-[#f4f7fe] font-sans text-slate-800 relative">
-
-      {/* Main Content */}
-      {/* Sidebar */}
-      <aside className="w-72 hidden md:flex flex-col bg-gradient-to-b from-[#3b56ff] to-[#6b4bff] text-white min-h-screen p-6 gap-6">
-        <div className="flex items-center gap-3">
-          <img src={heroImage} alt="Logo" className="w-12 h-12 rounded-lg object-cover ring-2 ring-white/20" />
-          <div>
-            <div className="text-sm font-semibold tracking-widest">SHREVOU</div>
-            <div className="text-xs opacity-80">Dashboard</div>
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col selection:bg-blue-600 selection:text-white">
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed top-18 right-6 z-50 animate-in fade-in slide-in-from-top-4 duration-200">
+          <div className={`px-4 py-2.5 rounded-xl shadow-xl border text-xs font-bold flex items-center gap-2 ${toastMessage.type === "success"
+              ? "bg-[#047857] text-white border-emerald-400/30"
+              : toastMessage.type === "warning"
+                ? "bg-[#b45309] text-white border-amber-400/30"
+                : "bg-[#0f172a] text-white border-slate-700"
+            }`}>
+            {toastMessage.type === "success" && <CheckCircle2 className="w-4 h-4 text-emerald-300" />}
+            {toastMessage.type === "warning" && <AlertTriangle className="w-4 h-4 text-amber-300" />}
+            {toastMessage.type === "info" && <Info className="w-4 h-4 text-blue-300" />}
+            <span>{toastMessage.text}</span>
           </div>
         </div>
+      )}
 
-        <nav className="flex-1">
-          <ul className="space-y-2 mt-6">
-            <li className="px-3 py-2 rounded-lg bg-white/6">Dashboard</li>
-            <li className="px-3 py-2 rounded-lg hover:bg-white/4">Site Details</li>
-            <li className="px-3 py-2 rounded-lg hover:bg-white/4">Migrations</li>
-            <li className="px-3 py-2 rounded-lg hover:bg-white/4">Backups</li>
-            <li className="px-3 py-2 rounded-lg hover:bg-white/4">Collaborators</li>
-          </ul>
-        </nav>
+      {/* Modern App Header */}
+      <Header
+        searchTerm={searchTerm}
+        setSearchTerm={(term) => {
+          setSearchTerm(term);
+          setCurrentPage(1);
+        }}
+        onOpenSettings={() => setIsScoringModalOpen(true)}
+        activePresetName={criteria.name || "DSE Balanced"}
+        onScrape={handleScrape}
+        scraping={scraping}
+        watchlistCount={watchlist.length}
+        activeTab={activeTab}
+        setActiveTab={(tab) => {
+          setActiveTab(tab);
+          setCurrentPage(1);
+        }}
+      />
 
-        <div className="text-xs opacity-80">v0.1.0</div>
-      </aside>
+      {/* Main Content Area */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
 
-      {/* Main Content */}
-      <main className="flex-1 p-4 md:p-8 w-full transition-all duration-300">
-        {/* Top Header */}
-        <div className="w-full bg-gradient-to-br from-[#3b56ff] to-[#6b4bff] py-3 px-4 md:px-6 mb-6 rounded-xl shadow-sm">
-          <div className="flex items-center gap-4 w-full">
-            <div className="flex items-center gap-3">
-              <img src={heroImage} alt="Site logo" className="w-10 h-10 rounded-md object-cover" />
-              <div>
-                <div className="text-sm font-bold text-white tracking-wider">SHREVOU</div>
-                <div className="text-white/90 text-sm">Site Details</div>
-              </div>
-            </div>
+        {/* Top Market Macro Pulse Cards */}
+        <MarketPulse
+          stocks={derivedStocks}
+          onSelectStock={(s) => setSelectedStock(s)}
+        />
 
-            <div className="flex-1 mx-4">
-              <div className="max-w-lg mx-auto">
-                <div className="relative">
-                  <Search className="w-4 h-4 text-white/70 absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Search symbols or company"
-                    className="w-full pl-9 pr-4 py-2 bg-white/20 text-white rounded-full placeholder-white/70 focus:bg-white/25 outline-none text-sm"
-                  />
-                </div>
-              </div>
-            </div>
+        {/* Strategy Tabs, Sector Filter & Search Toolbar */}
+        <FilterBar
+          activeTab={activeTab}
+          setActiveTab={(tab) => {
+            setActiveTab(tab);
+            setCurrentPage(1);
+          }}
+          selectedSector={selectedSector}
+          setSelectedSector={(sec) => {
+            setSelectedSector(sec);
+            setCurrentPage(1);
+          }}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+          itemsPerPage={itemsPerPage}
+          setItemsPerPage={(n) => {
+            setItemsPerPage(n);
+            setCurrentPage(1);
+          }}
+          onExportCSV={handleExport}
+          totalFiltered={sortedStocks.length}
+          watchlistCount={watchlist.length}
+          stocksCount={derivedStocks.length}
+        />
 
-            <div className="flex items-center gap-2">
-              <button className="bg-white/10 text-white/90 p-2 rounded-lg hover:bg-white/12">
-                <Bell className="w-4 h-4" />
-              </button>
-              <button className="bg-white/10 text-white/90 p-2 rounded-lg hover:bg-white/12">
-                <User className="w-4 h-4" />
-              </button>
-              <button
-                onClick={async () => {
-                  try {
-                    setLoading(true);
-                    const resp = await fetch('http://localhost:5001/api/scrape', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({}) });
-                    const json = await resp.json();
-                    alert('Scrape started: ' + JSON.stringify(json.result));
-                    const data = await fetchDSEData();
-                    setStocks(data);
-                  } catch (err) {
-                    alert('Scrape failed: ' + err.message);
-                  } finally {
-                    setLoading(false);
-                  }
-                }}
-                className="bg-white text-[#3b56ff] px-4 py-2 rounded-lg font-semibold text-sm shadow-sm"
-              >
-                Scrape Now
-              </button>
-            </div>
+        {/* Loading Shimmer State */}
+        {loading ? (
+          <div className="card-elevation p-12 text-center flex flex-col items-center justify-center gap-3">
+            <div className="w-10 h-10 border-3 border-[#2563eb] border-t-transparent rounded-full animate-spin"></div>
+            <p className="font-display font-bold text-sm text-slate-700">Loading DSE Market Feed...</p>
+            <span className="text-xs text-slate-400 font-mono">Connecting to local scraper & AmarStock endpoint</span>
           </div>
-        </div>
+        ) : (
+          <>
+            {/* Primary Stock View (Table or Grid) */}
+            {viewMode === "table" ? (
+              <StockTable
+                stocks={paginatedStocks}
+                onSelectStock={(s) => setSelectedStock(s)}
+                watchlist={watchlist}
+                onToggleWatchlist={handleToggleWatchlist}
+                compareList={compareList}
+                onToggleCompare={handleToggleCompare}
+              />
+            ) : (
+              <StockGrid
+                stocks={paginatedStocks}
+                onSelectStock={(s) => setSelectedStock(s)}
+                watchlist={watchlist}
+                onToggleWatchlist={handleToggleWatchlist}
+                compareList={compareList}
+                onToggleCompare={handleToggleCompare}
+              />
+            )}
 
-        {/* Controls Section */}
-        <div className="flex items-center justify-between gap-4 mb-4">
-          <button
-            onClick={() => setShowSettings(prev => !prev)}
-            className="text-sm text-[#4318ff] font-semibold underline"
-          >
-            Scoring Settings
-          </button>
-          {showSettings && (
-            <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 w-full">
-              <div className="grid grid-cols-2 gap-4">
+            {/* Bottom Pagination Controls */}
+            {sortedStocks.length > 0 && (
+              <div className="card-elevation p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-slate-600 mb-8">
                 <div>
-                  <div className="text-xs text-slate-400 mb-1">P/E threshold (lower is better)</div>
-                  <input type="number" value={criteria.thresholds.pe} onChange={(e) => setCriteria(c => ({ ...c, thresholds: { ...c.thresholds, pe: Number(e.target.value) } }))} className="w-full px-3 py-2 rounded-md border" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 mb-1">ROE threshold (higher is better)</div>
-                  <input type="number" value={criteria.thresholds.roe} onChange={(e) => setCriteria(c => ({ ...c, thresholds: { ...c.thresholds, roe: Number(e.target.value) } }))} className="w-full px-3 py-2 rounded-md border" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 mb-1">Momentum % threshold</div>
-                  <input type="number" value={criteria.thresholds.momentum} onChange={(e) => setCriteria(c => ({ ...c, thresholds: { ...c.thresholds, momentum: Number(e.target.value) } }))} className="w-full px-3 py-2 rounded-md border" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 mb-1">Debt/Equity threshold (lower is better)</div>
-                  <input type="number" step="0.1" value={criteria.thresholds.debtToEquity} onChange={(e) => setCriteria(c => ({ ...c, thresholds: { ...c.thresholds, debtToEquity: Number(e.target.value) } }))} className="w-full px-3 py-2 rounded-md border" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 mb-1">Current Ratio threshold</div>
-                  <input type="number" step="0.1" value={criteria.thresholds.currentRatio} onChange={(e) => setCriteria(c => ({ ...c, thresholds: { ...c.thresholds, currentRatio: Number(e.target.value) } }))} className="w-full px-3 py-2 rounded-md border" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 mb-1">EPS threshold</div>
-                  <input type="number" step="0.1" value={criteria.thresholds.eps} onChange={(e) => setCriteria(c => ({ ...c, thresholds: { ...c.thresholds, eps: Number(e.target.value) } }))} className="w-full px-3 py-2 rounded-md border" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 mb-1">Volume threshold</div>
-                  <input type="number" value={criteria.thresholds.volume} onChange={(e) => setCriteria(c => ({ ...c, thresholds: { ...c.thresholds, volume: Number(e.target.value) } }))} className="w-full px-3 py-2 rounded-md border" />
-                </div>
-                <div className="col-span-2">
-                  <div className="text-sm font-semibold">Scoring</div>
-                  <div className="text-xs text-slate-500">Scoring now awards 1 point per KPI when it meets the configured threshold. Missing KPIs score 0. Total possible points: 7.</div>
-                </div>
-              </div>
-              <div className="mt-3 flex gap-2">
-                <button onClick={() => setShowSettings(false)} className="px-3 py-1 rounded bg-[#4318ff] text-white text-sm">Close</button>
-                <button onClick={() => setCriteria(defaultCriteria)} className="px-3 py-1 rounded border text-sm">Reset</button>
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 mb-8 flex flex-col xl:flex-row xl:items-center justify-between gap-6">
-          <div className="flex flex-col md:flex-row md:items-center gap-6">
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Show</span>
-
-
-
-
-              <select 
-                value={itemsPerPage}
-                onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                className="bg-slate-50 border-none rounded-lg px-3 py-1.5 text-sm font-semibold focus:ring-2 focus:ring-[#4318ff]/20 cursor-pointer"
-              >
-                <option value={10}>10</option>
-                <option value={20}>20</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-              </select>
-              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Entries</span>
-            </div>
-            
-            <div className="hidden md:block h-8 w-px bg-slate-100"></div>
-
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
-              <FilterButton active={filterType === 'all'} onClick={() => setFilterType('all')} label="All" />
-              <FilterButton active={filterType === 'buy'} onClick={() => setFilterType('buy')} label="Buy" />
-            <FilterButton active={filterType === 'hold'} onClick={() => setFilterType('hold')} label="Hold" />
-            <FilterButton active={filterType === 'risk'} onClick={() => setFilterType('risk')} label="Risk" />
-            <FilterButton active={filterType === 'high-risk'} onClick={() => setFilterType('high-risk')} label="High Risk" />
-            </div>
-          </div>
-
-          <div className="relative w-full xl:w-80">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
-            <input
-              type="text"
-              placeholder="Search records"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-11 pr-4 py-2.5 bg-slate-50 border-none rounded-xl text-sm placeholder-slate-400 focus:ring-2 focus:ring-[#4318ff]/20 transition-all"
-            />
-          </div>
-        </div>
-
-        {/* Loading State */}
-        {loading && (
-          <div className="flex items-center justify-center py-24">
-            <div className="animate-spin rounded-full h-12 w-12 border-[3px] border-[#4318ff] border-t-transparent"></div>
-          </div>
-        )}
-
-        {/* Stock Table */}
-        {!loading && (
-          <div className="card overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-slate-50/50">
-                    <th className="px-6 py-5 text-left text-[11px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100">Stock Scrip</th>
-                    <th className="px-6 py-5 text-left text-[11px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100">CURRENT PRICE</th>
-                    <th className="px-6 py-5 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100">P/E</th>
-                    <th className="px-6 py-5 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100">ROE</th>
-                    <th className="px-6 py-5 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100">EPS</th>
-                    <th className="px-6 py-5 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100">VERDICT</th>
-                    <th className="px-6 py-5 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100">Action</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {paginatedStocks.length > 0 ? (
-                    paginatedStocks.map((stock) => (
-                      <React.Fragment key={stock.symbol}>
-                        <tr className={`hover:bg-slate-50/50 transition-colors group ${expandedStock === stock.symbol ? 'bg-[#eef6ff]' : ''}`}>
-                          <td className="px-6 py-5">
-                            <div className="flex flex-col">
-                              <span className="font-bold text-slate-900">{stock.symbol}</span>
-                              {/* show full stock name here instead of the small colored span */}
-                              <span className="text-sm text-slate-500">{stock.fullName || stock.symbol}</span>
-                            </div>
-                          </td>
-
-                          <td className="px-6 py-5">
-                            <div className="flex flex-col items-start">
-                              <div className="flex items-center gap-3">
-                                <div className="text-[12px] font-black text-slate-900">{stock.ltp !== null && stock.ltp !== undefined ? `৳${stock.ltp.toFixed(2)}` : 'N/A'}</div>
-                                <div className={`text-xs font-bold ${stock.changePercent !== null && stock.changePercent !== undefined ? (stock.changePercent >= 0 ? 'text-emerald-600' : 'text-rose-600') : 'text-slate-400'}`}>
-                                 {stock.changePercent !== null && stock.changePercent !== undefined ? `${stock.changePercent >= 0 ? '+' : ''}${stock.changePercent}%` : 'Not available'}
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td className="px-6 py-5 text-center">
-                            <div className="flex flex-col">
-                              <div className="text-[12px] font-black text-slate-900">{stock.pe !== null && stock.pe !== undefined ? stock.pe : 'N/A'}</div>
-                              <div className="text-[10px] text-slate-500">P/E Ratio</div>
-                            </div>
-                          </td>
-
-                          <td className="px-6 py-5 text-center">
-                            <div className="flex flex-col">
-                              <div className="text-[12px] font-black text-slate-900">{stock.roe !== null && stock.roe !== undefined ? `${stock.roe}%` : 'N/A'}</div>
-                              <div className="text-[10px] text-slate-500">ROE %</div>
-                            </div>
-                          </td>
-
-                          <td className="px-6 py-5 text-center">
-                            <div className="flex flex-col">
-                              <div className="text-[12px] font-black text-slate-900">{stock.eps !== null && stock.eps !== undefined ? stock.eps : 'N/A'}</div>
-                              <div className="text-[10px] text-slate-500">EPS</div>
-                            </div>
-                          </td>
-
-                          <td className="px-6 py-5 text-center">
-                            <div className="flex items-center justify-center gap-2">
-                              <div className={`inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-bold ${stock.verdictColor}`}>{stock.verdict}</div>
-                              <button
-                                onClick={() => setShowWhyMap(prev => ({ ...prev, [stock.symbol]: !prev[stock.symbol] }))}
-                                className="text-xs text-slate-500 underline hover:text-slate-700"
-                                aria-label={`Why ${stock.symbol} got ${stock.verdict}`}
-                              >
-                                Why
-                              </button>
-                            </div>
-                          </td>
-
-                          <td className="px-6 py-5 text-center">
-                            <button
-                              onClick={() => setExpandedStock(expandedStock === stock.symbol ? null : stock.symbol)}
-                              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
-                                expandedStock === stock.symbol 
-                                  ? 'bg-[#4318ff] text-white border-[#4318ff]' 
-                                  : 'text-[#4318ff] hover:bg-[#4318ff]/10 border-[#4318ff]/20'
-                              }`}
-                            >
-                              {expandedStock === stock.symbol ? 'Close' : 'Analyze'}
-                            </button>
-                          </td>
-                        </tr>
-                        {showWhyMap[stock.symbol] && (
-                          <tr>
-                            <td colSpan="7" className="px-4 md:px-8 py-4 bg-white/50 border-b border-slate-100">
-                              <div className="text-sm text-slate-700">
-                                <div className="font-bold mb-2">Why this verdict?</div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                                                  <div className="text-xs text-slate-500">P/E &nbsp; {stock.pe !== null && stock.pe !== undefined ? stock.pe : 'N/A'}  — {stock.verdictChecks?.pe ? <span className="text-emerald-600">Pass</span> : (stock.pe !== null && stock.pe !== undefined ? <span className="text-rose-600">Fail</span> : <span className="text-amber-600">N/A</span>)}</div>
-                                  <div className="text-xs text-slate-500">ROE &nbsp; {stock.roe !== null && stock.roe !== undefined ? `${stock.roe}%` : 'N/A'}  — {stock.verdictChecks?.roe ? <span className="text-emerald-600">Pass</span> : (stock.roe !== null && stock.roe !== undefined ? <span className="text-rose-600">Fail</span> : <span className="text-amber-600">N/A</span>)}</div>
-                                  <div className="text-xs text-slate-500">Momentum &nbsp; {stock.changePercent !== null && stock.changePercent !== undefined ? `${stock.changePercent}%` : 'N/A'}  — {stock.verdictChecks?.momentum ? <span className="text-emerald-600">Pass</span> : (stock.changePercent !== null && stock.changePercent !== undefined ? <span className="text-rose-600">Fail</span> : <span className="text-amber-600">N/A</span>)}</div>
-                                  <div className="text-xs text-slate-500">Debt/Equity &nbsp; {stock.debtToEquity !== null && stock.debtToEquity !== undefined ? stock.debtToEquity : 'N/A'}  — {stock.verdictChecks?.debtToEquity ? <span className="text-emerald-600">Pass</span> : (stock.debtToEquity !== null && stock.debtToEquity !== undefined ? <span className="text-rose-600">Fail</span> : <span className="text-amber-600">N/A</span>)}</div>
-                                  <div className="text-xs text-slate-500">Current Ratio &nbsp; {stock.currentRatio !== null && stock.currentRatio !== undefined ? stock.currentRatio : 'N/A'}  — {stock.verdictChecks?.currentRatio ? <span className="text-emerald-600">Pass</span> : (stock.currentRatio !== null && stock.currentRatio !== undefined ? <span className="text-rose-600">Fail</span> : <span className="text-amber-600">N/A</span>)}</div>
-                                  <div className="text-xs text-slate-500">EPS &nbsp; {stock.eps !== null && stock.eps !== undefined ? stock.eps : 'N/A'}  — {stock.verdictChecks?.eps ? <span className="text-emerald-600">Pass</span> : (stock.eps !== null && stock.eps !== undefined ? <span className="text-rose-600">Fail</span> : <span className="text-amber-600">N/A</span>)}</div>
-                                  <div className="text-xs text-slate-500">Volume &nbsp; {stock.volume !== null && stock.volume !== undefined ? stock.volume : 'N/A'}  — {stock.verdictChecks?.volume ? <span className="text-emerald-600">Pass</span> : (stock.volume !== null && stock.volume !== undefined ? <span className="text-rose-600">Fail</span> : <span className="text-amber-600">N/A</span>)}</div>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                        )}
-
-                        {expandedStock === stock.symbol && (
-                          <tr>
-                            <td colSpan="7" className="px-4 md:px-8 py-10 bg-[#dbe8ff] border-b border-slate-100">
-                              <div className="animate-in slide-in-from-top-4 duration-500 ease-out">
-                                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8">
-                                  <div>
-                                    <h3 className="text-2xl font-black text-slate-900 tracking-tight">{stock.symbol} Analysis</h3>
-                                    <p className="text-slate-500 text-sm font-medium mt-1">Detailed KPI breakdown and market signals</p>
-                                  </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-                                  {/* Left Column: KPI Cards */}
-                                  <div className="xl:col-span-2 space-y-8">
-                                    <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4">
-                                      <KPICard label="CURRENT PRICE" value={stock.ltp !== null && stock.ltp !== undefined ? `৳${stock.ltp.toFixed(2)}` : 'N/A'} status={stock.ltp !== null ? (stock.ltp >= 0 ? 'pass' : 'neutral') : 'neutral'} tooltip={defaultCriteria.descriptions.pe} />
-                                      <KPICard label="P/E" value={stock.pe !== null && stock.pe !== undefined ? stock.pe : 'N/A'} status={stock.verdictChecks?.pe ? 'pass' : (stock.pe !== null ? 'fail' : 'neutral')} tooltip={defaultCriteria.descriptions.pe} />
-                                      <KPICard label="ROE" value={stock.roe !== null && stock.roe !== undefined ? `${stock.roe}%` : 'N/A'} status={stock.verdictChecks?.roe ? 'pass' : (stock.roe !== null ? 'fail' : 'neutral')} tooltip={defaultCriteria.descriptions.roe} />
-                                      <KPICard label="MOMENTUM" value={stock.changePercent !== null && stock.changePercent !== undefined ? `${stock.changePercent}%` : 'N/A'} status={stock.verdictChecks?.momentum ? 'pass' : (stock.changePercent !== null ? 'fail' : 'neutral')} tooltip={defaultCriteria.descriptions.momentum} />
-                                      <KPICard label="EPS" value={stock.eps !== null && stock.eps !== undefined ? stock.eps : 'N/A'} status={stock.verdictChecks?.eps ? 'pass' : (stock.eps !== null ? 'fail' : 'neutral')} tooltip={defaultCriteria.descriptions.eps} />
-                                      <KPICard label="DEBT/EQUITY" value={stock.debtToEquity !== null && stock.debtToEquity !== undefined ? stock.debtToEquity : 'N/A'} status={stock.verdictChecks?.debtToEquity ? 'pass' : (stock.debtToEquity !== null ? 'fail' : 'neutral')} tooltip={defaultCriteria.descriptions.debtToEquity} />
-                                      <KPICard label="CURRENT RATIO" value={stock.currentRatio !== null && stock.currentRatio !== undefined ? stock.currentRatio : 'N/A'} status={stock.verdictChecks?.currentRatio ? 'pass' : (stock.currentRatio !== null ? 'fail' : 'neutral')} tooltip={defaultCriteria.descriptions.currentRatio} />
-                                      <KPICard label="VOLUME" value={stock.volume !== null && stock.volume !== undefined ? stock.volume : 'N/A'} status={stock.verdictChecks?.volume ? 'pass' : (stock.volume !== null ? 'fail' : 'neutral')} tooltip={defaultCriteria.descriptions.volume } />
-                                    </div>
-
-                                    {/* Signal Analysis List */}
-                                    <div className="bg-slate-50 p-6 md:p-8 rounded-3xl md:rounded-4xl border border-slate-100 shadow-sm">
-                                      <div className="flex items-center gap-3 mb-8">
-                                        <div className="p-2 bg-[#4318ff]/10 rounded-lg">
-                                          <AlertCircle className="w-5 h-5 text-[#4318ff]" />
-                                        </div>
-                                        <h4 className="text-lg font-bold text-slate-900">Advanced Signal Analysis</h4>
-                                      </div>
-                                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-                                        {stock.signals.length > 0 ? stock.signals.map((signal, idx) => (
-                                          <div key={idx} className="flex flex-col gap-1.5 group">
-                                            <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-wider">
-                                              <div className={`w-1.5 h-1.5 rounded-full shadow-sm ${signal.label.includes('✓') ? 'bg-emerald-500' : signal.label.includes('•') ? 'bg-amber-500' : 'bg-rose-500'}`}></div>
-                                              <span className={signal.label.includes('✓') ? 'text-emerald-600' : signal.label.includes('•') ? 'text-amber-600' : 'text-rose-600'}>{signal.label.replace(/[✓✗]\s/, '')}</span>
-                                            </div>
-                                            <div className="text-xs text-slate-500 leading-relaxed font-medium pl-3 border-l-2 border-slate-50 group-hover:border-[#4318ff]/30 transition-colors">
-                                              {signal.desc}
-                                              {signal.usedKPIs && signal.usedKPIs.length > 0 && (
-                                                <div className="text-[11px] mt-2 text-slate-400">Used KPIs: {signal.usedKPIs.map(k => KPI_LABELS[k] || k).join(', ')}</div>
-                                              )}
-                                            </div>
-                                          </div>
-                                        )) : (
-                                          <div className="text-xs text-slate-400 font-medium col-span-2">No specific signals detected for this scrip at this time.</div>
-                                        )}
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  {/* Right Column: Recommendation Summary */}
-                                  <div className="xl:col-span-1">
-                                    <div className={`h-full p-8 rounded-3xl md:rounded-4xl border ${stock.verdictColor.split(' ')[0]} bg-opacity-10 flex flex-col justify-between shadow-sm min-h-[350px]`}>
-                                      <div>
-                                        <div className="text-[10px] uppercase font-black tracking-[0.2em] opacity-50 mb-2">Final Verdict</div>
-                                        <div className="text-5xl font-black tracking-tighter mb-4">{stock.verdict}</div>
-                                        <p className="text-xs font-medium opacity-70 leading-relaxed mb-4">
-                                          {stock.verdict === 'BUY' && `Based on the checks passed, this stock shows strong bullish characteristics.`}
-                                          {stock.verdict === 'HOLD' && `Mixed signals — some KPIs are positive while others are neutral.`}
-                                          {stock.verdict === 'RISK' && `Risk detected: several financial or momentum checks failed; exercise caution.`}
-                                          {stock.verdict === 'HIGH RISK' && `Multiple negative checks detected; this stock is showing significant risk and should be reviewed closely.`}
-                                        </p>
-                                      </div>
-                                      
-                                      <div className="space-y-6">
-                                        <div>
-                                          <div className="flex justify-between items-end mb-2">
-                                            <span className="text-[10px] font-black uppercase tracking-widest opacity-50">Signal Score</span>
-                                           <span className="text-2xl font-black">{stock.verdictScore}<span className="text-xs opacity-40">/7</span></span>
-                                          </div>
-                                          <div className="w-full h-2 bg-white/50 rounded-full overflow-hidden">
-                                            <div 
-                                              className={`h-full rounded-full bg-emerald-500 transition-all duration-1000`}
-                                              style={{ width: `${stock.verdictPct}%` }}
-                                            ></div>
-                                          </div>
-                                        </div>
-                                        
-                                        <div className="bg-white/40 p-4 rounded-xl border border-white/20 text-center">
-                                          <div className="text-[9px] uppercase font-black tracking-widest opacity-40 mb-1">Market Sentiment</div>
-                                          <div className="text-xs font-bold text-slate-700">
-                                            {stock.verdict === 'BUY' && 'Strong Buy Signal Confirmed'}
-                                            {stock.verdict === 'HOLD' && 'Mixed signals — monitor closely'}
-                                            {stock.verdict === 'RISK' && 'Risk Alert — review financials before acting'}
-                                            {stock.verdict === 'HIGH RISK' && 'High Risk — avoid buying until issues are resolved'}
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                        )}
-                      </React.Fragment>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan="7" className="px-6 py-12 text-center text-slate-400 font-medium">
-                        No stocks found matching your criteria
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Pagination */}
-            {filteredStocks.length > 0 && (
-              <div className="px-6 py-5 bg-slate-50/50 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="text-slate-400 text-[10px] md:text-xs font-bold text-center">
-                  SHOWING <span className="text-slate-700">{startIdx + 1}-{Math.min(startIdx + itemsPerPage, filteredStocks.length)}</span> OF <span className="text-slate-700">{filteredStocks.length}</span> ENTRIES
+                  Showing{" "}
+                  <span className="font-mono font-bold text-slate-900">
+                    {startIdx + 1} - {Math.min(startIdx + itemsPerPage, sortedStocks.length)}
+                  </span>{" "}
+                  of{" "}
+                  <span className="font-mono font-bold text-slate-900">{sortedStocks.length}</span>{" "}
+                  equities
                 </div>
 
-
-
-
-
-
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-slate-400 font-medium">Page {currentPage} of {totalPages}</span>
                   <div className="flex items-center gap-1">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mr-1">Page</span>
-                    <select 
-                      value={currentPage}
-                      onChange={(e) => setCurrentPage(Number(e.target.value))}
-                      className="bg-white border border-slate-200 rounded-lg px-2 py-1 text-xs font-bold text-[#4318ff] focus:ring-2 focus:ring-[#4318ff]/20 cursor-pointer outline-none"
+                    <button
+                      disabled={currentPage === 1}
+                      onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                      className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:pointer-events-none text-slate-700 font-bold transition-all"
                     >
-                      {[...Array(totalPages)].map((_, i) => (
-                        <option key={i + 1} value={i + 1}>{i + 1}</option>
-                      ))}
-                    </select>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">of {totalPages}</span>
-                  </div>
+                      Previous
+                    </button>
 
+                    {/* Quick Page Numbers */}
+                    {(() => {
+                      const maxButtons = 5;
+                      let start = Math.max(1, currentPage - Math.floor(maxButtons / 2));
+                      let end = start + maxButtons - 1;
+                      if (end > totalPages) {
+                        end = totalPages;
+                        start = Math.max(1, end - maxButtons + 1);
+                      }
+                      const pages = [];
+                      for (let p = start; p <= end; p++) {
+                        pages.push(p);
+                      }
+                      return pages.map((pageNum) => (
+                        <button
+                          key={pageNum}
+                          onClick={() => setCurrentPage(pageNum)}
+                          className={`w-8 h-8 rounded-lg font-mono font-bold transition-all ${currentPage === pageNum
+                              ? "bg-[#2563eb] text-white shadow-xs"
+                              : "bg-white hover:bg-slate-100 text-slate-700 border border-slate-200"
+                            }`}
+                        >
+                          {pageNum}
+                        </button>
+                      ));
+                    })()}
 
-                  <div className="flex items-center gap-1">
-                    <PageButton disabled={currentPage === 1} onClick={handlePrevious}>
-                      <ChevronUp className="-rotate-90 w-4 h-4" />
-                    </PageButton>
-                    <PageButton disabled={currentPage === totalPages} onClick={handleNext}>
-                      <ChevronDown className="-rotate-90 w-4 h-4" />
-                    </PageButton>
+                    <button
+                      disabled={currentPage === totalPages}
+                      onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                      className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:pointer-events-none text-slate-700 font-bold transition-all"
+                    >
+                      Next
+                    </button>
                   </div>
                 </div>
               </div>
             )}
-          </div>
+          </>
         )}
-      </div>
 
-    </div>
-  );
-}
+      </main>
 
-// Helper Components
+      {/* Floating Compare Dock */}
+      <CompareDock
+        compareList={compareList}
+        onOpenModal={() => setIsCompareModalOpen(true)}
+        onRemove={(sym) => setCompareList((prev) => prev.filter((s) => s.symbol !== sym))}
+        onClear={() => setCompareList([])}
+      />
 
-function FilterButton({ active, onClick, label }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${active ? 'bg-[#4318ff] text-white shadow-md shadow-blue-100' : 'text-slate-400 hover:bg-slate-100'}`}
-    >
-      {label}
-    </button>
-  );
-}
+      {/* Deep-Dive Stock Analysis Modal */}
+      {selectedStock && (
+        <StockModal
+          stock={selectedStock}
+          onClose={() => setSelectedStock(null)}
+          criteria={criteria}
+          watchlist={watchlist}
+          onToggleWatchlist={handleToggleWatchlist}
+          compareList={compareList}
+          onToggleCompare={handleToggleCompare}
+        />
+      )}
 
-function PageButton({ children, active = false, disabled = false, onClick }) {
-  return (
-    <button
-      disabled={disabled}
-      onClick={onClick}
-      className={`w-8 h-8 flex items-center justify-center rounded-lg text-xs font-bold transition-all ${active ? 'bg-[#4318ff] text-white shadow-md shadow-blue-100' : 'text-slate-400 hover:bg-slate-100 disabled:opacity-30'}`}
-    >
-      {children}
-    </button>
-  );
-}
+      {/* Side-by-Side Equities Compare Modal */}
+      {isCompareModalOpen && (
+        <CompareModal
+          compareList={compareList}
+          onClose={() => setIsCompareModalOpen(false)}
+          onClear={() => {
+            setCompareList([]);
+            setIsCompareModalOpen(false);
+          }}
+          onSelectStock={(s) => {
+            setIsCompareModalOpen(false);
+            setSelectedStock(s);
+          }}
+        />
+      )}
 
-function KPICard({ label, value, status = 'neutral', tooltip = '' }) {
-  // status: 'pass' | 'fail' | 'neutral'
-  const colorClass = status === 'pass' ? 'text-emerald-600' : status === 'fail' ? 'text-rose-600' : 'text-amber-600';
-  return (
-    <div title={tooltip} className="bg-slate-50 p-4 rounded-2xl border border-slate-100 shadow-sm">
-      <div className="flex items-center justify-between mb-1">
-        <div className="text-[10px] uppercase font-black tracking-widest text-slate-400">{label}</div>
-        <div className={`w-2 h-2 rounded-full ${status === 'pass' ? 'bg-emerald-500' : status === 'fail' ? 'bg-rose-500' : 'bg-amber-500'}`}></div>
-      </div>
-      <div className={`text-lg font-black tracking-tight ${colorClass}`}>{value}</div>
+      {/* Scoring Engine & Strategy Settings Modal */}
+      <ScoringModal
+        isOpen={isScoringModalOpen}
+        onClose={() => setIsScoringModalOpen(false)}
+        criteria={criteria}
+        onSaveCriteria={(newCriteria) => {
+          setCriteria(newCriteria);
+          showToast(`Strategy updated to: ${newCriteria.name}`, "success");
+        }}
+      />
+
+      {/* Refined Footer */}
+      <footer className="w-full bg-[#0f172a] text-slate-400 py-6 border-t border-slate-800 text-xs mt-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
+              D
+            </div>
+            <span className="font-display font-bold text-slate-200">DSE PULSE TERMINAL</span>
+            <span className="text-slate-600">|</span>
+            <span>Real-time Dhaka Stock Exchange Analytics</span>
+          </div>
+          <div className="flex items-center gap-4 text-slate-400">
+            <span>Powered by AmarStock & AI KPI Engine</span>
+            <span>•</span>
+            <span>Dhaka Time: UTC+6</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

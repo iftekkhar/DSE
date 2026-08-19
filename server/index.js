@@ -2,6 +2,7 @@
 import express from 'express';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import https from 'https';
 import { decode as msgpackDecode } from '@msgpack/msgpack';
 // node-cron uses modern syntax — to avoid runtime compatibility issues, use a light-weight setInterval fallback scheduler if node-cron throws.
 let cron;
@@ -481,19 +482,105 @@ async function scrapeSymbol(symbol) {
   return result;
 }
 
+// Fetch direct live prices from official Dhaka Stock Exchange scroll feed
+async function fetchDSELiveScroll() {
+  try {
+    const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+    const res = await axios.get('https://www.dsebd.org/latest_share_price_scroll_l.php', {
+      httpsAgent,
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+      timeout: 12000
+    });
+    if (res.status === 200 && res.data) {
+      const $ = cheerio.load(res.data);
+      const map = new Map();
+      $('a[href*="displayCompany.php"]').each((i, a) => {
+        const href = $(a).attr('href') || '';
+        const matchSym = href.match(/name=([^&]+)/);
+        if (!matchSym) return;
+        const sym = decodeURIComponent(matchSym[1]).trim().toUpperCase();
+        const parentTd = $(a).closest('td');
+        const rowText = parentTd.text().replace(/\s+/g, ' ').trim();
+        const tokens = rowText.split(' ').filter(Boolean);
+        if (tokens.length >= 4) {
+          const ltp = parseFloat(tokens[1].replace(/,/g, ''));
+          const change = parseFloat(tokens[2].replace(/,/g, ''));
+          const changePercent = parseFloat(tokens[3].replace(/[%]/g, '').replace(/,/g, ''));
+          if (!isNaN(ltp)) {
+            map.set(sym, {
+              symbol: sym,
+              ltp: isNaN(ltp) ? null : ltp,
+              change: isNaN(change) ? null : change,
+              changePercent: isNaN(changePercent) ? null : changePercent
+            });
+          }
+        }
+      });
+      console.log(`Fetched ${map.size} live stocks from DSE live feed`);
+      return map;
+    }
+  } catch (e) {
+    console.warn('Failed to fetch from DSE live scroll:', e.message);
+  }
+  return new Map();
+}
+
+// Fetch live share prices from AmarStock latest share price table
+async function fetchAmarstockTable() {
+  try {
+    const res = await axios.get('https://www.amarstock.com/latest-share-price', {
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+      timeout: 10000
+    });
+    if (res.status === 200 && res.data) {
+      const $ = cheerio.load(res.data);
+      const map = new Map();
+      $('table tbody tr, table tr').each((i, el) => {
+        const tds = $(el).find('td').map((_, cell) => $(cell).text().trim()).get();
+        if (tds.length >= 10) {
+          const sym = tds[0].toUpperCase();
+          const ltp = parseFloat(tds[1].replace(/,/g, ''));
+          const changePercent = parseFloat(tds[2].replace(/,/g, ''));
+          const change = parseFloat(tds[7].replace(/,/g, ''));
+          const volume = tds[10] ? parseFloat(tds[10].replace(/,/g, '')) : null;
+          if (sym && !isNaN(ltp)) {
+            map.set(sym, {
+              symbol: sym,
+              ltp,
+              change: isNaN(change) ? null : change,
+              changePercent: isNaN(changePercent) ? null : changePercent,
+              volume: isNaN(volume) ? null : volume
+            });
+          }
+        }
+      });
+      console.log(`Fetched ${map.size} live stocks from Amarstock table`);
+      return map;
+    }
+  } catch (e) {
+    console.warn('Failed to fetch from Amarstock table:', e.message);
+  }
+  return new Map();
+}
+
 async function scrapeAll({ historicalOnce = false } = {}) {
   const start = new Date().toISOString();
   const results = [];
   const missingReport = [];
 
   // Load the current symbols list fresh from disk
-  const symbols = await loadSymbols();
+  const diskSymbols = await loadSymbols();
+  const symbolSet = new Set(diskSymbols);
 
-  // Try bulk endpoint first — faster and authoritative when available
-  const bulk = await fetchAmarstockBulk().catch(() => null);
+  // Fetch from DSE live scroll and Amarstock sources
+  const [dseMap, amarMap, bulk] = await Promise.all([
+    fetchDSELiveScroll(),
+    fetchAmarstockTable(),
+    fetchAmarstockBulk().catch(() => null)
+  ]);
+
   const bulkMap = new Map();
   if (bulk && bulk.aa && Array.isArray(bulk.aa)) {
-    // map arrays into records
     const getArr = (k) => (bulk[k] && Array.isArray(bulk[k]) ? bulk[k] : []);
     const aa = getArr('aa');
     const ea = getArr('ea'); // ltp
@@ -508,8 +595,10 @@ async function scrapeAll({ historicalOnce = false } = {}) {
     for (let i = 0; i < aa.length; i++) {
       const sym = aa[i];
       if (!sym) continue;
+      const upper = sym.toUpperCase();
+      symbolSet.add(upper);
       const rec = {
-        symbol: sym,
+        symbol: upper,
         ltp: typeof ea[i] === 'number' ? ea[i] : (ea[i] ? Number(ea[i]) : null),
         previousClose: typeof aj[i] === 'number' ? aj[i] : (aj[i] ? Number(aj[i]) : null),
         volume: typeof ad[i] === 'number' ? Math.round(ad[i]) : (ad[i] ? Math.round(Number(ad[i])) : null),
@@ -520,38 +609,59 @@ async function scrapeAll({ historicalOnce = false } = {}) {
         currentRatio: typeof ei[i] === 'number' ? ei[i] : (ei[i] ? Number(ei[i]) : null),
         marketCap: typeof ar[i] === 'number' ? ar[i] : (ar[i] ? Number(ar[i]) : null)
       };
-      bulkMap.set(sym.toUpperCase(), rec);
+      bulkMap.set(upper, rec);
     }
   }
 
-  for (const sym of symbols) {
+  // Also include any symbols from dseMap and amarMap
+  for (const s of dseMap.keys()) symbolSet.add(s);
+  for (const s of amarMap.keys()) symbolSet.add(s);
+
+  // Update symbols.json if we discovered additional symbols
+  const allSymbols = Array.from(symbolSet).sort();
+  if (allSymbols.length > diskSymbols.length) {
+    try {
+      await fs.writeFile(SYMBOLS_FILE, JSON.stringify(allSymbols, null, 2), 'utf8');
+      console.log(`Updated symbols.json with ${allSymbols.length} symbols`);
+    } catch (e) {}
+  }
+
+  for (const sym of allSymbols) {
     const upper = sym.toUpperCase();
-    let record = null;
-    if (bulkMap.has(upper)) {
-      // map bulk record to our standard KPI set (keep nulls where missing)
-      const b = bulkMap.get(upper);
-      record = {
-        symbol: b.symbol,
-        ltp: b.ltp ?? null,
-        change: (b.ltp != null && b.previousClose != null) ? (b.ltp - b.previousClose) : null,
-        changePercent: b.changePercent ?? null,
-        pe: b.pe ?? null,
-        roe: b.roe ?? null,
-        eps: null,
-        debtToEquity: b.debtToEquity ?? null,
-        currentRatio: b.currentRatio ?? null,
-        volume: b.volume ?? null,
-        marketCap: b.marketCap ?? null
-      };
-    } else {
-      // fallback to per-symbol scrape
-      const data = await scrapeSymbol(sym);
-      record = data || { symbol: sym, ltp: null, change: null, changePercent: null, pe: null, roe: null, eps: null, debtToEquity: null, currentRatio: null, volume: null };
-    }
+    const dseRecord = dseMap.get(upper);
+    const amarRecord = amarMap.get(upper);
+    const bulkRecord = bulkMap.get(upper);
+
+    // Merge live feeds: DSE official scroll > Amarstock table > Bulk payload
+    const ltp = dseRecord?.ltp ?? amarRecord?.ltp ?? bulkRecord?.ltp ?? null;
+    const change = dseRecord?.change ?? amarRecord?.change ?? (bulkRecord?.ltp != null && bulkRecord?.previousClose != null ? bulkRecord.ltp - bulkRecord.previousClose : null);
+    const changePercent = dseRecord?.changePercent ?? amarRecord?.changePercent ?? bulkRecord?.changePercent ?? null;
+    const volume = amarRecord?.volume ?? bulkRecord?.volume ?? null;
+    const pe = bulkRecord?.pe ?? null;
+    const roe = bulkRecord?.roe ?? null;
+    const eps = null;
+    const debtToEquity = bulkRecord?.debtToEquity ?? null;
+    const currentRatio = bulkRecord?.currentRatio ?? null;
+    const marketCap = bulkRecord?.marketCap ?? null;
+
+    const record = {
+      symbol: upper,
+      ltp,
+      change,
+      changePercent,
+      pe,
+      roe,
+      eps,
+      debtToEquity,
+      currentRatio,
+      volume,
+      marketCap
+    };
+
     results.push(record);
 
     const missing = Object.keys(record).filter(k => k !== 'symbol' && (record[k] === null || record[k] === undefined));
-    if (missing.length) missingReport.push({ symbol: sym, missing });
+    if (missing.length) missingReport.push({ symbol: upper, missing });
   }
 
   // write latest
@@ -596,17 +706,116 @@ app.get('/api/latest', async (req, res) => {
   return res.json({ data: [] });
 });
 
-// Convenience endpoint for the frontend: return the array of stocks directly
+// Convenience endpoint for the frontend: return the array of stocks with history fallback
 app.get('/api/stocks', async (req, res) => {
   try {
     if (!fs.existsSync(LATEST_FILE)) return res.json([]);
-    const j = await fs.readJson(LATEST_FILE);
-    if (j && Array.isArray(j.data)) return res.json(j.data);
-    if (j && j.data && Array.isArray(j.data)) return res.json(j.data);
-    return res.json([]);
+    const latestJson = await fs.readJson(LATEST_FILE).catch(() => ({ data: [] }));
+    const rawList = Array.isArray(latestJson.data) ? latestJson.data : [];
+    
+    // Load history to pull missing fields from the latest available historical record
+    let historyList = [];
+    if (fs.existsSync(HISTORY_FILE)) {
+      historyList = await fs.readJson(HISTORY_FILE).catch(() => []);
+    }
+
+    // Build historical lookup map: symbol -> array of historical records sorted latest first
+    const histMap = new Map();
+    if (Array.isArray(historyList)) {
+      // historyList is array of snapshots: [{ fetchedAt, data: [...] }]
+      for (let i = historyList.length - 1; i >= 0; i--) {
+        const snap = historyList[i];
+        if (snap && Array.isArray(snap.data)) {
+          for (const s of snap.data) {
+            if (!s || !s.symbol) continue;
+            const sym = s.symbol.toUpperCase();
+            if (!histMap.has(sym)) histMap.set(sym, []);
+            histMap.get(sym).push({ fetchedAt: snap.fetchedAt, ...s });
+          }
+        }
+      }
+    }
+
+    const dailyFields = ['ltp', 'change', 'changePercent', 'volume', 'pe'];
+    const annualFields = ['eps', 'roe', 'debtToEquity', 'currentRatio'];
+    const fieldsToCheck = [...dailyFields, ...annualFields];
+
+    const enriched = rawList.map((item) => {
+      const sym = (item.symbol || '').toUpperCase();
+      const histRecords = histMap.get(sym) || [];
+      const stock = { ...item };
+      const fallbackFlags = {};
+
+      for (const field of fieldsToCheck) {
+        if (stock[field] === null || stock[field] === undefined) {
+          // Find most recent valid non-null value from history
+          for (const h of histRecords) {
+            if (h[field] !== null && h[field] !== undefined) {
+              stock[field] = h[field];
+              const dt = h.fetchedAt ? new Date(h.fetchedAt) : new Date();
+              const dateStr = dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+              const yearStr = dt.getFullYear().toString();
+              
+              const isDaily = dailyFields.includes(field);
+              const tag = isDaily ? `History (${dateStr})` : `History (${yearStr})`;
+
+              fallbackFlags[field] = {
+                source: 'history',
+                type: isDaily ? 'daily' : 'annual',
+                date: dateStr,
+                year: yearStr,
+                tag: tag
+              };
+              break;
+            }
+          }
+        }
+      }
+
+      stock._historyFallback = fallbackFlags;
+      return stock;
+    });
+
+    return res.json(enriched);
   } catch (e) {
     console.error('Error serving /api/stocks', e.message);
     return res.status(500).json([]);
+  }
+});
+
+// Endpoint to get historical timeline for a specific symbol
+app.get('/api/history/:symbol', async (req, res) => {
+  try {
+    const sym = (req.params.symbol || '').toUpperCase();
+    if (!fs.existsSync(HISTORY_FILE)) return res.json({ symbol: sym, history: [] });
+
+    const historyList = await fs.readJson(HISTORY_FILE).catch(() => []);
+    const points = [];
+
+    if (Array.isArray(historyList)) {
+      for (const snap of historyList) {
+        if (snap && Array.isArray(snap.data)) {
+          const match = snap.data.find(s => s && String(s.symbol).toUpperCase() === sym);
+          if (match && match.ltp !== null && match.ltp !== undefined) {
+            points.push({
+              fetchedAt: snap.fetchedAt,
+              ltp: match.ltp,
+              change: match.change,
+              changePercent: match.changePercent,
+              volume: match.volume,
+              pe: match.pe,
+              roe: match.roe,
+              eps: match.eps
+            });
+          }
+        }
+      }
+    }
+
+    return res.json({ symbol: sym, history: points });
+  } catch (e) {
+    console.error('Error serving /api/history/:symbol', e.message);
+    return res.status(500).json({ symbol: req.params.symbol, history: [] });
   }
 });
 
@@ -623,57 +832,77 @@ app.post('/api/refresh-symbols', async (req, res) => {
 
 app.get('/api/history', async (req, res) => {
   if (fs.existsSync(HISTORY_FILE)) return res.sendFile(HISTORY_FILE);
-  return res.json({ data: [] });
+  return res.json([]);
 });
 
 app.get('/api/report', async (req, res) => {
   if (fs.existsSync(REPORT_FILE)) return res.sendFile(REPORT_FILE);
-  return res.json({ missing: [] });
+  return res.json({ missingReport: [] });
 });
 
-// Schedule scrapes
-// 1) Daily at 18:00 Asia/Dhaka (kept for backward compatibility)
-// 2) Hourly full scrape to keep data fresh
-if (cron) {
-  // Daily 18:00
-  cron.schedule('0 18 * * *', async () => {
-    console.log('Scheduled daily scrape starting at', new Date().toISOString());
-    try {
-      await scrapeAll({ historicalOnce: !fs.existsSync(HISTORY_FILE) });
-      console.log('Scheduled daily scrape finished');
-    } catch (err) {
-      console.error('Scheduled daily scrape failed', err);
+// Root Healthcheck & API Status
+app.get('/', (req, res) => {
+  res.json({
+    status: 'online',
+    service: 'DSE Live Scraper & Analytics API',
+    timezone: 'Asia/Dhaka',
+    schedule: 'Auto-scrape every hour from 9:00 AM to 6:00 PM BST (0 9-18 * * *)',
+    endpoints: {
+      stocks: 'GET /api/stocks',
+      scrape: 'POST /api/scrape',
+      history: 'GET /api/history/:symbol',
+      report: 'GET /api/report'
     }
-  }, { timezone: 'Asia/Dhaka' });
+  });
+});
 
-  // Hourly at top of hour
-  cron.schedule('0 * * * *', async () => {
-    console.log('Scheduled hourly scrape starting at', new Date().toISOString());
+// Auto-Scrape Schedule: Every hour from 9:00 AM to 6:00 PM Bangladesh Standard Time (BST / Asia/Dhaka)
+if (cron) {
+  cron.schedule('0 9-18 * * *', async () => {
+    const nowDhaka = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Dhaka',
+      dateStyle: 'medium',
+      timeStyle: 'medium'
+    }).format(new Date());
+    console.log(`[CRON] Auto-scrape triggered at ${nowDhaka} (BST)`);
     try {
       await scrapeAll({ historicalOnce: false });
-      console.log('Scheduled hourly scrape finished');
+      console.log(`[CRON] Auto-scrape completed successfully at ${nowDhaka}`);
     } catch (err) {
-      console.error('Scheduled hourly scrape failed', err);
+      console.error('[CRON] Auto-scrape encountered an error:', err.message);
     }
   }, { timezone: 'Asia/Dhaka' });
+  console.log('Registered cron schedule: Every hour from 9:00 AM to 6:00 PM Bangladesh Time (Asia/Dhaka)');
 } else {
-  console.warn('node-cron not available; using fallback hourly checker for scrapes');
-  // Hourly checker: run scrape at the top of every hour
+  console.warn('node-cron not active; starting fallback interval scheduler for 9am-6pm BST');
   setInterval(async () => {
     try {
       const now = new Date();
-      if (now.getMinutes() === 0) {
-        console.log('Fallback hourly scrape starting at', new Date().toISOString());
+      const dhakaHourStr = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Dhaka', hour: 'numeric', hour12: false }).format(now);
+      const dhakaHour = parseInt(dhakaHourStr, 10);
+      if (now.getMinutes() === 0 && dhakaHour >= 9 && dhakaHour <= 18) {
+        console.log(`[FALLBACK CRON] Auto-scrape triggered for hour ${dhakaHour}:00 BST at ${now.toISOString()}`);
         await scrapeAll({ historicalOnce: false });
-        console.log('Fallback hourly scrape finished');
       }
     } catch (err) {
-      console.error('Fallback scheduled scraper error', err);
+      console.error('Fallback scheduler error:', err.message);
     }
   }, 1000 * 60);
 }
 
+// Initial warm-up scrape if latest.json does not exist
+(async () => {
+  if (!fs.existsSync(LATEST_FILE)) {
+    console.log('No latest.json found on startup. Running initial warm-up scrape...');
+    try {
+      await scrapeAll({ historicalOnce: !fs.existsSync(HISTORY_FILE) });
+    } catch (e) {
+      console.warn('Initial warm-up scrape notice:', e.message);
+    }
+  }
+})();
+
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
-  console.log(`Scraper server listening on port ${PORT}`);
+  console.log(`DSE Analytics Server listening on port ${PORT}`);
 });

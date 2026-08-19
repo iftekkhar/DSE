@@ -1,410 +1,332 @@
 {
-  "fetchedAt": "2026-08-18T02:17:56.034Z",
+  "fetchedAt": "2026-08-19T21:33:34.187Z",
   "missingReport": [
     {
       "symbol": "1JANATAMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "1STPRIMFMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "AAMRANET",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "AAMRATECH",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ABB1STMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ABBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ABBLPBOND",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ACFL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ACHIASF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ACI",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ACIFORMULA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ACMELAB",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ACMEPL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ACTIVEFINE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ADNTEL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "ADVENT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "AFCAGRO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "AFTABAUTO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "AGNISYSL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "AGRANINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "marketCap"
       ]
     },
     {
       "symbol": "AIBL1STIMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "AIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "AL-HAJTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ALARABANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ALIF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ALLTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "AMANFEED",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "AMBEEPHA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "AMCL(PRAN)",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -418,49 +340,44 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ANLIMAYARN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ANWARGALV",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "AOL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -474,63 +391,56 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "APEXFOODS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "APEXFOOT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "APEXSPINN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "APEXTANRY",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -544,119 +454,104 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "APOLOISPAT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "APSCLBOND",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ARAMIT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ARAMITCEM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ARGONDENIM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ASIAINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ASIAPACINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ASIATICLAB",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -670,203 +565,176 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ATLASBANG",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "AZIZPIPES",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BANGAS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BANKASIA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BARKAPOWER",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BATASHOE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BATBC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BAYLEASING",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BBS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BBSCABLES",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BDAUTOCA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BDCOM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BDFINANCE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BDLAMPS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -880,77 +748,68 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BDTHAI",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BDTHAIFOOD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BDWELDING",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BEACHHATCH",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BEACONPHAR",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -964,231 +823,200 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BENGALWTL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BERGERPBL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BESTHLDNG",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BEXGSUKUK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BEXIMCO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BGIC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BIFC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BNICL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BPML",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BPPL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BRACBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BSC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BSCPLC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BSRMLTD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BSRMSTEEL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "BXPHARMA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -1202,49 +1030,44 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CAPITECGBF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CAPMBDBLMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CAPMIBBLMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -1258,133 +1081,116 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CENTRALINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CENTRALPHL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CITYBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CITYGENINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CLICL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CNATEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CONFIDCEM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CONTININS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "COPPERTECH",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -1398,105 +1204,92 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CROWNCEMNT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CRYSTALINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "CVOPRL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DACCADYE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DAFODILCOM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DBH",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DBH1STMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -1510,413 +1303,356 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DELTALIFE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DELTASPINN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DESCO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DESHBANDHU",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DGIC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DHAKABANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DHAKAINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DOMINAGE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DOREENPWR",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DSHGARME",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DSSL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DULAMIACOT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "DUTCHBANGL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EASTERNINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EASTLAND",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EASTRNLUB",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EBL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EBL1STMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EBLNRBMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ECABLES",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EGEN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EHL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EMERALDOIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ENVOYTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EPGL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ESQUIRENIT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ETL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "EXIM1STMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -1930,35 +1666,32 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FAMILYTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FARCHEM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -1972,21 +1705,20 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FAREASTLIF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -2000,77 +1732,68 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FBFIF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FEDERALINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FEKDIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FINEFOODS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FIRSTFIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -2084,133 +1807,116 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FORTUNE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FUWANGCER",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "FUWANGFOOD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GBBPOWER",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GEMINISEA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GENEXIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GENNEXT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GHAIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GHCL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -2224,203 +1930,176 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GLDNJMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GLOBALINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GOLDENSON",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GP",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GPHISPAT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GQBALLPEN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GRAMEENS2",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GREENDELMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GREENDELT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "GSPFINANCE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "HAKKANIPUL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "HAMI",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "HEIDELBCEM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "HFL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -2434,245 +2113,224 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "HRTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "HWAWELLTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "IBBLPBOND",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "IBNSINA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "IBP",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ICB",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ICB3RDNRB",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ICBAGRANI1",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ICBAMCL2ND",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ICBEPMF1S1",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ICBIBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ICBSONALI1",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ICICL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "IDLC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "IFADAUTOS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "IFIC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "IFIC1STMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "IFILISLMF1",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -2686,231 +2344,212 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "INDEXAGRO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "INTECH",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "INTRACO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "IPDC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ISLAMIBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ISLAMICFIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ISLAMIINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ISNLTD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ITC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "JAMUNABANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "JAMUNAOIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "JANATAINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "JHRML",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "JMISMDL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "JUTESPINN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "KARNAPHULI",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "KAY",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -2924,21 +2563,20 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "KBPPWBIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -2952,35 +2590,32 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "KDSALTD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "KEYACOSMET",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -2994,217 +2629,188 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "KOHINOOR",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "KPCL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "KPPL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "KTL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "LANKABAFIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "LEGACYFOOT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "LHB",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "LIBRAINFU",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "LINDEBD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "LOVELLO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "LRBDL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "LRGLOBMF1",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MAGURAPLEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MAKSONSPIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MALEKSPIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -3218,21 +2824,20 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MARICO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -3246,35 +2851,32 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MATINSPINN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MBL1STMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -3288,217 +2890,188 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MEGCONMILK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MEGHNACEM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MEGHNAINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MEGHNALIFE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MEGHNAPET",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MERCANBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MERCINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "METROSPIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MHSML",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MIDASFIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MIDLANDBNK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MIRACLEIND",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MIRAKHTER",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MITHUNKNIT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MJLBD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -3512,77 +3085,68 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MLDYEING",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MONNOAGML",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MONNOCERA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MONNOFABR",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MONOSPOOL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -3596,175 +3160,152 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MPETROLEUM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "MTB",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NAHEEACP",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NATLIFEINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NAVANACNG",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NAVANAPHAR",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NBL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NCCBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NCCBLMF1",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NEWLINE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NFML",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NHFIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -3778,217 +3319,188 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NITOLINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NORTHERN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NORTHRNINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NPOLYMER",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NRBBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NRBCBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NTC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NTLTUBES",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "NURANI",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "OAL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "OIMEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "OLYMPIC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ONEBANKPLC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ORIONINFU",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ORIONPHARM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -4002,665 +3514,584 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PADMALIFE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PADMAOIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PARAMOUNT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "PBLPBOND",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PDL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PENINSULA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PEOPLESINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PF1STMF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PHARMAID",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PHENIXINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PHOENIXFIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PHPMF1",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PIONEERINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PLFSL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "POPULAR1MF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "POPULARLIF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "POWERGRID",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PRAGATIINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PRAGATILIF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PREMIERBAN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PREMIERCEM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PREMIERLEA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PRIME1ICBA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PRIMEBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PRIMEFIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PRIMEINSUR",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PRIMELIFE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PRIMETEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PROGRESLIF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PROVATIINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PTL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PUBALIBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "PURABIGEN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "QUASEMIND",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "QUEENSOUTH",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RAHIMAFOOD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RAHIMTEXT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RAKCERAMIC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RANFOUNDRY",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RDFOOD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RECKITTBEN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "REGENTTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RELIANCE1",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RELIANCINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RENATA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RENWICKJA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "REPUBLIC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RINGSHINE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -4674,91 +4105,80 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ROBI",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RSRMSTEEL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RUNNERAUTO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RUPALIBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RUPALIINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "RUPALILIFE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -4772,147 +4192,128 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SAFKOSPINN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SAIFPOWER",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SAIHAMCOT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SAIHAMTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SALAMCRST",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SALVO",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SAMATALETH",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SAMORITA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SANDHANINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SAPORTL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -4926,35 +4327,32 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SBACBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SEAPEARL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -4968,35 +4366,32 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SEMLFBSLGF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SEMLIBBLSF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -5010,91 +4405,80 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SHAHJABANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SHARPIND",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SHASHADNIM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SHEPHERD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SHURWID",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SHYAMPSUG",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -5108,511 +4492,572 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SICL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SILCOPHL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SILVAPHL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SIMTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SINGERBD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SINOBANGLA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SIPLC",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SKTRIMS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SONALIANSH",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SONALILIFE",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SONALIPAPR",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SONARBAINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SONARGAON",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SOUTHEASTB",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SPCERAMICS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SPCL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SQUARETEXT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SQURPHARMA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SSSTEEL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "STANCERAM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "STANDARINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "STANDBANKL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "STYLECRAFT",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SUMITPOWER",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "SUNLIFEINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TAKAFULINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TALLUSPIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TAMIJTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB15Y1028",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB20Y0143",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB20Y0744",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB20Y1242",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB5Y0430",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB5Y0529",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB5Y0930",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB5Y1029",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB5Y1128",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB5Y1228",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
+      ]
+    },
+    {
+      "symbol": "TB5Y1229",
+      "missing": [
+        "pe",
+        "roe",
+        "eps",
+        "debtToEquity",
+        "currentRatio",
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TECHNODRUG",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TILIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TITASGAS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TOSRIFA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TRUSTB1MF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TRUSTBANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "TUNGHAI",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UCB",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -5626,21 +5071,20 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UNILEVERCL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -5654,133 +5098,116 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UNIONCAP",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UNIONINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UNIQUEHRL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UNITEDFIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UNITEDINS",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UPGDCL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "USMANIAGL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UTTARABANK",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "UTTARAFIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -5794,63 +5221,56 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "VAMLRBBF",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "VFSTDL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "WALTONHIL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "WATACHEM",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -5864,21 +5284,20 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "WMSHIPYARD",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -5892,21 +5311,20 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "YPL",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
@@ -5920,49 +5338,44 @@
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ZAHEENSPIN",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ZAHINTEX",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     },
     {
       "symbol": "ZEALBANGLA",
       "missing": [
-        "ltp",
-        "change",
-        "changePercent",
         "pe",
         "roe",
         "eps",
         "debtToEquity",
         "currentRatio",
-        "volume"
+        "volume",
+        "marketCap"
       ]
     }
   ]
