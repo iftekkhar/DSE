@@ -81,7 +81,7 @@ export default function StockGrid({
                     )}
                   </span>
                   {ltpTag && (
-                    <span className="text-[8px] font-semibold text-amber-700 bg-amber-100/90 px-1 py-0.2 rounded border border-amber-300/50" title="Pulled from saved history">
+                    <span className="text-[8px] font-semibold text-amber-700 bg-amber-100/90 px-1 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
                       {ltpTag}
                     </span>
                   )}

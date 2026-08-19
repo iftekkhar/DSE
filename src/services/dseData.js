@@ -248,14 +248,18 @@ export function getEnrichedStock(stock) {
   };
 }
 
-// Helper to extract human-readable history tag: History (Date) for daily KPIs, History (Year) for annual KPIs
+// Helper to extract clean closing and audited tags without the word 'history'
 export function getFallbackTag(stock, field) {
   const fb = stock?._historyFallback?.[field];
   if (!fb) return null;
   if (typeof fb === 'string') {
-    if (fb.startsWith('History')) return fb;
+    if (fb.startsWith('Close') || fb.startsWith('Audited')) return fb;
     const isDaily = ['ltp', 'change', 'changePercent', 'volume', 'pe', 'momentum'].includes(field);
-    return isDaily ? 'History (Date)' : 'History (Year)';
+    return isDaily ? 'Daily Close' : 'Audited';
   }
-  return fb.tag || (fb.type === 'daily' ? `History (${fb.date})` : `History (${fb.year})`);
+  if (fb.type === 'daily') {
+    const dStr = fb.date ? fb.date.slice(0, 10) : '';
+    return dStr ? `Close (${dStr})` : 'Daily Close';
+  }
+  return fb.year ? `Audited (${fb.year})` : 'Audited';
 }

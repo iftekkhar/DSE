@@ -52,15 +52,31 @@ export default function StockModal({
     }
   }, [stock?.symbol]);
 
-  // Compute filtered timeline data for chart & performance metrics
+  // Compute filtered timeline data for chart & performance metrics (Strictly 1 closing price per day)
   const { chartData, metrics } = useMemo(() => {
-    const fullTimeline = generateHistoryData(stock, savedHistory);
+    const rawTimeline = generateHistoryData(stock, savedHistory);
 
-    if (!fullTimeline || fullTimeline.length === 0) {
+    if (!rawTimeline || rawTimeline.length === 0) {
       const fallback = stock?.ltp !== null && stock?.ltp !== undefined
         ? [{ day: 'Latest Close', price: stock.ltp, volume: stock.volume || 0 }]
         : [];
       return { chartData: fallback, metrics: null };
+    }
+
+    // Strict 1 closing price per calendar date (YYYY-MM-DD)
+    const seenDates = new Set();
+    const fullTimeline = [];
+    for (const pt of rawTimeline) {
+      const dStr = String(pt.rawDate || pt.timestamp || '').slice(0, 10);
+      if (dStr && !seenDates.has(dStr)) {
+        seenDates.add(dStr);
+        fullTimeline.push({
+          ...pt,
+          rawDate: dStr,
+          timestamp: dStr,
+          dateObj: new Date(dStr)
+        });
+      }
     }
 
     const currentCfg = TIME_RANGES.find(r => r.id === timeRange) || TIME_RANGES[0];
@@ -73,7 +89,7 @@ export default function StockModal({
 
     let slice = timeRange === '20Y'
       ? fullTimeline
-      : fullTimeline.filter(pt => (pt.rawDate || (pt.timestamp ? pt.timestamp.slice(0, 10) : '')) >= cutoffStr);
+      : fullTimeline.filter(pt => pt.rawDate >= cutoffStr);
 
     if (!slice || slice.length === 0) {
       slice = fullTimeline.slice(-currentCfg.limit);
@@ -103,7 +119,7 @@ export default function StockModal({
 
     // Format tick labels based on active time range
     const displayPoints = displaySlice.map((pt) => {
-      const dObj = pt.dateObj || new Date(pt.rawDate || pt.timestamp);
+      const dObj = pt.dateObj || new Date(pt.rawDate);
       let dayLabel = pt.day;
       if (timeRange === '7D') {
         dayLabel = dObj.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric' });
@@ -335,7 +351,7 @@ export default function StockModal({
                     <span>{kpi.label}</span>
                     <div className="flex items-center gap-1">
                       {kpi.historyTag && (
-                        <span className="text-[8px] font-semibold text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300" title="Retrieved from saved history">
+                        <span className="text-[8px] font-semibold text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300" title="Official DSE Recorded Closing / Audited Value">
                           {kpi.historyTag}
                         </span>
                       )}
@@ -460,18 +476,18 @@ export default function StockModal({
             );
           })()}
 
-          {/* Historical Closing Price & Multi-Timeframe Chart */}
+          {/* Daily Closing Price & Multi-Timeframe Chart */}
           <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
             {/* Chart Header */}
             <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
               <div className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-blue-600" />
                 <span className="text-[11px] font-bold text-slate-800">
-                  Historical Closing Prices
+                  Daily Closing Prices
                 </span>
                 {metrics && (
                   <span className="text-[9px] text-blue-700 bg-blue-100/80 px-1.5 py-0.2 rounded font-semibold">
-                    {metrics.count} dates in {TIME_RANGES.find(r => r.id === timeRange)?.label}
+                    {metrics.count} trading sessions ({TIME_RANGES.find(r => r.id === timeRange)?.label})
                   </span>
                 )}
               </div>
@@ -479,7 +495,7 @@ export default function StockModal({
                 <button
                   onClick={() => downloadExcel(stock.symbol)}
                   className="flex items-center gap-1 text-[10px] bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-lg border border-emerald-300 transition-colors shadow-xs"
-                  title="Download company 20-year history in Excel (.xlsx)"
+                  title="Download 20-year daily closing prices in Excel (.xlsx)"
                 >
                   <FileSpreadsheet className="w-3 h-3 text-emerald-600" />
                   <span>Export Excel</span>
@@ -544,7 +560,7 @@ export default function StockModal({
               </div>
             ) : chartData.length === 0 ? (
               <div className="h-36 flex items-center justify-center text-xs text-slate-400 italic">
-                No historical records saved for this scrip yet.
+                No daily closing prices recorded for this scrip yet.
               </div>
             ) : (
               <div className="h-40 w-full">

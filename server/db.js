@@ -148,14 +148,15 @@ export async function saveDailyClosingToDB(records, dateStr) {
   return count;
 }
 
-// 2. Fetch Historical Timeline for a Stock directly from SQLite
+// 2. Fetch Daily Closing Prices Timeline for a Stock directly from SQLite (1 record per calendar day)
 export async function getHistoricalTimeline(symbol, limit = 7500) {
   const cleanSym = (symbol || '').toUpperCase().trim();
   const rows = await dbAll(`
     SELECT * FROM (
-      SELECT date as fetchedAt, close as ltp, ycp, change, change_percent as changePercent, volume, pe
+      SELECT SUBSTR(date, 1, 10) as fetchedAt, close as ltp, ycp, change, change_percent as changePercent, volume, pe
       FROM price_history
       WHERE symbol = ?
+      GROUP BY SUBSTR(date, 1, 10)
       ORDER BY date DESC
       LIMIT ?
     ) ORDER BY fetchedAt ASC

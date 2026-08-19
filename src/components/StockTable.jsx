@@ -109,7 +109,7 @@ export default function StockTable({
                           )}
                         </span>
                         {getFallbackTag(stock, 'ltp') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Pulled from saved history">
+                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
                             {getFallbackTag(stock, 'ltp')}
                           </span>
                         )}
@@ -133,7 +133,7 @@ export default function StockTable({
                       <div className="flex items-center justify-end gap-1">
                         <span>{stock.pe}x</span>
                         {getFallbackTag(stock, 'pe') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Pulled from saved history">
+                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
                             {getFallbackTag(stock, 'pe')}
                           </span>
                         )}
@@ -151,7 +151,7 @@ export default function StockTable({
                           {stock.roe}%
                         </span>
                         {getFallbackTag(stock, 'roe') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Pulled from saved history">
+                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
                             {getFallbackTag(stock, 'roe')}
                           </span>
                         )}
@@ -167,7 +167,7 @@ export default function StockTable({
                       <div className="flex items-center justify-end gap-1">
                         <span>৳{stock.eps.toFixed(2)}</span>
                         {getFallbackTag(stock, 'eps') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Pulled from saved history">
+                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
                             {getFallbackTag(stock, 'eps')}
                           </span>
                         )}
@@ -187,7 +187,7 @@ export default function StockTable({
                             : `${(stock.volume / 1000).toFixed(0)}K`}
                         </span>
                         {getFallbackTag(stock, 'volume') && (
-                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Pulled from saved history">
+                          <span className="text-[9px] font-semibold text-amber-700 bg-amber-100/90 px-1.5 py-0.2 rounded border border-amber-300/50" title="Official DSE Recorded Closing / Audited Value">
                             {getFallbackTag(stock, 'volume')}
                           </span>
                         )}

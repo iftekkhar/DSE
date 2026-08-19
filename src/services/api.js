@@ -379,42 +379,47 @@ export const fetchDSEData = async () => {
   }
 };
 
-// Fetch real history timeline saved in the backend for a specific symbol
+// Fetch daily closing prices timeline saved in the SQLite backend for a specific symbol
 export const fetchStockHistory = async (symbol) => {
   try {
     const res = await axios.get(`${HISTORY_URL}/${symbol}?limit=7500`, { timeout: 10000 });
     if (res.data && Array.isArray(res.data.history) && res.data.history.length > 0) {
-      return res.data.history.map((pt, idx) => {
+      const seen = new Set();
+      const uniquePoints = [];
+      for (const pt of res.data.history) {
         const dateStr = pt.fetchedAt ? pt.fetchedAt.slice(0, 10) : '';
-        const dateObj = pt.fetchedAt ? new Date(pt.fetchedAt) : new Date();
+        if (!dateStr || seen.has(dateStr)) continue;
+        seen.add(dateStr);
+        const dateObj = new Date(dateStr);
         const label = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' });
-        return {
-          day: label || `Snapshot ${idx + 1}`,
+        uniquePoints.push({
+          day: label,
           rawDate: dateStr,
           dateObj: dateObj,
           price: pt.ltp,
           volume: pt.volume || 0,
-          timestamp: pt.fetchedAt,
+          timestamp: dateStr,
           change: pt.change,
           changePercent: pt.changePercent
-        };
-      });
+        });
+      }
+      return uniquePoints.sort((a, b) => new Date(a.rawDate) - new Date(b.rawDate));
     }
   } catch (e) {
-    console.warn(`Could not fetch saved history for ${symbol}:`, e.message);
+    console.warn(`Could not fetch closing prices for ${symbol}:`, e.message);
   }
   return null;
 };
 
-// Trigger instant scrape on backend (updates latest.json and appends to history.json)
+// Trigger instant scrape on backend (updates latest.json and appends closing prices)
 export const triggerScrape = async () => {
   const response = await axios.post(SCRAPE_URL, {}, { timeout: 35000 });
   return response.data;
 };
 
-// Pull 20-year history records for deep-dive charts (combining SQLite backend + continuous timeline)
+// Pull closing price records for multi-timeframe charts (combining SQLite backend + continuous timeline)
 export const generateHistoryData = (stock, savedHistory = null) => {
-  if (savedHistory && Array.isArray(savedHistory) && savedHistory.length > 50) {
+  if (savedHistory && Array.isArray(savedHistory) && savedHistory.length > 0) {
     return savedHistory;
   }
 
@@ -423,7 +428,6 @@ export const generateHistoryData = (stock, savedHistory = null) => {
   const symbol = (stock.symbol || '').toUpperCase().trim();
   const currentPrice = Number(stock.ltp || stock.close || 50.0);
   
-  // Specific start baselines for known flagship stocks
   const BASELINES = {
     'BRACBANK': { ipoYear: 2007, startPrice: 18.0 },
     'GP': { ipoYear: 2009, startPrice: 120.0 },
@@ -483,12 +487,6 @@ export const generateHistoryData = (stock, savedHistory = null) => {
       changePercent: changePercent
     };
   });
-
-  if (savedHistory && Array.isArray(savedHistory) && savedHistory.length > 0) {
-    const lastDates = new Set(savedHistory.map(s => s.rawDate || (s.timestamp ? s.timestamp.slice(0, 10) : '')));
-    const merged = points.filter(pt => !lastDates.has(pt.rawDate)).concat(savedHistory);
-    return merged.sort((a, b) => new Date(a.rawDate || a.timestamp) - new Date(b.rawDate || b.timestamp));
-  }
 
   return points;
 };
