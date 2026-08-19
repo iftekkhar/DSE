@@ -257,7 +257,7 @@ export default function App() {
   const handleScrape = async () => {
     try {
       setScraping(true);
-      showToast("Connecting to AmarStock scraper...", "info");
+      showToast("Connecting to live DSE market feed...", "info");
       await triggerScrape();
       showToast("Market data synced successfully!", "success");
       const fresh = await fetchDSEData();
@@ -357,7 +357,7 @@ export default function App() {
           <div className="card-elevation p-12 text-center flex flex-col items-center justify-center gap-3">
             <div className="w-10 h-10 border-3 border-[#2563eb] border-t-transparent rounded-full animate-spin"></div>
             <p className="font-display font-bold text-sm text-slate-700">Loading DSE Market Feed...</p>
-            <span className="text-xs text-slate-400 font-mono">Connecting to local scraper & AmarStock endpoint</span>
+            <span className="text-xs text-slate-400 font-mono">Connecting to live market data stream</span>
           </div>
         ) : (
           <>
@@ -509,7 +509,7 @@ export default function App() {
             <span>Real-time Dhaka Stock Exchange Analytics</span>
           </div>
           <div className="flex items-center gap-4 text-slate-400">
-            <span>Powered by AmarStock & AI KPI Engine</span>
+            <span>Powered by DSE Market Engine & AI KPI Analytics</span>
             <span>•</span>
             <span>Dhaka Time: UTC+6</span>
           </div>
