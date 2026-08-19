@@ -9,7 +9,17 @@ import {
   calculateBuffettScore
 } from './dseData';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+const getApiBase = () => {
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    if (host === 'localhost' || host === '127.0.0.1') {
+      return 'http://localhost:5001';
+    }
+  }
+  return import.meta.env.VITE_API_URL || 'https://dse-xvn2.onrender.com';
+};
+
+const API_BASE = getApiBase();
 const SERVER_URL = `${API_BASE}/api/stocks`;
 const SCRAPE_URL = `${API_BASE}/api/scrape`;
 const HISTORY_URL = `${API_BASE}/api/history`;
@@ -421,7 +431,7 @@ export const triggerScrape = async () => {
 
 // Pull closing price records for multi-timeframe charts (combining SQLite backend + continuous timeline)
 export const generateHistoryData = (stock, savedHistory = null) => {
-  if (savedHistory && Array.isArray(savedHistory) && savedHistory.length > 0) {
+  if (savedHistory && Array.isArray(savedHistory) && savedHistory.length >= 10) {
     return savedHistory;
   }
 
