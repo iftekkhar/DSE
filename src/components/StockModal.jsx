@@ -557,21 +557,21 @@ export default function StockModal({
             </div>
 
             {loadingHistory ? (
-              <div className="h-36 flex items-center justify-center text-xs text-slate-400">
+              <div className="h-44 min-h-[176px] flex items-center justify-center text-xs text-slate-400">
                 <Clock className="w-4 h-4 animate-spin text-blue-500 mr-2" />
                 Loading {TIME_RANGES.find(r => r.id === timeRange)?.fullLabel || 'timeline'}...
               </div>
             ) : chartData.length === 0 ? (
-              <div className="h-36 flex items-center justify-center text-xs text-slate-400 italic">
+              <div className="h-44 min-h-[176px] flex items-center justify-center text-xs text-slate-400 italic">
                 No daily closing prices recorded for this scrip yet.
               </div>
             ) : (
-              <div className="h-40 w-full">
+              <div className="h-44 min-h-[176px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={chartData} margin={{ top: 8, right: 10, left: -20, bottom: 0 }}>
+                  <AreaChart data={chartData} margin={{ top: 8, right: 10, left: -15, bottom: 0 }}>
                     <defs>
                       <linearGradient id="priceGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#2563eb" stopOpacity={0.25}/>
+                        <stop offset="5%" stopColor="#2563eb" stopOpacity={0.3}/>
                         <stop offset="95%" stopColor="#2563eb" stopOpacity={0.0}/>
                       </linearGradient>
                     </defs>
@@ -591,7 +591,7 @@ export default function StockModal({
                     />
                     <Tooltip
                       contentStyle={{ backgroundColor: '#0f172a', borderRadius: '8px', border: 'none', color: '#fff', fontSize: '11px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                      formatter={(val) => [`৳${val}`, 'Close Price']}
+                      formatter={(val) => [`৳${val}`, 'Closing Price']}
                       labelFormatter={(label, payload) => {
                         const raw = payload?.[0]?.payload?.rawDate;
                         return raw ? `Date: ${raw}` : label;
@@ -601,9 +601,10 @@ export default function StockModal({
                       type="monotone"
                       dataKey="price"
                       stroke="#2563eb"
-                      strokeWidth={2}
+                      strokeWidth={2.5}
                       fillOpacity={1}
                       fill="url(#priceGrad)"
+                      isAnimationActive={false}
                     />
                   </AreaChart>
                 </ResponsiveContainer>
