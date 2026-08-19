@@ -13,6 +13,7 @@ import db, {
   getLatestRecordedClosing,
   saveFundamentals,
   getAllFundamentalsMap,
+  getAllStocksFromDB,
   exportToExcel
 } from './db.js';
 
@@ -379,22 +380,25 @@ app.get('/', (req, res) => {
   });
 });
 
-// Stocks API with strict fallback tagging
+// Stocks API: Strictly pull from SQLite Database only (Zero live scrapers)
 app.get('/api/stocks', async (req, res) => {
   try {
+    const stocks = await getAllStocksFromDB();
+    if (stocks && stocks.length > 0) {
+      return res.json(stocks);
+    }
     if (await fs.pathExists(LATEST_FILE)) {
       const data = await fs.readJson(LATEST_FILE);
       if (data && Array.isArray(data.stocks)) return res.json(data.stocks);
     }
-    const fresh = await scrapeAll();
-    return res.json(fresh.stocks || []);
+    return res.json([]);
   } catch (err) {
     console.error('Error in /api/stocks:', err.message);
-    res.status(500).json({ error: 'Failed to fetch stocks' });
+    res.status(500).json({ error: 'Failed to fetch stocks from database' });
   }
 });
 
-// Trigger Instant Scrape & Sync
+// Manual Scrape Endpoints (Controlled execution only, no auto-triggers)
 app.post('/api/scrape', async (req, res) => {
   try {
     const result = await scrapeAll();
@@ -404,7 +408,6 @@ app.post('/api/scrape', async (req, res) => {
   }
 });
 
-// Trigger Background Fundamentals Crawl
 app.post('/api/scrape/fundamentals', async (req, res) => {
   try {
     crawlAllFundamentals().catch(e => console.error('Background crawl error:', e.message));
@@ -414,7 +417,7 @@ app.post('/api/scrape/fundamentals', async (req, res) => {
   }
 });
 
-// Fetch Cached Fundamentals
+// Fetch Cached Fundamentals Strictly from SQLite
 app.get('/api/fundamentals', async (req, res) => {
   try {
     const data = await getAllFundamentalsMap();
@@ -436,7 +439,7 @@ app.get('/api/history/:symbol', async (req, res) => {
   }
 });
 
-// Export 20-Year Historical Data to Excel (.xlsx)
+// Export 20-Year Historical Data to Excel (.xlsx) directly from SQLite
 app.get('/api/export/excel', async (req, res) => {
   const symbol = req.query.symbol || 'ALL';
   try {
@@ -457,66 +460,13 @@ app.get('/api/report', async (req, res) => {
 });
 
 // -------------------------------------------------------------
-// 4. CRON SCHEDULING (DSE Market Hours Only)
+// 4. CRON SCHEDULING (PAUSED: STRICT DATABASE-ONLY MODE)
 // -------------------------------------------------------------
-
-// 1. Hourly Scraper during DSE Market Hours (Sunday to Thursday, 10:00 AM to 3:00 PM BST)
-if (cron) {
-  cron.schedule('0 10-15 * * 0-4', async () => {
-    const nowDhaka = new Intl.DateTimeFormat('en-US', {
-      timeZone: 'Asia/Dhaka',
-      dateStyle: 'medium',
-      timeStyle: 'medium'
-    }).format(new Date());
-    console.log(`[CRON] Market Hours Auto-scrape triggered at ${nowDhaka} (BST)`);
-    try {
-      await scrapeAll();
-      console.log(`[CRON] Market Hours Auto-scrape completed successfully.`);
-    } catch (err) {
-      console.error('[CRON] Scrape error:', err.message);
-    }
-  }, { timezone: 'Asia/Dhaka' });
-
-  // 2. Daily Market Closing Archive (Sunday to Thursday at 3:30 PM BST)
-  cron.schedule('30 15 * * 0-4', async () => {
-    console.log('[CRON] Daily Market Close Archive triggered (3:30 PM BST)');
-    try {
-      const records = await fetchDSEClosingPrices();
-      if (records.length > 0) {
-        await saveDailyClosingToDB(records);
-        console.log(`[CRON] Daily close archive committed ${records.length} records to SQLite.`);
-      }
-    } catch (err) {
-      console.error('[CRON] Daily close archive error:', err.message);
-    }
-  }, { timezone: 'Asia/Dhaka' });
-
-  // 3. Weekly Fundamentals Crawl (Every Saturday at 12:00 PM BST)
-  cron.schedule('0 12 * * 6', async () => {
-    console.log('[CRON] Weekly Fundamentals Crawl triggered (Saturday 12:00 PM BST)');
-    try {
-      await crawlAllFundamentals();
-    } catch (err) {
-      console.error('[CRON] Weekly fundamentals error:', err.message);
-    }
-  }, { timezone: 'Asia/Dhaka' });
-
-  console.log('[CRON] Registered DSE Market Hours Schedule (Sun-Thu 10am-3pm BST, Daily Close 3:30pm BST, Weekly Sat 12pm BST).');
-}
-
-// Initial warm-up scrape if latest.json missing
-(async () => {
-  if (!fs.existsSync(LATEST_FILE)) {
-    console.log('Running initial warm-up scrape...');
-    try {
-      await scrapeAll();
-    } catch (e) {
-      console.warn('Initial warm-up notice:', e.message);
-    }
-  }
-})();
+// All live scrapers and cron jobs are paused on user directive.
+// The system runs strictly against the SQLite Database (dse.db).
+console.log('[SERVER] All scraper cron jobs are PAUSED. Server operating strictly from SQLite DB.');
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
-  console.log(`DSE Analytics Server listening on port ${PORT}`);
+  console.log(`DSE Analytics Server listening on port ${PORT} [STRICT DB MODE]`);
 });

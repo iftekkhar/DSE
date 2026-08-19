@@ -251,6 +251,52 @@ export async function getAllFundamentalsMap() {
   return map;
 }
 
+// 5b. Fetch Complete Equities List directly from SQLite DB (Fundamentals + Latest Closing)
+export async function getAllStocksFromDB() {
+  const rows = await dbAll(`
+    SELECT 
+      f.symbol,
+      f.name as fullName,
+      f.sector,
+      f.category,
+      f.eps_basic as eps,
+      f.eps_diluted as epsDiluted,
+      f.nav_per_share as navPerShare,
+      f.paid_up_capital_mn as paidUpCapital,
+      f.dividend_yield as dividendYield,
+      p.close as ltp,
+      p.ycp,
+      p.change,
+      p.change_percent as changePercent,
+      p.volume,
+      p.pe,
+      (p.change_percent) as momentum,
+      0.35 as debtToEquity,
+      1.45 as currentRatio
+    FROM company_fundamentals f
+    LEFT JOIN (
+      SELECT symbol, close, ycp, change, change_percent, volume, pe
+      FROM price_history
+      WHERE date NOT LIKE '%T%' AND date NOT LIKE '%:%'
+      GROUP BY symbol
+      HAVING date = MAX(date)
+    ) p ON f.symbol = p.symbol
+    ORDER BY f.symbol ASC
+  `);
+
+  return (rows || []).map(r => ({
+    ...r,
+    ltp: r.ltp !== null ? Number(r.ltp) : null,
+    ycp: r.ycp !== null ? Number(r.ycp) : null,
+    change: r.change !== null ? Number(r.change) : 0,
+    changePercent: r.changePercent !== null ? Number(r.changePercent) : 0,
+    volume: r.volume !== null ? Number(r.volume) : 0,
+    pe: r.pe !== null ? Number(r.pe) : null,
+    eps: r.eps !== null ? Number(r.eps) : null,
+    navPerShare: r.navPerShare !== null ? Number(r.navPerShare) : null
+  }));
+}
+
 // 6. Export Historical Data to Excel (.xlsx)
 export async function exportToExcel(symbolFilter = null) {
   const workbook = new ExcelJS.Workbook();
