@@ -1,5 +1,5 @@
 import { Star, ArrowUpRight, Scale, Check } from 'lucide-react';
-import { getFallbackTag } from '../services/dseData';
+import { getFallbackTag, formatDateDDMMM } from '../services/dseData';
 
 export default function StockGrid({
   stocks,
@@ -17,11 +17,8 @@ export default function StockGrid({
         const isSaved = watchlist.includes(stock.symbol);
         const isCompared = compareList.some(s => s.symbol === stock.symbol);
         const isBullish = (stock.changePercent || 0) >= 0;
-        const ltpTag = getFallbackTag(stock, 'ltp');
-        const changeTag = getFallbackTag(stock, 'changePercent');
-        const peTag = getFallbackTag(stock, 'pe');
-        const roeTag = getFallbackTag(stock, 'roe');
-        const epsTag = getFallbackTag(stock, 'eps');
+        const closeDate = stock.closeDate || '2026-08-20';
+        const dateLabel = formatDateDDMMM(closeDate);
 
         return (
           <div
@@ -80,8 +77,8 @@ export default function StockGrid({
                       <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
                     )}
                   </span>
-                  <span className="text-[8px] font-semibold text-blue-700 mt-1">
-                    Close: {stock.closeDate || '2026-08-20'}
+                  <span className="text-[8.5px] font-semibold text-blue-700 mt-1">
+                    Close: {dateLabel}
                   </span>
                 </div>
                 {stock.changePercent !== null && stock.changePercent !== undefined ? (
@@ -98,12 +95,12 @@ export default function StockGrid({
               {/* Minimal Metrics Strip */}
               <div className="grid grid-cols-3 gap-1 text-[11px] text-slate-600 bg-slate-50 p-2 rounded-xl mb-3 border border-slate-100">
                 <div className="text-center">
-                  <div className="text-slate-400 text-[8.5px] font-bold uppercase">P/E</div>
+                  <div className="text-slate-400 text-[8.5px] font-bold uppercase">P/E (Daily)</div>
                   <div className="font-mono font-bold text-slate-800 text-[11px]">
                     {stock.pe !== null && stock.pe !== undefined ? (
                       <div>
                         <div>{stock.pe}x</div>
-                        <div className="text-[7.5px] text-slate-400 font-normal">TTM FY26</div>
+                        <div className="text-[7.5px] text-slate-400 font-normal">Aud: {stock.auditedPe || stock.pe}x</div>
                       </div>
                     ) : (
                       <span className="text-[10px] text-slate-400 font-normal italic">N/A</span>

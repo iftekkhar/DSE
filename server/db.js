@@ -293,10 +293,33 @@ export async function getAllStocksFromDB() {
 
   return (rows || []).map(r => {
     const ltp = r.ltp !== null ? Number(r.ltp) : null;
+    const ycp = r.ycp !== null ? Number(r.ycp) : null;
     const eps = r.eps !== null ? Number(r.eps) : null;
     const navPerShare = r.navPerShare !== null ? Number(r.navPerShare) : null;
     const paidUpCapital = r.paidUpCapital !== null ? Number(r.paidUpCapital) : null;
     
+    // Strict closing price change & momentum calculated from consecutive closing balances
+    const change = (ltp !== null && ycp !== null && ycp > 0)
+      ? Number((ltp - ycp).toFixed(2))
+      : (r.change !== null ? Number(r.change) : 0);
+
+    const changePercent = (ltp !== null && ycp !== null && ycp > 0)
+      ? Number((((ltp - ycp) / ycp) * 100).toFixed(2))
+      : (r.changePercent !== null ? Number(r.changePercent) : 0);
+
+    // Strict Daily Session Volume recorded at close
+    const volume = r.volume !== null ? Number(r.volume) : 0;
+
+    // Daily P/E: Daily Closing LTP / Latest Running EPS (Fluctuates daily with price)
+    const dailyPe = (ltp && eps && eps > 0)
+      ? Number((ltp / eps).toFixed(2))
+      : (r.pe !== null ? Number(r.pe) : null);
+
+    // Audited P/E: Valuation multiple grounded in Audited Financial Statements & YCP base
+    const auditedPe = (ycp && eps && eps > 0)
+      ? Number((ycp / eps).toFixed(2))
+      : dailyPe;
+
     // Dynamic ROE from latest audited EPS and NAVPS
     const roe = (eps !== null && navPerShare !== null && navPerShare > 0)
       ? Number(((eps / navPerShare) * 100).toFixed(2))
@@ -310,11 +333,14 @@ export async function getAllStocksFromDB() {
     return {
       ...r,
       ltp,
-      ycp: r.ycp !== null ? Number(r.ycp) : null,
-      change: r.change !== null ? Number(r.change) : 0,
-      changePercent: r.changePercent !== null ? Number(r.changePercent) : 0,
-      volume: r.volume !== null ? Number(r.volume) : 0,
-      pe: r.pe !== null ? Number(r.pe) : (ltp && eps && eps > 0 ? Number((ltp / eps).toFixed(2)) : null),
+      ycp,
+      change,
+      changePercent,
+      momentum: changePercent,
+      volume,
+      pe: dailyPe,
+      dailyPe,
+      auditedPe,
       eps,
       navPerShare,
       paidUpCapital,

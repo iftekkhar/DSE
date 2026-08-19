@@ -8,6 +8,7 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 import { fetchStockHistory, generateHistoryData, downloadExcel } from '../services/api';
 import {
   getFallbackTag,
+  formatDateDDMMM,
   calculateGrahamNumber,
   calculateMarginOfSafety,
   calculateEarningsYield,
@@ -120,18 +121,13 @@ export default function StockModal({
       }
     }
 
-    // Format tick labels based on active time range
+    // Format tick labels based on active time range using DD MMM format
     const displayPoints = displaySlice.map((pt) => {
-      const dObj = pt.dateObj || new Date(pt.rawDate);
-      let dayLabel = pt.day;
-      if (timeRange === '7D') {
-        dayLabel = dObj.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric' });
-      } else if (timeRange === '1M' || timeRange === '3M') {
-        dayLabel = dObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      } else if (timeRange === '6M' || timeRange === '1Y') {
-        dayLabel = dObj.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
-      } else {
-        dayLabel = dObj.toLocaleDateString('en-US', { year: 'numeric' });
+      const raw = pt.rawDate || pt.date;
+      let dayLabel = formatDateDDMMM(raw);
+      if (timeRange === '5Y' || timeRange === '20Y') {
+        const dObj = pt.dateObj || new Date(raw);
+        dayLabel = !isNaN(dObj.getTime()) ? String(dObj.getFullYear()) : dayLabel;
       }
       return {
         ...pt,
@@ -159,6 +155,7 @@ export default function StockModal({
   const isCompared = compareList.some(s => s.symbol === stock.symbol);
   const isBullish = (stock.changePercent || 0) >= 0;
   const closeDate = stock.closeDate || '2026-08-20';
+  const dateLabel = formatDateDDMMM(closeDate);
   const auditedPeriod = stock.auditedPeriod || 'FY2026 Q3 (9M)';
   const auditedYear = (stock.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25 Audited';
 
@@ -167,7 +164,7 @@ export default function StockModal({
     {
       key: 'pe',
       label: 'P/E Multiple',
-      period: 'TTM (FY26)',
+      period: `Daily: ${dateLabel}`,
       value: stock.pe !== null && stock.pe !== undefined ? `${stock.pe}x` : 'Not Available live',
       threshold: `< ${t.pe}x`,
       passed: stock.pe !== null && stock.pe !== undefined ? stock.pe < t.pe : false,
@@ -184,8 +181,8 @@ export default function StockModal({
     },
     {
       key: 'momentum',
-      label: '24h Momentum',
-      period: closeDate,
+      label: 'Closing Momentum',
+      period: dateLabel,
       value: stock.changePercent !== null && stock.changePercent !== undefined ? `${stock.changePercent > 0 ? '+' : ''}${stock.changePercent}%` : 'Not Available live',
       threshold: `> ${t.momentum}%`,
       passed: stock.changePercent !== null && stock.changePercent !== undefined ? stock.changePercent > t.momentum : false,
@@ -211,7 +208,7 @@ export default function StockModal({
     },
     {
       key: 'eps',
-      label: 'EPS (Earnings)',
+      label: 'EPS (Audited)',
       period: auditedYear,
       value: stock.eps !== null && stock.eps !== undefined ? `৳${stock.eps.toFixed(2)}` : 'Not Available live',
       threshold: `> ৳${t.eps}`,
@@ -221,7 +218,7 @@ export default function StockModal({
     {
       key: 'volume',
       label: 'Trading Volume',
-      period: closeDate,
+      period: dateLabel,
       value: stock.volume !== null && stock.volume !== undefined ? stock.volume.toLocaleString() : 'Not Available live',
       threshold: `> ${t.volume.toLocaleString()}`,
       passed: stock.volume !== null && stock.volume !== undefined ? stock.volume > t.volume : false,
@@ -291,7 +288,7 @@ export default function StockModal({
                   Closing Price
                 </span>
                 <span className="text-[8.5px] font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded border border-blue-200">
-                  {closeDate}
+                  {dateLabel}
                 </span>
               </div>
               <div className="flex items-baseline gap-2 my-1">
@@ -391,7 +388,7 @@ export default function StockModal({
                 Audited Financial Disclosures ({auditedPeriod})
               </h3>
               <span className="text-[10px] text-slate-500 font-semibold">
-                Settlement Date: <strong className="text-slate-800">{closeDate}</strong>
+                Settlement Date: <strong className="text-slate-800">{dateLabel}</strong>
               </span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
@@ -408,12 +405,35 @@ export default function StockModal({
               <div className="p-2 rounded-lg bg-white border border-slate-200/80">
                 <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Market Capitalization</span>
                 <span className="font-mono font-bold text-slate-900">৳{stock.marketCap ? `${stock.marketCap.toLocaleString()} Mn` : 'N/A'}</span>
-                <span className="text-[8px] text-blue-700 block mt-0.5">As of {closeDate}</span>
+                <span className="text-[8px] text-blue-700 block mt-0.5">As of {dateLabel}</span>
               </div>
               <div className="p-2 rounded-lg bg-white border border-slate-200/80">
                 <span className="text-[9.5px] text-slate-400 font-bold uppercase block">Cash Dividend Yield</span>
                 <span className="font-mono font-bold text-slate-900">{stock.dividendYield ? `${stock.dividendYield}%` : '4.15%'}</span>
                 <span className="text-[8px] text-amber-700 block mt-0.5">{auditedYear}</span>
+              </div>
+            </div>
+
+            {/* Daily P/E vs Audited P/E Deep-Dive */}
+            <div className="mt-2.5 p-2.5 rounded-lg bg-blue-50/70 border border-blue-200/60 text-xs">
+              <div className="flex items-center justify-between font-bold text-slate-800 mb-1.5">
+                <span className="flex items-center gap-1 text-blue-900 font-display">
+                  <Info className="w-3.5 h-3.5 text-blue-600" />
+                  P/E Multiple Comparison: Daily vs. Audited
+                </span>
+                <span className="text-[10px] text-blue-900 font-mono bg-blue-100/80 px-1.5 py-0.5 rounded border border-blue-200">
+                  Daily: <strong>{stock.pe}x</strong> | Audited: <strong>{stock.auditedPe || stock.pe}x</strong>
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[10.5px] text-slate-600 leading-snug">
+                <div className="bg-white p-2 rounded border border-blue-100">
+                  <strong className="text-blue-950 block mb-0.5">📊 Daily Closing P/E ({stock.pe}x)</strong>
+                  <span>Calculated from today's closing settlement (৳{stock.ltp !== null ? stock.ltp.toFixed(2) : '—'}) ÷ running EPS (৳{stock.eps}). Fluctuates each trading session with market price changes.</span>
+                </div>
+                <div className="bg-white p-2 rounded border border-blue-100">
+                  <strong className="text-emerald-950 block mb-0.5">🏛️ Audited P/E ({stock.auditedPe || stock.pe}x)</strong>
+                  <span>Calculated against official annual audited financial statements ({auditedPeriod}). Removes short-term volatility to reflect fundamental corporate earning power.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -633,10 +653,10 @@ export default function StockModal({
                     />
                     <Tooltip
                       contentStyle={{ backgroundColor: '#0f172a', borderRadius: '8px', border: 'none', color: '#fff', fontSize: '11px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                      formatter={(val) => [`৳${val}`, 'Closing Price']}
+                      formatter={(val) => [`৳${val}`, 'Daily Close']}
                       labelFormatter={(label, payload) => {
-                        const raw = payload?.[0]?.payload?.rawDate;
-                        return raw ? `Date: ${raw}` : label;
+                        const raw = payload?.[0]?.payload?.rawDate || label;
+                        return `Date: ${formatDateDDMMM(raw)} (${raw})`;
                       }}
                     />
                     <Area

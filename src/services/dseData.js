@@ -19,6 +19,27 @@ export const DSE_SECTORS = [
   "Miscellaneous"
 ];
 
+// Date Formatter: strictly format dates as "DD MMM" (e.g. "20 Aug")
+export const formatDateDDMMM = (dateStr) => {
+  if (!dateStr) return '';
+  const clean = String(dateStr).slice(0, 10);
+  const parts = clean.split('-');
+  if (parts.length === 3) {
+    const year = parseInt(parts[0], 10);
+    const monthIndex = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    if (!isNaN(day) && monthIndex >= 0 && monthIndex < 12) {
+      return `${String(day).padStart(2, '0')} ${months[monthIndex]}`;
+    }
+  }
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return String(dateStr);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = d.toLocaleDateString('en-US', { month: 'short' });
+  return `${day} ${month}`;
+};
+
 // -------------------------------------------------------------
 // WARREN BUFFETT & BENJAMIN GRAHAM VALUE INVESTING CALCULATIONS
 // -------------------------------------------------------------

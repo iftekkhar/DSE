@@ -1,5 +1,5 @@
 import { Star, BarChart3, Plus, Check } from 'lucide-react';
-import { getFallbackTag } from '../services/dseData';
+import { getFallbackTag, formatDateDDMMM } from '../services/dseData';
 
 export default function StockTable({
   stocks,
@@ -31,8 +31,8 @@ export default function StockTable({
             <tr className="bg-slate-50/80 border-b border-slate-200/60 text-[11px] font-bold text-slate-400 uppercase tracking-wider select-none">
               <th className="py-3 px-4 w-10 text-center">⭐</th>
               <th className="py-3 px-4">Scrip</th>
-              <th className="py-3 px-4 text-right">Close & Date</th>
-              <th className="py-3 px-4 text-right">P/E Ratio</th>
+              <th className="py-3 px-4 text-right">Daily Close</th>
+              <th className="py-3 px-4 text-right">P/E (Daily / Audited)</th>
               <th className="py-3 px-4 text-right">ROE (Audited)</th>
               <th className="py-3 px-4 text-right">EPS (Audited)</th>
               <th className="py-3 px-4 text-right">Volume</th>
@@ -46,6 +46,7 @@ export default function StockTable({
               const isCompared = compareList.some(s => s.symbol === stock.symbol);
               const isBullish = (stock.changePercent || 0) >= 0;
               const closeDate = stock.closeDate || '2026-08-20';
+              const dateLabel = formatDateDDMMM(closeDate);
               const auditedPeriod = stock.auditedPeriod || 'FY2026 Q3 (9M)';
 
               return (
@@ -110,8 +111,8 @@ export default function StockTable({
                             <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>
                           )}
                         </span>
-                        <span className="text-[8.5px] font-semibold text-blue-700 bg-blue-50 px-1 py-0.2 rounded border border-blue-200" title={`Latest Daily Settlement: ${closeDate}`}>
-                          {closeDate}
+                        <span className="text-[8.5px] font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded border border-blue-200" title={`Latest Settlement: ${closeDate}`}>
+                          {dateLabel}
                         </span>
                       </div>
                       {stock.changePercent !== null && stock.changePercent !== undefined ? (
@@ -126,12 +127,12 @@ export default function StockTable({
                     </div>
                   </td>
 
-                  {/* P/E Ratio */}
+                  {/* P/E Ratio (Daily & Audited) */}
                   <td className="py-3 px-4 text-right font-mono font-medium text-slate-700">
                     {stock.pe !== null && stock.pe !== undefined ? (
                       <div className="flex flex-col items-end">
-                        <span className="font-bold text-slate-900">{stock.pe}x</span>
-                        <span className="text-[8.5px] text-slate-400 font-normal">TTM FY26</span>
+                        <span className="font-bold text-slate-900">{stock.pe}x <span className="text-[9px] font-normal text-slate-400">Daily</span></span>
+                        <span className="text-[8.5px] text-slate-500 font-normal">Audited: {stock.auditedPe || stock.pe}x</span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>
@@ -177,7 +178,7 @@ export default function StockTable({
                             ? `${(stock.volume / 1000000).toFixed(1)}M`
                             : `${(stock.volume / 1000).toFixed(0)}K`}
                         </span>
-                        <span className="text-[8.5px] text-slate-400">{closeDate}</span>
+                        <span className="text-[8.5px] text-slate-400">{dateLabel}</span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>

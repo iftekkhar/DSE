@@ -1,5 +1,5 @@
 import { X, Scale } from 'lucide-react';
-import { getFallbackTag } from '../services/dseData';
+import { getFallbackTag, formatDateDDMMM } from '../services/dseData';
 
 export default function CompareModal({ compareList, onClose, onClear, onSelectStock }) {
   if (!compareList || compareList.length === 0) return null;
@@ -63,7 +63,7 @@ export default function CompareModal({ compareList, onClose, onClear, onSelectSt
                     {s.ltp !== null && s.ltp !== undefined ? (
                       <div className="flex flex-col items-center">
                         <span>৳{s.ltp.toFixed(2)}</span>
-                        <span className="text-[8px] text-blue-700 font-normal">{s.closeDate || '2026-08-20'}</span>
+                        <span className="text-[8px] text-blue-700 font-normal">{formatDateDDMMM(s.closeDate || '2026-08-20')}</span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
@@ -74,7 +74,7 @@ export default function CompareModal({ compareList, onClose, onClear, onSelectSt
 
               {/* 24h Change */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">24h Momentum</td>
+                <td className="py-3 px-4 font-bold text-slate-600">Closing Momentum</td>
                 {compareList.map((s) => (
                   <td key={s.symbol} className="py-3 px-4 text-center">
                     {s.changePercent !== null && s.changePercent !== undefined ? (
@@ -84,7 +84,7 @@ export default function CompareModal({ compareList, onClose, onClear, onSelectSt
                         }`}>
                           {(s.changePercent || 0) >= 0 ? '+' : ''}{s.changePercent}%
                         </span>
-                        <span className="text-[8px] text-slate-400">{s.closeDate || '2026-08-20'}</span>
+                        <span className="text-[8px] text-slate-400">{formatDateDDMMM(s.closeDate || '2026-08-20')}</span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
@@ -95,13 +95,13 @@ export default function CompareModal({ compareList, onClose, onClear, onSelectSt
 
               {/* P/E Ratio */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">P/E Multiple (TTM)</td>
+                <td className="py-3 px-4 font-bold text-slate-600">P/E Multiple (Daily / Audited)</td>
                 {compareList.map((s) => (
                   <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
                     {s.pe !== null && s.pe !== undefined ? (
                       <div className="flex flex-col items-center">
-                        <span>{s.pe}x</span>
-                        <span className="text-[8px] text-slate-400 font-normal">TTM FY26</span>
+                        <span>{s.pe}x <span className="text-[9px] font-normal text-slate-400">Daily</span></span>
+                        <span className="text-[8px] text-slate-500 font-normal">Audited: {s.auditedPe || s.pe}x</span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
@@ -186,33 +186,13 @@ export default function CompareModal({ compareList, onClose, onClear, onSelectSt
                     {s.volume !== null && s.volume !== undefined ? (
                       <div className="flex flex-col items-center">
                         <span>{s.volume.toLocaleString()}</span>
-                        <span className="text-[8px] text-slate-400">{s.closeDate || '2026-08-20'}</span>
+                        <span className="text-[8px] text-slate-400">{formatDateDDMMM(s.closeDate || '2026-08-20')}</span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
                     )}
                   </td>
                 ))}
-              </tr>
-
-              {/* Volume */}
-              <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">Trading Volume</td>
-                {compareList.map((s) => {
-                  const tag = getFallbackTag(s, 'volume');
-                  return (
-                    <td key={s.symbol} className="py-3 px-4 text-center font-mono text-slate-700">
-                      {s.volume !== null && s.volume !== undefined ? (
-                        <span>
-                          {s.volume.toLocaleString()}
-                          {tag && <span className="text-[9px] text-amber-700 bg-amber-100 px-1 py-0.2 rounded border border-amber-300 ml-1">{tag}</span>}
-                        </span>
-                      ) : (
-                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                      )}
-                    </td>
-                  );
-                })}
               </tr>
 
                 {/* KPI Score */}
