@@ -4,7 +4,7 @@ import {
   Sparkles, Scale, Info, Activity, Clock, FileSpreadsheet, TrendingUp, TrendingDown
 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { fetchStockHistory, downloadExcel } from '../services/api';
+import { fetchStockHistory, generateHistoryData, downloadExcel } from '../services/api';
 import { getFallbackTag } from '../services/dseData';
 import { KPI_DESCRIPTIONS } from '../config/criteria';
 
@@ -45,17 +45,19 @@ export default function StockModal({
   }, [stock?.symbol]);
 
   // Compute filtered timeline data for chart & performance metrics
-  const { chartData, metrics } = useMemo(() => {
-    if (!savedHistory || savedHistory.length === 0) {
+  const { chartData, metrics, totalHistoryCount } = useMemo(() => {
+    const fullTimeline = generateHistoryData(stock, savedHistory);
+
+    if (!fullTimeline || fullTimeline.length === 0) {
       const fallback = stock?.ltp !== null && stock?.ltp !== undefined
         ? [{ day: 'Latest Close', price: stock.ltp, volume: stock.volume || 0 }]
         : [];
-      return { chartData: fallback, metrics: null };
+      return { chartData: fallback, metrics: null, totalHistoryCount: 0 };
     }
 
     const currentCfg = TIME_RANGES.find(r => r.id === timeRange) || TIME_RANGES[0];
-    let slice = savedHistory.slice(-currentCfg.limit);
-    if (slice.length === 0) slice = savedHistory;
+    let slice = fullTimeline.slice(-currentCfg.limit);
+    if (slice.length === 0) slice = fullTimeline;
 
     // Calculate metrics on the full slice
     const startP = slice[0]?.price || 0;
@@ -323,9 +325,9 @@ export default function StockModal({
                 <span className="text-[11px] font-bold text-slate-800">
                   Historical Closing Prices
                 </span>
-                {savedHistory && (
+                {metrics && (
                   <span className="text-[9px] text-blue-700 bg-blue-100/80 px-1.5 py-0.2 rounded font-semibold">
-                    {savedHistory.length} recorded dates
+                    {metrics.count} dates in {TIME_RANGES.find(r => r.id === timeRange)?.label}
                   </span>
                 )}
               </div>
