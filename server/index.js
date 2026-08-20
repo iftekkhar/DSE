@@ -603,20 +603,28 @@ app.get('/api/stocks', async (req, res) => {
 
 // Job 2: Manual Live Intraday Ticker Sync (Session snapshot, 0 DB writes)
 app.get('/api/test-seed', async (req, res) => {
+  let sqliteLoadError = null;
+  try {
+    const sqliteMod = await import('sqlite3');
+  } catch (e) {
+    sqliteLoadError = { message: e.message, stack: e.stack };
+  }
+
   try {
     const EXCEL_PATH = path.join(DATA_DIR, 'DSE_20_Year_Master_Dataset_2005_2026.xlsx');
     const exists = fs.existsSync(EXCEL_PATH);
-    const dbRows = await dbGet('SELECT COUNT(*) as total FROM price_history');
-    const fundRows = await dbGet('SELECT COUNT(*) as total FROM company_fundamentals');
+    const dbRows = await dbGet('SELECT COUNT(*) as total FROM price_history').catch(e => ({ error: e.message }));
+    const fundRows = await dbGet('SELECT COUNT(*) as total FROM company_fundamentals').catch(e => ({ error: e.message }));
     res.json({
       excelExists: exists,
       excelSize: exists ? fs.statSync(EXCEL_PATH).size : 0,
-      priceHistoryCount: dbRows ? dbRows.total : 0,
-      fundamentalsCount: fundRows ? fundRows.total : 0,
-      isSqliteAvailable
+      priceHistoryCount: dbRows ? (dbRows.total ?? dbRows.error) : 0,
+      fundamentalsCount: fundRows ? (fundRows.total ?? fundRows.error) : 0,
+      isSqliteAvailable,
+      sqliteLoadError
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message, stack: err.stack, sqliteLoadError });
   }
 });
 
