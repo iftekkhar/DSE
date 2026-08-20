@@ -11,10 +11,17 @@ import {
 import masterSnapshot from '../../data/latest.json' with { type: 'json' };
 
 const getApiBase = () => {
+  if (import.meta.env && import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL.replace(/\/$/, '');
+  }
   if (typeof window !== 'undefined') {
     const host = window.location.hostname;
     if (host === 'localhost' || host === '127.0.0.1') {
       return 'http://localhost:5001';
+    }
+    // If backend and frontend are hosted together on same Render origin
+    if (window.location.origin.includes('onrender.com') && !window.location.origin.includes('dse-frontend')) {
+      return window.location.origin;
     }
     return 'https://dse-xvn2.onrender.com';
   }

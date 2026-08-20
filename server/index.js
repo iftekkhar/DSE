@@ -828,6 +828,15 @@ if (cron) {
   console.warn('[CRON] node-cron not initialized.');
 }
 
+const DIST_DIR = path.join(__dirname, '..', 'dist');
+if (fs.existsSync(DIST_DIR)) {
+  app.use(express.static(DIST_DIR));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(DIST_DIR, 'index.html'));
+  });
+}
+
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`DSE Analytics Server listening on port ${PORT} [DHAKA UTC+6 ENGINE]`);
