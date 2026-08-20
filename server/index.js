@@ -602,6 +602,24 @@ app.get('/api/stocks', async (req, res) => {
 });
 
 // Job 2: Manual Live Intraday Ticker Sync (Session snapshot, 0 DB writes)
+app.get('/api/test-seed', async (req, res) => {
+  try {
+    const EXCEL_PATH = path.join(DATA_DIR, 'DSE_20_Year_Master_Dataset_2005_2026.xlsx');
+    const exists = fs.existsSync(EXCEL_PATH);
+    const dbRows = await dbGet('SELECT COUNT(*) as total FROM price_history');
+    const fundRows = await dbGet('SELECT COUNT(*) as total FROM company_fundamentals');
+    res.json({
+      excelExists: exists,
+      excelSize: exists ? fs.statSync(EXCEL_PATH).size : 0,
+      priceHistoryCount: dbRows ? dbRows.total : 0,
+      fundamentalsCount: fundRows ? fundRows.total : 0,
+      isSqliteAvailable
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.post('/api/scrape', async (req, res) => {
   try {
     const result = await runJob2IntradaySync();
