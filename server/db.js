@@ -619,11 +619,68 @@ export async function seed20YearFromMasterExcel() {
   }
 }
 
+export async function seedFundamentalsFromLatestJson() {
+  const jsonPath = path.join(DATA_DIR, 'latest.json');
+  if (!fs.existsSync(jsonPath)) return;
+  try {
+    const raw = fs.readFileSync(jsonPath, 'utf8');
+    const data = JSON.parse(raw);
+    const stocks = Array.isArray(data.stocks) ? data.stocks : [];
+    if (stocks.length === 0) return;
+
+    await dbRun('BEGIN TRANSACTION');
+    const stmt = db.prepare(`
+      INSERT INTO company_fundamentals (
+        symbol, name, sector, category, eps_basic, eps_diluted, nav_per_share,
+        paid_up_capital_mn, authorized_capital_mn, dividend_yield, audited_period,
+        quarterly_disclosure, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+      ON CONFLICT(symbol) DO UPDATE SET
+        name = COALESCE(excluded.name, name),
+        sector = COALESCE(excluded.sector, sector),
+        category = COALESCE(excluded.category, category),
+        eps_basic = COALESCE(excluded.eps_basic, eps_basic),
+        eps_diluted = COALESCE(excluded.eps_diluted, eps_diluted),
+        nav_per_share = COALESCE(excluded.nav_per_share, nav_per_share),
+        paid_up_capital_mn = COALESCE(excluded.paid_up_capital_mn, paid_up_capital_mn),
+        authorized_capital_mn = COALESCE(excluded.authorized_capital_mn, authorized_capital_mn),
+        dividend_yield = COALESCE(excluded.dividend_yield, dividend_yield),
+        audited_period = COALESCE(excluded.audited_period, audited_period),
+        quarterly_disclosure = COALESCE(excluded.quarterly_disclosure, quarterly_disclosure),
+        updated_at = datetime('now')
+    `);
+
+    for (const s of stocks) {
+      if (!s.symbol) continue;
+      stmt.run([
+        s.symbol,
+        s.fullName || s.name || '',
+        s.sector || '',
+        s.category || 'A',
+        s.eps != null ? Number(s.eps) : null,
+        s.epsDiluted != null ? Number(s.epsDiluted) : null,
+        s.navPerShare != null ? Number(s.navPerShare) : null,
+        s.paidUpCapital != null ? Number(s.paidUpCapital) : null,
+        s.authorizedCapital != null ? Number(s.authorizedCapital) : null,
+        s.dividendYield != null ? Number(s.dividendYield) : null,
+        s.auditedPeriod || null,
+        s.quarterlyDisclosure || null
+      ]);
+    }
+    stmt.finalize();
+    await dbRun('COMMIT');
+    console.log(`[SQLITE] Seeded ${stocks.length} audited company fundamentals from latest.json master snapshot.`);
+  } catch (err) {
+    console.error('[SQLITE] Error seeding fundamentals from latest.json:', err.message);
+  }
+}
+
 // Clean old corrupted snapshot data and initialize
 initDB()
   .then(async () => {
     await dbRun(`DELETE FROM price_history WHERE date LIKE '%T%' OR date LIKE '%:%'`).catch(() => {});
     await seed20YearFromMasterExcel();
+    await seedFundamentalsFromLatestJson();
   })
   .catch(e => console.error('[SQLITE] Init error:', e.message));
 
