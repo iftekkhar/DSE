@@ -23,7 +23,8 @@ import {
   getDetailedHistoricalAnalysis,
   getCompanyFundamentalsHistory,
   seed20YearFromMasterExcel,
-  seedFromLatestJson
+  seedFromLatestJson,
+  dbGet
 } from './db.js';
 import { runAuditedEPSWeeklyScraper } from './scrapers/audited_eps_scraper.js';
 
