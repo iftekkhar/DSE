@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-20T00:13:41.501Z",
+  "fetchedAt": "2026-08-20T00:28:13.049Z",
   "count": 440,
   "stocks": [
     {
@@ -181,10 +181,6 @@
       "navPerShare": 148.5,
       "paidUpCapital": 5700,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -773,7 +769,7 @@
       "category": "A",
       "ltp": 231.2,
       "change": 3.1,
-      "changePercent": 0,
+      "changePercent": 1.36,
       "pe": null,
       "eps": 10.61,
       "roe": 7.14,
@@ -783,10 +779,6 @@
       "navPerShare": 148.5,
       "paidUpCapital": 5700,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -2462,10 +2454,6 @@
       "navPerShare": 142.6,
       "paidUpCapital": 5860,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -2956,10 +2944,6 @@
       "navPerShare": 139.5,
       "paidUpCapital": 5940,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -3770,10 +3754,6 @@
       "navPerShare": 136.3,
       "paidUpCapital": 6020,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -3855,10 +3835,6 @@
       "navPerShare": 133,
       "paidUpCapital": 6100,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -3913,10 +3889,6 @@
       "navPerShare": 133,
       "paidUpCapital": 6100,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -4079,10 +4051,6 @@
       "navPerShare": 133,
       "paidUpCapital": 6100,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -4353,10 +4321,6 @@
       "navPerShare": 129.6,
       "paidUpCapital": 6180,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -5279,10 +5243,6 @@
       "navPerShare": 122.5,
       "paidUpCapital": 6340,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -5761,9 +5721,9 @@
       "name": "KAY&QUE Limited",
       "sector": "Miscellaneous",
       "category": "A",
-      "ltp": 421.1,
-      "change": -8.699999999999989,
-      "changePercent": 0,
+      "ltp": 418.6,
+      "change": 0.5,
+      "changePercent": 0.12,
       "pe": 15.2,
       "eps": 4.03,
       "roe": 2.12,
@@ -5773,10 +5733,6 @@
       "navPerShare": 190,
       "paidUpCapital": 6500,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -6495,10 +6451,6 @@
       "navPerShare": 183.6,
       "paidUpCapital": 6660,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -9709,10 +9661,6 @@
       "navPerShare": 42,
       "paidUpCapital": 7140,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -9794,10 +9742,6 @@
       "navPerShare": 42,
       "paidUpCapital": 7140,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -10072,10 +10016,6 @@
       "navPerShare": 42,
       "paidUpCapital": 7140,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -11372,10 +11312,6 @@
       "navPerShare": 42,
       "paidUpCapital": 7300,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -11430,10 +11366,6 @@
       "navPerShare": 42,
       "paidUpCapital": 7300,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"
@@ -11704,10 +11636,6 @@
       "navPerShare": 41.85,
       "paidUpCapital": 7380,
       "_historyFallback": {
-        "ltp": {
-          "source": "database",
-          "date": "2026-08-20"
-        },
         "eps": {
           "source": "fundamentals",
           "year": "FY2026 Q3 Unaudited (9M)"

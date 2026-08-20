@@ -85,11 +85,16 @@ export async function initDB() {
       pe_diluted REAL,
       pe_trailing REAL,
       dividend_yield REAL,
+      debt_to_equity REAL,
+      current_ratio REAL,
       audited_period TEXT,
       quarterly_disclosure TEXT,
       updated_at TEXT DEFAULT (datetime('now'))
     );
   `);
+
+  try { await dbRun(`ALTER TABLE company_fundamentals ADD COLUMN debt_to_equity REAL;`); } catch (e) {}
+  try { await dbRun(`ALTER TABLE company_fundamentals ADD COLUMN current_ratio REAL;`); } catch (e) {}
 
   await dbRun(`
     CREATE TABLE IF NOT EXISTS market_breadth (
@@ -269,6 +274,8 @@ export async function getAllFundamentalsMap() {
       peDiluted: r.pe_diluted,
       peTrailing: r.pe_trailing,
       dividendYield: r.dividend_yield,
+      debtToEquity: r.debt_to_equity,
+      currentRatio: r.current_ratio,
       auditedPeriod: r.audited_period,
       quarterlyDisclosure: r.quarterly_disclosure,
       updatedAt: r.updated_at
@@ -330,8 +337,8 @@ export async function getAllStocksFromDB() {
       f.paid_up_capital_mn as paidUpCapital,
       f.authorized_capital_mn as authorizedCapital,
       f.dividend_yield as dividendYield,
-      COALESCE(f.audited_period, 'FY2026 Q3 (9M)') as auditedPeriod,
-      COALESCE(f.quarterly_disclosure, 'Q3 Unaudited (9M)') as quarterlyDisclosure,
+      COALESCE(f.audited_period, 'FY2025 Audited') as auditedPeriod,
+      COALESCE(f.quarterly_disclosure, 'FY2025 Audited') as quarterlyDisclosure,
       p.date as closeDate,
       p.close as ltp,
       p.ycp,
@@ -340,8 +347,8 @@ export async function getAllStocksFromDB() {
       p.volume,
       p.pe,
       (p.change_percent) as momentum,
-      0.35 as debtToEquity,
-      1.45 as currentRatio
+      f.debt_to_equity as debtToEquity,
+      f.current_ratio as currentRatio
     FROM company_fundamentals f
     LEFT JOIN (
       SELECT ph1.symbol, ph1.date, ph1.close, ph1.ycp, ph1.change, ph1.change_percent, ph1.volume, ph1.pe
@@ -375,7 +382,7 @@ export async function getAllStocksFromDB() {
     // Strict Daily Session Volume recorded at close
     const volume = r.volume !== null ? Number(r.volume) : 0;
 
-    // Daily P/E: Daily Closing LTP / Latest Running EPS (Fluctuates daily with price)
+    // Daily P/E: Daily Closing LTP / Latest Audited EPS (Fluctuates daily with price)
     const dailyPe = (ltp && eps && eps > 0)
       ? Number((ltp / eps).toFixed(2))
       : (r.pe !== null ? Number(r.pe) : null);
@@ -395,6 +402,8 @@ export async function getAllStocksFromDB() {
       ? Number(((paidUpCapital / 10) * ltp).toFixed(2))
       : null;
 
+    const auditedPeriod = r.auditedPeriod || 'FY2025 Audited';
+
     return {
       ...r,
       ltp,
@@ -410,12 +419,14 @@ export async function getAllStocksFromDB() {
       navPerShare,
       paidUpCapital,
       authorizedCapital: r.authorizedCapital !== null ? Number(r.authorizedCapital) : null,
-      dividendYield: r.dividendYield !== null ? Number(r.dividendYield) : 4.15,
+      dividendYield: r.dividendYield !== null ? Number(r.dividendYield) : null,
+      debtToEquity: r.debtToEquity !== null ? Number(r.debtToEquity) : null,
+      currentRatio: r.currentRatio !== null ? Number(r.currentRatio) : null,
       roe,
       marketCap,
       closeDate: r.closeDate || '2026-08-20',
-      auditedPeriod: r.auditedPeriod || 'FY2026 Q3 (9M)',
-      auditedYear: (r.auditedPeriod || '').includes('2026') ? '2026' : '2025'
+      auditedPeriod,
+      auditedYear: auditedPeriod.includes('2026') ? 'FY26 Audited' : (auditedPeriod.includes('2024') ? 'FY24 Audited' : 'FY25 Audited')
     };
   });
 }

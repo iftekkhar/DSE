@@ -96,38 +96,52 @@ export const getMoatAssessment = (roe) => {
 
 // 5. Composite Buffett Quality & Value Score (0 - 100)
 export const calculateBuffettScore = (stock) => {
-  if (!stock) return 50;
-  let score = 0;
+  if (!stock) return null;
+  let pointsScored = 0;
+  let maxPossible = 0;
 
   // A. Economic Moat (ROE) - Max 30 pts
-  const roe = Number(stock.roe || 0);
-  if (roe >= 22) score += 30;
-  else if (roe >= 16) score += 22;
-  else if (roe >= 12) score += 14;
-  else if (roe >= 8) score += 6;
+  if (stock.roe !== null && stock.roe !== undefined) {
+    maxPossible += 30;
+    const roe = Number(stock.roe);
+    if (roe >= 22) pointsScored += 30;
+    else if (roe >= 16) pointsScored += 22;
+    else if (roe >= 12) pointsScored += 14;
+    else if (roe >= 8) pointsScored += 6;
+  }
 
   // B. Financial Health (Debt to Equity) - Max 25 pts
-  const de = Number(stock.debtToEquity || 0.5);
-  if (de <= 0.20) score += 25;
-  else if (de <= 0.40) score += 20;
-  else if (de <= 0.60) score += 12;
-  else if (de <= 0.80) score += 5;
+  if (stock.debtToEquity !== null && stock.debtToEquity !== undefined) {
+    maxPossible += 25;
+    const de = Number(stock.debtToEquity);
+    if (de <= 0.20) pointsScored += 25;
+    else if (de <= 0.40) pointsScored += 20;
+    else if (de <= 0.60) pointsScored += 12;
+    else if (de <= 0.80) pointsScored += 5;
+  }
 
   // C. Margin of Safety / Valuation (P/E) - Max 25 pts
-  const pe = Number(stock.pe || 15);
-  if (pe > 0 && pe <= 10) score += 25;
-  else if (pe > 0 && pe <= 14) score += 18;
-  else if (pe > 0 && pe <= 18) score += 10;
-  else if (pe > 0 && pe <= 24) score += 4;
+  if (stock.pe !== null && stock.pe !== undefined && stock.pe > 0) {
+    maxPossible += 25;
+    const pe = Number(stock.pe);
+    if (pe <= 10) pointsScored += 25;
+    else if (pe <= 14) pointsScored += 18;
+    else if (pe <= 18) pointsScored += 10;
+    else if (pe <= 24) pointsScored += 4;
+  }
 
   // D. Liquidity Solvency (Current Ratio) - Max 20 pts
-  const cr = Number(stock.currentRatio || 1.2);
-  if (cr >= 1.8) score += 20;
-  else if (cr >= 1.4) score += 15;
-  else if (cr >= 1.1) score += 10;
-  else if (cr >= 0.9) score += 4;
+  if (stock.currentRatio !== null && stock.currentRatio !== undefined) {
+    maxPossible += 20;
+    const cr = Number(stock.currentRatio);
+    if (cr >= 1.8) pointsScored += 20;
+    else if (cr >= 1.4) pointsScored += 15;
+    else if (cr >= 1.1) pointsScored += 10;
+    else if (cr >= 0.9) pointsScored += 4;
+  }
 
-  return Math.min(100, Math.max(0, score));
+  if (maxPossible === 0) return null;
+  return Math.round((pointsScored / maxPossible) * 100);
 };
 
 // Rich Symbol Metadata Directory
@@ -236,20 +250,38 @@ export function getEnrichedStock(stock) {
 
   const fallbackFlags = { ...(stock._historyFallback || {}) };
 
-  // Use actual values from backend (which includes live + history fallback) or known directory baseline
-  const ltp = stock.ltp != null ? Number(stock.ltp) : (known?.ltp != null ? known.ltp : null);
-  const change = stock.change != null ? Number(stock.change) : (known?.change != null ? known.change : null);
-  const changePercent = stock.changePercent != null ? Number(stock.changePercent) : (known?.change != null && known?.ltp != null ? Number(((known.change / (known.ltp - known.change)) * 100).toFixed(2)) : null);
-  const pe = stock.pe != null ? Number(stock.pe) : (known?.pe != null ? known.pe : null);
-  const roe = stock.roe != null ? Number(stock.roe) : (known?.roe != null ? known.roe : null);
-  const eps = stock.eps != null ? Number(stock.eps) : (known?.eps != null ? known.eps : null);
-  const debtToEquity = stock.debtToEquity != null ? Number(stock.debtToEquity) : (known?.debtToEquity != null ? known.debtToEquity : null);
-  const currentRatio = stock.currentRatio != null ? Number(stock.currentRatio) : (known?.currentRatio != null ? known.currentRatio : null);
-  const volume = stock.volume != null ? Number(stock.volume) : (known?.volume != null ? known.volume : null);
+  // Use strictly authentic values from DB / DSE publications without made up numbers
+  const ltp = stock.ltp != null ? Number(stock.ltp) : null;
+  const ycp = stock.ycp != null ? Number(stock.ycp) : null;
+  const change = stock.change != null ? Number(stock.change) : null;
+  const changePercent = stock.changePercent != null ? Number(stock.changePercent) : null;
+  const eps = stock.eps != null ? Number(stock.eps) : null;
+  const navPerShare = stock.navPerShare != null ? Number(stock.navPerShare) : null;
+  const debtToEquity = stock.debtToEquity != null ? Number(stock.debtToEquity) : null;
+  const currentRatio = stock.currentRatio != null ? Number(stock.currentRatio) : null;
+  const volume = stock.volume != null ? Number(stock.volume) : (ltp !== null ? 0 : null);
+
+  // Daily P/E strictly computed: LTP / Audited EPS
+  const dailyPe = (ltp !== null && eps !== null && eps > 0)
+    ? Number((ltp / eps).toFixed(2))
+    : (stock.pe != null ? Number(stock.pe) : null);
+
+  // Audited P/E strictly computed: YCP / Audited EPS
+  const auditedPe = (ycp !== null && eps !== null && eps > 0)
+    ? Number((ycp / eps).toFixed(2))
+    : dailyPe;
+
+  // ROE strictly computed: (Audited EPS / Audited NAVPS) * 100
+  const roe = (eps !== null && navPerShare !== null && navPerShare > 0)
+    ? Number(((eps / navPerShare) * 100).toFixed(2))
+    : (stock.roe != null ? Number(stock.roe) : null);
 
   const fullName = stock.fullName && stock.fullName !== "N/A" && stock.fullName !== sym
     ? stock.fullName
-    : (known?.name || `${sym} Bangladesh Limited`);
+    : (known?.name || `${sym} Limited`);
+
+  const auditedPeriod = stock.auditedPeriod || 'FY2025 Audited';
+  const quarterlyDisclosure = stock.quarterlyDisclosure || 'FY2025 Audited';
 
   return {
     ...stock,
@@ -257,45 +289,40 @@ export function getEnrichedStock(stock) {
     fullName,
     sector,
     ltp,
+    ycp,
     change,
     changePercent,
-    pe,
-    dailyPe: stock.dailyPe || pe,
-    auditedPe: stock.auditedPe || pe,
+    pe: dailyPe,
+    dailyPe,
+    auditedPe,
     roe,
     eps,
-    navPerShare: stock.navPerShare || (known?.navPerShare ?? null),
+    navPerShare,
     debtToEquity,
     currentRatio,
     volume,
-    auditedPeriod: stock.auditedPeriod || (known?.auditedPeriod ?? 'FY2026 Q1 Unaudited (3M)'),
-    quarterlyDisclosure: stock.quarterlyDisclosure || (known?.quarterlyDisclosure ?? 'Q1 Unaudited (3M)'),
+    auditedPeriod,
+    quarterlyDisclosure,
     closeDate: stock.closeDate || '2026-08-20',
-    marketCap: stock.marketCap || (ltp && volume ? ltp * volume : null),
+    marketCap: stock.marketCap || (ltp !== null && stock.paidUpCapital ? Number(((stock.paidUpCapital / 10) * ltp).toFixed(2)) : null),
     _historyFallback: fallbackFlags
   };
 }
 
-// Format period badge (e.g. FY26 Q1, FY26 Q2, FY26 Q3, FY25 Audited)
+// Format period badge (e.g. FY25 Audited, FY24 Audited, FY26 Audited)
 export function formatPeriodBadge(periodStr, symbol = '', sector = '') {
-  if (periodStr) {
-    const p = String(periodStr).toUpperCase();
-    if (p.includes('Q1') || p.includes('3M')) return 'FY26 Q1';
-    if (p.includes('Q2') || p.includes('6M') || p.includes('HALF')) return 'FY26 Q2';
-    if (p.includes('Q3') || p.includes('9M')) return 'FY26 Q3';
-    if (p.includes('2026') || p.includes('FY26')) return 'FY26 Q1';
-    if (p.includes('2025') || p.includes('FY25')) return 'FY25 Audited';
-    if (p.includes('2024') || p.includes('FY24')) return 'FY24 Audited';
-  }
+  if (!periodStr) return 'FY25 Audited';
 
-  const sym = (symbol || '').toUpperCase();
-  const sec = (sector || '').toLowerCase();
-  
-  if (sec.includes('bank') || sec.includes('insurance') || sec.includes('financial') || sym === 'GP' || sym === 'ROBI' || sym === 'BATBC' || sym === 'LHBL' || sym === 'BERGERPBL' || sym === 'MARICO') {
-    return 'FY26 Q1';
-  }
+  const p = String(periodStr).toUpperCase();
+  if (p.includes('Q1') && (p.includes('2026') || p.includes('FY26'))) return 'FY26 Q1 Audited';
+  if (p.includes('Q2') && (p.includes('2026') || p.includes('FY26'))) return 'FY26 Q2 Audited';
+  if (p.includes('Q3') && (p.includes('2026') || p.includes('FY26'))) return 'FY26 Q3 Audited';
+  if (p.includes('2026') || p.includes('FY26')) return 'FY26 Audited';
+  if (p.includes('2025') || p.includes('FY25')) return 'FY25 Audited';
+  if (p.includes('2024') || p.includes('FY24')) return 'FY24 Audited';
+  if (p.includes('2023') || p.includes('FY23')) return 'FY23 Audited';
 
-  return 'FY26 Q1';
+  return 'FY25 Audited';
 }
 
 // Helper to extract clean closing and audited tags without the word 'history'

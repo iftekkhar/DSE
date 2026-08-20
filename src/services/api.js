@@ -346,8 +346,8 @@ export const generateSignals = (stock) => {
 export const fetchDSEData = async () => {
   const enrichWithBuffettMetrics = (stock) => {
     const enriched = getEnrichedStock(stock);
-    const eps = enriched.eps || (enriched.ltp && enriched.pe ? enriched.ltp / enriched.pe : 0);
-    const navps = enriched.navPerShare || (enriched.ltp ? enriched.ltp * 0.75 : 0);
+    const eps = enriched.eps !== null && enriched.eps !== undefined ? Number(enriched.eps) : null;
+    const navps = enriched.navPerShare !== null && enriched.navPerShare !== undefined ? Number(enriched.navPerShare) : null;
     const grahamNumber = calculateGrahamNumber(eps, navps);
     const marginOfSafety = calculateMarginOfSafety(enriched.ltp, grahamNumber);
     const earningsYield = calculateEarningsYield(enriched.pe);
@@ -356,8 +356,8 @@ export const fetchDSEData = async () => {
 
     return {
       ...enriched,
-      eps: eps > 0 ? Number(eps.toFixed(2)) : enriched.eps,
-      navPerShare: navps > 0 ? Number(navps.toFixed(2)) : null,
+      eps,
+      navPerShare: navps,
       grahamNumber,
       marginOfSafety,
       earningsYield,
