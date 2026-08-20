@@ -60,19 +60,18 @@ export default function FilterBar({
           })}
         </div>
 
-        {/* Scrapers Status Pill */}
+        {/* Automation Jobs Architecture Pill */}
         <button
           onClick={onOpenScrapersModal}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 transition-all shadow-2xs self-start md:self-auto cursor-pointer"
-          title="Click to view 4 Paused Scraper Jobs Inventory"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200/80 transition-all shadow-2xs self-start md:self-auto cursor-pointer"
+          title="Click to view 4 Automated Jobs Architecture & Engine Specs"
         >
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
           </span>
-          <PauseCircle className="w-3.5 h-3.5 text-amber-700" />
-          <span className="font-bold">4 Scrapers on Hold</span>
-          <span className="text-[10px] text-amber-700 font-normal hidden sm:inline">(SQLite Mode)</span>
+          <span className="font-bold">4 Automation Jobs</span>
+          <span className="text-[10px] text-blue-700 font-normal hidden sm:inline">(SQLite Master)</span>
         </button>
       </div>
 

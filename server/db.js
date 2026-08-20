@@ -225,6 +225,32 @@ export async function saveFundamentals(data) {
   ]);
 }
 
+// 4b. Smart Delta Fundamentals Upsert (0 DB writes if unchanged)
+export async function saveFundamentalsDelta(data) {
+  if (!data || !data.symbol) return { changed: false };
+  const symbol = data.symbol.toUpperCase().trim();
+
+  const existing = await dbGet(`SELECT * FROM company_fundamentals WHERE symbol = ?`, [symbol]);
+
+  if (existing) {
+    const isEpsSame = (existing.eps_basic === null && (data.epsBasic === null || data.epsBasic === undefined)) || 
+                      (Number(existing.eps_basic) === Number(data.epsBasic));
+    const isNavSame = (existing.nav_per_share === null && (data.navPerShare === null || data.navPerShare === undefined)) || 
+                      (Number(existing.nav_per_share) === Number(data.navPerShare));
+    const isPeriodSame = existing.audited_period === data.auditedPeriod;
+    const isPaidUpSame = (existing.paid_up_capital_mn === null && (data.paidUpCapitalMn === null || data.paidUpCapitalMn === undefined)) || 
+                         (Number(existing.paid_up_capital_mn) === Number(data.paidUpCapitalMn));
+
+    if (isEpsSame && isNavSame && isPeriodSame && isPaidUpSame && data.epsBasic !== null && data.epsBasic !== undefined) {
+      return { changed: false, symbol };
+    }
+  }
+
+  // Differences detected -> execute update
+  await saveFundamentals(data);
+  return { changed: true, symbol };
+}
+
 // 5. Get All Fundamentals map
 export async function getAllFundamentalsMap() {
   const rows = await dbAll('SELECT * FROM company_fundamentals');
@@ -249,6 +275,45 @@ export async function getAllFundamentalsMap() {
     };
   }
   return map;
+}
+
+// 5a. Save Market Breadth & Sector Summary to SQLite
+export async function saveMarketBreadth(data, dateStr) {
+  if (!data) return;
+  const targetDate = dateStr || new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Dhaka' }).format(new Date());
+
+  await dbRun(`
+    INSERT INTO market_breadth (
+      date, advancing, declining, unchanged, total_trades, total_volume, total_value_mn, dsex_index, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+    ON CONFLICT(date) DO UPDATE SET
+      advancing = excluded.advancing,
+      declining = excluded.declining,
+      unchanged = excluded.unchanged,
+      total_trades = excluded.total_trades,
+      total_volume = excluded.total_volume,
+      total_value_mn = excluded.total_value_mn,
+      dsex_index = excluded.dsex_index,
+      updated_at = datetime('now')
+  `, [
+    targetDate,
+    data.advancing || 0,
+    data.declining || 0,
+    data.unchanged || 0,
+    data.totalTrades || 0,
+    data.totalVolume || 0,
+    data.totalValueMn || 0,
+    data.dsexIndex || 0
+  ]);
+}
+
+// 5b. Get Latest Market Breadth from SQLite
+export async function getLatestMarketBreadth() {
+  return await dbGet(`
+    SELECT * FROM market_breadth
+    ORDER BY date DESC
+    LIMIT 1
+  `);
 }
 
 // 5b. Fetch Complete Equities List directly from SQLite DB (Latest Audited Fundamentals + Latest Daily Closing)
