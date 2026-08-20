@@ -618,6 +618,8 @@ app.get('/api/test-seed', async (req, res) => {
     const dbRows = await dbGet('SELECT COUNT(*) as total FROM price_history').catch(e => ({ error: e.message }));
     const fundRows = await dbGet('SELECT COUNT(*) as total FROM company_fundamentals').catch(e => ({ error: e.message }));
     res.json({
+      nodeVersion: process.version,
+      architecture: process.arch,
       excelExists: exists,
       excelSize: exists ? fs.statSync(EXCEL_PATH).size : 0,
       priceHistoryCount: dbRows ? (dbRows.total ?? dbRows.error) : 0,

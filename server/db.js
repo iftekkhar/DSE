@@ -700,7 +700,7 @@ export async function seed20YearFromMasterExcel() {
   }
 
   try {
-    const row = await dbGet('SELECT COUNT(*) as total FROM price_history WHERE date NOT LIKE "%T%" AND date NOT LIKE "%:%"');
+    const row = await dbGet('SELECT COUNT(*) as total FROM price_history');
     if (row && row.total > 50000) {
       console.log(`[SQLITE] Master SQLite Database ready with ${row.total} daily closing records.`);
       return;
