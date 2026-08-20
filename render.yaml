@@ -3,7 +3,7 @@ services:
     name: dse-backend-api
     env: node
     plan: free
-    buildCommand: rm -rf node_modules && npm install --build-from-source
+    buildCommand: npm install
     startCommand: node server/index.js
     envVars:
       - key: NODE_VERSION
