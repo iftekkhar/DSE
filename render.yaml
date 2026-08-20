@@ -6,6 +6,8 @@ services:
     buildCommand: npm install
     startCommand: node server/index.js
     envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
       - key: NODE_ENV
         value: production
       - key: TZ
@@ -19,6 +21,8 @@ services:
     buildCommand: npm run build
     staticPublishPath: dist
     envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
       - key: VITE_API_URL
         value: https://dse-xvn2.onrender.com
     routes:
