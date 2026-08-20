@@ -1,5 +1,5 @@
 import { X, Scale } from 'lucide-react';
-import { getFallbackTag, formatDateDDMMM } from '../services/dseData';
+import { getFallbackTag, formatDateDDMMM, formatPeriodBadge } from '../services/dseData';
 
 export default function CompareModal({ compareList, onClose, onClear, onSelectStock }) {
   if (!compareList || compareList.length === 0) return null;
@@ -29,119 +29,133 @@ export default function CompareModal({ compareList, onClose, onClear, onSelectSt
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+              className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Comparison Matrix Table */}
-        <div className="overflow-x-auto p-6 flex-1">
-          <table className="w-full text-left border-collapse">
+        {/* Content Table */}
+        <div className="overflow-x-auto p-5">
+          <table className="w-full text-left text-xs border-collapse">
             <thead>
               <tr className="border-b border-slate-200">
-                <th className="pb-3 text-xs font-bold text-slate-400 uppercase tracking-wider w-1/4">Metric</th>
+                <th className="py-3 px-4 text-slate-400 font-bold uppercase w-1/4">Metric</th>
                 {compareList.map((s) => (
-                  <th key={s.symbol} className="pb-3 text-center">
-                    <div className="flex flex-col items-center cursor-pointer hover:opacity-80" onClick={() => onSelectStock && onSelectStock(s)}>
-                      <span className="font-display text-base font-black text-slate-900">{s.symbol}</span>
-                      <span className="text-[10px] text-slate-400 font-normal truncate max-w-[120px]">
-                        {s.fullName || s.symbol}
-                      </span>
-                    </div>
+                  <th key={s.symbol} className="py-3 px-4 text-center">
+                    <div className="font-display font-black text-sm text-slate-900 cursor-pointer hover:text-blue-600" onClick={() => onSelectStock && onSelectStock(s)}>{s.symbol}</div>
+                    <div className="text-[10px] text-slate-500 font-normal truncate max-w-[140px] mx-auto">{s.fullName || s.symbol}</div>
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs">
-              {/* Price */}
+            <tbody className="divide-y divide-slate-100">
+              {/* Daily Close Price */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">Daily Closing Price</td>
-                {compareList.map((s) => (
-                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-900 text-sm">
-                    {s.ltp !== null && s.ltp !== undefined ? (
-                      <div className="flex flex-col items-center">
-                        <span>৳{s.ltp.toFixed(2)}</span>
-                        <span className="text-[8px] text-blue-700 font-normal">{formatDateDDMMM(s.closeDate || '2026-08-20')}</span>
-                      </div>
-                    ) : (
-                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                    )}
-                  </td>
-                ))}
+                <td className="py-3 px-4 font-bold text-slate-600">Daily Close Price</td>
+                {compareList.map((s) => {
+                  const closeDate = s.closeDate || '2026-08-20';
+                  const dateLabel = formatDateDDMMM(closeDate);
+                  return (
+                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-900">
+                      {s.ltp !== null && s.ltp !== undefined ? (
+                        <div className="flex flex-col items-center">
+                          <span>৳{s.ltp.toFixed(2)}</span>
+                          <span className="text-[8px] text-blue-700 font-normal">Close: {dateLabel}</span>
+                        </div>
+                      ) : (
+                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
 
-              {/* 24h Change */}
+              {/* Price Momentum */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">Closing Momentum</td>
-                {compareList.map((s) => (
-                  <td key={s.symbol} className="py-3 px-4 text-center">
-                    {s.changePercent !== null && s.changePercent !== undefined ? (
-                      <div className="flex flex-col items-center">
-                        <span className={`font-mono font-bold text-xs ${
-                          (s.changePercent || 0) >= 0 ? 'text-[#047857]' : 'text-[#b91c1c]'
-                        }`}>
-                          {(s.changePercent || 0) >= 0 ? '+' : ''}{s.changePercent}%
-                        </span>
-                        <span className="text-[8px] text-slate-400">{formatDateDDMMM(s.closeDate || '2026-08-20')}</span>
-                      </div>
-                    ) : (
-                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                    )}
-                  </td>
-                ))}
+                <td className="py-3 px-4 font-bold text-slate-600">Price Momentum (Daily)</td>
+                {compareList.map((s) => {
+                  const isBullish = (s.changePercent || 0) >= 0;
+                  const closeDate = s.closeDate || '2026-08-20';
+                  const dateLabel = formatDateDDMMM(closeDate);
+                  return (
+                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold">
+                      {s.changePercent !== null && s.changePercent !== undefined ? (
+                        <div className="flex flex-col items-center">
+                          <span className={isBullish ? 'text-emerald-700' : 'text-rose-700'}>
+                            {isBullish ? '+' : ''}{s.changePercent.toFixed(2)}%
+                          </span>
+                          <span className="text-[8px] text-slate-400 font-normal">{dateLabel}</span>
+                        </div>
+                      ) : (
+                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
 
-              {/* P/E Ratio */}
+              {/* Daily vs Audited P/E */}
               <tr className="hover:bg-slate-50">
-                <td className="py-3 px-4 font-bold text-slate-600">P/E Multiple (Daily / Audited)</td>
-                {compareList.map((s) => (
-                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
-                    {s.pe !== null && s.pe !== undefined ? (
-                      <div className="flex flex-col items-center">
-                        <span>{s.pe}x <span className="text-[9px] font-normal text-slate-400">Daily</span></span>
-                        <span className="text-[8px] text-slate-500 font-normal">Audited: {s.auditedPe || s.pe}x</span>
-                      </div>
-                    ) : (
-                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                    )}
-                  </td>
-                ))}
+                <td className="py-3 px-4 font-bold text-slate-600">P/E Multiple (Daily vs Audited)</td>
+                {compareList.map((s) => {
+                  const closeDate = s.closeDate || '2026-08-20';
+                  const dateLabel = formatDateDDMMM(closeDate);
+                  const periodBadge = formatPeriodBadge(s.auditedPeriod || s.quarterlyDisclosure, s.symbol, s.sector);
+                  return (
+                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
+                      {s.pe !== null && s.pe !== undefined ? (
+                        <div className="flex flex-col items-center">
+                          <span>{s.pe}x <span className="text-[8px] font-normal text-slate-400">Daily ({dateLabel})</span></span>
+                          <span className="text-[8.5px] text-slate-500 font-normal">Audited: {s.auditedPe || s.pe}x ({periodBadge})</span>
+                        </div>
+                      ) : (
+                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
 
               {/* ROE */}
               <tr className="hover:bg-slate-50">
                 <td className="py-3 px-4 font-bold text-slate-600">Return on Equity (Audited)</td>
-                {compareList.map((s) => (
-                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
-                    {s.roe !== null && s.roe !== undefined ? (
-                      <div className="flex flex-col items-center">
-                        <span className={s.roe >= 15 ? 'text-emerald-700 font-black' : ''}>{s.roe}%</span>
-                        <span className="text-[8px] text-emerald-700 font-normal">{(s.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25'}</span>
-                      </div>
-                    ) : (
-                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                    )}
-                  </td>
-                ))}
+                {compareList.map((s) => {
+                  const periodBadge = formatPeriodBadge(s.auditedPeriod || s.quarterlyDisclosure, s.symbol, s.sector);
+                  return (
+                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
+                      {s.roe !== null && s.roe !== undefined ? (
+                        <div className="flex flex-col items-center">
+                          <span className={s.roe >= 15 ? 'text-emerald-700 font-black' : ''}>{s.roe}%</span>
+                          <span className="text-[8px] text-emerald-700 font-normal">{periodBadge}</span>
+                        </div>
+                      ) : (
+                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
 
               {/* EPS */}
               <tr className="hover:bg-slate-50">
                 <td className="py-3 px-4 font-bold text-slate-600">Earnings Per Share (Audited)</td>
-                {compareList.map((s) => (
-                  <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
-                    {s.eps !== null && s.eps !== undefined ? (
-                      <div className="flex flex-col items-center">
-                        <span>৳{s.eps.toFixed(2)}</span>
-                        <span className="text-[8px] text-slate-500 font-normal">{(s.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25'}</span>
-                      </div>
-                    ) : (
-                      <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
-                    )}
-                  </td>
-                ))}
+                {compareList.map((s) => {
+                  const periodBadge = formatPeriodBadge(s.auditedPeriod || s.quarterlyDisclosure, s.symbol, s.sector);
+                  return (
+                    <td key={s.symbol} className="py-3 px-4 text-center font-mono font-bold text-slate-800">
+                      {s.eps !== null && s.eps !== undefined ? (
+                        <div className="flex flex-col items-center">
+                          <span>৳{s.eps.toFixed(2)}</span>
+                          <span className="text-[8px] text-slate-500 font-normal">{periodBadge}</span>
+                        </div>
+                      ) : (
+                        <span className="text-slate-400 font-normal italic text-xs">Not Available live</span>
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
 
               {/* Debt/Equity */}

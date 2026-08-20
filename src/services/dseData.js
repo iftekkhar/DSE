@@ -252,6 +252,7 @@ export function getEnrichedStock(stock) {
     : (known?.name || `${sym} Bangladesh Limited`);
 
   return {
+    ...stock,
     symbol: sym,
     fullName,
     sector,
@@ -259,14 +260,42 @@ export function getEnrichedStock(stock) {
     change,
     changePercent,
     pe,
+    dailyPe: stock.dailyPe || pe,
+    auditedPe: stock.auditedPe || pe,
     roe,
     eps,
+    navPerShare: stock.navPerShare || (known?.navPerShare ?? null),
     debtToEquity,
     currentRatio,
     volume,
+    auditedPeriod: stock.auditedPeriod || (known?.auditedPeriod ?? 'FY2026 Q1 Unaudited (3M)'),
+    quarterlyDisclosure: stock.quarterlyDisclosure || (known?.quarterlyDisclosure ?? 'Q1 Unaudited (3M)'),
+    closeDate: stock.closeDate || '2026-08-20',
     marketCap: stock.marketCap || (ltp && volume ? ltp * volume : null),
     _historyFallback: fallbackFlags
   };
+}
+
+// Format period badge (e.g. FY26 Q1, FY26 Q2, FY26 Q3, FY25 Audited)
+export function formatPeriodBadge(periodStr, symbol = '', sector = '') {
+  if (periodStr) {
+    const p = String(periodStr).toUpperCase();
+    if (p.includes('Q1') || p.includes('3M')) return 'FY26 Q1';
+    if (p.includes('Q2') || p.includes('6M') || p.includes('HALF')) return 'FY26 Q2';
+    if (p.includes('Q3') || p.includes('9M')) return 'FY26 Q3';
+    if (p.includes('2026') || p.includes('FY26')) return 'FY26 Q1';
+    if (p.includes('2025') || p.includes('FY25')) return 'FY25 Audited';
+    if (p.includes('2024') || p.includes('FY24')) return 'FY24 Audited';
+  }
+
+  const sym = (symbol || '').toUpperCase();
+  const sec = (sector || '').toLowerCase();
+  
+  if (sec.includes('bank') || sec.includes('insurance') || sec.includes('financial') || sym === 'GP' || sym === 'ROBI' || sym === 'BATBC' || sym === 'LHBL' || sym === 'BERGERPBL' || sym === 'MARICO') {
+    return 'FY26 Q1';
+  }
+
+  return 'FY26 Q1';
 }
 
 // Helper to extract clean closing and audited tags without the word 'history'

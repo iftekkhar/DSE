@@ -1,5 +1,5 @@
 import { Star, BarChart3, Plus, Check } from 'lucide-react';
-import { getFallbackTag, formatDateDDMMM } from '../services/dseData';
+import { getFallbackTag, formatDateDDMMM, formatPeriodBadge } from '../services/dseData';
 
 export default function StockTable({
   stocks,
@@ -46,7 +46,8 @@ export default function StockTable({
               const isBullish = (stock.changePercent || 0) >= 0;
               const closeDate = stock.closeDate || '2026-08-20';
               const dateLabel = formatDateDDMMM(closeDate);
-              const auditedPeriod = stock.auditedPeriod || 'FY2026 Q3 (9M)';
+              const auditedPeriod = stock.auditedPeriod || 'FY2026 Q1';
+              const periodBadge = formatPeriodBadge(stock.auditedPeriod || stock.quarterlyDisclosure, stock.symbol, stock.sector);
 
               return (
                 <tr
@@ -146,7 +147,7 @@ export default function StockTable({
                           {stock.roe}%
                         </span>
                         <span className="text-[8.5px] text-emerald-700 bg-emerald-50 px-1 rounded font-normal" title={auditedPeriod}>
-                          {auditedPeriod.includes('FY2026') ? 'FY26 Q3' : 'FY25 Audited'}
+                          {periodBadge}
                         </span>
                       </div>
                     ) : (
@@ -160,7 +161,7 @@ export default function StockTable({
                       <div className="flex flex-col items-end">
                         <span className="font-bold text-slate-900">৳{stock.eps.toFixed(2)}</span>
                         <span className="text-[8.5px] text-slate-500 font-normal" title={auditedPeriod}>
-                          {auditedPeriod.includes('FY2026') ? 'FY26 Q3' : 'FY25 Audited'}
+                          {periodBadge}
                         </span>
                       </div>
                     ) : (

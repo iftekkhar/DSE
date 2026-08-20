@@ -9,6 +9,7 @@ import { fetchStockHistory, generateHistoryData, downloadExcel } from '../servic
 import {
   getFallbackTag,
   formatDateDDMMM,
+  formatPeriodBadge,
   calculateGrahamNumber,
   calculateMarginOfSafety,
   calculateEarningsYield,
@@ -156,8 +157,8 @@ export default function StockModal({
   const isBullish = (stock.changePercent || 0) >= 0;
   const closeDate = stock.closeDate || '2026-08-20';
   const dateLabel = formatDateDDMMM(closeDate);
-  const auditedPeriod = stock.auditedPeriod || 'FY2026 Q3 (9M)';
-  const auditedYear = (stock.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25 Audited';
+  const auditedPeriod = stock.auditedPeriod || 'FY2026 Q1';
+  const auditedYear = formatPeriodBadge(stock.auditedPeriod || stock.quarterlyDisclosure, stock.symbol, stock.sector);
 
   const t = criteria.thresholds;
   const kpis = [

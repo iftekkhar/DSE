@@ -1,5 +1,5 @@
 import { Star, ArrowUpRight, Scale, Check } from 'lucide-react';
-import { getFallbackTag, formatDateDDMMM } from '../services/dseData';
+import { getFallbackTag, formatDateDDMMM, formatPeriodBadge } from '../services/dseData';
 
 export default function StockGrid({
   stocks,
@@ -19,6 +19,7 @@ export default function StockGrid({
         const isBullish = (stock.changePercent || 0) >= 0;
         const closeDate = stock.closeDate || '2026-08-20';
         const dateLabel = formatDateDDMMM(closeDate);
+        const periodBadge = formatPeriodBadge(stock.auditedPeriod || stock.quarterlyDisclosure, stock.symbol, stock.sector);
 
         return (
           <div
@@ -114,7 +115,7 @@ export default function StockGrid({
                       <div>
                         <div>{stock.roe}%</div>
                         <div className="text-[7.5px] text-emerald-700 font-normal">
-                          {(stock.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25'}
+                          {periodBadge}
                         </div>
                       </div>
                     ) : (
@@ -129,7 +130,7 @@ export default function StockGrid({
                       <div>
                         <div>৳{stock.eps.toFixed(1)}</div>
                         <div className="text-[7.5px] text-slate-500 font-normal">
-                          {(stock.auditedPeriod || '').includes('2026') ? 'FY26 Q3' : 'FY25'}
+                          {periodBadge}
                         </div>
                       </div>
                     ) : (
