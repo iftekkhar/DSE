@@ -13,7 +13,7 @@
     "build:all": "node scripts/deploy.js",
     "deploy": "node scripts/deploy.js",
     "push": "node scripts/deploy.js",
-    "render-build": "npm install",
+    "render-build": "npm install --build-from-source",
     "lint": "eslint .",
     "preview": "vite preview",
     "scraper-server": "node server/index.js",
