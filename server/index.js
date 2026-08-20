@@ -707,6 +707,11 @@ app.get('/api/fundamentals', async (req, res) => {
   }
 });
 
+// Job Status Registry: Returns schedule & last run info for all 4 jobs
+app.get('/api/jobs/status', (req, res) => {
+  res.json(jobStatusRegistry);
+});
+
 // Fetch Historical Timeline Strictly from SQLite
 app.get('/api/history/:symbol', async (req, res) => {
   const sym = req.params.symbol;
@@ -845,7 +850,8 @@ if (cron) {
 const DIST_DIR = path.join(__dirname, '..', 'dist');
 if (fs.existsSync(DIST_DIR)) {
   app.use(express.static(DIST_DIR));
-  app.get('/(.*)', (req, res, next) => {
+  // SPA fallback: serve index.html for any non-API route (compatible with Express 4 & 5)
+  app.use((req, res, next) => {
     if (req.path.startsWith('/api')) return next();
     res.sendFile(path.join(DIST_DIR, 'index.html'));
   });
