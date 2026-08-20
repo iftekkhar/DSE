@@ -10,6 +10,7 @@ import StockModal from "./components/StockModal";
 import CompareDock from "./components/CompareDock";
 import CompareModal from "./components/CompareModal";
 import ScoringModal from "./components/ScoringModal";
+import ScraperModal from "./components/ScraperModal";
 
 import { fetchDSEData, triggerScrape, exportToCSV } from "./services/api";
 import { defaultCriteria } from "./config/criteria";
@@ -43,6 +44,7 @@ export default function App() {
   const [selectedStock, setSelectedStock] = useState(null);
   const [isScoringModalOpen, setIsScoringModalOpen] = useState(false);
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+  const [isScraperModalOpen, setIsScraperModalOpen] = useState(false);
 
   // Scoring Strategy Criteria
   const [criteria, setCriteria] = useState(() => {
@@ -109,6 +111,7 @@ export default function App() {
         setSelectedStock(null);
         setIsScoringModalOpen(false);
         setIsCompareModalOpen(false);
+        setIsScraperModalOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -357,6 +360,7 @@ export default function App() {
           totalFiltered={sortedStocks.length}
           watchlistCount={watchlist.length}
           stocksCount={derivedStocks.length}
+          onOpenScrapersModal={() => setIsScraperModalOpen(true)}
         />
 
         {/* Loading Shimmer State */}
@@ -502,6 +506,12 @@ export default function App() {
           setCriteria(newCriteria);
           showToast(`Strategy updated to: ${newCriteria.name}`, "success");
         }}
+      />
+
+      {/* Scrapers on Hold Catalog Modal */}
+      <ScraperModal
+        isOpen={isScraperModalOpen}
+        onClose={() => setIsScraperModalOpen(false)}
       />
 
       {/* Refined Footer */}
