@@ -54,7 +54,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  overflow-x: hidden;
   padding-left: var(--sal);
   padding-right: var(--sar);
 }
