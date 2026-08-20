@@ -8,6 +8,7 @@ import {
   getMoatAssessment,
   calculateBuffettScore
 } from './dseData';
+import masterSnapshot from '../../data/latest.json';
 
 const getApiBase = () => {
   if (typeof window !== 'undefined') {
@@ -15,8 +16,9 @@ const getApiBase = () => {
     if (host === 'localhost' || host === '127.0.0.1') {
       return 'http://localhost:5001';
     }
+    return 'https://dse-xvn2.onrender.com';
   }
-  return import.meta.env.VITE_API_URL || 'https://dse-xvn2.onrender.com';
+  return 'http://localhost:5001';
 };
 
 const API_BASE = getApiBase();
@@ -377,15 +379,11 @@ export const fetchDSEData = async () => {
 
     return rawStocks.map(enrichWithBuffettMetrics);
   } catch (error) {
-    console.warn('Backend unavailable, falling back to local DSE dataset:', error.message);
-    const fallbackSymbols = [
-      "BRACBANK", "SQURPHARMA", "GP", "BATBC", "RENATA", "WALTONHIL", "BEXIMCO",
-      "LHBL", "ROBI", "BXPHARMA", "EBL", "CITYBANK", "ISLAMIBANK", "DUTCHBANGL",
-      "BSCCL", "ACMELAB", "IBNSINA", "MARICO", "TITASGAS", "UPGDCL", "MJLBD",
-      "JAMUNAOIL", "MPETROLEUM", "PADMAOIL", "OLYMPIC", "BSRMSTEEL", "BERGERPBL",
-      "IDLC", "ENVOYTEX", "SQUARETEXT", "1JANATAMF", "AAMRANET", "ADNTEL"
-    ];
-    return fallbackSymbols.map(sym => enrichWithBuffettMetrics({ symbol: sym }));
+    console.warn('Backend unavailable, falling back to bundled DSE master snapshot:', error.message);
+    const fallbackList = (masterSnapshot && Array.isArray(masterSnapshot.stocks) && masterSnapshot.stocks.length > 0)
+      ? masterSnapshot.stocks
+      : [];
+    return fallbackList.map(enrichWithBuffettMetrics);
   }
 };
 
