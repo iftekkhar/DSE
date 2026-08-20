@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, SlidersHorizontal, RefreshCw, Star, Activity, X } from 'lucide-react';
+import { Search, SlidersHorizontal, RefreshCw, Star, Activity, X, RotateCcw, Zap } from 'lucide-react';
 
 export default function Header({
   searchTerm,
@@ -10,7 +10,9 @@ export default function Header({
   scraping,
   watchlistCount,
   activeTab,
-  setActiveTab
+  setActiveTab,
+  isLiveSessionActive,
+  onResetToDB
 }) {
   const [dhakaTime, setDhakaTime] = useState('');
   const [isMarketOpen, setIsMarketOpen] = useState(false);
@@ -68,6 +70,14 @@ export default function Header({
             <span className="text-slate-500">•</span>
             <span className="font-mono text-slate-400 text-[10px]">{dhakaTime}</span>
           </div>
+
+          {/* Live Session Active Indicator */}
+          {isLiveSessionActive && (
+            <div className="hidden md:flex items-center gap-1.5 bg-blue-950/80 text-blue-300 px-2.5 py-1 rounded-full border border-blue-600/50 text-[10.5px] font-semibold">
+              <Zap className="w-3 h-3 text-blue-400 animate-pulse" />
+              <span>Job 2 Session Active</span>
+            </div>
+          )}
         </div>
 
         {/* Global Search Bar */}
@@ -123,6 +133,18 @@ export default function Header({
             <span className="text-slate-200 font-bold text-xs max-w-[90px] truncate">{activePresetName.replace(/^[^\w]+/, '')}</span>
           </button>
 
+          {/* Reset to DB Button (when Live Session is Active) */}
+          {isLiveSessionActive && (
+            <button
+              onClick={onResetToDB}
+              className="px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/40 transition-all shadow-xs"
+              title="Reset to Official SQLite Database Closing Balance"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Reset to DB</span>
+            </button>
+          )}
+
           {/* Sync Button */}
           <button
             onClick={onScrape}
@@ -132,9 +154,10 @@ export default function Header({
                 ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
                 : 'bg-[#2563eb] hover:bg-[#1d4ed8] text-white'
             }`}
+            title="Sync Live Intraday Ticker (Job 2 Session Snapshot)"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${scraping ? 'animate-spin' : ''}`} />
-            <span className="hidden md:inline">{scraping ? 'Syncing...' : 'Sync'}</span>
+            <span className="hidden md:inline">{scraping ? 'Syncing...' : 'Sync Live'}</span>
           </button>
         </div>
       </div>

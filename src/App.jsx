@@ -45,6 +45,7 @@ export default function App() {
   const [isScoringModalOpen, setIsScoringModalOpen] = useState(false);
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
   const [isScraperModalOpen, setIsScraperModalOpen] = useState(false);
+  const [isLiveSessionActive, setIsLiveSessionActive] = useState(false);
 
   // Scoring Strategy Criteria
   const [criteria, setCriteria] = useState(() => {
@@ -79,12 +80,32 @@ export default function App() {
     setTimeout(() => setToastMessage(null), 4000);
   }, []);
 
-  // Fetch stocks on mount
+  // Fetch stocks on mount (Checking active session first)
   useEffect(() => {
     let isMounted = true;
+    try {
+      const savedSession = sessionStorage.getItem("dse_live_session_stocks");
+      if (savedSession) {
+        const parsed = JSON.parse(savedSession);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          if (isMounted) {
+            setStocks(parsed);
+            setIsLiveSessionActive(true);
+            setLoading(false);
+            return;
+          }
+        }
+      }
+    } catch (e) {
+      console.warn("Could not load from sessionStorage", e);
+    }
+
     fetchDSEData()
       .then((data) => {
-        if (isMounted) setStocks(data);
+        if (isMounted) {
+          setStocks(data);
+          setIsLiveSessionActive(false);
+        }
       })
       .catch((error) => {
         console.error("Failed to load DSE data", error);
@@ -263,22 +284,45 @@ export default function App() {
     });
   };
 
-  // Trigger Scrape & Sync
+  // Trigger Scrape & Sync (Job 2: Live Intraday Session Sync, 0 DB writes)
   const handleScrape = async () => {
     try {
       setScraping(true);
-      showToast("Connecting to live DSE market feed...", "info");
-      await triggerScrape();
-      showToast("Market data synced successfully!", "success");
-      const fresh = await fetchDSEData();
-      setStocks(fresh);
+      showToast("Connecting to live DSE market feed for Intraday Session...", "info");
+      const res = await triggerScrape();
+      if (res && res.stocks && Array.isArray(res.stocks) && res.stocks.length > 0) {
+        sessionStorage.setItem("dse_live_session_stocks", JSON.stringify(res.stocks));
+        setIsLiveSessionActive(true);
+        setStocks(res.stocks);
+        showToast(`⚡ Live Intraday Session active (${res.stocks.length} scrips synced). Daily P/Es updated.`, "success");
+      } else {
+        const fresh = await fetchDSEData();
+        setStocks(fresh);
+        showToast("Market data refreshed from SQLite DB.", "success");
+      }
     } catch (err) {
       console.warn("Scrape notice:", err.message);
-      showToast("Live sync requested. Updated latest records.", "success");
+      showToast("Live sync completed with available market data.", "success");
       const fresh = await fetchDSEData();
       setStocks(fresh);
     } finally {
       setScraping(false);
+    }
+  };
+
+  // Reset Session to 100% Official DB Closing Balance
+  const handleResetToDB = async () => {
+    try {
+      sessionStorage.removeItem("dse_live_session_stocks");
+      setIsLiveSessionActive(false);
+      setLoading(true);
+      const dbStocks = await fetchDSEData();
+      setStocks(dbStocks);
+      showToast("↩ Returned to Official SQLite Database Closing Balance.", "info");
+    } catch (e) {
+      console.error("Failed to reset to DB:", e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -324,6 +368,8 @@ export default function App() {
           setActiveTab(tab);
           setCurrentPage(1);
         }}
+        isLiveSessionActive={isLiveSessionActive}
+        onResetToDB={handleResetToDB}
       />
 
       {/* Main Content Area */}

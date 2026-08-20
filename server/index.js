@@ -264,94 +264,56 @@ export async function crawlAllFundamentals() {
 }
 
 // -------------------------------------------------------------
-// 2. MASTER SCRAPE & PERSISTENCE ENGINE
+// 2. JOB 2: LIVE INTRADAY TICKER SYNC (SESSION-WISE, 0 DB WRITES)
 // -------------------------------------------------------------
 export async function scrapeAll() {
-  console.log('[SCRAPER] Initiating DSE market data scrape...');
-  const symbols = await loadSymbols();
+  console.log('[JOB 2 SYNC] Initiating live intraday ticker sync (Session snapshot, 0 DB writes)...');
+  
+  // 1. Fetch official DB baseline stocks first
+  const dbStocks = await getAllStocksFromDB();
+  const dbMap = new Map();
+  for (const s of dbStocks) dbMap.set(s.symbol, s);
 
-  // 1. Fetch live prices & closing prices from official DSE
-  const [closingRecords, liveRecords] = await Promise.all([
-    fetchDSEClosingPrices(),
-    fetchDSELiveTicker()
-  ]);
-
+  // 2. Fetch live intraday ticker from DSE
+  const liveRecords = await fetchDSELiveTicker();
   const liveMap = new Map();
-  for (const r of closingRecords) liveMap.set(r.symbol, r);
-  for (const r of liveRecords) {
-    if (!liveMap.has(r.symbol)) liveMap.set(r.symbol, r);
-    else Object.assign(liveMap.get(r.symbol), r);
-  }
+  for (const r of liveRecords) liveMap.set(r.symbol, r);
 
-  // 2. Fetch Cached Fundamentals from SQLite
-  const fundamentalsMap = await getAllFundamentalsMap();
-
-  // 3. Assemble Enriched Stock Records with strict fallback
-  const enrichedList = [];
-  const nowDhakaStr = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'Asia/Dhaka',
-    month: 'short',
-    day: 'numeric'
-  }).format(new Date());
-
-  for (const symbol of symbols) {
-    const live = liveMap.get(symbol) || {};
-    const fund = fundamentalsMap[symbol] || {};
-    const recordedClose = await getLatestRecordedClosing(symbol);
-
-    let ltp = live.ltp ?? recordedClose?.ltp ?? null;
-    let changePercent = live.changePercent ?? recordedClose?.changePercent ?? null;
-    let change = live.change ?? recordedClose?.change ?? null;
-    let volume = live.volume ?? recordedClose?.volume ?? null;
-    let pe = live.pe ?? fund.peBasic ?? fund.peTrailing ?? recordedClose?.pe ?? null;
-
-    let eps = fund.eps ?? null;
-    let roe = fund.navPerShare && eps ? Number(((eps / fund.navPerShare) * 100).toFixed(2)) : null;
-
-    const _historyFallback = {};
-    if (live.ltp === undefined || live.ltp === null) {
-      if (recordedClose?.ltp) _historyFallback.ltp = { source: 'database', date: recordedClose.date };
-    }
-    if (fund.auditedPeriod) {
-      _historyFallback.eps = { source: 'fundamentals', year: fund.auditedPeriod };
-      _historyFallback.roe = { source: 'fundamentals', year: fund.auditedPeriod };
+  // 3. Merge live intraday prices and recalculate Live Daily P/E
+  const enrichedList = dbStocks.map(base => {
+    const live = liveMap.get(base.symbol);
+    if (!live || !live.ltp || isNaN(live.ltp)) {
+      return base;
     }
 
-    enrichedList.push({
-      symbol,
-      name: fund.name || symbol,
-      sector: fund.sector || 'General',
-      category: fund.category || 'A',
-      ltp,
+    const liveLtp = Number(live.ltp);
+    const ycp = base.ycp !== null ? Number(base.ycp) : liveLtp;
+    const change = Number((liveLtp - ycp).toFixed(2));
+    const changePercent = ycp > 0 ? Number(((change / ycp) * 100).toFixed(2)) : 0;
+    
+    // Live Intraday Daily P/E calculated from Live LTP / Audited EPS
+    const eps = base.eps !== null && base.eps > 0 ? Number(base.eps) : null;
+    const dailyPe = eps ? Number((liveLtp / eps).toFixed(2)) : base.dailyPe;
+
+    return {
+      ...base,
+      ltp: liveLtp,
       change,
       changePercent,
-      pe,
-      eps,
-      roe,
-      debtToEquity: null,
-      currentRatio: null,
-      volume,
-      navPerShare: fund.navPerShare || null,
-      paidUpCapital: fund.paidUpCapital || null,
-      _historyFallback
-    });
-  }
+      momentum: changePercent,
+      pe: dailyPe,
+      dailyPe,
+      isLiveSession: true
+    };
+  });
 
-  // 4. Save to latest.json and record daily close into SQLite
-  const payload = {
+  console.log(`[JOB 2 SYNC] Enriched ${enrichedList.length} equities with live intraday prices & Daily P/E. Master DB left untouched.`);
+  
+  return {
     fetchedAt: new Date().toISOString(),
     count: enrichedList.length,
     stocks: enrichedList
   };
-
-  await fs.writeJson(LATEST_FILE, payload, { spaces: 2 });
-
-  if (closingRecords.length > 0) {
-    const savedCount = await saveDailyClosingToDB(closingRecords);
-    console.log(`[SQLITE] Saved ${savedCount} daily closing records to SQLite database.`);
-  }
-
-  return payload;
 }
 
 // -------------------------------------------------------------
