@@ -22,7 +22,8 @@ import {
   getHistoricalTimeline,
   getDetailedHistoricalAnalysis,
   getCompanyFundamentalsHistory,
-  seed20YearFromMasterExcel
+  seed20YearFromMasterExcel,
+  seedFromLatestJson
 } from './db.js';
 import { runAuditedEPSWeeklyScraper } from './scrapers/audited_eps_scraper.js';
 
@@ -837,7 +838,20 @@ if (fs.existsSync(DIST_DIR)) {
   });
 }
 
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => {
-  console.log(`DSE Analytics Server listening on port ${PORT} [DHAKA UTC+6 ENGINE]`);
-});
+// Auto-boot SQLite DB Initialization & Seeding on Start
+async function startServer() {
+  await initDB();
+  try {
+    await seedFromLatestJson();
+    await seed20YearFromMasterExcel();
+  } catch (e) {
+    console.warn('[BOOT SEED NOTICE]', e.message);
+  }
+
+  const PORT = process.env.PORT || 5001;
+  app.listen(PORT, () => {
+    console.log(`DSE Analytics Server listening on port ${PORT} [DHAKA UTC+6 ENGINE]`);
+  });
+}
+
+startServer();
