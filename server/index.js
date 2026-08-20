@@ -24,7 +24,8 @@ import {
   getCompanyFundamentalsHistory,
   seed20YearFromMasterExcel,
   seedFromLatestJson,
-  dbGet
+  dbGet,
+  isSqliteAvailable
 } from './db.js';
 import { runAuditedEPSWeeklyScraper } from './scrapers/audited_eps_scraper.js';
 
