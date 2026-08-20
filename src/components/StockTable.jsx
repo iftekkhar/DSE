@@ -35,7 +35,6 @@ export default function StockTable({
               <th className="py-3 px-4 text-right">P/E (Daily / Audited)</th>
               <th className="py-3 px-4 text-right">ROE (Audited)</th>
               <th className="py-3 px-4 text-right">EPS (Audited)</th>
-              <th className="py-3 px-4 text-right">Volume</th>
               <th className="py-3 px-4 text-center">Verdict</th>
               <th className="py-3 px-4 text-center">Action</th>
             </tr>
@@ -163,22 +162,6 @@ export default function StockTable({
                         <span className="text-[8.5px] text-slate-500 font-normal" title={auditedPeriod}>
                           {auditedPeriod.includes('FY2026') ? 'FY26 Q3' : 'FY25 Audited'}
                         </span>
-                      </div>
-                    ) : (
-                      <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>
-                    )}
-                  </td>
-
-                  {/* Volume */}
-                  <td className="py-3 px-4 text-right font-mono text-slate-500 text-[11px]">
-                    {stock.volume !== null && stock.volume !== undefined ? (
-                      <div className="flex flex-col items-end">
-                        <span className="font-bold text-slate-800">
-                          {stock.volume > 1000000
-                            ? `${(stock.volume / 1000000).toFixed(1)}M`
-                            : `${(stock.volume / 1000).toFixed(0)}K`}
-                        </span>
-                        <span className="text-[8.5px] text-slate-400">{dateLabel}</span>
                       </div>
                     ) : (
                       <span className="text-slate-400 font-normal italic text-[11px]">Not Available live</span>
