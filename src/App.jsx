@@ -78,24 +78,13 @@ export default function App() {
     setTimeout(() => setToastMessage(null), 4000);
   }, []);
 
-  // Fetch stocks on mount (Checking active session first)
+  // Fetch stocks on mount (Directly from master SQLite DB)
   useEffect(() => {
     let isMounted = true;
     try {
-      const savedSession = sessionStorage.getItem("dse_live_session_stocks");
-      if (savedSession) {
-        const parsed = JSON.parse(savedSession);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          if (isMounted) {
-            setStocks(parsed);
-            setIsLiveSessionActive(true);
-            setLoading(false);
-            return;
-          }
-        }
-      }
+      sessionStorage.removeItem("dse_live_session_stocks");
     } catch (e) {
-      console.warn("Could not load from sessionStorage", e);
+      console.warn("Session cleared", e);
     }
 
     fetchDSEData()
