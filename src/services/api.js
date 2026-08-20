@@ -7,8 +7,8 @@ import {
   calculateEarningsYield,
   getMoatAssessment,
   calculateBuffettScore
-} from './dseData';
-import masterSnapshot from '../../data/latest.json';
+} from './dseData.js';
+import masterSnapshot from '../../data/latest.json' with { type: 'json' };
 
 const getApiBase = () => {
   if (typeof window !== 'undefined') {
