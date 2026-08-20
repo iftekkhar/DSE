@@ -786,6 +786,19 @@ app.get('/api/download/job3-company-fundamentals', (req, res) => {
   }
 });
 
+// Admin / Cloud DB Reseed endpoint
+app.post('/api/admin/reseed', async (req, res) => {
+  try {
+    await initDB();
+    await seedFromLatestJson();
+    await seed20YearFromMasterExcel();
+    const stocks = await getAllStocksFromDB();
+    res.json({ status: 'ok', count: stocks.length, message: `Database initialized & seeded with ${stocks.length} companies` });
+  } catch (err) {
+    res.status(500).json({ status: 'error', message: err.message });
+  }
+});
+
 // Job: Trigger Weekly Audited EPS & Fundamentals Scraper manually
 app.post('/api/jobs/audited-eps', async (req, res) => {
   try {
