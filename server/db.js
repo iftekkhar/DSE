@@ -63,6 +63,16 @@ export function dbGet(sql, params = []) {
   });
 }
 
+export function dbPrepare(sql) {
+  if (!isSqliteAvailable || !db) {
+    return {
+      run: () => {},
+      finalize: (cb) => { if (cb) cb(); }
+    };
+  }
+  return db.prepare(sql);
+}
+
 // High-Performance PRAGMA configuration
 export async function applyPragmas() {
   if (!isSqliteAvailable || !db) return;
@@ -152,12 +162,13 @@ export async function initDB() {
 // 1. High-Speed Bulk Daily Market Closing Batch Ingestion
 export async function saveDailyClosingToDB(records, dateStr) {
   if (!records || !Array.isArray(records) || records.length === 0) return 0;
+  if (!isSqliteAvailable || !db) return 0;
   const targetDate = dateStr || new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Dhaka' }).format(new Date());
 
   let count = 0;
   await dbRun('BEGIN TRANSACTION');
   try {
-    const stmt = db.prepare(`
+    const stmt = dbPrepare(`
       INSERT INTO price_history (symbol, date, close, ycp, change, change_percent, volume, pe)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT(symbol, date) DO UPDATE SET
@@ -279,6 +290,9 @@ export async function saveFundamentalsBulkDelta(records) {
   if (!records || !Array.isArray(records) || records.length === 0) {
     return { total: 0, changedCount: 0, unchangedCount: 0, changedSymbols: [] };
   }
+  if (!isSqliteAvailable || !db) {
+    return { total: records.length, changedCount: 0, unchangedCount: records.length, changedSymbols: [] };
+  }
 
   // 1. Fetch current snapshot in 1 single fast query
   const existingRows = await dbAll(`
@@ -335,7 +349,7 @@ export async function saveFundamentalsBulkDelta(records) {
   // 2. Perform compiled batch upsert for ONLY changed records
   await dbRun('BEGIN TRANSACTION');
   try {
-    const stmt = db.prepare(`
+    const stmt = dbPrepare(`
       INSERT INTO company_fundamentals (
         symbol, name, sector, category, eps_basic, eps_diluted, eps_quarterly,
         nav_per_share, paid_up_capital_mn, authorized_capital_mn,
@@ -675,6 +689,10 @@ export async function exportToExcel(symbolFilter = null) {
 
 // 7. Auto-seed SQLite Database from Master Excel Dataset on startup (Chunked Streaming)
 export async function seed20YearFromMasterExcel() {
+  if (!isSqliteAvailable || !db) {
+    console.warn('[SQLITE] SQLite is not available, skipping Master Excel seed.');
+    return;
+  }
   const EXCEL_PATH = path.join(DATA_DIR, 'DSE_20_Year_Master_Dataset_2005_2026.xlsx');
   if (!fs.existsSync(EXCEL_PATH)) {
     console.warn('[SQLITE] Master Excel file not found at:', EXCEL_PATH);
@@ -703,7 +721,7 @@ export async function seed20YearFromMasterExcel() {
 
       if (sheetName === 'Company_Directory') {
         await dbRun('BEGIN TRANSACTION');
-        const stmtDir = db.prepare(`
+        const stmtDir = dbPrepare(`
           INSERT INTO company_fundamentals (symbol, name, sector, category, paid_up_capital_mn, authorized_capital_mn, updated_at)
           VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
           ON CONFLICT(symbol) DO UPDATE SET
@@ -734,7 +752,7 @@ export async function seed20YearFromMasterExcel() {
         console.log(`[SQLITE] Seeded ${dirCount} company directory profiles.`);
       } else if (sheetName === 'Audited_Quarterly_KPIs') {
         await dbRun('BEGIN TRANSACTION');
-        const stmtKpi = db.prepare(`
+        const stmtKpi = dbPrepare(`
           UPDATE company_fundamentals SET
             eps_basic = ?,
             eps_diluted = ?,
@@ -768,7 +786,7 @@ export async function seed20YearFromMasterExcel() {
         console.log('[SQLITE] Bulk inserting 20-Year Master History records...');
         let batchCount = 0;
         await dbRun('BEGIN TRANSACTION');
-        let stmtPrice = db.prepare(`
+        let stmtPrice = dbPrepare(`
           INSERT INTO price_history (symbol, date, close, ycp, change, change_percent, volume, pe)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT(symbol, date) DO UPDATE SET
@@ -807,7 +825,7 @@ export async function seed20YearFromMasterExcel() {
               await new Promise((res, rej) => stmtPrice.finalize(err => err ? rej(err) : res()));
               await dbRun('COMMIT');
               await dbRun('BEGIN TRANSACTION');
-              stmtPrice = db.prepare(`
+              stmtPrice = dbPrepare(`
                 INSERT INTO price_history (symbol, date, close, ycp, change, change_percent, volume, pe)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(symbol, date) DO UPDATE SET
@@ -834,6 +852,7 @@ export async function seed20YearFromMasterExcel() {
 
 // 8. Seed latest snapshot fallback if database empty
 export async function seedFromLatestJson() {
+  if (!isSqliteAvailable || !db) return;
   const JSON_PATH = path.join(DATA_DIR, 'latest.json');
   if (!fs.existsSync(JSON_PATH)) return;
 
