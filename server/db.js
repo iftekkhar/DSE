@@ -44,8 +44,23 @@ export function dbGet(sql, params = []) {
   });
 }
 
-// Initialize Tables
+// High-Performance PRAGMA configuration
+export async function applyPragmas() {
+  try {
+    await dbRun(`PRAGMA journal_mode = WAL;`);
+    await dbRun(`PRAGMA synchronous = NORMAL;`);
+    await dbRun(`PRAGMA cache_size = -64000;`); // ~64MB memory page cache
+    await dbRun(`PRAGMA temp_store = MEMORY;`);
+    await dbRun(`PRAGMA busy_timeout = 5000;`);
+  } catch (e) {
+    console.warn('[SQLITE] Pragma notice:', e.message);
+  }
+}
+
+// Initialize Tables & Covering Indexes
 export async function initDB() {
+  await applyPragmas();
+
   await dbRun(`
     CREATE TABLE IF NOT EXISTS price_history (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -68,6 +83,7 @@ export async function initDB() {
 
   await dbRun(`CREATE INDEX IF NOT EXISTS idx_history_symbol_date ON price_history(symbol, date DESC);`);
   await dbRun(`CREATE INDEX IF NOT EXISTS idx_history_date ON price_history(date DESC);`);
+  await dbRun(`CREATE INDEX IF NOT EXISTS idx_history_cov ON price_history(symbol, date DESC, close, ycp, change, change_percent, volume, pe);`);
 
   await dbRun(`
     CREATE TABLE IF NOT EXISTS company_fundamentals (
@@ -93,8 +109,8 @@ export async function initDB() {
     );
   `);
 
-  try { await dbRun(`ALTER TABLE company_fundamentals ADD COLUMN debt_to_equity REAL;`); } catch (e) {}
-  try { await dbRun(`ALTER TABLE company_fundamentals ADD COLUMN current_ratio REAL;`); } catch (e) {}
+  try { await dbRun(`ALTER TABLE company_fundamentals ADD COLUMN debt_to_equity REAL;`); } catch { /* column exists */ }
+  try { await dbRun(`ALTER TABLE company_fundamentals ADD COLUMN current_ratio REAL;`); } catch { /* column exists */ }
 
   await dbRun(`
     CREATE TABLE IF NOT EXISTS market_breadth (
@@ -113,7 +129,7 @@ export async function initDB() {
   await dbRun(`DELETE FROM price_history WHERE date LIKE '%T%' OR date LIKE '%:%'`).catch(() => {});
 }
 
-// 1. Save Daily Market Closing batch to SQLite
+// 1. High-Speed Bulk Daily Market Closing Batch Ingestion
 export async function saveDailyClosingToDB(records, dateStr) {
   if (!records || !Array.isArray(records) || records.length === 0) return 0;
   const targetDate = dateStr || new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Dhaka' }).format(new Date());
@@ -121,30 +137,34 @@ export async function saveDailyClosingToDB(records, dateStr) {
   let count = 0;
   await dbRun('BEGIN TRANSACTION');
   try {
+    const stmt = db.prepare(`
+      INSERT INTO price_history (symbol, date, close, ycp, change, change_percent, volume, pe)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(symbol, date) DO UPDATE SET
+        close = excluded.close,
+        ycp = excluded.ycp,
+        change = excluded.change,
+        change_percent = excluded.change_percent,
+        volume = excluded.volume,
+        pe = excluded.pe
+    `);
+
     for (const r of records) {
       const symbol = (r.symbol || '').toUpperCase().trim();
       const close = Number(r.ltp ?? r.close ?? r.closePrice ?? 0);
       if (!symbol || close <= 0) continue;
 
       const ycp = Number(r.ycp ?? 0);
-      const change = Number(r.change ?? 0);
-      const change_percent = Number(r.changePercent ?? 0);
+      const change = Number(r.change ?? (ycp > 0 ? close - ycp : 0));
+      const change_percent = Number(r.changePercent ?? (ycp > 0 ? ((close - ycp) / ycp) * 100 : 0));
       const volume = Number(r.volume ?? 0);
       const pe = r.pe !== null && r.pe !== undefined ? Number(r.pe) : null;
 
-      await dbRun(`
-        INSERT INTO price_history (symbol, date, close, ycp, change, change_percent, volume, pe)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        ON CONFLICT(symbol, date) DO UPDATE SET
-          close = excluded.close,
-          ycp = excluded.ycp,
-          change = excluded.change,
-          change_percent = excluded.change_percent,
-          volume = excluded.volume,
-          pe = excluded.pe
-      `, [symbol, targetDate, close, ycp, change, change_percent, volume, pe]);
+      stmt.run([symbol, targetDate, close, ycp, change, change_percent, volume, pe]);
       count++;
     }
+
+    await new Promise((res, rej) => stmt.finalize(err => err ? rej(err) : res()));
     await dbRun('COMMIT');
   } catch (err) {
     await dbRun('ROLLBACK');
@@ -181,7 +201,7 @@ export async function getLatestRecordedClosing(symbol) {
   `, [cleanSym]);
 }
 
-// 4. Save Company Fundamentals to SQLite
+// 4. Save Single Company Fundamentals to SQLite
 export async function saveFundamentals(data) {
   if (!data || !data.symbol) return;
   const symbol = data.symbol.toUpperCase().trim();
@@ -190,9 +210,9 @@ export async function saveFundamentals(data) {
     INSERT INTO company_fundamentals (
       symbol, name, sector, category, eps_basic, eps_diluted, eps_quarterly,
       nav_per_share, paid_up_capital_mn, authorized_capital_mn,
-      pe_basic, pe_diluted, pe_trailing, dividend_yield, audited_period,
-      quarterly_disclosure, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+      pe_basic, pe_diluted, pe_trailing, dividend_yield, debt_to_equity, current_ratio,
+      audited_period, quarterly_disclosure, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
     ON CONFLICT(symbol) DO UPDATE SET
       name = COALESCE(excluded.name, company_fundamentals.name),
       sector = COALESCE(excluded.sector, company_fundamentals.sector),
@@ -207,6 +227,8 @@ export async function saveFundamentals(data) {
       pe_diluted = COALESCE(excluded.pe_diluted, company_fundamentals.pe_diluted),
       pe_trailing = COALESCE(excluded.pe_trailing, company_fundamentals.pe_trailing),
       dividend_yield = COALESCE(excluded.dividend_yield, company_fundamentals.dividend_yield),
+      debt_to_equity = COALESCE(excluded.debt_to_equity, company_fundamentals.debt_to_equity),
+      current_ratio = COALESCE(excluded.current_ratio, company_fundamentals.current_ratio),
       audited_period = COALESCE(excluded.audited_period, company_fundamentals.audited_period),
       quarterly_disclosure = COALESCE(excluded.quarterly_disclosure, company_fundamentals.quarterly_disclosure),
       updated_at = datetime('now')
@@ -215,45 +237,155 @@ export async function saveFundamentals(data) {
     data.name || null,
     data.sector || null,
     data.category || null,
-    data.epsBasic !== undefined ? data.epsBasic : null,
+    data.epsBasic !== undefined ? data.epsBasic : (data.eps !== undefined ? data.eps : null),
     data.epsDiluted !== undefined ? data.epsDiluted : null,
     data.epsQuarterly !== undefined ? data.epsQuarterly : null,
     data.navPerShare !== undefined ? data.navPerShare : null,
-    data.paidUpCapitalMn !== undefined ? data.paidUpCapitalMn : null,
-    data.authorizedCapitalMn !== undefined ? data.authorizedCapitalMn : null,
-    data.peBasic !== undefined ? data.peBasic : null,
+    data.paidUpCapitalMn !== undefined ? data.paidUpCapitalMn : (data.paidUpCapital !== undefined ? data.paidUpCapital : null),
+    data.authorizedCapitalMn !== undefined ? data.authorizedCapitalMn : (data.authorizedCapital !== undefined ? data.authorizedCapital : null),
+    data.peBasic !== undefined ? data.peBasic : (data.pe !== undefined ? data.pe : null),
     data.peDiluted !== undefined ? data.peDiluted : null,
     data.peTrailing !== undefined ? data.peTrailing : null,
     data.dividendYield !== undefined ? data.dividendYield : null,
+    data.debtToEquity !== undefined ? data.debtToEquity : null,
+    data.currentRatio !== undefined ? data.currentRatio : null,
     data.auditedPeriod || null,
     data.quarterlyDisclosure || null
   ]);
 }
 
-// 4b. Smart Delta Fundamentals Upsert (0 DB writes if unchanged)
-export async function saveFundamentalsDelta(data) {
-  if (!data || !data.symbol) return { changed: false };
-  const symbol = data.symbol.toUpperCase().trim();
+// 4b. O(1) In-Memory Smart Delta Bulk Fundamentals Ingestion (0 writes if unchanged)
+export async function saveFundamentalsBulkDelta(records) {
+  if (!records || !Array.isArray(records) || records.length === 0) {
+    return { total: 0, changedCount: 0, unchangedCount: 0, changedSymbols: [] };
+  }
 
-  const existing = await dbGet(`SELECT * FROM company_fundamentals WHERE symbol = ?`, [symbol]);
+  // 1. Fetch current snapshot in 1 single fast query
+  const existingRows = await dbAll(`
+    SELECT symbol, name, sector, category, eps_basic, eps_diluted, eps_quarterly,
+           nav_per_share, paid_up_capital_mn, authorized_capital_mn,
+           pe_basic, pe_diluted, pe_trailing, dividend_yield, debt_to_equity, current_ratio,
+           audited_period, quarterly_disclosure
+    FROM company_fundamentals
+  `);
 
-  if (existing) {
-    const isEpsSame = (existing.eps_basic === null && (data.epsBasic === null || data.epsBasic === undefined)) || 
-                      (Number(existing.eps_basic) === Number(data.epsBasic));
-    const isNavSame = (existing.nav_per_share === null && (data.navPerShare === null || data.navPerShare === undefined)) || 
-                      (Number(existing.nav_per_share) === Number(data.navPerShare));
-    const isPeriodSame = existing.audited_period === data.auditedPeriod;
-    const isPaidUpSame = (existing.paid_up_capital_mn === null && (data.paidUpCapitalMn === null || data.paidUpCapitalMn === undefined)) || 
-                         (Number(existing.paid_up_capital_mn) === Number(data.paidUpCapitalMn));
+  const existingMap = new Map();
+  for (const row of existingRows) {
+    existingMap.set(row.symbol.toUpperCase().trim(), row);
+  }
 
-    if (isEpsSame && isNavSame && isPeriodSame && isPaidUpSame && data.epsBasic !== null && data.epsBasic !== undefined) {
-      return { changed: false, symbol };
+  const toUpdate = [];
+  const changedSymbols = [];
+
+  for (const r of records) {
+    if (!r || !r.symbol) continue;
+    const sym = String(r.symbol).toUpperCase().trim();
+    const existing = existingMap.get(sym);
+
+    if (!existing) {
+      toUpdate.push(r);
+      changedSymbols.push(sym);
+      continue;
+    }
+
+    const epsNew = r.epsBasic !== undefined ? r.epsBasic : (r.eps !== undefined ? r.eps : null);
+    const navNew = r.navPerShare !== undefined ? r.navPerShare : null;
+    const paidUpNew = r.paidUpCapitalMn !== undefined ? r.paidUpCapitalMn : (r.paidUpCapital !== undefined ? r.paidUpCapital : null);
+    const periodNew = r.auditedPeriod || null;
+    const debtNew = r.debtToEquity !== undefined ? r.debtToEquity : null;
+    const crNew = r.currentRatio !== undefined ? r.currentRatio : null;
+
+    const epsChanged = (existing.eps_basic !== null || epsNew !== null) && Number(existing.eps_basic) !== Number(epsNew);
+    const navChanged = (existing.nav_per_share !== null || navNew !== null) && Number(existing.nav_per_share) !== Number(navNew);
+    const paidUpChanged = (existing.paid_up_capital_mn !== null || paidUpNew !== null) && Number(existing.paid_up_capital_mn) !== Number(paidUpNew);
+    const periodChanged = existing.audited_period !== periodNew;
+    const debtChanged = (existing.debt_to_equity !== null || debtNew !== null) && Number(existing.debt_to_equity) !== Number(debtNew);
+    const crChanged = (existing.current_ratio !== null || crNew !== null) && Number(existing.current_ratio) !== Number(crNew);
+
+    if (epsChanged || navChanged || paidUpChanged || periodChanged || debtChanged || crChanged) {
+      toUpdate.push(r);
+      changedSymbols.push(sym);
     }
   }
 
-  // Differences detected -> execute update
-  await saveFundamentals(data);
-  return { changed: true, symbol };
+  if (toUpdate.length === 0) {
+    return { total: records.length, changedCount: 0, unchangedCount: records.length, changedSymbols: [] };
+  }
+
+  // 2. Perform compiled batch upsert for ONLY changed records
+  await dbRun('BEGIN TRANSACTION');
+  try {
+    const stmt = db.prepare(`
+      INSERT INTO company_fundamentals (
+        symbol, name, sector, category, eps_basic, eps_diluted, eps_quarterly,
+        nav_per_share, paid_up_capital_mn, authorized_capital_mn,
+        pe_basic, pe_diluted, pe_trailing, dividend_yield, debt_to_equity, current_ratio,
+        audited_period, quarterly_disclosure, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+      ON CONFLICT(symbol) DO UPDATE SET
+        name = COALESCE(excluded.name, company_fundamentals.name),
+        sector = COALESCE(excluded.sector, company_fundamentals.sector),
+        category = COALESCE(excluded.category, company_fundamentals.category),
+        eps_basic = COALESCE(excluded.eps_basic, company_fundamentals.eps_basic),
+        eps_diluted = COALESCE(excluded.eps_diluted, company_fundamentals.eps_diluted),
+        eps_quarterly = COALESCE(excluded.eps_quarterly, company_fundamentals.eps_quarterly),
+        nav_per_share = COALESCE(excluded.nav_per_share, company_fundamentals.nav_per_share),
+        paid_up_capital_mn = COALESCE(excluded.paid_up_capital_mn, company_fundamentals.paid_up_capital_mn),
+        authorized_capital_mn = COALESCE(excluded.authorized_capital_mn, company_fundamentals.authorized_capital_mn),
+        pe_basic = COALESCE(excluded.pe_basic, company_fundamentals.pe_basic),
+        pe_diluted = COALESCE(excluded.pe_diluted, company_fundamentals.pe_diluted),
+        pe_trailing = COALESCE(excluded.pe_trailing, company_fundamentals.pe_trailing),
+        dividend_yield = COALESCE(excluded.dividend_yield, company_fundamentals.dividend_yield),
+        debt_to_equity = COALESCE(excluded.debt_to_equity, company_fundamentals.debt_to_equity),
+        current_ratio = COALESCE(excluded.current_ratio, company_fundamentals.current_ratio),
+        audited_period = COALESCE(excluded.audited_period, company_fundamentals.audited_period),
+        quarterly_disclosure = COALESCE(excluded.quarterly_disclosure, company_fundamentals.quarterly_disclosure),
+        updated_at = datetime('now')
+    `);
+
+    for (const data of toUpdate) {
+      const symbol = String(data.symbol).toUpperCase().trim();
+      stmt.run([
+        symbol,
+        data.name || null,
+        data.sector || null,
+        data.category || null,
+        data.epsBasic !== undefined ? data.epsBasic : (data.eps !== undefined ? data.eps : null),
+        data.epsDiluted !== undefined ? data.epsDiluted : null,
+        data.epsQuarterly !== undefined ? data.epsQuarterly : null,
+        data.navPerShare !== undefined ? data.navPerShare : null,
+        data.paidUpCapitalMn !== undefined ? data.paidUpCapitalMn : (data.paidUpCapital !== undefined ? data.paidUpCapital : null),
+        data.authorizedCapitalMn !== undefined ? data.authorizedCapitalMn : (data.authorizedCapital !== undefined ? data.authorizedCapital : null),
+        data.peBasic !== undefined ? data.peBasic : (data.pe !== undefined ? data.pe : null),
+        data.peDiluted !== undefined ? data.peDiluted : null,
+        data.peTrailing !== undefined ? data.peTrailing : null,
+        data.dividendYield !== undefined ? data.dividendYield : null,
+        data.debtToEquity !== undefined ? data.debtToEquity : null,
+        data.currentRatio !== undefined ? data.currentRatio : null,
+        data.auditedPeriod || null,
+        data.quarterlyDisclosure || null
+      ]);
+    }
+
+    await new Promise((res, rej) => stmt.finalize(err => err ? rej(err) : res()));
+    await dbRun('COMMIT');
+  } catch (err) {
+    await dbRun('ROLLBACK');
+    throw err;
+  }
+
+  return {
+    total: records.length,
+    changedCount: toUpdate.length,
+    unchangedCount: records.length - toUpdate.length,
+    changedSymbols
+  };
+}
+
+// 4c. Single Smart Delta Upsert helper
+export async function saveFundamentalsDelta(data) {
+  const res = await saveFundamentalsBulkDelta([data]);
+  return { changed: res.changedCount > 0, symbol: data.symbol };
 }
 
 // 5. Get All Fundamentals map
@@ -285,25 +417,17 @@ export async function getAllFundamentalsMap() {
 }
 
 // 5a. Save Market Breadth & Sector Summary to SQLite
-export async function saveMarketBreadth(data, dateStr) {
+// 5a. Save Intraday Breadth Snapshot (Dedicated for Job 4 - replaced every 30 mins)
+export async function saveIntradayBreadthSnapshot(data) {
   if (!data) return;
-  const targetDate = dateStr || new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Dhaka' }).format(new Date());
+  const nowDhaka = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Dhaka', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date());
 
   await dbRun(`
-    INSERT INTO market_breadth (
-      date, advancing, declining, unchanged, total_trades, total_volume, total_value_mn, dsex_index, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
-    ON CONFLICT(date) DO UPDATE SET
-      advancing = excluded.advancing,
-      declining = excluded.declining,
-      unchanged = excluded.unchanged,
-      total_trades = excluded.total_trades,
-      total_volume = excluded.total_volume,
-      total_value_mn = excluded.total_value_mn,
-      dsex_index = excluded.dsex_index,
-      updated_at = datetime('now')
+    INSERT OR REPLACE INTO intraday_breadth_snapshot (
+      id, slot_time, advancing, declining, unchanged, total_trades, total_volume, total_value_mn, dsex_index, updated_at
+    ) VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
   `, [
-    targetDate,
+    nowDhaka,
     data.advancing || 0,
     data.declining || 0,
     data.unchanged || 0,
@@ -314,16 +438,51 @@ export async function saveMarketBreadth(data, dateStr) {
   ]);
 }
 
-// 5b. Get Latest Market Breadth from SQLite
-export async function getLatestMarketBreadth() {
-  return await dbGet(`
-    SELECT * FROM market_breadth
-    ORDER BY date DESC
-    LIMIT 1
-  `);
+// 5b. Get Latest Intraday Breadth Snapshot from SQLite
+export async function getIntradayBreadthSnapshot() {
+  return await dbGet(`SELECT * FROM intraday_breadth_snapshot WHERE id = 1`);
 }
 
-// 5b. Fetch Complete Equities List directly from SQLite DB (Latest Audited Fundamentals + Latest Daily Closing)
+// 5c. Save Daily Closing DSEX Benchmark & Breadth (Dedicated for Job 1 - Appends only official EOD closing)
+export async function saveDSEXDailyClosing(data, dateStr) {
+  if (!data) return;
+  const targetDate = dateStr || new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Dhaka' }).format(new Date());
+
+  await dbRun(`
+    INSERT INTO dsex_market_history (
+      date, dsex_index, advancing, declining, unchanged, total_trades, total_volume, total_value_mn, created_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+    ON CONFLICT(date) DO UPDATE SET
+      dsex_index = excluded.dsex_index,
+      advancing = excluded.advancing,
+      declining = excluded.declining,
+      unchanged = excluded.unchanged,
+      total_trades = excluded.total_trades,
+      total_volume = excluded.total_volume,
+      total_value_mn = excluded.total_value_mn
+  `, [
+    targetDate,
+    data.dsexIndex || 0,
+    data.advancing || 0,
+    data.declining || 0,
+    data.unchanged || 0,
+    data.totalTrades || 0,
+    data.totalVolume || 0,
+    data.totalValueMn || 0
+  ]);
+}
+
+// 5d. Get 20-Year DSEX Historical Timeline
+export async function getDSEXHistoricalTimeline(limit = 7500) {
+  return await dbAll(`
+    SELECT date, dsex_index as dsexIndex, advancing, declining, unchanged, total_value_mn as turnoverMn, total_volume as volume
+    FROM dsex_market_history
+    ORDER BY date ASC
+    LIMIT ?
+  `, [limit]);
+}
+
+// 5c. Fetch Complete Equities List directly from SQLite DB (Latest Audited Fundamentals + Latest Daily Closing)
 export async function getAllStocksFromDB() {
   const rows = await dbAll(`
     SELECT 
@@ -337,8 +496,8 @@ export async function getAllStocksFromDB() {
       f.paid_up_capital_mn as paidUpCapital,
       f.authorized_capital_mn as authorizedCapital,
       f.dividend_yield as dividendYield,
-      COALESCE(f.audited_period, 'FY2025 Audited') as auditedPeriod,
-      COALESCE(f.quarterly_disclosure, 'FY2025 Audited') as quarterlyDisclosure,
+      f.audited_period as auditedPeriod,
+      f.quarterly_disclosure as quarterlyDisclosure,
       p.date as closeDate,
       p.close as ltp,
       p.ycp,
@@ -373,14 +532,14 @@ export async function getAllStocksFromDB() {
     // Strict closing price change & momentum calculated from consecutive closing balances
     const change = (ltp !== null && ycp !== null && ycp > 0)
       ? Number((ltp - ycp).toFixed(2))
-      : (r.change !== null ? Number(r.change) : 0);
+      : (r.change !== null ? Number(r.change) : null);
 
     const changePercent = (ltp !== null && ycp !== null && ycp > 0)
       ? Number((((ltp - ycp) / ycp) * 100).toFixed(2))
-      : (r.changePercent !== null ? Number(r.changePercent) : 0);
+      : (r.changePercent !== null ? Number(r.changePercent) : null);
 
     // Strict Daily Session Volume recorded at close
-    const volume = r.volume !== null ? Number(r.volume) : 0;
+    const volume = r.volume !== null ? Number(r.volume) : null;
 
     // Daily P/E: Daily Closing LTP / Latest Audited EPS (Fluctuates daily with price)
     const dailyPe = (ltp && eps && eps > 0)
@@ -402,7 +561,7 @@ export async function getAllStocksFromDB() {
       ? Number(((paidUpCapital / 10) * ltp).toFixed(2))
       : null;
 
-    const auditedPeriod = r.auditedPeriod || 'FY2025 Audited';
+    const auditedPeriod = r.auditedPeriod || null;
 
     return {
       ...r,
@@ -424,9 +583,9 @@ export async function getAllStocksFromDB() {
       currentRatio: r.currentRatio !== null ? Number(r.currentRatio) : null,
       roe,
       marketCap,
-      closeDate: r.closeDate || '2026-08-20',
+      closeDate: r.closeDate || null,
       auditedPeriod,
-      auditedYear: auditedPeriod.includes('2026') ? 'FY26 Audited' : (auditedPeriod.includes('2024') ? 'FY24 Audited' : 'FY25 Audited')
+      auditedYear: auditedPeriod ? (auditedPeriod.includes('2026') ? 'FY26 Audited' : (auditedPeriod.includes('2024') ? 'FY24 Audited' : 'FY25 Audited')) : null
     };
   });
 }
@@ -457,22 +616,19 @@ export async function exportToExcel(symbolFilter = null) {
     fgColor: { argb: 'FF1E293B' }
   };
 
-  let rows = [];
-  if (symbolFilter && symbolFilter !== 'ALL') {
-    rows = await dbAll(`
-      SELECT symbol, date, close, ycp, change, change_percent, volume, pe
-      FROM price_history
-      WHERE symbol = ?
-      ORDER BY date ASC
-    `, [symbolFilter.toUpperCase().trim()]);
-  } else {
-    rows = await dbAll(`
-      SELECT symbol, date, close, ycp, change, change_percent, volume, pe
-      FROM price_history
-      ORDER BY date DESC, symbol ASC
-      LIMIT 100000
-    `);
-  }
+  const rows = (symbolFilter && symbolFilter !== 'ALL')
+    ? await dbAll(`
+        SELECT symbol, date, close, ycp, change, change_percent, volume, pe
+        FROM price_history
+        WHERE symbol = ?
+        ORDER BY date ASC
+      `, [symbolFilter.toUpperCase().trim()])
+    : await dbAll(`
+        SELECT symbol, date, close, ycp, change, change_percent, volume, pe
+        FROM price_history
+        ORDER BY date DESC, symbol ASC
+        LIMIT 100000
+      `);
 
   for (const r of rows) {
     sheet.addRow(r);
@@ -481,7 +637,7 @@ export async function exportToExcel(symbolFilter = null) {
   return await workbook.xlsx.writeBuffer();
 }
 
-// 7. Auto-seed SQLite Database from Master Excel Dataset on startup
+// 7. Auto-seed SQLite Database from Master Excel Dataset on startup (Chunked Streaming)
 export async function seed20YearFromMasterExcel() {
   const EXCEL_PATH = path.join(DATA_DIR, 'DSE_20_Year_Master_Dataset_2005_2026.xlsx');
   if (!fs.existsSync(EXCEL_PATH)) {
@@ -497,8 +653,7 @@ export async function seed20YearFromMasterExcel() {
     }
 
     console.log('[SQLITE] Streaming Master Excel dataset into SQLite database (2005–2026)...');
-    await dbRun('PRAGMA synchronous = OFF');
-    await dbRun('PRAGMA journal_mode = MEMORY');
+    await applyPragmas();
 
     const options = { entries: 'emit', sharedStrings: 'cache', worksheets: 'emit' };
     const workbookReader = new ExcelJS.stream.xlsx.WorkbookReader(EXCEL_PATH, options);
@@ -538,7 +693,7 @@ export async function seed20YearFromMasterExcel() {
             dirCount++;
           }
         }
-        stmtDir.finalize();
+        await new Promise((res, rej) => stmtDir.finalize(err => err ? rej(err) : res()));
         await dbRun('COMMIT');
         console.log(`[SQLITE] Seeded ${dirCount} company directory profiles.`);
       } else if (sheetName === 'Audited_Quarterly_KPIs') {
@@ -558,30 +713,29 @@ export async function seed20YearFromMasterExcel() {
         for await (const row of worksheetReader) {
           if (row.number === 1) continue;
           const symbol = String(row.values[1] || '').toUpperCase().trim();
-          const year = Number(row.values[2] || 0);
-          const period = String(row.values[3] || '');
-          const epsBasic = Number(row.values[4] || 0);
-          const epsDiluted = Number(row.values[5] || 0);
-          const navps = Number(row.values[6] || 0);
-          const divYield = Number(row.values[11] || 0);
+          const epsBasic = Number(row.values[2] || 0);
+          const epsDiluted = Number(row.values[3] || 0);
+          const navps = Number(row.values[4] || 0);
+          const divYield = Number(row.values[7] || 0);
+          const period = String(row.values[8] || '');
+          const quarterly = String(row.values[9] || '');
 
-          if (symbol && (year === 2026 || year === 2025)) {
-            stmtKpi.run([epsBasic, epsDiluted, navps, divYield, `FY${year} ${period}`, period, symbol]);
+          if (symbol) {
+            stmtKpi.run([epsBasic, epsDiluted, navps, divYield, period, quarterly, symbol]);
             kpiCount++;
           }
         }
-        stmtKpi.finalize();
+        await new Promise((res, rej) => stmtKpi.finalize(err => err ? rej(err) : res()));
         await dbRun('COMMIT');
-        console.log(`[SQLITE] Updated ${kpiCount} audited KPI records.`);
-      } else if (sheetName === 'Daily_Price_History') {
+        console.log(`[SQLITE] Seeded ${kpiCount} company audited KPIs.`);
+      } else if (sheetName === '20Y_Master_History' || sheetName === 'Sheet1') {
+        console.log('[SQLITE] Bulk inserting 20-Year Master History records...');
+        let batchCount = 0;
         await dbRun('BEGIN TRANSACTION');
-        const stmtPrice = db.prepare(`
-          INSERT INTO price_history (symbol, date, open, high, low, close, ycp, change, change_percent, volume, pe)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        let stmtPrice = db.prepare(`
+          INSERT INTO price_history (symbol, date, close, ycp, change, change_percent, volume, pe)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT(symbol, date) DO UPDATE SET
-            open = excluded.open,
-            high = excluded.high,
-            low = excluded.low,
             close = excluded.close,
             ycp = excluded.ycp,
             change = excluded.change,
@@ -593,96 +747,370 @@ export async function seed20YearFromMasterExcel() {
         for await (const row of worksheetReader) {
           if (row.number === 1) continue;
           const symbol = String(row.values[1] || '').toUpperCase().trim();
-          const dateStr = String(row.values[2] || '').slice(0, 10);
-          const open = Number(row.values[3] || 0);
-          const high = Number(row.values[4] || 0);
-          const low = Number(row.values[5] || 0);
-          const close = Number(row.values[6] || 0);
-          const ycp = Number(row.values[7] || 0);
-          const change = Number(row.values[8] || 0);
-          const changePercent = Number(row.values[9] || 0);
-          const volume = Number(row.values[10] || 0);
-          const pe = Number(row.values[11] || 0);
+          let rawDate = row.values[2];
+          let dateStr = '';
+          if (rawDate instanceof Date) {
+            dateStr = rawDate.toISOString().slice(0, 10);
+          } else if (typeof rawDate === 'string') {
+            dateStr = rawDate.trim().slice(0, 10);
+          }
 
-          if (symbol && dateStr && close > 0) {
-            stmtPrice.run([symbol, dateStr, open, high, low, close, ycp, change, changePercent, volume, pe]);
+          const close = Number(row.values[3] || 0);
+          const ycp = Number(row.values[4] || 0);
+          const change = Number(row.values[5] || (ycp > 0 ? close - ycp : 0));
+          const changePercent = Number(row.values[6] || (ycp > 0 ? ((close - ycp) / ycp) * 100 : 0));
+          const volume = Number(row.values[7] || 0);
+          const pe = row.values[8] !== null && row.values[8] !== undefined ? Number(row.values[8]) : null;
+
+          if (symbol && dateStr && close > 0 && !dateStr.includes(':')) {
+            stmtPrice.run([symbol, dateStr, close, ycp, change, changePercent, volume, pe]);
             priceCount++;
+            batchCount++;
+
+            if (batchCount >= 10000) {
+              await new Promise((res, rej) => stmtPrice.finalize(err => err ? rej(err) : res()));
+              await dbRun('COMMIT');
+              await dbRun('BEGIN TRANSACTION');
+              stmtPrice = db.prepare(`
+                INSERT INTO price_history (symbol, date, close, ycp, change, change_percent, volume, pe)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(symbol, date) DO UPDATE SET
+                  close = excluded.close,
+                  ycp = excluded.ycp,
+                  change = excluded.change,
+                  change_percent = excluded.change_percent,
+                  volume = excluded.volume,
+                  pe = excluded.pe
+              `);
+              batchCount = 0;
+            }
           }
         }
-        stmtPrice.finalize();
+        await new Promise((res, rej) => stmtPrice.finalize(err => err ? rej(err) : res()));
         await dbRun('COMMIT');
-        console.log(`[SQLITE] Ingested ${priceCount} daily closing records from Excel.`);
+        console.log(`[SQLITE] Successfully imported ${priceCount} price history records.`);
       }
     }
   } catch (err) {
-    console.error('[SQLITE] Master Excel seeding error:', err.message);
+    console.error('[SQLITE] Master Excel import error:', err.message);
   }
 }
 
-export async function seedFundamentalsFromLatestJson() {
-  const jsonPath = path.join(DATA_DIR, 'latest.json');
-  if (!fs.existsSync(jsonPath)) return;
+// 8. Seed latest snapshot fallback if database empty
+export async function seedFromLatestJson() {
+  const JSON_PATH = path.join(DATA_DIR, 'latest.json');
+  if (!fs.existsSync(JSON_PATH)) return;
+
   try {
-    const raw = fs.readFileSync(jsonPath, 'utf8');
-    const data = JSON.parse(raw);
-    const stocks = Array.isArray(data.stocks) ? data.stocks : [];
-    if (stocks.length === 0) return;
+    const row = await dbGet('SELECT COUNT(*) as total FROM company_fundamentals');
+    if (row && row.total >= 400) return;
 
-    await dbRun('BEGIN TRANSACTION');
-    const stmt = db.prepare(`
-      INSERT INTO company_fundamentals (
-        symbol, name, sector, category, eps_basic, eps_diluted, nav_per_share,
-        paid_up_capital_mn, authorized_capital_mn, dividend_yield, audited_period,
-        quarterly_disclosure, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
-      ON CONFLICT(symbol) DO UPDATE SET
-        name = COALESCE(excluded.name, name),
-        sector = COALESCE(excluded.sector, sector),
-        category = COALESCE(excluded.category, category),
-        eps_basic = COALESCE(excluded.eps_basic, eps_basic),
-        eps_diluted = COALESCE(excluded.eps_diluted, eps_diluted),
-        nav_per_share = COALESCE(excluded.nav_per_share, nav_per_share),
-        paid_up_capital_mn = COALESCE(excluded.paid_up_capital_mn, paid_up_capital_mn),
-        authorized_capital_mn = COALESCE(excluded.authorized_capital_mn, authorized_capital_mn),
-        dividend_yield = COALESCE(excluded.dividend_yield, dividend_yield),
-        audited_period = COALESCE(excluded.audited_period, audited_period),
-        quarterly_disclosure = COALESCE(excluded.quarterly_disclosure, quarterly_disclosure),
-        updated_at = datetime('now')
-    `);
+    const raw = fs.readFileSync(JSON_PATH, 'utf8');
+    const parsed = JSON.parse(raw);
+    const stocks = parsed.stocks || parsed;
 
-    for (const s of stocks) {
-      if (!s.symbol) continue;
-      stmt.run([
-        s.symbol,
-        s.fullName || s.name || '',
-        s.sector || '',
-        s.category || 'A',
-        s.eps != null ? Number(s.eps) : null,
-        s.epsDiluted != null ? Number(s.epsDiluted) : null,
-        s.navPerShare != null ? Number(s.navPerShare) : null,
-        s.paidUpCapital != null ? Number(s.paidUpCapital) : null,
-        s.authorizedCapital != null ? Number(s.authorizedCapital) : null,
-        s.dividendYield != null ? Number(s.dividendYield) : null,
-        s.auditedPeriod || null,
-        s.quarterlyDisclosure || null
-      ]);
+    if (Array.isArray(stocks) && stocks.length > 0) {
+      console.log(`[SQLITE] Seeding ${stocks.length} company fundamentals from bundled snapshot...`);
+      await saveFundamentalsBulkDelta(stocks);
     }
-    stmt.finalize();
-    await dbRun('COMMIT');
-    console.log(`[SQLITE] Seeded ${stocks.length} audited company fundamentals from latest.json master snapshot.`);
-  } catch (err) {
-    console.error('[SQLITE] Error seeding fundamentals from latest.json:', err.message);
+  } catch (e) {
+    console.warn('[SQLITE] Bundled seed notice:', e.message);
   }
 }
 
-// Clean old corrupted snapshot data and initialize
-initDB()
-  .then(async () => {
-    await dbRun(`DELETE FROM price_history WHERE date LIKE '%T%' OR date LIKE '%:%'`).catch(() => {});
-    await seed20YearFromMasterExcel();
-    await seedFundamentalsFromLatestJson();
-  })
-  .catch(e => console.error('[SQLITE] Init error:', e.message));
+// 9. Quantitative 20-Year Detailed Historical Analysis Engine
+export async function getDetailedHistoricalAnalysis(symbol) {
+  const cleanSym = String(symbol || '').toUpperCase().trim();
+  if (!cleanSym) return null;
 
-export default db;
+  // 1. Fetch all raw historical daily prices
+  const rows = await dbAll(`
+    SELECT date, close as ltp, ycp, change, change_percent as changePercent, volume, pe
+    FROM price_history
+    WHERE symbol = ? AND date NOT LIKE '%T%' AND date NOT LIKE '%:%'
+    ORDER BY date ASC
+  `, [cleanSym]);
 
+  // 2. Fetch fundamentals
+  const fund = await dbGet(`
+    SELECT * FROM company_fundamentals WHERE symbol = ?
+  `, [cleanSym]);
+
+  if (!rows || rows.length === 0) {
+    return null;
+  }
+
+  const latestRow = rows[rows.length - 1];
+  const currentPrice = Number(latestRow.ltp || 0);
+  const eps = fund?.eps_basic !== null && fund?.eps_basic !== undefined ? Number(fund.eps_basic) : null;
+  const navps = fund?.nav_per_share !== null && fund?.nav_per_share !== undefined ? Number(fund.nav_per_share) : null;
+  const currentPe = (currentPrice > 0 && eps && eps > 0) ? Number((currentPrice / eps).toFixed(2)) : (latestRow.pe || null);
+
+  // A. All-Time High (ATH) & All-Time Low (ATL)
+  let athPrice = -Infinity;
+  let athDate = '';
+  let atlPrice = Infinity;
+  let atlDate = '';
+
+  // Max Historical Drawdown (MDD)
+  let runningPeak = -Infinity;
+  let maxDrawdown = 0;
+  let mddPeakDate = '';
+  let mddTroughDate = '';
+
+  const validPes = [];
+  const pricesArray = [];
+
+  for (const r of rows) {
+    const p = Number(r.ltp || 0);
+    if (p <= 0) continue;
+    pricesArray.push(p);
+
+    if (p > athPrice) {
+      athPrice = p;
+      athDate = r.date;
+    }
+    if (p < atlPrice) {
+      atlPrice = p;
+      atlDate = r.date;
+    }
+
+    if (p > runningPeak) {
+      runningPeak = p;
+    }
+    const currentDd = ((p - runningPeak) / runningPeak) * 100;
+    if (currentDd < maxDrawdown) {
+      maxDrawdown = currentDd;
+      mddPeakDate = athDate;
+      mddTroughDate = r.date;
+    }
+
+    const peVal = Number(r.pe);
+    if (!isNaN(peVal) && peVal > 0 && peVal < 120) {
+      validPes.push(peVal);
+    }
+  }
+
+  const currentDrawdownFromATH = athPrice > 0 ? Number((((currentPrice - athPrice) / athPrice) * 100).toFixed(2)) : 0;
+  const currentRiseFromATL = atlPrice > 0 ? Number((((currentPrice - atlPrice) / atlPrice) * 100).toFixed(2)) : 0;
+
+  // B. Moving Averages (SMA50 & SMA200)
+  const last50 = pricesArray.slice(-50);
+  const last200 = pricesArray.slice(-200);
+
+  const sma50 = last50.length > 0 ? Number((last50.reduce((a, b) => a + b, 0) / last50.length).toFixed(2)) : currentPrice;
+  const sma200 = last200.length > 0 ? Number((last200.reduce((a, b) => a + b, 0) / last200.length).toFixed(2)) : currentPrice;
+
+  let trendSignal = 'Neutral Accumulation';
+  if (sma50 > sma200 && currentPrice > sma50) {
+    trendSignal = 'Bullish Golden Cross (Above SMA50 & SMA200)';
+  } else if (sma50 < sma200 && currentPrice < sma50) {
+    trendSignal = 'Bearish Consolidation (Below SMA50 & SMA200)';
+  } else if (currentPrice > sma200) {
+    trendSignal = 'Long-Term Structural Support (Above SMA200)';
+  }
+
+  // C. Historical Valuation Corridors & Percentile Rank
+  validPes.sort((a, b) => a - b);
+  let medianPe = null;
+  let p25Pe = null;
+  let p75Pe = null;
+  let pePercentileRank = null;
+
+  if (validPes.length > 0) {
+    medianPe = Number(validPes[Math.floor(validPes.length * 0.5)].toFixed(2));
+    p25Pe = Number(validPes[Math.floor(validPes.length * 0.25)].toFixed(2));
+    p75Pe = Number(validPes[Math.floor(validPes.length * 0.75)].toFixed(2));
+
+    if (currentPe !== null) {
+      const lowerCount = validPes.filter(v => v < currentPe).length;
+      pePercentileRank = Math.round((lowerCount / validPes.length) * 100);
+    }
+  }
+
+  // D. Mean Reversion Model
+  let meanReversionTargetPrice = null;
+  let meanReversionUpside = null;
+  if (medianPe !== null && eps !== null && eps > 0) {
+    meanReversionTargetPrice = Number((eps * medianPe).toFixed(2));
+    if (currentPrice > 0) {
+      meanReversionUpside = Number((((meanReversionTargetPrice - currentPrice) / currentPrice) * 100).toFixed(2));
+    }
+  }
+
+  // E. Graham Intrinsic Value & Treasury Bond Spread
+  let grahamNumber = null;
+  let marginOfSafety = null;
+  if (eps !== null && eps > 0 && navps !== null && navps > 0) {
+    grahamNumber = Number(Math.sqrt(22.5 * eps * navps).toFixed(2));
+    if (currentPrice > 0) {
+      marginOfSafety = Number((((grahamNumber - currentPrice) / grahamNumber) * 100).toFixed(2));
+    }
+  }
+
+  const earningsYield = currentPe !== null && currentPe > 0 ? Number(((1 / currentPe) * 100).toFixed(2)) : null;
+  const bondSpread = earningsYield !== null ? Number((earningsYield - 11.50).toFixed(2)) : null;
+
+  // F. 20-Year DSE Macro & Market Catalysts Mapping
+  const macroCatalysts = [
+    {
+      date: '2010-12-05',
+      type: 'Market Crash',
+      title: '2010 Great DSE Bubble Peak & Collapse',
+      badge: '💥 2010 Crash',
+      desc: 'Excessive margin lending drove DSEX index to peak ~8,900 before credit contraction triggered a massive multi-year liquidity unwind.'
+    },
+    {
+      date: '2020-03-19',
+      type: 'Regulatory',
+      title: 'COVID-19 Shock & Floor Price 1.0',
+      badge: '🛡️ Floor Price 1.0',
+      desc: 'BSEC introduced mandatory minimum floor prices to prevent panic liquidation during global lockdown shocks.'
+    },
+    {
+      date: '2021-09-09',
+      type: 'Bull Market',
+      title: 'Post-Pandemic Liquidity Expansion Peak',
+      badge: '🚀 2021 Bull Run',
+      desc: 'DSEX surged past 7,368 on low interest rates, money supply growth, and corporate earnings recovery.'
+    },
+    {
+      date: '2022-07-28',
+      type: 'Liquidity Freeze',
+      title: 'FX Shortage & Floor Price 2.0 Reinstatement',
+      badge: '🔒 Floor Price 2.0',
+      desc: 'Severe import dollar shortages and Taka devaluation led to reinstating floor prices, freezing trading turnover across equities.'
+    },
+    {
+      date: '2024-01-18',
+      type: 'Market Normalization',
+      title: 'Phased Floor Price Removal',
+      badge: '🔓 Floor Lifted',
+      desc: 'Regulators phased out artificial price floors, restoring natural free-market price discovery and foreign investor interest.'
+    },
+    {
+      date: '2024-08-05',
+      type: 'Macro Reform',
+      title: 'National Governance Transition & Banking Clean-up',
+      badge: '🏛️ Reform Cycle',
+      desc: 'Bangladesh Bank leadership change, interest rate hike to tame inflation, and non-performing loan resolution frameworks.'
+    }
+  ];
+
+  // G. Historical Cycle Breakdown ("Why it happened")
+  const historicalCycles = [
+    {
+      period: '2005 – 2010',
+      title: 'The Great DSE Bull Run',
+      driver: 'Rapid retail participation, margin loan expansion, and banking sector IPOs pushed valuations to historic bubble extremes.',
+      outcome: `Equities reached peak valuations with ${cleanSym} reaching ATH of ৳${athPrice > 0 ? athPrice.toFixed(2) : '—'} on ${athDate || '2010'}.`
+    },
+    {
+      period: '2011 – 2019',
+      title: 'Post-Crash Deleveraging & Base Building',
+      driver: 'Forced margin liquidations, regulatory tightening by BSEC, and bank provisioning requirements.',
+      outcome: `Structural consolidation cycle where ${cleanSym} recorded Max Drawdown of ${maxDrawdown.toFixed(2)}%.`
+    },
+    {
+      period: '2020 – 2023',
+      title: 'COVID & Floor Price Interventions',
+      driver: 'Pandemic disruptions followed by macro currency devaluation and regulatory price floors.',
+      outcome: 'Artificial floor prices provided downside support but severely restricted daily turnover and trading volume.'
+    },
+    {
+      period: '2024 – 2026',
+      title: 'Price Discovery & Generational Value Re-accumulation',
+      driver: 'Removal of floor prices, tight monetary policy, and transparent audited disclosure mandates.',
+      outcome: `Stock is trading at P/E of ${currentPe !== null ? currentPe.toFixed(2) + 'x' : 'N/A'} (Percentile: ${pePercentileRank !== null ? pePercentileRank + 'th' : 'N/A'}), offering an institutional mean-reversion setup.`
+    }
+  ];
+
+  return {
+    symbol: cleanSym,
+    fullName: fund?.name || cleanSym,
+    sector: fund?.sector || 'Equities',
+    category: fund?.category || 'A',
+    currentPrice,
+    closeDate: latestRow.date,
+    ath: {
+      price: athPrice > 0 ? athPrice : currentPrice,
+      date: athDate,
+      drawdownPercent: currentDrawdownFromATH
+    },
+    atl: {
+      price: atlPrice < Infinity ? atlPrice : currentPrice,
+      date: atlDate,
+      risePercent: currentRiseFromATL
+    },
+    maxDrawdown: {
+      percent: Number(maxDrawdown.toFixed(2)),
+      peakDate: mddPeakDate,
+      troughDate: mddTroughDate
+    },
+    technical: {
+      sma50,
+      sma200,
+      trendSignal
+    },
+    valuationCorridor: {
+      currentPe,
+      medianPe,
+      p25Pe,
+      p75Pe,
+      pePercentileRank,
+      status: pePercentileRank !== null
+        ? (pePercentileRank <= 25 ? 'Deep Historical Discount (<25th Percentile)' : pePercentileRank <= 75 ? 'Fair Historical Range (25th–75th Percentile)' : 'Elevated Multiple (>75th Percentile)')
+        : 'P/E multiple unrated'
+    },
+    meanReversion: {
+      historicalMedianPe: medianPe,
+      targetPrice: meanReversionTargetPrice,
+      impliedUpside: meanReversionUpside
+    },
+    grahamAndBuffett: {
+      eps,
+      navps,
+      grahamNumber,
+      marginOfSafety,
+      earningsYield,
+      bondSpread
+    },
+    catalysts: macroCatalysts,
+    cycles: historicalCycles,
+    timeline: await (async () => {
+      const dsexRows = await dbAll('SELECT date, dsex_index as dsexIndex FROM dsex_market_history');
+      const dsexMap = new Map();
+      for (const d of dsexRows) dsexMap.set(d.date, Number(d.dsexIndex));
+
+      return rows.map(r => ({
+        date: r.date,
+        price: Number(r.ltp),
+        volume: Number(r.volume || 0),
+        pe: r.pe !== null ? Number(r.pe) : null,
+        dsex: dsexMap.get(r.date) || null
+      }));
+    })(),
+    financialStatements: await dbAll(`
+      SELECT fiscal_year as year, period, eps_basic as eps, nav_per_share as navps, 
+             roe, dividend_yield as dividendYield, pe_ratio as pe, debt_to_equity as debtToEquity, 
+             current_ratio as currentRatio, paid_up_capital_mn as paidUpCapital, audit_status as auditStatus
+      FROM fundamentals_history
+      WHERE symbol = ?
+      ORDER BY fiscal_year DESC
+    `, [cleanSym])
+  };
+}
+
+// 10. Fetch 20-Year Annual Fundamentals History
+export async function getCompanyFundamentalsHistory(symbol) {
+  const cleanSym = String(symbol || '').toUpperCase().trim();
+  if (!cleanSym) return [];
+  return await dbAll(`
+    SELECT fiscal_year as year, period, eps_basic as eps, nav_per_share as navps, 
+           roe, dividend_yield as dividendYield, pe_ratio as pe, debt_to_equity as debtToEquity, 
+           current_ratio as currentRatio, paid_up_capital_mn as paidUpCapital, audit_status as auditStatus
+    FROM fundamentals_history
+    WHERE symbol = ?
+    ORDER BY fiscal_year DESC
+  `, [cleanSym]);
+}

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import https from 'https';
 import * as cheerio from 'cheerio';
-import { dbAll, saveFundamentalsDelta } from '../db.js';
+import { dbAll, saveFundamentalsBulkDelta } from '../db.js';
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
@@ -43,6 +43,8 @@ export async function scrapeCompanyAuditedFinancials(symbol) {
       peDiluted: null,
       peTrailing: null,
       dividendYield: null,
+      debtToEquity: null,
+      currentRatio: null,
       auditedPeriod: null,
       quarterlyDisclosure: null
     };
@@ -92,7 +94,6 @@ export async function scrapeCompanyAuditedFinancials(symbol) {
 
           if (cols.length >= 4 && cols[0].match(/^(19|20)\d{2}$/)) {
             const yr = parseInt(cols[0], 10);
-            // Collect numbers from row
             const nums = cols.slice(1).map(c => {
               const cleaned = c.replace(/,/g, '');
               const val = parseFloat(cleaned);
@@ -101,7 +102,6 @@ export async function scrapeCompanyAuditedFinancials(symbol) {
 
             if (yr >= latestYear && nums.length >= 2) {
               latestYear = yr;
-              // On DSE table: first number is EPS, second is NAVPS
               latestEps = nums[0];
               latestNav = nums[1];
             }
@@ -115,43 +115,57 @@ export async function scrapeCompanyAuditedFinancials(symbol) {
           $(tr).find('td, th').each((_, c) => cols.push($(c).text().replace(/\s+/g, ' ').trim()));
 
           if (cols.length >= 4 && cols[0].match(/^(19|20)\d{2}$/)) {
-            const yr = parseInt(cols[0], 10);
-            if (yr === latestYear) {
-              const nums = cols.slice(1).map(c => {
-                const cleaned = c.replace(/,/g, '');
-                const val = parseFloat(cleaned);
-                return isNaN(val) ? null : val;
-              }).filter(n => n !== null);
+            const nums = cols.slice(1).map(c => {
+              const cleaned = c.replace(/,/g, '');
+              const val = parseFloat(cleaned);
+              return isNaN(val) ? null : val;
+            }).filter(n => n !== null);
 
-              // In valuation table: first is P/E, last is Dividend Yield
-              if (nums.length >= 1 && latestPe === null) latestPe = nums[0];
-              if (nums.length >= 2 && latestDivYield === null) latestDivYield = nums[nums.length - 1];
+            if (nums.length >= 2) {
+              if (latestDivYield === null) latestDivYield = nums[0];
+              if (latestPe === null) latestPe = nums[1];
             }
           }
         });
       }
     });
 
-    if (latestYear > 0 && latestEps !== null) {
+    if (latestEps !== null) {
+      data.epsBasic = latestEps;
+      data.epsDiluted = latestEps;
+      data.navPerShare = latestNav;
+      data.dividendYield = latestDivYield;
+      data.peBasic = latestPe;
       data.auditedPeriod = `FY${latestYear} Audited`;
       data.quarterlyDisclosure = `FY${latestYear} Audited`;
-      data.epsBasic = latestEps;
-      if (latestNav !== null) data.navPerShare = latestNav;
-      if (latestDivYield !== null) data.dividendYield = latestDivYield;
-      if (latestPe !== null) data.peTrailing = latestPe;
+      return data;
     }
 
-    return data;
+    // 3. Fallback: Parse Continuous Disclosure / Paragraph Notes
+    $('td, p, div').each((_, el) => {
+      const text = $(el).text().replace(/\s+/g, ' ').trim();
+      if (text.includes('Basic EPS') && text.includes('Tk.') && !data.epsBasic) {
+        const m = text.match(/Basic EPS\s*(?:Tk\.?)?\s*(-?\d+\.?\d*)/i);
+        if (m) data.epsBasic = parseFloat(m[1]);
+      }
+      if (text.includes('NAV per share') && text.includes('Tk.') && !data.navPerShare) {
+        const m = text.match(/NAV per share\s*(?:Tk\.?)?\s*(-?\d+\.?\d*)/i);
+        if (m) data.navPerShare = parseFloat(m[1]);
+      }
+    });
+
+    return data.epsBasic !== null ? data : null;
   } catch (err) {
+    console.warn(`[AUDITED SCRAPER] Notice on ${cleanSym}:`, err.message);
     return null;
   }
 }
 
 /**
  * Runs the Weekly Master Audited EPS Scraper over all listed symbols.
- * Performs smart delta checks - only writes to SQLite when a value has genuinely changed.
+ * Performs fast batch smart delta checks - only writes to SQLite when a value has genuinely changed.
  */
-export async function runAuditedEPSWeeklyScraper(concurrency = 4) {
+export async function runAuditedEPSWeeklyScraper(concurrency = 6) {
   const startTime = Date.now();
   console.log('\n======================================================');
   console.log('  🔍 Starting Weekly Audited EPS & Fundamentals Crawler');
@@ -162,53 +176,57 @@ export async function runAuditedEPSWeeklyScraper(concurrency = 4) {
 
   console.log(`[AUDITED SCRAPER] Target pool: ${symbols.length} listed equities in SQLite DB`);
 
-  let updatedCount = 0;
-  let unchangedCount = 0;
-  let failedCount = 0;
-  const updatedSymbols = [];
+  let totalUpdated = 0;
+  let totalUnchanged = 0;
+  let totalFailed = 0;
+  const allUpdatedSymbols = [];
 
-  // Batch execution with concurrency control
+  // Batch execution with concurrency control and bulk delta saving
   for (let i = 0; i < symbols.length; i += concurrency) {
     const batch = symbols.slice(i, i + concurrency);
-    
+    const scrapedRecords = [];
+
     await Promise.all(batch.map(async (sym) => {
       try {
         const scraped = await scrapeCompanyAuditedFinancials(sym);
-        if (!scraped || scraped.epsBasic === null) {
-          unchangedCount++;
-          return;
-        }
-
-        const delta = await saveFundamentalsDelta(scraped);
-        if (delta && delta.changed) {
-          updatedCount++;
-          updatedSymbols.push(sym);
-          console.log(`[AUDITED SCRAPER] ✅ Updated ${sym}: EPS = ৳${scraped.epsBasic}, NAVPS = ৳${scraped.navPerShare} (${scraped.auditedPeriod || 'Audited'})`);
+        if (scraped && scraped.epsBasic !== null) {
+          scrapedRecords.push(scraped);
         } else {
-          unchangedCount++;
+          totalUnchanged++;
         }
-      } catch (err) {
-        failedCount++;
+      } catch {
+        totalFailed++;
       }
     }));
 
+    if (scrapedRecords.length > 0) {
+      const deltaResult = await saveFundamentalsBulkDelta(scrapedRecords);
+      totalUpdated += deltaResult.changedCount;
+      totalUnchanged += deltaResult.unchangedCount;
+      allUpdatedSymbols.push(...deltaResult.changedSymbols);
+
+      for (const s of deltaResult.changedSymbols) {
+        console.log(`[AUDITED SCRAPER] ✅ Smart Delta: Updated ${s}`);
+      }
+    }
+
     // Polite delay between batches to respect DSE servers
-    await new Promise(r => setTimeout(r, 350));
+    await new Promise(r => setTimeout(r, 250));
   }
 
   const durationSeconds = Number(((Date.now() - startTime) / 1000).toFixed(2));
   console.log('======================================================');
   console.log(`[AUDITED SCRAPER] Completed in ${durationSeconds}s`);
-  console.log(`[AUDITED SCRAPER] Checked: ${symbols.length} | Updated: ${updatedCount} | Unchanged: ${unchangedCount} | Errors: ${failedCount}`);
+  console.log(`[AUDITED SCRAPER] Checked: ${symbols.length} | Updated: ${totalUpdated} | Unchanged: ${totalUnchanged} | Errors: ${totalFailed}`);
   console.log('======================================================\n');
 
   return {
     success: true,
     totalChecked: symbols.length,
-    updated: updatedCount,
-    unchanged: unchangedCount,
-    failed: failedCount,
+    updated: totalUpdated,
+    unchanged: totalUnchanged,
+    failed: totalFailed,
     durationSeconds,
-    updatedSymbols
+    updatedSymbols: allUpdatedSymbols
   };
 }

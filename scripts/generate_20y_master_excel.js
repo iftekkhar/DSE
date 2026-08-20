@@ -25,7 +25,7 @@ const COMPANY_PROFILES = {
   'BEXIMCO': { name: 'Bangladesh Export Import Co. Ltd.', sector: 'Miscellaneous', category: 'B', ipoYear: 2005, startPrice: 12.0, currentPrice: 25.1, baseEPS: 1.45, baseNAVPS: 88.50, baseROE: 1.6, baseDebtEquity: 0.72, baseCurrentRatio: 1.05, basePE: 18.20 }
 };
 
-function generateTradingDates(startYear = 2005, endYear = 2026) {
+function generateTradingDates(startYear = 2005, _endYear = 2026) {
   const dates = [];
   const start = new Date(`${startYear}-01-01`);
   const end = new Date();
@@ -52,7 +52,7 @@ export async function generateMasterExcelStreaming() {
     if (fs.existsSync(SYMBOLS_FILE)) {
       symbols = JSON.parse(fs.readFileSync(SYMBOLS_FILE, 'utf-8'));
     }
-  } catch (e) {
+  } catch {
     symbols = Object.keys(COMPANY_PROFILES);
   }
 

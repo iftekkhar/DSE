@@ -1,7 +1,6 @@
 import ExcelJS from 'exceljs';
 import sqlite3 from 'sqlite3';
 import path from 'path';
-import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);

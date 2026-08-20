@@ -11,7 +11,7 @@ const SYMBOLS_FILE = path.join(__dirname, '..', 'server', 'symbols.json');
 const db = new sqlite3.Database(DB_PATH);
 
 // Generate DSE trading dates: Weekly / Monthly snapshots across 2005-2026 + Daily for recent years
-function generateTradingDates(startYear = 2005, endYear = 2026) {
+function generateTradingDates(startYear = 2005, _endYear = 2026) {
   const dates = [];
   const start = new Date(`${startYear}-01-01`);
   const end = new Date(); // Today
@@ -59,7 +59,7 @@ export async function fastBackfill() {
   try {
     const raw = fs.readFileSync(SYMBOLS_FILE, 'utf-8');
     symbols = JSON.parse(raw);
-  } catch (e) {
+  } catch {
     symbols = Object.keys(BASELINES);
   }
 

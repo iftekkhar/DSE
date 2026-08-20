@@ -1,12 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import {
   X, Star, AlertTriangle, Check,
-  Sparkles, Scale, Activity, Clock,
-  ShieldCheck, Bookmark, Compass,
-  Maximize2, Minimize2
+  Sparkles, Scale, Activity, Clock, FileSpreadsheet,
+  ShieldCheck, Bookmark
 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { fetchStockHistory, generateHistoryData } from '../services/api';
+import { fetchStockHistory, generateHistoryData, downloadExcel } from '../services/api';
 import {
   formatDateDDMMM,
   formatPeriodBadge,
@@ -34,12 +33,10 @@ export default function StockModal({
   watchlist,
   onToggleWatchlist,
   compareList,
-  onToggleCompare,
-  onOpenHistoricalAnalysis
+  onToggleCompare
 }) {
   const [savedHistory, setSavedHistory] = useState(null);
   const [timeRange, setTimeRange] = useState('7D'); // Default: Last 7 days closing balance
-  const [isFullScreen, setIsFullScreen] = useState(false);
 
   const symbol = stock?.symbol;
 
@@ -272,11 +269,7 @@ export default function StockModal({
       onClick={onClose}
     >
       <div
-        className={`bg-white text-slate-900 flex flex-col overflow-hidden border border-slate-200 animate-in slide-in-from-bottom-6 duration-200 transition-all ${
-          isFullScreen
-            ? 'w-full h-full max-w-none max-h-none rounded-none inset-0'
-            : 'w-full sm:max-w-4xl max-h-[92vh] sm:max-h-[90vh] rounded-t-3xl sm:rounded-3xl shadow-2xl'
-        }`}
+        className="bg-white text-slate-900 w-full sm:max-w-4xl max-h-[92vh] sm:max-h-[90vh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 animate-in slide-in-from-bottom-6 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile Drag Indicator Handle */}
@@ -306,17 +299,6 @@ export default function StockModal({
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2">
-            {onOpenHistoricalAnalysis && (
-              <button
-                onClick={() => onOpenHistoricalAnalysis(stock)}
-                className="px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 border bg-cyan-950/70 text-cyan-300 hover:bg-cyan-900 border-cyan-700/60 transition-all active:scale-95 cursor-pointer shadow-xs"
-                title="Detailed 20-Year Historical Analysis"
-              >
-                <Compass className="w-4 h-4 text-cyan-400" />
-                <span className="hidden sm:inline font-bold">20Y History</span>
-              </button>
-            )}
-
             <button
               onClick={() => onToggleWatchlist(stock.symbol)}
               className={`p-2 rounded-xl text-xs font-semibold flex items-center gap-1 border transition-all active:scale-95 cursor-pointer ${
@@ -337,18 +319,9 @@ export default function StockModal({
               <Scale className="w-4 h-4 text-blue-400" />
             </button>
 
-            {/* Full Screen Toggle */}
-            <button
-              onClick={() => setIsFullScreen(!isFullScreen)}
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-all active:scale-95 cursor-pointer border border-slate-700"
-              title={isFullScreen ? "Exit Full Screen" : "Full Screen Mode"}
-            >
-              {isFullScreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-            </button>
-
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-all ml-0.5 active:scale-95 cursor-pointer border border-slate-700"
+              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-all ml-1 active:scale-95 cursor-pointer"
               title="Close Modal"
             >
               <X className="w-4 h-4" />
@@ -746,6 +719,13 @@ export default function StockModal({
               </div>
 
               <div className="flex items-center gap-2">
+                <button
+                  onClick={() => downloadExcel(stock.symbol)}
+                  className="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 font-bold rounded-lg text-xs flex items-center gap-1 transition-all cursor-pointer active:scale-95"
+                >
+                  <FileSpreadsheet className="w-3.5 h-3.5" />
+                  <span>Export Excel</span>
+                </button>
                 <span className="text-[10px] text-slate-400 font-mono font-bold">BDT</span>
               </div>
             </div>
@@ -910,20 +890,8 @@ export default function StockModal({
 
         </div>
 
-        {/* Modal Footer with Actions */}
-        <div className="p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between shrink-0">
-          {onOpenHistoricalAnalysis ? (
-            <button
-              onClick={() => onOpenHistoricalAnalysis(stock)}
-              className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-xs rounded-xl transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1.5"
-            >
-              <Compass className="w-4 h-4" />
-              <span>Detailed Historical Analysis</span>
-            </button>
-          ) : (
-            <div />
-          )}
-
+        {/* Modal Footer with Close Action */}
+        <div className="p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-end shrink-0">
           <button
             onClick={onClose}
             className="px-6 py-2 bg-[#0f172a] hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-all shadow-sm active:scale-95 cursor-pointer"

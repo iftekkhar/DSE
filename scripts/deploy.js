@@ -15,7 +15,7 @@ function run(cmd, desc) {
   try {
     const out = execSync(cmd, { stdio: 'inherit', encoding: 'utf-8' });
     return out;
-  } catch (err) {
+  } catch {
     console.error(`\n${colors.red}✖ Failed during: ${desc}${colors.reset}`);
     process.exit(1);
   }
@@ -30,10 +30,10 @@ async function deploy() {
   run('npm run build', 'Validating & compiling frontend production bundle');
 
   // Step 2: Check Git Status
-  let status = '';
+  let status;
   try {
     status = execSync('git status --porcelain', { encoding: 'utf-8' }).trim();
-  } catch (e) {
+  } catch {
     status = '';
   }
 

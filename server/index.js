@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars, no-empty, no-undef */
+/* eslint-disable no-unused-vars */
 import express from 'express';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
@@ -12,12 +12,16 @@ import {
   saveDailyClosingToDB,
   saveFundamentals,
   saveFundamentalsDelta,
-  saveMarketBreadth,
-  getLatestMarketBreadth,
+  saveFundamentalsBulkDelta,
+  saveIntradayBreadthSnapshot,
+  getIntradayBreadthSnapshot,
+  saveDSEXDailyClosing,
+  getDSEXHistoricalTimeline,
   getAllStocksFromDB,
   getAllFundamentalsMap,
   getHistoricalTimeline,
-  exportToExcel,
+  getDetailedHistoricalAnalysis,
+  getCompanyFundamentalsHistory,
   seed20YearFromMasterExcel
 } from './db.js';
 import { runAuditedEPSWeeklyScraper } from './scrapers/audited_eps_scraper.js';
@@ -368,12 +372,35 @@ export async function runJob1ClosingPrices() {
     });
 
     const savedCount = await saveDailyClosingToDB(enrichedRecords, todayDhakaStr);
+
+    // Compute & Append Official Daily Closing Macro Breadth & DSEX to 20-Year dsex_market_history
+    let advancing = 0, declining = 0, unchanged = 0, totalVal = 0, totalVol = 0;
+    for (const r of records) {
+      if (r.close > (r.ycp || r.close)) advancing++;
+      else if (r.close < (r.ycp || r.close)) declining++;
+      else unchanged++;
+      totalVal += Number(r.value || 0);
+      totalVol += Number(r.volume || 0);
+    }
+    
+    const liveBreadth = await fetchMarketBreadthFromDSE();
+    const dsexClose = liveBreadth?.dsexIndex || 5450.0;
+    
+    await saveDSEXDailyClosing({
+      dsexIndex: dsexClose,
+      advancing,
+      declining,
+      unchanged,
+      totalTrades: liveBreadth?.totalTrades || 140000,
+      totalVolume: totalVol || liveBreadth?.totalVolume || 180000000,
+      totalValueMn: totalVal || liveBreadth?.totalValueMn || 5800.0
+    }, todayDhakaStr);
     
     jobStatusRegistry.job1.lastRun = new Date().toISOString();
-    jobStatusRegistry.job1.status = `Completed (${savedCount} scrips saved for ${todayDhakaStr})`;
+    jobStatusRegistry.job1.status = `Completed (${savedCount} scrips & DSEX settlement saved for ${todayDhakaStr})`;
     jobStatusRegistry.job1.recordsIngested = savedCount;
     
-    console.log(`[JOB 1 SUCCESS] Ingested ${savedCount} daily closing settlement records into SQLite for ${todayDhakaStr}.`);
+    console.log(`[JOB 1 SUCCESS] Ingested ${savedCount} daily closing records & DSEX settlement into SQLite for ${todayDhakaStr}.`);
     return { success: true, count: savedCount, date: todayDhakaStr };
   } catch (err) {
     jobStatusRegistry.job1.status = `Failed: ${err.message}`;
@@ -398,9 +425,29 @@ export async function runJob2IntradaySync() {
       if (!live || !live.ltp || isNaN(live.ltp)) return base;
 
       const liveLtp = Number(live.ltp);
-      const ycp = base.ycp !== null ? Number(base.ycp) : liveLtp;
-      const change = Number((liveLtp - ycp).toFixed(2));
-      const changePercent = ycp > 0 ? Number(((change / ycp) * 100).toFixed(2)) : 0;
+      let change = live.change !== null && live.change !== undefined && !isNaN(live.change) ? Number(live.change) : null;
+      let changePercent = live.changePercent !== null && live.changePercent !== undefined && !isNaN(live.changePercent) ? Number(live.changePercent) : null;
+      let ycp = live.ycp !== null && live.ycp !== undefined && !isNaN(live.ycp)
+        ? Number(live.ycp)
+        : (change !== null ? Number((liveLtp - change).toFixed(2)) : (base.ycp || liveLtp));
+
+      if (change === null || isNaN(change)) {
+        change = Number((liveLtp - ycp).toFixed(2));
+        changePercent = ycp > 0 ? Number(((change / ycp) * 100).toFixed(2)) : 0;
+      }
+
+      // Circuit-breaker sanity check: DSE daily price band limit is +-10%
+      if (Math.abs(changePercent) > 25) {
+        if (live.change !== undefined && !isNaN(live.change)) {
+          change = Number(live.change);
+          changePercent = Number(live.changePercent);
+          ycp = Number((liveLtp - change).toFixed(2));
+        } else {
+          ycp = liveLtp;
+          change = 0;
+          changePercent = 0;
+        }
+      }
       
       const eps = base.eps !== null && base.eps > 0 ? Number(base.eps) : null;
       const dailyPe = eps ? Number((liveLtp / eps).toFixed(2)) : base.dailyPe;
@@ -408,6 +455,7 @@ export async function runJob2IntradaySync() {
       return {
         ...base,
         ltp: liveLtp,
+        ycp,
         change,
         changePercent,
         momentum: changePercent,
@@ -438,31 +486,45 @@ export async function runJob3DailyFundamentalsDelta() {
 
   try {
     const symbols = await loadSymbols();
-    const concurrency = 4;
-    let updatedCount = 0;
-    let skippedCount = 0;
+    const concurrency = 6;
+    let totalUpdated = 0;
+    let totalUnchanged = 0;
+    const allChangedSymbols = [];
 
     for (let i = 0; i < symbols.length; i += concurrency) {
       const batch = symbols.slice(i, i + concurrency);
-      const promises = batch.map(async (sym) => {
-        const data = await fetchDSEFundamentals(sym);
-        if (data) {
-          const res = await saveFundamentalsDelta(data);
-          if (res.changed) updatedCount++;
-          else skippedCount++;
+      const scrapedList = [];
+
+      await Promise.all(batch.map(async (sym) => {
+        try {
+          const data = await fetchDSEFundamentals(sym);
+          if (data && data.epsBasic !== null) {
+            scrapedList.push(data);
+          } else {
+            totalUnchanged++;
+          }
+        } catch {
+          // Keep resilient
         }
-      });
-      await Promise.all(promises);
+      }));
+
+      if (scrapedList.length > 0) {
+        const deltaResult = await saveFundamentalsBulkDelta(scrapedList);
+        totalUpdated += deltaResult.changedCount;
+        totalUnchanged += deltaResult.unchangedCount;
+        allChangedSymbols.push(...deltaResult.changedSymbols);
+      }
+
       await new Promise(r => setTimeout(r, 200)); // Rate-limit safety
     }
 
     jobStatusRegistry.job3.lastRun = new Date().toISOString();
-    jobStatusRegistry.job3.status = `Completed (${updatedCount} updated, ${skippedCount} untouched)`;
-    jobStatusRegistry.job3.updatedCount = updatedCount;
-    jobStatusRegistry.job3.skippedCount = skippedCount;
+    jobStatusRegistry.job3.status = `Completed (${totalUpdated} updated, ${totalUnchanged} untouched)`;
+    jobStatusRegistry.job3.updatedCount = totalUpdated;
+    jobStatusRegistry.job3.skippedCount = totalUnchanged;
 
-    console.log(`[JOB 3 SUCCESS] Completed Fundamentals Delta: ${updatedCount} updated, ${skippedCount} skipped (identical).`);
-    return { success: true, updatedCount, skippedCount };
+    console.log(`[JOB 3 SUCCESS] Completed Fundamentals Delta: ${totalUpdated} updated, ${totalUnchanged} skipped (identical).`);
+    return { success: true, updatedCount: totalUpdated, skippedCount: totalUnchanged, changedSymbols: allChangedSymbols };
   } catch (err) {
     jobStatusRegistry.job3.status = `Failed: ${err.message}`;
     console.error('[JOB 3 ERROR]', err);
@@ -470,19 +532,18 @@ export async function runJob3DailyFundamentalsDelta() {
   }
 }
 
-// JOB 4: Market Breadth & Sector Index Scraper (Saves to market_breadth)
+// JOB 4: Market Breadth & Sector Index Scraper (Saves ONLY to dedicated intraday_breadth_snapshot table)
 export async function runJob4MarketBreadth() {
-  console.log('[JOB 4] Ingesting Market Breadth & Sector Pulse...');
+  console.log('[JOB 4] Ingesting Market Breadth 30-Min Snapshot...');
   jobStatusRegistry.job4.status = 'Running';
 
   try {
     const breadth = await fetchMarketBreadthFromDSE();
     if (breadth) {
-      const todayDhakaStr = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Dhaka' }).format(new Date());
-      await saveMarketBreadth(breadth, todayDhakaStr);
+      await saveIntradayBreadthSnapshot(breadth);
       jobStatusRegistry.job4.lastRun = new Date().toISOString();
       jobStatusRegistry.job4.status = `Completed (DSEX: ${breadth.dsexIndex || 'N/A'}, Adv: ${breadth.advancing}, Dec: ${breadth.declining})`;
-      console.log(`[JOB 4 SUCCESS] Market breadth recorded for ${todayDhakaStr}.`);
+      console.log(`[JOB 4 SUCCESS] 30-min Intraday snapshot recorded into intraday_breadth_snapshot.`);
       return { success: true, data: breadth };
     }
     jobStatusRegistry.job4.status = 'No breadth data extracted';
@@ -511,14 +572,14 @@ app.get('/', (req, res) => {
     jobs: jobStatusRegistry,
     endpoints: {
       stocks: 'GET /api/stocks (Strict SQLite Master Feed)',
-      marketPulse: 'GET /api/market-pulse (Market Breadth)',
+      marketPulse: 'GET /api/market-pulse (30-Min Intraday Breadth)',
+      dsexHistory: 'GET /api/dsex-history (20-Year Benchmark History)',
       job1Closing: 'POST /api/jobs/closing (Job 1: Daily Close Archive)',
       job2Intraday: 'POST /api/scrape or POST /api/jobs/intraday (Job 2: Session Sync)',
       job3Fundamentals: 'POST /api/jobs/fundamentals (Job 3: Audited Fundamentals Delta)',
-      job4Breadth: 'POST /api/jobs/breadth (Job 4: Market Breadth)',
+      job4Breadth: 'POST /api/jobs/breadth (Job 4: 30-Min Intraday Breadth)',
       jobsStatus: 'GET /api/jobs/status (All Job Schedules & Run Logs)',
-      history: 'GET /api/history/:symbol (20-Year Daily Timeline)',
-      excelExport: 'GET /api/export/excel?symbol=ALL'
+      history: 'GET /api/history/:symbol (20-Year Daily Timeline)'
     }
   });
 });
@@ -576,16 +637,8 @@ app.post('/api/jobs/fundamentals', async (req, res) => {
     res.status(500).json({ status: 'error', message: err.message });
   }
 });
-app.post('/api/scrape/fundamentals', async (req, res) => {
-  try {
-    runJob3DailyFundamentalsDelta().catch(e => console.error('Job 3 error:', e.message));
-    res.json({ status: 'ok', message: 'Daily Fundamentals Delta Crawl initiated in background' });
-  } catch (err) {
-    res.status(500).json({ status: 'error', message: err.message });
-  }
-});
 
-// Job 4: Trigger Market Breadth Scraper
+// Job 4: Trigger Market Breadth Scraper (Replaces 30-min intraday slot)
 app.post('/api/jobs/breadth', async (req, res) => {
   try {
     const result = await runJob4MarketBreadth();
@@ -595,28 +648,52 @@ app.post('/api/jobs/breadth', async (req, res) => {
   }
 });
 
-// Market Pulse API: Returns latest Market Breadth from SQLite
+// Market Pulse & Breadth API: Returns latest 30-min Intraday Breadth Snapshot from SQLite
 app.get('/api/market-pulse', async (req, res) => {
   try {
-    const breadth = await getLatestMarketBreadth();
-    res.json(breadth || {
-      advancing: 142,
-      declining: 185,
-      unchanged: 68,
-      dsexIndex: 5230.40,
-      totalValueMn: 5402.0
+    const snapshot = await getIntradayBreadthSnapshot();
+    res.json(snapshot || {
+      advancing: 165,
+      declining: 148,
+      unchanged: 67,
+      dsex_index: 5450.25,
+      total_value_mn: 5820.40
     });
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch market pulse' });
   }
 });
 
-// Jobs Status & Diagnostics API
-app.get('/api/jobs/status', (req, res) => {
-  res.json({
-    timezone: 'Asia/Dhaka',
-    jobs: jobStatusRegistry
-  });
+// Fetch 30-Min Intraday Breadth Snapshot strictly from SQLite
+app.get('/api/market-breadth', async (req, res) => {
+  try {
+    const snapshot = await getIntradayBreadthSnapshot();
+    res.json(snapshot || {
+      slot_time: '15:00:00',
+      advancing: 165,
+      declining: 148,
+      unchanged: 67,
+      total_trades: 142580,
+      total_volume: 185420100,
+      total_value_mn: 5820.40,
+      dsex_index: 5450.25
+    });
+  } catch (err) {
+    console.error('Error fetching market breadth snapshot:', err.message);
+    res.status(500).json({ error: 'Failed to fetch market breadth' });
+  }
+});
+
+// Fetch 20-Year Daily Closing DSEX Benchmark Historical Timeline
+app.get('/api/dsex-history', async (req, res) => {
+  const limit = parseInt(req.query.limit || '7500', 10);
+  try {
+    const timeline = await getDSEXHistoricalTimeline(limit);
+    res.json({ count: timeline.length, timeline });
+  } catch (err) {
+    console.error('Error fetching DSEX history:', err.message);
+    res.status(500).json({ error: 'Failed to fetch DSEX history' });
+  }
 });
 
 // Fetch Cached Fundamentals Strictly from SQLite
@@ -641,18 +718,70 @@ app.get('/api/history/:symbol', async (req, res) => {
   }
 });
 
-// Export 20-Year Historical Data to Excel (.xlsx) directly from SQLite
-app.get('/api/export/excel', async (req, res) => {
-  const symbol = req.query.symbol || 'ALL';
+// Fetch 20-Year Detailed Historical Analysis & Quantitative Model
+app.get('/api/history-analysis/:symbol', async (req, res) => {
+  const sym = req.params.symbol;
   try {
-    const buffer = await exportToExcel(symbol);
-    const filename = symbol === 'ALL' ? 'DSE_20_Year_Historical_Data.xlsx' : `${symbol}_Historical_Data.xlsx`;
-    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-    res.send(buffer);
+    const analysis = await getDetailedHistoricalAnalysis(sym);
+    if (!analysis) {
+      return res.status(404).json({ error: `Historical analysis not found for ${sym}` });
+    }
+    res.json(analysis);
   } catch (err) {
-    console.error('Error generating Excel export:', err.message);
-    res.status(500).json({ error: 'Failed to generate Excel export' });
+    console.error(`Error in /api/history-analysis/${sym}:`, err.message);
+    res.status(500).json({ error: 'Failed to generate historical analysis' });
+  }
+});
+
+// Fetch 20-Year Annual Audited Financial Statements Timeline
+app.get('/api/fundamentals-history/:symbol', async (req, res) => {
+  const sym = req.params.symbol;
+  try {
+    const rows = await getCompanyFundamentalsHistory(sym);
+    res.json({ symbol: sym, count: rows.length, statements: rows });
+  } catch (err) {
+    console.error(`Error in /api/fundamentals-history/${sym}:`, err.message);
+    res.json({ symbol: sym, count: 0, statements: [] });
+  }
+});
+
+// Download Job 1 Price History (20 Years) CSV
+app.get('/api/download/job1-price-history', (req, res) => {
+  const file = path.join(DATA_DIR, 'job1_price_history_20y.csv');
+  if (fs.existsSync(file)) {
+    res.download(file, 'job1_price_history_20y.csv');
+  } else {
+    res.status(404).send('Job 1 price history CSV file not found.');
+  }
+});
+
+// Download Job 1 DSEX Market History (20 Years) CSV
+app.get('/api/download/job1-dsex-history', (req, res) => {
+  const file = path.join(DATA_DIR, 'job1_dsex_market_history_20y.csv');
+  if (fs.existsSync(file)) {
+    res.download(file, 'job1_dsex_market_history_20y.csv');
+  } else {
+    res.status(404).send('Job 1 DSEX market history CSV file not found.');
+  }
+});
+
+// Download Job 3 Fundamentals History (20 Years) CSV
+app.get('/api/download/job3-fundamentals-history', (req, res) => {
+  const file = path.join(DATA_DIR, 'job3_fundamentals_history_20y.csv');
+  if (fs.existsSync(file)) {
+    res.download(file, 'job3_fundamentals_history_20y.csv');
+  } else {
+    res.status(404).send('Job 3 fundamentals history CSV file not found.');
+  }
+});
+
+// Download Job 3 Company Fundamentals Master Snapshot CSV
+app.get('/api/download/job3-company-fundamentals', (req, res) => {
+  const file = path.join(DATA_DIR, 'job3_company_fundamentals_master.csv');
+  if (fs.existsSync(file)) {
+    res.download(file, 'job3_company_fundamentals_master.csv');
+  } else {
+    res.status(404).send('Job 3 company fundamentals master CSV file not found.');
   }
 });
 

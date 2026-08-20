@@ -3,7 +3,7 @@ import { BarChart2, Award, Zap, Gem } from 'lucide-react';
 export default function MarketPulse({ stocks, onSelectStock }) {
   if (!stocks || stocks.length === 0) return null;
 
-  // Market Breadth & Sentiment
+  // Market Breadth & Sentiment Calculations
   const buyCount = stocks.filter(s => s.verdict === 'BUY').length;
   const holdCount = stocks.filter(s => s.verdict === 'HOLD').length;
   const riskCount = stocks.filter(s => s.verdict === 'RISK' || s.verdict === 'HIGH RISK').length;
@@ -13,7 +13,7 @@ export default function MarketPulse({ stocks, onSelectStock }) {
   const holdPct = Math.round((holdCount / total) * 100);
   const riskPct = Math.round((riskCount / total) * 100);
 
-  // Top Bullish Pick
+  // Top Bullish Pick (Highest Verdict Score & Momentum)
   const sortedBullish = [...stocks].sort((a, b) => {
     if ((b.verdictScore || 0) !== (a.verdictScore || 0)) {
       return (b.verdictScore || 0) - (a.verdictScore || 0);
@@ -26,16 +26,17 @@ export default function MarketPulse({ stocks, onSelectStock }) {
   const sortedVolume = [...stocks].sort((a, b) => (b.volume || 0) - (a.volume || 0));
   const topVolume = sortedVolume[0];
 
-  // Deep Value Pick
+  // Deep Value Pick (P/E between 4 and 16, ROE > 14%)
   const sortedValue = [...stocks]
     .filter(s => s.pe && s.pe > 4 && s.pe < 16 && s.roe && s.roe > 14)
     .sort((a, b) => (a.pe || 99) - (b.pe || 99));
   const topValue = sortedValue[0] || sortedBullish[1] || topPick;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5 mb-5 sm:mb-6">
+      
       {/* 1. Market Sentiment & Breadth */}
-      <div className="card-elevation p-4 flex flex-col justify-between">
+      <div className="card-elevation p-3.5 sm:p-4 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between text-xs text-slate-500 font-semibold mb-2">
             <span className="flex items-center gap-1.5 text-slate-700">
@@ -46,13 +47,13 @@ export default function MarketPulse({ stocks, onSelectStock }) {
           </div>
 
           <div className="flex items-baseline justify-between mb-2">
-            <span className="font-display text-xl font-black text-slate-900">
+            <span className="font-display text-lg sm:text-xl font-black text-slate-900">
               {buyPct >= 40 ? 'Bullish' : buyPct >= 25 ? 'Balanced' : 'Defensive'}
             </span>
             <span className="text-xs font-mono font-bold text-[#047857]">{buyPct}% Buy</span>
           </div>
 
-          {/* Minimalist Progress Bar */}
+          {/* Progress Bar */}
           <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden flex">
             <div style={{ width: `${buyPct}%` }} className="h-full bg-[#10b981]" />
             <div style={{ width: `${holdPct}%` }} className="h-full bg-[#f59e0b]" />
@@ -71,7 +72,7 @@ export default function MarketPulse({ stocks, onSelectStock }) {
       {topPick && (
         <div
           onClick={() => onSelectStock(topPick)}
-          className="card-elevation p-4 flex flex-col justify-between cursor-pointer group hover:border-[#10b981]/50 transition-all"
+          className="card-elevation p-3.5 sm:p-4 flex flex-col justify-between cursor-pointer group hover:border-[#10b981]/50 active:scale-[0.99] transition-all"
         >
           <div>
             <div className="flex items-center justify-between text-xs text-slate-500 font-semibold mb-2">
@@ -86,17 +87,17 @@ export default function MarketPulse({ stocks, onSelectStock }) {
 
             <div className="flex items-baseline justify-between">
               <div>
-                <div className="font-display text-xl font-black text-slate-900 group-hover:text-[#2563eb] transition-colors">
+                <div className="font-display text-lg sm:text-xl font-black text-slate-900 group-hover:text-[#2563eb] transition-colors">
                   {topPick.symbol}
                 </div>
-                <p className="text-[11px] text-slate-400 truncate max-w-[140px]">
+                <p className="text-[11px] text-slate-400 truncate max-w-[130px] sm:max-w-[150px]">
                   {topPick.fullName || topPick.symbol}
                 </p>
               </div>
 
               <div className="text-right font-mono">
                 <div className="text-sm font-bold text-slate-900">
-                  ৳{topPick.ltp?.toFixed(2) || '—'}
+                  ৳{topPick.ltp ? Number(topPick.ltp).toFixed(2) : '—'}
                 </div>
                 <div className="text-xs font-bold text-[#047857]">
                   +{topPick.changePercent || 0}%
@@ -116,7 +117,7 @@ export default function MarketPulse({ stocks, onSelectStock }) {
       {topVolume && (
         <div
           onClick={() => onSelectStock(topVolume)}
-          className="card-elevation p-4 flex flex-col justify-between cursor-pointer group hover:border-[#2563eb]/50 transition-all"
+          className="card-elevation p-3.5 sm:p-4 flex flex-col justify-between cursor-pointer group hover:border-[#2563eb]/50 active:scale-[0.99] transition-all"
         >
           <div>
             <div className="flex items-center justify-between text-xs text-slate-500 font-semibold mb-2">
@@ -131,17 +132,17 @@ export default function MarketPulse({ stocks, onSelectStock }) {
 
             <div className="flex items-baseline justify-between">
               <div>
-                <div className="font-display text-xl font-black text-slate-900 group-hover:text-[#2563eb] transition-colors">
+                <div className="font-display text-lg sm:text-xl font-black text-slate-900 group-hover:text-[#2563eb] transition-colors">
                   {topVolume.symbol}
                 </div>
-                <p className="text-[11px] text-slate-400 truncate max-w-[140px]">
+                <p className="text-[11px] text-slate-400 truncate max-w-[130px] sm:max-w-[150px]">
                   {topVolume.fullName || topVolume.symbol}
                 </p>
               </div>
 
               <div className="text-right font-mono">
                 <div className="text-sm font-bold text-slate-900">
-                  ৳{topVolume.ltp?.toFixed(2) || '—'}
+                  ৳{topVolume.ltp ? Number(topVolume.ltp).toFixed(2) : '—'}
                 </div>
                 <div className={`text-xs font-bold ${
                   (topVolume.changePercent || 0) >= 0 ? 'text-[#047857]' : 'text-[#b91c1c]'
@@ -153,7 +154,7 @@ export default function MarketPulse({ stocks, onSelectStock }) {
           </div>
 
           <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium mt-3 pt-2 border-t border-slate-100">
-            <span>Sector: <strong className="text-slate-700">{topVolume.sector}</strong></span>
+            <span>Sector: <strong className="text-slate-700 truncate max-w-[110px]">{topVolume.sector}</strong></span>
             <span className="text-[#2563eb] font-semibold">Inspect</span>
           </div>
         </div>
@@ -163,7 +164,7 @@ export default function MarketPulse({ stocks, onSelectStock }) {
       {topValue && (
         <div
           onClick={() => onSelectStock(topValue)}
-          className="card-elevation p-4 flex flex-col justify-between cursor-pointer group hover:border-[#f59e0b]/50 transition-all"
+          className="card-elevation p-3.5 sm:p-4 flex flex-col justify-between cursor-pointer group hover:border-[#f59e0b]/50 active:scale-[0.99] transition-all"
         >
           <div>
             <div className="flex items-center justify-between text-xs text-slate-500 font-semibold mb-2">
@@ -178,17 +179,17 @@ export default function MarketPulse({ stocks, onSelectStock }) {
 
             <div className="flex items-baseline justify-between">
               <div>
-                <div className="font-display text-xl font-black text-slate-900 group-hover:text-[#2563eb] transition-colors">
+                <div className="font-display text-lg sm:text-xl font-black text-slate-900 group-hover:text-[#2563eb] transition-colors">
                   {topValue.symbol}
                 </div>
-                <p className="text-[11px] text-slate-400 truncate max-w-[140px]">
+                <p className="text-[11px] text-slate-400 truncate max-w-[130px] sm:max-w-[150px]">
                   {topValue.fullName || topValue.symbol}
                 </p>
               </div>
 
               <div className="text-right font-mono">
                 <div className="text-sm font-bold text-slate-900">
-                  ৳{topValue.ltp?.toFixed(2) || '—'}
+                  ৳{topValue.ltp ? Number(topValue.ltp).toFixed(2) : '—'}
                 </div>
                 <div className="text-xs font-bold text-[#b45309]">
                   ROE {topValue.roe}%

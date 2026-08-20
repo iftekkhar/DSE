@@ -427,121 +427,81 @@ export const triggerScrape = async () => {
   return response.data;
 };
 
-// Pull closing price records for multi-timeframe charts (combining SQLite backend + continuous timeline)
+// Pull closing price records for multi-timeframe charts (Strictly using SQLite backend price_history)
 export const generateHistoryData = (stock, savedHistory = null) => {
-  if (savedHistory && Array.isArray(savedHistory) && savedHistory.length >= 10) {
+  if (savedHistory && Array.isArray(savedHistory) && savedHistory.length > 0) {
     return savedHistory;
   }
 
-  if (!stock) return [];
+  if (!stock || stock.ltp === null || stock.ltp === undefined) return [];
 
-  const symbol = (stock.symbol || '').toUpperCase().trim();
-  const currentPrice = Number(stock.ltp || stock.close || 50.0);
-  
-  const BASELINES = {
-    'BRACBANK': { ipoYear: 2007, startPrice: 18.0 },
-    'GP': { ipoYear: 2009, startPrice: 120.0 },
-    'SQURPHARMA': { ipoYear: 2005, startPrice: 45.0 },
-    'BATBC': { ipoYear: 2005, startPrice: 50.0 },
-    'LHBL': { ipoYear: 2005, startPrice: 15.0 },
-    'ISLAMIBANK': { ipoYear: 2005, startPrice: 20.0 },
-    'BEXIMCO': { ipoYear: 2005, startPrice: 12.0 },
-    'RENATA': { ipoYear: 2005, startPrice: 180.0 },
-    'OLYMPIC': { ipoYear: 2005, startPrice: 25.0 }
-  };
+  const closeDate = stock.closeDate || stock.date || new Date().toISOString().slice(0, 10);
+  const dateObj = new Date(closeDate);
+  const label = isNaN(dateObj.getTime())
+    ? closeDate
+    : dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' });
 
-  const cfg = BASELINES[symbol] || {
-    ipoYear: 2005 + (symbol.charCodeAt(0) % 15),
-    startPrice: Math.max(5, currentPrice * 0.3)
-  };
+  return [{
+    day: label,
+    rawDate: closeDate,
+    dateObj: dateObj,
+    price: Number(stock.ltp),
+    volume: Number(stock.volume || 0),
+    timestamp: closeDate,
+    change: Number(stock.change || 0),
+    changePercent: Number(stock.changePercent || 0)
+  }];
+};
 
-  const dates = [];
-  const start = new Date(`${cfg.ipoYear}-01-01`);
-  const end = new Date();
-  const curr = new Date(start);
-
-  while (curr <= end) {
-    const day = curr.getDay();
-    const year = curr.getFullYear();
-    if (year < 2024) {
-      if (day === 4 || curr.getDate() === 1) dates.push(curr.toISOString().slice(0, 10));
-    } else {
-      if (day >= 0 && day <= 4) dates.push(curr.toISOString().slice(0, 10));
-    }
-    curr.setDate(curr.getDate() + 1);
+// Fetch 20-Year Detailed Historical Analysis & Quantitative Model from backend
+export const fetchHistoricalAnalysis = async (symbol) => {
+  if (!symbol) return null;
+  const cleanSym = String(symbol).toUpperCase().trim();
+  try {
+    const res = await axios.get(`${API_BASE}/api/history-analysis/${encodeURIComponent(cleanSym)}`, { timeout: 15000 });
+    return res.data;
+  } catch (err) {
+    console.warn(`Could not fetch detailed historical analysis for ${cleanSym}:`, err.message);
+    return null;
   }
-
-  const step = (currentPrice - cfg.startPrice) / Math.max(1, dates.length);
-  let p = cfg.startPrice;
-
-  const points = dates.map((d, idx) => {
-    const noise = (Math.sin(idx * 0.1) * 0.03) + ((Math.random() - 0.48) * 0.02);
-    p = Math.max(1.0, p + step + (p * noise));
-    if (idx === dates.length - 1) p = currentPrice;
-
-    const dateObj = new Date(d);
-    const label = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' });
-    const close = Number(p.toFixed(2));
-    const ycp = Number((close / (1 + noise)).toFixed(2));
-    const change = Number((close - ycp).toFixed(2));
-    const changePercent = Number(((change / ycp) * 100).toFixed(2));
-
-    return {
-      day: label,
-      rawDate: d,
-      dateObj: dateObj,
-      price: close,
-      volume: Math.floor(25000 + Math.random() * 500000),
-      timestamp: d,
-      change: change,
-      changePercent: changePercent
-    };
-  });
-
-  return points;
 };
 
-// Export stocks list to clean CSV with history and fallback annotations
-export const exportToCSV = (stocks, filename = 'dse-analytics-export.csv') => {
-  const headers = ['Symbol', 'Company Name', 'Sector', 'LTP (BDT)', 'Change %', 'P/E', 'ROE %', 'EPS', 'Debt/Equity', 'Current Ratio', 'Volume', 'Score', 'Verdict'];
-  const rows = stocks.map(s => {
-    const formatField = (field, val, suffix = '') => {
-      if (val === null || val === undefined) return 'Not Available live';
-      const tag = getFallbackTag(s, field);
-      const histTag = tag ? ` (${tag})` : '';
-      return `${val}${suffix}${histTag}`;
-    };
-
-    return [
-      s.symbol,
-      `"${(s.fullName || '').replace(/"/g, '""')}"`,
-      s.sector || 'Not Available live',
-      formatField('ltp', s.ltp),
-      formatField('changePercent', s.changePercent, '%'),
-      formatField('pe', s.pe, 'x'),
-      formatField('roe', s.roe, '%'),
-      formatField('eps', s.eps ? s.eps.toFixed(2) : null),
-      formatField('debtToEquity', s.debtToEquity),
-      formatField('currentRatio', s.currentRatio, 'x'),
-      formatField('volume', s.volume),
-      s.verdictScore ?? 'N/A',
-      s.verdict ?? 'N/A'
-    ];
-  });
-
-  const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
-  const encodedUri = encodeURI(csvContent);
-  const link = document.createElement('a');
-  link.setAttribute('href', encodedUri);
-  link.setAttribute('download', filename);
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+// Fetch 20-Year Annual Audited Financial Statements Timeline
+export const fetchFundamentalsHistory = async (symbol) => {
+  if (!symbol) return [];
+  const cleanSym = String(symbol).toUpperCase().trim();
+  try {
+    const res = await axios.get(`${API_BASE}/api/fundamentals-history/${encodeURIComponent(cleanSym)}`, { timeout: 15000 });
+    return res.data?.statements || [];
+  } catch (err) {
+    console.warn(`Could not fetch fundamentals history for ${cleanSym}:`, err.message);
+    return [];
+  }
 };
 
-// Download Historical Data in Excel (.xlsx) format from SQLite
-export const downloadExcel = (symbol = 'ALL') => {
-  const url = `${API_BASE}/api/export/excel?symbol=${encodeURIComponent(symbol)}`;
-  window.open(url, '_blank');
+// Fetch Macro Market Breadth & DSEX Summary strictly from SQLite
+export const fetchMarketBreadth = async () => {
+  try {
+    const res = await axios.get(`${API_BASE}/api/market-breadth`, { timeout: 10000 });
+    return res.data;
+  } catch (err) {
+    console.warn('Could not fetch market breadth:', err.message);
+    return null;
+  }
 };
+
+// Fetch 20-Year Daily Closing DSEX Benchmark Historical Timeline
+export const fetchDSEXHistory = async (limit = 7500) => {
+  try {
+    const res = await axios.get(`${API_BASE}/api/dsex-history?limit=${limit}`, { timeout: 15000 });
+    return res.data?.timeline || [];
+  } catch (err) {
+    console.warn('Could not fetch DSEX history:', err.message);
+    return [];
+  }
+};
+
+
+
+
 

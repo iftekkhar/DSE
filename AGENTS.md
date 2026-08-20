@@ -1,15 +1,21 @@
-# DSE Analytics & Buffett Value Terminal — Workspace Context & Directives
+# DSE Analytics & Buffett Value Terminal — Workspace Directives & Core Rules
+
+> [!IMPORTANT]
+> ### 🛡️ BINDING CORE ENGINEERING RULES (MANDATORY ON ALL TURNS & REFACTORINGS)
+> 1. **DO NOT CHANGE THE UI** — Unless the user explicitly requests a UI change in their prompt. Keep all components, modal sections, layouts, badges, and visual styling intact.
+> 2. **NO HARDCODED / SYNTHETIC / RANDOM VALUES** — Never use hardcoded numbers, fake years, random generators (`Math.random()`), or simulated mock dictionaries. Every value must come directly from SQLite `data/dse.db`. If a value is missing or unavailable, show `—` / `N/A` / `null` or **ask the user directly**.
+> 3. **AUDITED FINANCIAL DISCLOSURES (STRICTLY FROM DB)** — All Audited Financial Disclosures (Audited P/E, EPS, NAVPS, Paid-Up Capital, Authorized Capital, Dividend Yield, Audited Period, Quarterly Disclosure) MUST come strictly from verified `company_fundamentals` in the SQLite database.
+> 4. **7-POINT FUNDAMENTAL MATRIX DATA ORIGIN RULES** —
+>    - *From DB (`company_fundamentals` & `price_history`):* Return on Equity, Debt/Equity, Current Ratio, Audited Basic EPS.
+>    - *From Daily Session Feed:* Daily P/E ($\text{LTP} \div \text{DB EPS}$), Closing Momentum ($\text{Change \%}$), Trading Volume.
+
+---
 
 ## 1. Project Overview & Commercial Grade Standard
 This application is a **commercial-grade, production-ready institutional analytics dashboard for the Dhaka Stock Exchange (DSE)**.
-- **Rule 1 (Authenticity & Accuracy):** Zero simulated/fake/made-up numbers. All prices, EPS, NAVPS, and fundamentals MUST originate strictly from the DSE exchange filings and SQLite master database.
-- **Rule 2 (Audited Data Exclusivity):** Only officially published audited financial figures (Annual/Quarterly audited disclosures) are displayed. If a metric is unpublished or unavailable, show `"Not Available live"` / `null`.
-- **Rule 3 (Smart Delta / 0-Write Scrapers):** Scrapers check existing DB values before writing. If identical, 0 database writes occur.
-- **Rule 4 (P/E & ROE Math):**
-  - $\text{Daily P/E} = \text{Daily Closing LTP} \div \text{Audited Basic EPS}$ (fluctuates daily with price).
-  - $\text{Audited P/E} = \text{YCP Base} \div \text{Audited Basic EPS}$.
-  - $\text{ROE} = (\text{Audited Basic EPS} \div \text{Audited NAVPS}) \times 100$.
-  - If EPS is $\le 0$ or missing, P/E is strictly reported as `N/A`.
+- **Authenticity & Accuracy:** Zero simulated/fake/made-up numbers. All prices, EPS, NAVPS, and fundamentals MUST originate strictly from the DSE exchange filings and SQLite master database.
+- **Audited Data Exclusivity:** Only officially published audited financial figures (Annual/Quarterly audited disclosures) are displayed. If a metric is unpublished or unavailable, show `"Not Available live"` / `null` / `'—'`.
+- **Smart Delta / 0-Write Scrapers:** Scrapers check existing DB values before writing. If identical, 0 database writes occur.
 
 ---
 
