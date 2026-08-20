@@ -7,18 +7,20 @@ import cors from 'cors';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import db, {
+import {
+  initDB,
   saveDailyClosingToDB,
-  getHistoricalTimeline,
-  getLatestRecordedClosing,
   saveFundamentals,
   saveFundamentalsDelta,
-  getAllFundamentalsMap,
-  getAllStocksFromDB,
   saveMarketBreadth,
   getLatestMarketBreadth,
-  exportToExcel
+  getAllStocksFromDB,
+  getAllFundamentalsMap,
+  getHistoricalTimeline,
+  exportToExcel,
+  seed20YearFromMasterExcel
 } from './db.js';
+import { runAuditedEPSWeeklyScraper } from './scrapers/audited_eps_scraper.js';
 
 let cron;
 try {
@@ -654,6 +656,16 @@ app.get('/api/export/excel', async (req, res) => {
   }
 });
 
+// Job: Trigger Weekly Audited EPS & Fundamentals Scraper manually
+app.post('/api/jobs/audited-eps', async (req, res) => {
+  try {
+    runAuditedEPSWeeklyScraper().catch(e => console.error('[AUDITED EPS SCRAPER ERROR]', e.message));
+    res.json({ status: 'ok', message: 'Weekly Audited EPS Crawler initiated in background' });
+  } catch (err) {
+    res.status(500).json({ status: 'error', message: err.message });
+  }
+});
+
 // -------------------------------------------------------------
 // 4. CRON AUTOMATION SCHEDULER (DHAKA TIMEZONE: Asia/Dhaka)
 // -------------------------------------------------------------
@@ -670,13 +682,19 @@ if (cron) {
     runJob3DailyFundamentalsDelta();
   }, { timezone: 'Asia/Dhaka' });
 
+  // Weekly Master Audited EPS Scraper (Every Saturday @ 10:00 BST)
+  cron.schedule('0 10 * * 6', () => {
+    console.log('[CRON TRIGGER] Executing Weekly Audited EPS & Financial Statements Scraper...');
+    runAuditedEPSWeeklyScraper();
+  }, { timezone: 'Asia/Dhaka' });
+
   // Job 4: Market Breadth Scraper (Every 30m during Market Hours: 10:00 - 15:00 BST, Sun-Thu)
   cron.schedule('*/30 10-15 * * 0-4', () => {
     console.log('[CRON TRIGGER] Executing Job 4: Market Breadth & Sector Index Scraper...');
     runJob4MarketBreadth();
   }, { timezone: 'Asia/Dhaka' });
 
-  console.log('[CRON] Automated scheduler active for Job 1 (15:30 BST), Job 3 (16:00 BST), and Job 4 (Market Hours).');
+  console.log('[CRON] Automated scheduler active for Job 1 (15:30 BST), Job 3 (16:00 BST), Job 4 (Market Hours), and Weekly Audited EPS Crawler (Saturday 10:00 BST).');
 } else {
   console.warn('[CRON] node-cron not initialized.');
 }
